@@ -1,0 +1,26 @@
+# Give the workflow a name
+name: Test
+
+# run events/jobs on every pull request to th emain branch
+on: 
+  pull_request:
+    branches: [ main ]
+
+# explain what to run on every pull request
+jobs: 
+  # give a name to the job
+  test:
+    # which virtual machine should the job run on
+    runs-on: ubuntu-latest
+    # give the steps to run
+    steps: 
+      # get the source code into the vm
+      - uses: actions/checkout@v2
+      # setup nodeJS to be able to run the commands/scripts
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      # run the "npm ci" script which is npm clean install 
+      - run: npm ci
+      # run the "npm run test" scripts which runs the test script for the project
+      - run: npm run test
