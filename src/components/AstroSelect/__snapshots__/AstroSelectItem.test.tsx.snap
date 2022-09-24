@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AstroSelect Should render component correctly. 1`] = `
+<span>
+  item
+</span>
+`;

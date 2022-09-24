@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AstroPopover Should render component correctly. 1`] = `
+<div
+  class="astroPopoverContainer"
+>
+  <button>
+    Button
+  </button>
+  <div
+    style="opacity: 0;"
+  />
+</div>
+`;

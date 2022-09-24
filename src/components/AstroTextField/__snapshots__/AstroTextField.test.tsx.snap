@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AstroTextField Should render component correctly. 1`] = `
+<div
+  class="container"
+>
+  <div
+    class="astroTextFieldContainer"
+  >
+    <input
+      aria-label="textfield"
+      class="astroTextField primary medium"
+      required=""
+      type="text"
+    />
+  </div>
+</div>
+`;
