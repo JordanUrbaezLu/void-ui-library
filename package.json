@@ -1,5 +1,5 @@
 {
-  "$schema": "https://json.schemastore.org/package.json",
+  "name": "astro-ui",
   "author": "JordanUrbaezLu",
   "homepage": "https://jordanurbaezlu.github.io/astro-ui",
   "version": "0.0.0-development",
@@ -30,6 +30,7 @@
     "babel-jest": "^29.0.3",
     "classnames": "^2.3.2",
     "css-loader": "^6.7.1",
+    "gh-pages": "^4.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.0.3",
     "jest-axe": "^6.0.0",
@@ -39,6 +40,7 @@
     "rollup-plugin-postcss": "^4.0.2",
     "sass": "^1.55.0",
     "sass-loader": "^13.0.2",
+    "semantic-release": "^19.0.5",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.3"
   },
@@ -46,7 +48,6 @@
   "license": "UNLICENSED",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
-  "name": "repository-name",
   "peerDependenciesMeta": {
     "@types/react": {
       "optional": true
@@ -71,5 +72,6 @@
   "typings": "dist/index.d.ts",
   "dependencies": {
     "react-icons": "^4.4.0"
-  }
+  },
+  "$schema": "https://json.schemastore.org/package.json"
 }
