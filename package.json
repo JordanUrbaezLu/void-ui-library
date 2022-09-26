@@ -1,7 +1,7 @@
 {
-  "name": "jordanurbaezlu-astro-ui",
+  "name": "astro-ui-library",
   "author": "JordanUrbaezLu",
-  "homepage": "https://jordanurbaezlu.github.io/astro-ui",
+  "homepage": "https://jordanurbaezlu.github.io/astro-ui-library",
   "version": "0.0.0-development",
   "private": false,
   "devDependencies": {
