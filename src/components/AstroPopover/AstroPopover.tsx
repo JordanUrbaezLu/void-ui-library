@@ -6,7 +6,7 @@ import { getRefWidth as getPopoverWidth } from "../../utility/getRefWidth";
 
 export type AstroPopoverPosition = "bottom" | "top";
 
-interface AstroPopoverProps {
+export interface AstroPopoverProps {
   trigger: React.ReactNode;
   position?: AstroPopoverPosition;
   hasNubbin?: boolean;

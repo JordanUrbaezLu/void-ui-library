@@ -1,0 +1,39 @@
+.astroCalendarContainer {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+.astroCalendarNavigationContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.astroCalendarNavigationMonth {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.astroCalendarHeaderContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.astroCalendarHeaderLabel {
+    text-align: center;
+    flex: 1 1 0px;
+}
+
+.astroCalendarBodyContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.astroCalendarDay {
+    text-align: center;
+    flex: 1 0 13%;
+
+    &:focus {
+        background-color: gray;
+    }
+}

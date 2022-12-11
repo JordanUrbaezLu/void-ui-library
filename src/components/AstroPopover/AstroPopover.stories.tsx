@@ -4,8 +4,8 @@ import AstroPopover from "./AstroPopover";
 import AstroButton from "../AstroButton/AstroButton";
 
 export default {
-  title: "AstroPopover",
-  componet: AstroPopover,
+  title: "Components/AstroPopover",
+  component: AstroPopover,
 } as ComponentMeta<typeof AstroPopover>;
 
 const Template: ComponentStory<typeof AstroPopover> = (args) => {
