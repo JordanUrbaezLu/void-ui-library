@@ -3,7 +3,7 @@ import AstroButton from "./AstroButton";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 export default {
-  title: "AstroButton",
+  title: "Components/AstroButton",
   component: AstroButton,
 } as ComponentMeta<typeof AstroButton>;
 
