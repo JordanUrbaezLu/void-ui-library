@@ -7,7 +7,7 @@ import {
   getNextWeek,
   getPreviousDay,
   getPreviousWeek,
-} from "./astroCalendarUtilities";
+} from "../../utility/calendarUtilities";
 
 export interface AstroCalendarProps {
   customDate?: Date;
