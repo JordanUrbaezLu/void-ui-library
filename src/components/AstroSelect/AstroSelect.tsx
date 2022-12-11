@@ -7,7 +7,7 @@ import * as React from "react";
 export type AstroSelectVariant = "primary" | "secondary";
 export type AstroSelectSize = "small" | "medium" | "large";
 
-interface AstroSelectProps {
+export interface AstroSelectProps {
   variant?: AstroSelectVariant;
   children?: React.ReactNode;
   size?: AstroSelectSize;

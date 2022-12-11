@@ -3,7 +3,7 @@ import { AiFillEye, AiOutlineArrowRight } from "react-icons/ai";
 import AstroTextField from "./AstroTextField";
 
 export default {
-    title: "AstroTextField",
+    title: "Components/AstroTextField",
     component: AstroTextField,
 } as ComponentMeta<typeof AstroTextField>;
 

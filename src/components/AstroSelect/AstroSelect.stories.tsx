@@ -3,7 +3,7 @@ import AstroSelect from "./AstroSelect";
 import AstroSelectItem from "./AstroSelectItem";
 
 export default {
-  title: "AstroSelect",
+  title: "Components/AstroSelect",
   component: AstroSelect,
 } as ComponentMeta<typeof AstroSelect>;
 
