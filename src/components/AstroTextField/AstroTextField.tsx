@@ -15,12 +15,48 @@ export type AstroTextFieldType =
   | "url";
 
 export interface AstroTextFieldProps {
-  variant?: AstroTextFieldVariant;
-  size?: AstroTextFieldSize;
-  trailingIcon?: React.ReactNode;
+  /**
+   * If the AstroTextField is disabled
+   *
+   * @default false
+   */
   disabled?: boolean;
-  type?: AstroTextFieldType;
+
+  /**
+   * The accessible label for the AstroTextField
+   *
+   * @default "textfield"
+   */
   label?: string;
+
+  /**
+   * The size of the AstroTextField
+   *
+   * @default "medium"
+   */
+  size?: AstroTextFieldSize;
+
+  /**
+   * The trailing icon for the AstroTextField
+   */
+  trailingIcon?: React.ReactNode;
+
+  /**
+   * The type for the input in the AstroTextField
+   */
+  type?: AstroTextFieldType;
+
+  /**
+   * The value for the AstroTextField
+   */
+  value?: string;
+
+  /**
+   * The variant for the AstroTextField
+   *
+   * @default "primary"
+   */
+  variant?: AstroTextFieldVariant;
 }
 
 const AstroTextField: React.FC<AstroTextFieldProps> = ({
@@ -30,6 +66,7 @@ const AstroTextField: React.FC<AstroTextFieldProps> = ({
   disabled = false,
   type = "text",
   label = "textfield",
+  value,
 }) => {
   const inputContainer = classNames(
     styles.astroTextFieldContainer,
@@ -68,10 +105,11 @@ const AstroTextField: React.FC<AstroTextFieldProps> = ({
       <div className={inputContainer}>
         <input
           aria-label={label}
-          type={type}
-          disabled={disabled}
           className={classes}
+          disabled={disabled}
           required
+          type={type}
+          value={value}
         />
         {label !== "textfield" && <span className={labelClasses}>{label}</span>}
       </div>

@@ -12,6 +12,7 @@ exports[`AstroTextField Should render component correctly. 1`] = `
       class="astroTextField primary medium"
       required=""
       type="text"
+      value=""
     />
   </div>
 </div>
