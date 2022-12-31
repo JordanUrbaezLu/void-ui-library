@@ -40,3 +40,7 @@ export const getNextWeek = (date: Date) => {
 export const getPreviousWeek = (date: Date) => {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate() - 7);
 };
+
+export const getDateString = (date: Date) => {
+  return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+};
