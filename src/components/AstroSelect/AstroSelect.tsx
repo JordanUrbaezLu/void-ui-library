@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { CSSTransition } from "react-transition-group";
 import styles from "./AstroSelect.module.scss";
 import itemStyles from "./AstroSelectItem.module.scss";
 import { IoChevronDownSharp, IoChevronUpSharp } from "react-icons/io5";
@@ -8,19 +9,27 @@ export type AstroSelectVariant = "primary" | "secondary";
 export type AstroSelectSize = "small" | "medium" | "large";
 
 export interface AstroSelectProps {
-  variant?: AstroSelectVariant;
+  /**
+   * The content for the AstroSelect
+   */
   children?: React.ReactNode;
-  size?: AstroSelectSize;
-  width?: number;
+  /**
+   * The label for the AstroSelect
+   */
   label?: string;
+  /**
+   * The size of the AstroSelect
+   */
+  size?: AstroSelectSize;
+  /**
+   * The variant of the AstroSelect
+   */
+  variant?: AstroSelectVariant;
 }
-
-// TODO: make items popover and not take up space. Use ref width to calculate.
 
 const AstroSelect: React.FC<AstroSelectProps> = ({
   children,
   label,
-  width,
   variant = "primary",
   size = "medium",
 }) => {
@@ -29,6 +38,13 @@ const AstroSelect: React.FC<AstroSelectProps> = ({
     size === "small" && styles.smallContainer,
     size === "medium" && styles.mediumContainer,
     size === "large" && styles.largeContainer
+  );
+
+  const selectOptionsMenu = classNames(
+    styles.selectOptionsMenu,
+    size === "small" && styles.smallOptionsMenu,
+    size === "medium" && styles.mediumOptionsMenu,
+    size === "large" && styles.largeOptionsMenu
   );
 
   const labelClasses = classNames(
@@ -69,10 +85,7 @@ const AstroSelect: React.FC<AstroSelectProps> = ({
   const [value, setValue] = React.useState<string>("");
 
   return (
-    <div
-      className={containerClasses}
-      style={width ? { width: `${width}px` } : {}}
-    >
+    <div className={containerClasses}>
       {label && <div className={labelClasses}>{label}</div>}
       <div className={classes}>
         <div style={{ paddingLeft: "4px" }}>{value}</div>
@@ -80,8 +93,19 @@ const AstroSelect: React.FC<AstroSelectProps> = ({
           {isOpen ? <IoChevronUpSharp /> : <IoChevronDownSharp />}
         </div>
       </div>
-      {isOpen && (
-        <div className={styles.selectOptionsMenu}>
+      <CSSTransition
+        in={isOpen}
+        timeout={200}
+        mountOnEnter
+        unmountOnExit
+        classNames={{
+          enter: styles.enter,
+          enterActive: styles.enterActive,
+          exit: styles.exit,
+          exitActive: styles.exitActive,
+        }}
+      >
+        <div className={selectOptionsMenu}>
           {React.Children.map(children, (child) => {
             const item = child as React.ReactElement;
             return (
@@ -97,7 +121,7 @@ const AstroSelect: React.FC<AstroSelectProps> = ({
             );
           })}
         </div>
-      )}
+      </CSSTransition>
     </div>
   );
 };

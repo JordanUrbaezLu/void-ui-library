@@ -8,7 +8,10 @@ exports[`AstroPopover Should render component correctly. 1`] = `
     Button
   </button>
   <div
-    style="opacity: 0;"
-  />
+    class="astroPopover bottom"
+    style="bottom: -4px;"
+  >
+    Popover
+  </div>
 </div>
 `;

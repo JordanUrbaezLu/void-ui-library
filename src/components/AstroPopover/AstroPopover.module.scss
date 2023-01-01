@@ -50,3 +50,47 @@
     left: 50%;
   }
 }
+
+.enterTop {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.enterTopActive {
+  transform: translateY(0px);
+  opacity: 1;
+  transition: all 200ms ease-in-out;
+}
+
+.exitTop {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.exitTopActive {
+  transform: translateY(-6px);
+  opacity: 0;
+  transition: all 200ms ease-in-out;
+}
+
+.enterBottom {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.enterBottomActive {
+  transform: translateY(0px);
+  opacity: 1;
+  transition: all 200ms ease-in-out;
+}
+
+.exitBottom {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.exitBottomActive {
+  transform: translateY(6px);
+  opacity: 0;
+  transition: all 200ms ease-in-out;
+}

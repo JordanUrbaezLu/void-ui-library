@@ -1,13 +1,13 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import AstroButton from "./AstroButton";
+import { Story } from "@storybook/react";
+import AstroButton, { AstroButtonProps } from "./AstroButton";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 export default {
-  title: "Components/AstroButton",
   component: AstroButton,
-} as ComponentMeta<typeof AstroButton>;
+  title: "Components/AstroButton",
+};
 
-const Template: ComponentStory<typeof AstroButton> = (args) => {
+const Template: Story<AstroButtonProps> = (args) => {
   return <AstroButton {...args}>Button</AstroButton>;
 };
 

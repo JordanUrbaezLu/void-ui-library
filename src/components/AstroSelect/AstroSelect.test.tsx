@@ -37,15 +37,6 @@ describe("Props", () => {
     }
   );
 
-  test("Should render width correctly.", () => {
-    render(
-      <div data-testid="select">
-        <AstroSelect width={350} />
-      </div>
-    );
-    expect(screen.getByTestId("select").firstChild).toHaveStyle("width: 350px");
-  });
-
   test("Should render label correctly.", () => {
     render(<AstroSelect label="astroSelect" />);
     expect(screen.getByText("astroSelect")).toBeInTheDocument();

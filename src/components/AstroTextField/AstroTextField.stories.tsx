@@ -1,14 +1,27 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { Story } from "@storybook/react";
+import * as React from "react";
 import { AiFillEye, AiOutlineArrowRight } from "react-icons/ai";
-import AstroTextField from "./AstroTextField";
+import AstroTextField, { AstroTextFieldProps } from "./AstroTextField";
 
 export default {
-    title: "Components/AstroTextField",
-    component: AstroTextField,
-} as ComponentMeta<typeof AstroTextField>;
+  component: AstroTextField,
+  title: "Components/AstroTextField",
+};
 
-const Template: ComponentStory<typeof AstroTextField> = (args) => {
-  return <AstroTextField {...args} />;
+const Template: Story<Omit<AstroTextFieldProps, "value" | "onChange">> = (
+  args
+) => {
+  const [value, setValue] = React.useState<string>("");
+
+  return (
+    <AstroTextField
+      {...args}
+      onChange={(event) => {
+        setValue(event.target.value);
+      }}
+      value={value}
+    />
+  );
 };
 
 export const Default = Template.bind({});
