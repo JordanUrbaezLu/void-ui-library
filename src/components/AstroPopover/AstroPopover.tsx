@@ -3,7 +3,6 @@ import { CSSTransition } from "react-transition-group";
 import styles from "./AstroPopover.module.scss";
 import classNames from "classnames";
 import { getRefHeight as getTriggerHeight } from "../../utility/getRefHeight";
-import { getRefWidth as getPopoverWidth } from "../../utility/getRefWidth";
 
 export type AstroPopoverPosition = "bottom" | "top";
 
@@ -52,9 +51,6 @@ const AstroPopover: React.FC<AstroPopoverProps> = ({
   React.useEffect(() => {
     const height = getTriggerHeight({
       ref: triggerRef,
-    });
-    const width = getPopoverWidth({
-      ref: popoverRef,
     });
     setTriggerHeight(height);
   }, [isOpen]);

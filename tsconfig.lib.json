@@ -4,7 +4,7 @@
         "declaration": true,
         "declarationDir": "dist",
         "emitDeclarationOnly": true,
-        "rootDir": "./src/"
+        "rootDir": "../astro-ui-library/"
     },
     "exclude": [
         "*.stories.ts",
