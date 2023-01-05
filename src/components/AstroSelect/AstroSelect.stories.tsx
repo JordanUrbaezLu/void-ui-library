@@ -1,13 +1,13 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import AstroSelect from "./AstroSelect";
+import { Story } from "@storybook/react";
+import AstroSelect, { AstroSelectProps } from "./AstroSelect";
 import AstroSelectItem from "./AstroSelectItem";
 
 export default {
-  title: "Components/AstroSelect",
   component: AstroSelect,
-} as ComponentMeta<typeof AstroSelect>;
+  title: "Components/AstroSelect",
+};
 
-const Template: ComponentStory<typeof AstroSelect> = (args) => {
+const Template: Story<AstroSelectProps> = (args) => {
   return (
     <AstroSelect {...args}>
       <AstroSelectItem value="30" />
@@ -49,15 +49,9 @@ Label.args = {
   label: "Age",
 };
 
-export const Width = Template.bind({});
-Width.args = {
-  width: 500,
-};
-
 export const AllProps = Template.bind({});
 AllProps.args = {
   variant: "secondary",
   size: "large",
   label: "Age",
-  width: 100,
 };

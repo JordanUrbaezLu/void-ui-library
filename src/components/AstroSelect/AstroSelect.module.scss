@@ -1,6 +1,4 @@
 .astroSelectContainer {
-  display: flex;
-  flex-direction: column;
   user-select: none;
   &.smallContainer {
     width: 150px;
@@ -29,6 +27,18 @@
   border-radius: 4px;
   padding: 4px 0px;
   background-color: rgb(50, 50, 50);
+  position: absolute;
+  z-index: 999;
+
+  &.smallOptionsMenu {
+    width: 150px;
+  }
+  &.mediumOptionsMenu {
+    width: 200px;
+  }
+  &.largeOptionsMenu {
+    width: 250px;
+  }
 }
 
 .label {
@@ -108,4 +118,26 @@
   &.secondaryIcon {
     color: rgb(147 51 234);
   }
+}
+
+.enter {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.enterActive {
+  transform: translateY(0px);
+  opacity: 1;
+  transition: all 200ms ease-in-out;
+}
+
+.exit {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.exitActive {
+  transform: translateY(-6px);
+  opacity: 0;
+  transition: all 200ms ease-in-out;
 }

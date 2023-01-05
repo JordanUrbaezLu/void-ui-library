@@ -1,9 +1,9 @@
 import { render } from "@testing-library/react";
-import AstroDatePicker from "./AstroDatePicker";
+import AstroNavbar from "./AstroNavbar";
 
-describe("AstroDatePicker", () => {
+describe("AstroCalendar", () => {
   test("Should render component correctly.", () => {
-    const { container } = render(<AstroDatePicker setValue={jest.fn()} />);
+    const { container } = render(<AstroNavbar />);
     expect(container.firstChild).toMatchSnapshot();
   });
 });

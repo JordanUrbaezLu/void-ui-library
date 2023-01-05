@@ -1,6 +1,6 @@
 @use "../../utility/globals";
 
-.astroCalendarContainer {
+.astroDatePickerCalendarContainer {
   background: white;
   border-radius: 8px;
   border: 3px solid globals.$primary-color;
@@ -10,21 +10,21 @@
   position: absolute;
 }
 
-.astroCalendarNavigationContainer {
+.astroDatePickerCalendarNavigationContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 8px;
 }
 
-.astroCalendarNavigationMonth {
+.astroDatePickerCalendarNavigationMonth {
   display: flex;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   user-select: none;
   align-items: center;
 }
 
-.astroCalendarNavigationIcon {
+.astroDatePickerCalendarNavigationIcon {
   cursor: pointer;
   padding: 6px;
   outline: none;
@@ -41,29 +41,29 @@
   }
 }
 
-.astroCalendarHeaderContainer {
+.astroDatePickerCalendarHeaderContainer {
   display: flex;
   flex-direction: row;
   padding: 0px 8px;
 }
 
-.astroCalendarHeaderLabel {
+.astroDatePickerCalendarHeaderLabel {
   text-align: center;
   flex: 1 1 0px;
   user-select: none;
 }
 
-.astroCalendarBodyContainer {
+.astroDatePickerCalendarBodyContainer {
   display: flex;
   flex-wrap: wrap;
   padding: 0px 8px 8px 8px;
 }
 
-.astroCalendarDayContainer {
+.astroDatePickerCalendarDayContainer {
   flex: 1 0 13%;
 }
 
-.astroCalendarDay {
+.astroDatePickerCalendarDay {
   display: flex;
   border-radius: 1000px;
   cursor: pointer;
@@ -91,14 +91,18 @@
   opacity: 0;
   transform: translateY(-6px);
 }
+
 .enterActive {
-  transform: translateY(1px);
+  transform: translateY(0px);
   opacity: 1;
   transition: all 200ms ease-in-out;
 }
+
 .exit {
+  transform: translateY(0px);
   opacity: 1;
 }
+
 .exitActive {
   transform: translateY(-6px);
   opacity: 0;

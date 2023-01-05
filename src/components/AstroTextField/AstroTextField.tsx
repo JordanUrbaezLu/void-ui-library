@@ -21,36 +21,34 @@ export interface AstroTextFieldProps {
    * @default false
    */
   disabled?: boolean;
-
   /**
    * The accessible label for the AstroTextField
    *
    * @default "textfield"
    */
   label?: string;
-
+  /**
+   * The callback when the requested to change the value for the AstroTextField
+   */
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   /**
    * The size of the AstroTextField
    *
    * @default "medium"
    */
   size?: AstroTextFieldSize;
-
   /**
    * The trailing icon for the AstroTextField
    */
   trailingIcon?: React.ReactNode;
-
   /**
    * The type for the input in the AstroTextField
    */
   type?: AstroTextFieldType;
-
   /**
    * The value for the AstroTextField
    */
   value?: string;
-
   /**
    * The variant for the AstroTextField
    *
@@ -64,6 +62,7 @@ const AstroTextField: React.FC<AstroTextFieldProps> = ({
   size = "medium",
   trailingIcon,
   disabled = false,
+  onChange,
   type = "text",
   label = "textfield",
   value,
@@ -108,6 +107,7 @@ const AstroTextField: React.FC<AstroTextFieldProps> = ({
           className={classes}
           disabled={disabled}
           required
+          onChange={onChange}
           type={type}
           value={value}
         />

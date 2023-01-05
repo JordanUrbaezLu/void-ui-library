@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AstroCalendar Should render component correctly. 1`] = `
+<nav
+  class="astroNavbarContainer"
+>
+  <a
+    class="logoContainer"
+    href="#"
+  >
+    <img />
+  </a>
+  <ul
+    class="listContainer"
+  />
+</nav>
+`;

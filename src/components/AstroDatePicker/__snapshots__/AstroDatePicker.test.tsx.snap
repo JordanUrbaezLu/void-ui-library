@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `
+exports[`AstroDatePicker Should render component correctly. 1`] = `
 <div
   class="container"
 >
@@ -12,13 +12,14 @@ exports[` 1`] = `
       class="astroTextField primary medium"
       required=""
       type="text"
-      value="12/31/2022"
+      value=""
     />
   </div>
   <span
     class="icon iconMedium"
   >
     <svg
+      class="astroDatePickerIconContainer"
       fill="currentColor"
       height="1em"
       stroke="currentColor"

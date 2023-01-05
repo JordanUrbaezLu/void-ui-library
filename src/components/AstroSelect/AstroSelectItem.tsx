@@ -1,5 +1,8 @@
 import * as React from "react";
 interface AstroSelectItemProps {
+  /**
+   * The value for the AstroSelectItem
+   */
   value: string;
 }
 

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { CSSTransition } from "react-transition-group";
 import styles from "./AstroPopover.module.scss";
 import classNames from "classnames";
 import { getRefHeight as getTriggerHeight } from "../../utility/getRefHeight";
@@ -7,11 +8,26 @@ import { getRefWidth as getPopoverWidth } from "../../utility/getRefWidth";
 export type AstroPopoverPosition = "bottom" | "top";
 
 export interface AstroPopoverProps {
-  trigger: React.ReactNode;
-  position?: AstroPopoverPosition;
+  /**
+   * If the AstroPopover has a nubbin
+   */
   hasNubbin?: boolean;
+  /**
+   * If the AstroPopover is open
+   */
+  isOpen: boolean;
+  /**
+   * The position of the AstroPopover
+   */
+  position?: AstroPopoverPosition;
+  /**
+   * The text for the AstroPopover
+   */
   text: string;
-  isOpen?: boolean;
+  /**
+   * The trigger for the AstroPopover
+   */
+  trigger: React.ReactNode;
 }
 
 const AstroPopover: React.FC<AstroPopoverProps> = ({
@@ -22,7 +38,6 @@ const AstroPopover: React.FC<AstroPopoverProps> = ({
   isOpen = false,
 }) => {
   const [triggerHeight, setTriggerHeight] = React.useState<number>();
-  const [popoverWidth, setPopoverWidth] = React.useState<number>();
 
   const triggerRef = React.useRef<HTMLDivElement>(null);
   const popoverRef = React.useRef<HTMLDivElement>(null);
@@ -42,36 +57,50 @@ const AstroPopover: React.FC<AstroPopoverProps> = ({
       ref: popoverRef,
     });
     setTriggerHeight(height);
-    setPopoverWidth(width);
   }, [isOpen]);
 
   return (
     <div ref={triggerRef} className={styles.astroPopoverContainer}>
       {trigger}
-      <div
-        style={
-          isOpen ? { transition: "opacity 0.5s", opacity: 1 } : { opacity: 0 }
+      <CSSTransition
+        in={isOpen}
+        timeout={200}
+        mountOnEnter
+        unmountOnExit
+        classNames={
+          position === "top"
+            ? {
+                enter: styles.enterTop,
+                enterActive: styles.enterTopActive,
+                exit: styles.exitTop,
+                exitActive: styles.exitTopActive,
+              }
+            : {
+                enter: styles.enterBottom,
+                enterActive: styles.enterBottomActive,
+                exit: styles.exitBottom,
+                exitActive: styles.exitBottomActive,
+              }
         }
       >
-        {isOpen && (
-          <div
-            ref={popoverRef}
-            style={
-              position === "top"
-                ? {
-                    bottom: `${
-                      (triggerHeight || 0) + (hasNubbin ? 7 : 0) + 4
-                    }px`,
-                    transform: `translateX(${-0.5 * (popoverWidth || 0)}px)`,
-                  }
-                : { transform: `translateX(${-0.5 * (popoverWidth || 0)}px)` }
-            }
-            className={classes}
-          >
-            {text}
-          </div>
-        )}
-      </div>
+        <div
+          ref={popoverRef}
+          style={
+            position === "top"
+              ? {
+                  bottom: `${(triggerHeight || 0) + (hasNubbin ? 7 : 0) + 4}px`,
+                }
+              : {
+                  bottom: `-${
+                    (triggerHeight || 0) + (hasNubbin ? 7 : 0) + 4
+                  }px`,
+                }
+          }
+          className={classes}
+        >
+          {text}
+        </div>
+      </CSSTransition>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { CSSTransition } from "react-transition-group";
-import styles from "./AstroCalendar.module.scss";
+import styles from "./AstroDatePickerCalendar.module.scss";
 import { IoChevronBackSharp, IoChevronForwardSharp } from "react-icons/io5";
 import {
   getCalendarDays,
@@ -11,13 +11,22 @@ import {
 } from "../../utility/calendarUtilities";
 import FocusTrap from "focus-trap-react";
 
-export interface AstroCalendarProps {
-  selectedDate?: Date;
-  onSetDate: (date: Date) => void;
+export interface AstroDatePickerCalendarProps {
+  /**
+   * If the AstroDatePickerCalendar is open
+   */
   isOpen: boolean;
+  /**
+   * The callback fired when requested to set the date for the AstroDatePickerCalendar
+   */
+  onSetDate: (date: Date) => void;
+  /**
+   * The selected date for teh AstroDatePickerCalendar
+   */
+  selectedDate?: Date;
 }
 
-const AstroCalendar: React.FC<AstroCalendarProps> = ({
+const AstroDatePickerCalendar: React.FC<AstroDatePickerCalendarProps> = ({
   selectedDate = new Date(),
   onSetDate,
   isOpen,
@@ -43,7 +52,6 @@ const AstroCalendar: React.FC<AstroCalendarProps> = ({
   }, [date]);
 
   React.useEffect(() => {
-    console.log("Focus")
     daysRefs.current[focusedDate]?.focus();
   }, [focusedDate]);
 
@@ -67,16 +75,16 @@ const AstroCalendar: React.FC<AstroCalendarProps> = ({
         }}
       >
         <div
-          className={styles.astroCalendarContainer}
+          className={styles.astroDatePickerCalendarContainer}
           onKeyDown={(event) => {
             if (event.code === "Escape") {
               onSetDate(selectedDate);
             }
           }}
         >
-          <div className={styles.astroCalendarNavigationContainer}>
+          <div className={styles.astroDatePickerCalendarNavigationContainer}>
             <IoChevronBackSharp
-              className={styles.astroCalendarNavigationIcon}
+              className={styles.astroDatePickerCalendarNavigationIcon}
               onClick={decreaseMonth}
               onKeyDown={(event) => {
                 if (event.key === "Enter") {
@@ -85,13 +93,13 @@ const AstroCalendar: React.FC<AstroCalendarProps> = ({
               }}
               tabIndex={0}
             />
-            <div className={styles.astroCalendarNavigationMonth}>
+            <div className={styles.astroDatePickerCalendarNavigationMonth}>
               {`${date.toLocaleString("en-US", {
                 month: "long",
               })} ${date.getFullYear()}`}
             </div>
             <IoChevronForwardSharp
-              className={styles.astroCalendarNavigationIcon}
+              className={styles.astroDatePickerCalendarNavigationIcon}
               onClick={increaseMonth}
               onKeyDown={(event) => {
                 if (event.key === "Enter") {
@@ -101,22 +109,28 @@ const AstroCalendar: React.FC<AstroCalendarProps> = ({
               tabIndex={0}
             />
           </div>
-          <div className={styles.astroCalendarHeaderContainer}>
+          <div className={styles.astroDatePickerCalendarHeaderContainer}>
             {headerLabels.map((label, index) => {
               return (
-                <div className={styles.astroCalendarHeaderLabel} key={index}>
+                <div
+                  className={styles.astroDatePickerCalendarHeaderLabel}
+                  key={index}
+                >
                   {label}
                 </div>
               );
             })}
           </div>
-          <div className={styles.astroCalendarBodyContainer}>
+          <div className={styles.astroDatePickerCalendarBodyContainer}>
             {days.map((day, index) => {
               if (day !== null) {
                 return (
-                  <div className={styles.astroCalendarDayContainer}>
+                  <div
+                    className={styles.astroDatePickerCalendarDayContainer}
+                    key={index}
+                  >
                     <div
-                      className={styles.astroCalendarDay}
+                      className={styles.astroDatePickerCalendarDay}
                       tabIndex={day === date.getDate() ? 0 : -1}
                       onClick={() =>
                         onSetDate(
@@ -144,7 +158,6 @@ const AstroCalendar: React.FC<AstroCalendarProps> = ({
                           );
                         }
                       }}
-                      key={index}
                       ref={(el) => (daysRefs.current[day] = el)}
                     >
                       {day}
@@ -154,7 +167,7 @@ const AstroCalendar: React.FC<AstroCalendarProps> = ({
               } else {
                 return (
                   <div
-                    className={styles.astroCalendarDayContainer}
+                    className={styles.astroDatePickerCalendarDayContainer}
                     key={index}
                   />
                 );
@@ -167,4 +180,4 @@ const AstroCalendar: React.FC<AstroCalendarProps> = ({
   );
 };
 
-export default AstroCalendar;
+export default AstroDatePickerCalendar;

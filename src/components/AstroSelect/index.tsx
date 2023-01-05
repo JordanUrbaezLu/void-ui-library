@@ -1,2 +1,2 @@
 export * from "./AstroSelect";
-export * from "./AstroSelectItem"
+export * from "./AstroSelectItem";
