@@ -71,7 +71,7 @@
     "semantic-release": "semantic-release --branches main",
     "test": "NODE_ENV=test jest",
     "typecheck": "tsc --noEmit",
-    "chromatic": "chromatic --exit-zero-on-changes"
+    "chromatic": "chromatic"
   },
   "sideEffects": [
     "dist/styles.css"
