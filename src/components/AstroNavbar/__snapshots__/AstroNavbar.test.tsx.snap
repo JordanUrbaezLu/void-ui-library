@@ -2,13 +2,15 @@
 
 exports[`AstroCalendar Should render component correctly. 1`] = `
 <nav
-  class="astroNavbarContainer"
+  class="astroNavbarContainer primary"
 >
   <a
-    class="logoContainer"
+    class="astroNavbarLogoContainer"
     href="#"
   >
-    <img />
+    <img
+      class="astroNavbarLogo primary"
+    />
   </a>
   <ul
     class="listContainer"

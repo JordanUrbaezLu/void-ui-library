@@ -25,6 +25,8 @@ export interface AstroButtonProps {
   onClick?: () => void;
   /**
    * The size of the AstroButton
+   *
+   * @default "medium"
    */
   size?: AstroButtonSize;
   /**
@@ -37,47 +39,57 @@ export interface AstroButtonProps {
   type?: AstroButtonType;
   /**
    * The variant of the AstroButton
+   *
+   * @default "primary"
    */
   variant?: AstroButtonVariants;
 }
 
 const AstroButton = React.forwardRef<HTMLButtonElement, AstroButtonProps>(
   (props, ref) => {
+    const {
+      children,
+      disabled,
+      leadingIcon,
+      onClick,
+      size = "medium",
+      trailingIcon,
+      type,
+      variant = "primary",
+    } = props;
+
     const classes = classNames(
       styles.astroButton,
-      props.size === "small"
+      size === "small"
         ? styles.small
-        : props.size === "large"
+        : size === "large"
         ? styles.large
         : styles.medium,
-      props.variant === "secondary" ? styles.secondary : styles.primary,
-      props.disabled && styles.disabled
+      variant === "secondary" ? styles.secondary : styles.primary,
+      disabled && styles.disabled
     );
 
     const content = (
       <>
-        {props.leadingIcon && (
-          <span className={styles.leadingIcon}>{props.leadingIcon}</span>
+        {leadingIcon && (
+          <span className={styles.leadingIcon}>{leadingIcon}</span>
         )}
-        {props.children}
-        {props.trailingIcon && (
-          <span className={styles.trailingIcon}>{props.trailingIcon}</span>
+        {children}
+        {trailingIcon && (
+          <span className={styles.trailingIcon}>{trailingIcon}</span>
         )}
       </>
     );
 
     return (
       <button
-        type={
-          props.type === "reset"
-            ? "reset"
-            : props.type === "submit"
-            ? "submit"
-            : "button"
-        }
-        onClick={props.onClick}
-        ref={ref}
         className={classes}
+        onClick={onClick}
+        disabled={disabled}
+        ref={ref}
+        type={
+          type === "reset" ? "reset" : type === "submit" ? "submit" : "button"
+        }
       >
         {content}
       </button>

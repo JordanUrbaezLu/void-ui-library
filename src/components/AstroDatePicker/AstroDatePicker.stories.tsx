@@ -13,3 +13,6 @@ const Template: Story<AstroDatePickerProps> = (args) => {
 };
 
 export const Default = Template.bind({});
+Default.parameters = {
+  layout: "padded",
+};

@@ -12,13 +12,13 @@ export interface AstroNavbarItemProps {
   link: string;
 }
 
-const AstroNavbarItem: React.FC<AstroNavbarItemProps> = ({
-  children,
-  link,
-}) => {
+const AstroNavbarItem: React.FC<AstroNavbarItemProps> = (props) => {
+  const { children, link } = props;
   return (
     <li className={styles.astroNavbarItemContainer}>
-      <a href={link}>{children}</a>
+      <a className={styles.astroNavbarItemLinkContainer} href={link}>
+        {children}
+      </a>
     </li>
   );
 };

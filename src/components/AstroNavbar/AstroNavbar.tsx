@@ -1,17 +1,20 @@
+import classNames from "classnames";
 import * as React from "react";
 import styles from "./AstroNavbar.module.scss";
+import itemStyles from "./AstroNavbarItem.module.scss";
 
 export interface AstroNavbarLogoProps {
   /**
    * The link for the AstroNavbar's logo
    */
   link?: string;
-
   /**
    * The url for the AstroNavbar's logo
    */
   url?: string;
 }
+
+export type AstroNavbarVariant = "primary" | "secondary";
 
 export interface AstroNavbarProps {
   /**
@@ -22,18 +25,52 @@ export interface AstroNavbarProps {
    * The props for the AstroNavbar's logo
    */
   logoProps?: AstroNavbarLogoProps;
+  /**
+   * The variant of the AstroNavbar
+   *
+   * @default "primary"
+   */
+  variant?: AstroNavbarVariant;
 }
 
-const AstroNavbar: React.FC<AstroNavbarProps> = ({ children, logoProps }) => {
+const AstroNavbar: React.FC<AstroNavbarProps> = (props) => {
+  const { children, logoProps, variant = "primary" } = props;
+
+  const astroNavbarContainer = classNames(
+    styles.astroNavbarContainer,
+    variant === "primary" ? styles.primary : styles.secondary
+  );
+
+  const astroNavbarLogo = classNames(
+    styles.astroNavbarLogo,
+    variant === "primary" ? styles.primary : styles.secondary
+  );
+
   return (
-    <nav className={styles.astroNavbarContainer}>
+    <nav className={astroNavbarContainer}>
       <a
-        className={styles.logoContainer}
+        className={styles.astroNavbarLogoContainer}
         href={logoProps?.link ? logoProps.link : "#"}
       >
-        <img src={logoProps?.url} />
+        <img className={astroNavbarLogo} src={logoProps?.url} />
       </a>
-      <ul className={styles.listContainer}>{children}</ul>
+      <ul className={styles.listContainer}>
+        {React.Children.map(children, (child) => {
+          const navbarItem = child as React.ReactElement;
+
+          return (
+            <div
+              className={classNames(
+                variant === "primary"
+                  ? itemStyles.primary
+                  : itemStyles.secondary
+              )}
+            >
+              {navbarItem}
+            </div>
+          );
+        })}
+      </ul>
     </nav>
   );
 };
