@@ -22,15 +22,17 @@ export interface AstroDatePickerCalendarProps {
   onSetDate: (date: Date) => void;
   /**
    * The selected date for teh AstroDatePickerCalendar
+   *
+   * @default Date()
    */
   selectedDate?: Date;
 }
 
-const AstroDatePickerCalendar: React.FC<AstroDatePickerCalendarProps> = ({
-  selectedDate = new Date(),
-  onSetDate,
-  isOpen,
-}) => {
+const AstroDatePickerCalendar: React.FC<AstroDatePickerCalendarProps> = (
+  props
+) => {
+  const { selectedDate = new Date(), onSetDate, isOpen } = props;
+
   const [date, setDate] = React.useState<Date>(selectedDate);
   const [focusedDate, setFocusedDate] = React.useState<number>(0);
   const [days, setDays] = React.useState<Array<number | null>>([]);

@@ -9,6 +9,8 @@ export type AstroPopoverPosition = "bottom" | "top";
 export interface AstroPopoverProps {
   /**
    * If the AstroPopover has a nubbin
+   *
+   * @default false
    */
   hasNubbin?: boolean;
   /**
@@ -17,6 +19,8 @@ export interface AstroPopoverProps {
   isOpen: boolean;
   /**
    * The position of the AstroPopover
+   *
+   * @default "bottom"
    */
   position?: AstroPopoverPosition;
   /**
@@ -29,13 +33,15 @@ export interface AstroPopoverProps {
   trigger: React.ReactNode;
 }
 
-const AstroPopover: React.FC<AstroPopoverProps> = ({
-  trigger,
-  position = "bottom",
-  hasNubbin = false,
-  text,
-  isOpen = false,
-}) => {
+const AstroPopover: React.FC<AstroPopoverProps> = (props) => {
+  const {
+    hasNubbin = false,
+    isOpen,
+    position = "bottom",
+    text,
+    trigger,
+  } = props;
+
   const [triggerHeight, setTriggerHeight] = React.useState<number>();
 
   const triggerRef = React.useRef<HTMLDivElement>(null);

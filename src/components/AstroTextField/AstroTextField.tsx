@@ -43,6 +43,8 @@ export interface AstroTextFieldProps {
   trailingIcon?: React.ReactNode;
   /**
    * The type for the input in the AstroTextField
+   *
+   * @default "text"
    */
   type?: AstroTextFieldType;
   /**
@@ -57,16 +59,18 @@ export interface AstroTextFieldProps {
   variant?: AstroTextFieldVariant;
 }
 
-const AstroTextField: React.FC<AstroTextFieldProps> = ({
-  variant = "primary",
-  size = "medium",
-  trailingIcon,
-  disabled = false,
-  onChange,
-  type = "text",
-  label = "textfield",
-  value,
-}) => {
+const AstroTextField: React.FC<AstroTextFieldProps> = (props) => {
+  const {
+    variant = "primary",
+    size = "medium",
+    trailingIcon,
+    disabled = false,
+    onChange,
+    type = "text",
+    label = "textfield",
+    value,
+  } = props;
+
   const inputContainer = classNames(
     styles.astroTextFieldContainer,
     disabled && styles.disabled

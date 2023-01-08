@@ -12,27 +12,27 @@ export interface AstroSelectProps {
   /**
    * The content for the AstroSelect
    */
-  children?: React.ReactNode;
+  children: React.ReactNode;
   /**
    * The label for the AstroSelect
    */
   label?: string;
   /**
    * The size of the AstroSelect
+   *
+   * @default "medium"
    */
   size?: AstroSelectSize;
   /**
    * The variant of the AstroSelect
+   *
+   * @default "primary"
    */
   variant?: AstroSelectVariant;
 }
 
-const AstroSelect: React.FC<AstroSelectProps> = ({
-  children,
-  label,
-  variant = "primary",
-  size = "medium",
-}) => {
+const AstroSelect: React.FC<AstroSelectProps> = (props) => {
+  const { children, label, variant = "primary", size = "medium" } = props;
   const containerClasses = classNames(
     styles.astroSelectContainer,
     size === "small" && styles.smallContainer,
@@ -107,16 +107,16 @@ const AstroSelect: React.FC<AstroSelectProps> = ({
       >
         <div className={selectOptionsMenu}>
           {React.Children.map(children, (child) => {
-            const item = child as React.ReactElement;
+            const selectItem = child as React.ReactElement;
             return (
               <div
                 onClick={() => {
-                  setValue(item.props.value);
+                  setValue(selectItem.props.value);
                   setIsOpen(!isOpen);
                 }}
                 className={itemClasses}
               >
-                {item}
+                {selectItem}
               </div>
             );
           })}

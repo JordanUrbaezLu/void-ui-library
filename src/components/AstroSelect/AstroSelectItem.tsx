@@ -6,7 +6,8 @@ interface AstroSelectItemProps {
   value: string;
 }
 
-const AstroSelectItem: React.FC<AstroSelectItemProps> = ({ value }) => {
+const AstroSelectItem: React.FC<AstroSelectItemProps> = (props) => {
+  const { value } = props;
   return <span>{value}</span>;
 };
 

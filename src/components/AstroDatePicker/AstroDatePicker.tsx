@@ -16,10 +16,9 @@ export interface AstroDatePickerProps {
   value?: string;
 }
 
-const AstroDatePicker: React.FC<AstroDatePickerProps> = ({
-  setValue,
-  value,
-}) => {
+const AstroDatePicker: React.FC<AstroDatePickerProps> = (props) => {
+  const { setValue, value } = props;
+  
   const [selectedDate, setSelectedDate] = React.useState<Date>(new Date());
   const [showCalendar, setShowCalendar] = React.useState<boolean>(false);
 
@@ -38,7 +37,7 @@ const AstroDatePicker: React.FC<AstroDatePickerProps> = ({
         onChange={() => {}}
         trailingIcon={
           <AiFillCalendar
-          className={styles.astroDatePickerIconContainer}
+            className={styles.astroDatePickerIconContainer}
             onClick={() => setShowCalendar(!showCalendar)}
             onKeyDown={(event) => {
               if (event.code === "Enter") {
