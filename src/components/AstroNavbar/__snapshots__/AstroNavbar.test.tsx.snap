@@ -3,17 +3,21 @@
 exports[`AstroCalendar Should render component correctly. 1`] = `
 <nav
   class="astroNavbarContainer primary"
+  role="navigation"
 >
-  <a
-    class="astroNavbarLogoContainer"
-    href="#"
-  >
-    <img
-      class="astroNavbarLogo primary"
-    />
-  </a>
   <ul
     class="listContainer"
-  />
+  >
+    <li
+      class="primary astroNavbarItemContainer"
+    >
+      <a
+        class="astroNavbarItemLinkContainer"
+        href="https://github.com/JordanUrbaezLu/astro-ui-library"
+      >
+        Github
+      </a>
+    </li>
+  </ul>
 </nav>
 `;

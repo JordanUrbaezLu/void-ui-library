@@ -1,0 +1,73 @@
+.astroAlertContainer {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+  padding: 10px 12px;
+  min-width: 250px;
+
+  &.error {
+    background-color: rgba(red, 0.2);
+    border: 3px solid red;
+  }
+
+  &.info {
+    background-color: rgba(blue, 0.2);
+    border: 3px solid blue;
+  }
+
+  &.success {
+    background-color: rgba(green, 0.2);
+    border: 3px solid green;
+  }
+
+  &.warning {
+    background-color: rgba(orange, 0.2);
+    border: 3px solid orange;
+  }
+}
+
+.astroAlertTitle {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+
+  &.error {
+    color: red;
+  }
+
+  &.info {
+    color: blue;
+  }
+
+  &.success {
+    color: green;
+  }
+
+  &.warning {
+    color: orange;
+  }
+}
+
+.astroAlertTitleContainer {
+  display: flex;
+  padding-bottom: 3px;
+}
+
+.astroAlertIcon {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  padding-right: 8px;
+}
+
+.astroAlertCloseButton {
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.exitActive {
+  opacity: 0;
+  transition: all 400ms ease-in-out;
+}

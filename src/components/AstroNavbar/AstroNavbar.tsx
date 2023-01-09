@@ -7,11 +7,11 @@ export interface AstroNavbarLogoProps {
   /**
    * The link for the AstroNavbar's logo
    */
-  link?: string;
+  link: string;
   /**
    * The url for the AstroNavbar's logo
    */
-  url?: string;
+  url: string;
 }
 
 export type AstroNavbarVariant = "primary" | "secondary";
@@ -47,27 +47,30 @@ const AstroNavbar: React.FC<AstroNavbarProps> = (props) => {
   );
 
   return (
-    <nav className={astroNavbarContainer}>
-      <a
-        className={styles.astroNavbarLogoContainer}
-        href={logoProps?.link ? logoProps.link : "#"}
-      >
-        <img className={astroNavbarLogo} src={logoProps?.url} />
-      </a>
+    <nav className={astroNavbarContainer} role="navigation">
+      {logoProps && (
+        <a
+          className={styles.astroNavbarLogoContainer}
+          href={logoProps?.link ? logoProps.link : "#"}
+        >
+          <img className={astroNavbarLogo} src={logoProps?.url} alt="logo" />
+        </a>
+      )}
       <ul className={styles.listContainer}>
         {React.Children.map(children, (child) => {
           const navbarItem = child as React.ReactElement;
 
           return (
-            <div
+            <li
               className={classNames(
                 variant === "primary"
                   ? itemStyles.primary
-                  : itemStyles.secondary
+                  : itemStyles.secondary,
+                styles.astroNavbarItemContainer
               )}
             >
               {navbarItem}
-            </div>
+            </li>
           );
         })}
       </ul>
