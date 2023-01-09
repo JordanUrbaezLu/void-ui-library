@@ -18,7 +18,7 @@ export interface AstroDatePickerProps {
 
 const AstroDatePicker: React.FC<AstroDatePickerProps> = (props) => {
   const { setValue, value } = props;
-  
+
   const [selectedDate, setSelectedDate] = React.useState<Date>(new Date());
   const [showCalendar, setShowCalendar] = React.useState<boolean>(false);
 

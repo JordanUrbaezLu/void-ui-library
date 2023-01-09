@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import AstroButton, {
   AstroButtonSize,
   AstroButtonType,
-  AstroButtonVariants,
+  AstroButtonVariant,
 } from "./AstroButton";
 import { axe } from "jest-axe";
 
@@ -22,7 +22,7 @@ describe("Accessibility", () => {
 });
 
 describe("Props", () => {
-  test.each<AstroButtonVariants>(["primary", "secondary"])(
+  test.each<AstroButtonVariant>(["primary", "secondary"])(
     "Should render variants correctly.",
     (variant) => {
       render(<AstroButton variant={variant}>AstroButton</AstroButton>);

@@ -2,7 +2,7 @@ import * as React from "react";
 import styles from "./AstroButton.module.scss";
 import classNames from "classnames";
 
-export type AstroButtonVariants = "primary" | "secondary";
+export type AstroButtonVariant = "primary" | "secondary";
 export type AstroButtonSize = "small" | "medium" | "large";
 export type AstroButtonType = "button" | "submit" | "reset";
 
@@ -42,7 +42,7 @@ export interface AstroButtonProps {
    *
    * @default "primary"
    */
-  variant?: AstroButtonVariants;
+  variant?: AstroButtonVariant;
 }
 
 const AstroButton = React.forwardRef<HTMLButtonElement, AstroButtonProps>(

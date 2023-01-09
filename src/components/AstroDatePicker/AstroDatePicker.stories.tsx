@@ -7,7 +7,7 @@ export default {
   title: "Components/AstroDatePicker",
 };
 
-const Template: Story<AstroDatePickerProps> = (args) => {
+const Template: Story<AstroDatePickerProps> = () => {
   const [value, setValue] = React.useState<string>("");
   return <AstroDatePicker setValue={setValue} value={value} />;
 };

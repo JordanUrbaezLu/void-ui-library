@@ -32,6 +32,10 @@
   max-height: 58.5px;
 }
 
+.astroNavbarItemContainer {
+  display: flex;
+}
+
 .astroNavbarLogo {
   background-color: globals.$primary-color-pseudo-class;
   max-height: 58.5px;
