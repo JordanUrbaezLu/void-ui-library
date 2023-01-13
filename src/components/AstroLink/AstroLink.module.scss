@@ -1,0 +1,46 @@
+@use "../../utility/globals";
+
+.astroLinkContainer {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: relative;
+  text-decoration: none;
+
+  &.primary {
+    color: globals.$primary-color;
+  }
+
+  &.primary::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    transform-origin: bottom right;
+    background-color: globals.$primary-color;
+    transition: transform 0.25s ease-out;
+  }
+
+  &.secondary {
+    color: globals.$secondary-color;
+  }
+
+  &.secondary::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    transform-origin: bottom right;
+    background-color: globals.$secondary-color;
+    transition: transform 0.25s ease-out;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+}

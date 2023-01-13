@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AstroLink Should render component correctly. 1`] = `
+<a
+  class="astroLinkContainer primary"
+  href="https://www.google.com/"
+>
+  Google.com
+</a>
+`;
