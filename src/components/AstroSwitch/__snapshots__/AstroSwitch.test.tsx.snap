@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AstroSwitch Should render component correctly. 1`] = `
+<button
+  aria-checked="true"
+  class="astroSwitchPill primary on"
+  role="switch"
+  type="button"
+>
+  <span
+    class="astroSwitchIndicator primary on"
+  />
+  <span
+    class="astroSwitchLabel primary on"
+  >
+    Astro Switch Label
+  </span>
+</button>
+`;

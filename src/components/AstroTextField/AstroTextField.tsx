@@ -28,7 +28,7 @@ export interface AstroTextFieldProps {
    */
   label?: string;
   /**
-   * The callback when the requested to change the value for the AstroTextField
+   * The callback fired when requested to change the value for the AstroTextField
    */
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   /**

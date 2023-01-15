@@ -1,0 +1,83 @@
+@use "../../utility/globals";
+
+.astroSwitchPill {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  font-size: 16px;
+}
+
+.astroSwitchIndicator {
+  background: gray;
+  border-radius: 999px;
+  position: relative;
+  height: 22px;
+  width: 42px;
+  transition: all 0.15s ease-in;
+
+  &.primary {
+    &::before {
+      background: white;
+      border-radius: 999px;
+      content: "";
+      display: inline-block;
+      top: 3px;
+      right: 23px;
+      height: 16px;
+      width: 16px;
+      position: absolute;
+      transition: all 0.15s ease-in;
+    }
+  }
+
+  &.secondary {
+    &::before {
+      background: white;
+      border-radius: 999px;
+      content: "";
+      display: inline-block;
+      top: 3px;
+      right: 23px;
+      height: 16px;
+      width: 16px;
+      position: absolute;
+      transition: all 0.15s ease-in;
+    }
+  }
+
+  &.on {
+    &.primary {
+      background: globals.$primary-color;
+    }
+
+    &.secondary {
+      background: globals.$secondary-color;
+    }
+
+    &::before {
+      transform: translateX(20px);
+    }
+  }
+}
+
+.astroSwitchLabel {
+  color: gray;
+  margin-left: 8px;
+  text-align: left;
+  transition: all 0.15s ease-in;
+
+  &.on {
+    &.primary {
+      color: globals.$primary-color;
+    }
+
+    &.secondary {
+      color: globals.$secondary-color;
+    }
+  }
+}
