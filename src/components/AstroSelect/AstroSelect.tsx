@@ -89,9 +89,17 @@ const AstroSelect: React.FC<AstroSelectProps> = (props) => {
       {label && <div className={labelClasses}>{label}</div>}
       <div className={classes}>
         <div style={{ paddingLeft: "4px" }}>{value}</div>
-        <div className={iconClasses} onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <IoChevronUpSharp /> : <IoChevronDownSharp />}
-        </div>
+        {isOpen ? (
+          <IoChevronUpSharp
+            className={iconClasses}
+            onClick={() => setIsOpen(!isOpen)}
+          />
+        ) : (
+          <IoChevronDownSharp
+            className={iconClasses}
+            onClick={() => setIsOpen(!isOpen)}
+          />
+        )}
       </div>
       <CSSTransition
         in={isOpen}
@@ -105,20 +113,22 @@ const AstroSelect: React.FC<AstroSelectProps> = (props) => {
           exitActive: styles.exitActive,
         }}
       >
-        <div className={selectOptionsMenu}>
-          {React.Children.map(children, (child) => {
-            const selectItem = child as React.ReactElement;
-            return (
-              <div
-                onClick={() => {
-                  setValue(selectItem.props.value);
+        <div className={selectOptionsMenu} role="menu">
+          {React.Children.map(children, (child, index) => {
+            if (
+              React.isValidElement<React.HTMLAttributes<HTMLElement>>(child)
+            ) {
+              return React.cloneElement(child, {
+                className: itemClasses,
+                key: index,
+                onClick: () => {
+                  setValue(child.props.children as string);
                   setIsOpen(!isOpen);
-                }}
-                className={itemClasses}
-              >
-                {selectItem}
-              </div>
-            );
+                },
+              });
+            } else {
+              return null;
+            }
           })}
         </div>
       </CSSTransition>

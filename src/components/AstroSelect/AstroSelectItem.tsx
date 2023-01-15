@@ -1,14 +1,18 @@
 import * as React from "react";
 interface AstroSelectItemProps {
   /**
-   * The value for the AstroSelectItem
+   * The content for the AstroSelectItem
    */
-  value: string;
+  children: string;
 }
 
 const AstroSelectItem: React.FC<AstroSelectItemProps> = (props) => {
-  const { value } = props;
-  return <span>{value}</span>;
+  const { children, ...rest } = props;
+  return (
+    <div role="menuitem" {...rest}>
+      {children}
+    </div>
+  );
 };
 
 export default AstroSelectItem;

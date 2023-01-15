@@ -10,7 +10,7 @@ describe("AstroSelect", () => {
   test("Should render component correctly.", () => {
     const { container } = render(
       <AstroSelect>
-        <AstroSelectItem value="30" />
+        <AstroSelectItem>30</AstroSelectItem>
       </AstroSelect>
     );
     expect(container.firstChild).toMatchSnapshot();
@@ -21,7 +21,7 @@ describe("Accessibility", () => {
   test("Should have no accessibility violations.", async () => {
     const { container } = render(
       <AstroSelect>
-        <AstroSelectItem value="30" />
+        <AstroSelectItem>30</AstroSelectItem>
       </AstroSelect>
     );
     const results = await axe(container);
@@ -35,7 +35,7 @@ describe("Props", () => {
     (variant) => {
       render(
         <AstroSelect label="select" variant={variant}>
-          <AstroSelectItem value="30" />
+          <AstroSelectItem>30</AstroSelectItem>
         </AstroSelect>
       );
       expect(screen.getByText("select")).toHaveClass(`${variant}Label`);
@@ -47,7 +47,7 @@ describe("Props", () => {
     (size) => {
       render(
         <AstroSelect label="select" size={size}>
-          <AstroSelectItem value="30" />
+          <AstroSelectItem>30</AstroSelectItem>
         </AstroSelect>
       );
       expect(screen.getByText("select")).toHaveClass(`${size}Label`);
@@ -57,7 +57,7 @@ describe("Props", () => {
   test("Should render label correctly.", () => {
     render(
       <AstroSelect label="astroSelect">
-        <AstroSelectItem value="30" />
+        <AstroSelectItem>30</AstroSelectItem>
       </AstroSelect>
     );
     expect(screen.getByText("astroSelect")).toBeInTheDocument();
