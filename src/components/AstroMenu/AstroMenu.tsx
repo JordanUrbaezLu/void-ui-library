@@ -9,7 +9,7 @@ export interface AstroMenuProps {
    */
   children: React.ReactNode;
   /**
-   * The callback fired when requested to change state
+   * The callback fired when requested to change the value
    */
   setValue?: React.Dispatch<React.SetStateAction<string>>;
   /**
