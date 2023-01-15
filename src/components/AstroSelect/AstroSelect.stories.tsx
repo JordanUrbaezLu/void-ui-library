@@ -10,9 +10,9 @@ export default {
 const Template: Story<AstroSelectProps> = (args) => {
   return (
     <AstroSelect {...args}>
-      <AstroSelectItem value="30" />
-      <AstroSelectItem value="40" />
-      <AstroSelectItem value="50" />
+      <AstroSelectItem>30</AstroSelectItem>
+      <AstroSelectItem>40</AstroSelectItem>
+      <AstroSelectItem>50</AstroSelectItem>
     </AstroSelect>
   );
 };
