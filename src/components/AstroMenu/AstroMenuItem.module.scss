@@ -1,0 +1,11 @@
+.astroMenuItemContainer {
+  color: white;
+  cursor: pointer;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 0px 8px;
+  user-select: none;
+  &:hover,
+  &:focus {
+    background-color: rgb(80, 80, 80);
+  }
+}
