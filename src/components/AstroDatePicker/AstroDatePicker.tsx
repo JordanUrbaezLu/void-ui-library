@@ -7,6 +7,10 @@ import styles from "./AstroDatePicker.module.scss";
 
 export interface AstroDatePickerProps {
   /**
+   * The selected date for the Astro Date Picker
+   */
+  selectedDate?: Date;
+  /**
    * The callback fired when requested to change the value for the AstroDatePicker
    */
   setValue: React.Dispatch<React.SetStateAction<string>>;
@@ -17,19 +21,17 @@ export interface AstroDatePickerProps {
 }
 
 const AstroDatePicker: React.FC<AstroDatePickerProps> = (props) => {
-  const { setValue, value } = props;
+  const { selectedDate, setValue, value } = props;
 
-  const [selectedDate, setSelectedDate] = React.useState<Date>(new Date());
+  const [selected, setSelected] =
+    React.useState<Date | undefined>(selectedDate);
   const [showCalendar, setShowCalendar] = React.useState<boolean>(false);
 
   const setDate = (date: Date) => {
-    setSelectedDate(date);
+    setValue(getDateString(date));
+    setSelected(date);
     setShowCalendar((prev) => !prev);
   };
-
-  React.useEffect(() => {
-    setValue(getDateString(selectedDate));
-  }, [selectedDate]);
 
   return (
     <>
@@ -52,7 +54,7 @@ const AstroDatePicker: React.FC<AstroDatePickerProps> = (props) => {
       <AstroDatePickerCalendar
         isOpen={showCalendar}
         onSetDate={setDate}
-        selectedDate={selectedDate}
+        selectedDate={selected}
       />
     </>
   );

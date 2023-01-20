@@ -10,6 +10,7 @@ import {
   getPreviousWeek,
 } from "../../utility/calendarUtilities";
 import FocusTrap from "focus-trap-react";
+import classNames from "classnames";
 
 export interface AstroDatePickerCalendarProps {
   /**
@@ -21,9 +22,7 @@ export interface AstroDatePickerCalendarProps {
    */
   onSetDate: (date: Date) => void;
   /**
-   * The selected date for teh AstroDatePickerCalendar
-   *
-   * @default Date()
+   * The selected date for the AstroDatePickerCalendar
    */
   selectedDate?: Date;
 }
@@ -31,9 +30,9 @@ export interface AstroDatePickerCalendarProps {
 const AstroDatePickerCalendar: React.FC<AstroDatePickerCalendarProps> = (
   props
 ) => {
-  const { selectedDate = new Date(), onSetDate, isOpen } = props;
+  const { selectedDate, onSetDate, isOpen } = props;
 
-  const [date, setDate] = React.useState<Date>(selectedDate);
+  const [date, setDate] = React.useState<Date>(selectedDate ?? new Date());
   const [focusedDate, setFocusedDate] = React.useState<number>(0);
   const [days, setDays] = React.useState<Array<number | null>>([]);
   const daysRefs = React.useRef<Array<HTMLDivElement | null>>([]);
@@ -76,14 +75,7 @@ const AstroDatePickerCalendar: React.FC<AstroDatePickerCalendarProps> = (
           escapeDeactivates: false,
         }}
       >
-        <div
-          className={styles.astroDatePickerCalendarContainer}
-          onKeyDown={(event) => {
-            if (event.code === "Escape") {
-              onSetDate(selectedDate);
-            }
-          }}
-        >
+        <div className={styles.astroDatePickerCalendarContainer}>
           <div className={styles.astroDatePickerCalendarNavigationContainer}>
             <IoChevronBackSharp
               className={styles.astroDatePickerCalendarNavigationIcon}
@@ -126,13 +118,23 @@ const AstroDatePickerCalendar: React.FC<AstroDatePickerCalendarProps> = (
           <div className={styles.astroDatePickerCalendarBodyContainer}>
             {days.map((day, index) => {
               if (day !== null) {
+                const isSelected =
+                  new Date(
+                    date.getFullYear(),
+                    date.getMonth(),
+                    day
+                  ).getTime() === selectedDate?.getTime();
+
                 return (
                   <div
                     className={styles.astroDatePickerCalendarDayContainer}
                     key={index}
                   >
                     <div
-                      className={styles.astroDatePickerCalendarDay}
+                      className={classNames(
+                        styles.astroDatePickerCalendarDay,
+                        isSelected && styles.selected
+                      )}
                       tabIndex={day === date.getDate() ? 0 : -1}
                       onClick={() =>
                         onSetDate(

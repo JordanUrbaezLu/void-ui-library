@@ -15,14 +15,9 @@ const Template: Story<
 };
 
 export const Default = Template.bind({});
-Default.parameters = {
-  layout: "padded",
-};
-
-export const SelectedDate = Template.bind({});
-SelectedDate.args = {
+Default.args = {
   selectedDate: new Date(2019, 5, 9),
 };
-SelectedDate.parameters = {
+Default.parameters = {
   layout: "padded",
 };
