@@ -3,12 +3,12 @@
 .container {
   display: flex;
   flex-direction: row;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .astroTextFieldContainer {
   display: flex;
   flex-direction: column;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   .disabled {
     border: 3px solid rgb(220, 220, 220) !important;
     cursor: default !important;
@@ -17,6 +17,7 @@
 }
 
 .astroTextField {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   outline: none;
 
   &.primary {

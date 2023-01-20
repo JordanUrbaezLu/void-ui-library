@@ -1,7 +1,10 @@
 import { Story } from "@storybook/react";
 import * as React from "react";
 import { AiFillEye, AiOutlineArrowRight } from "react-icons/ai";
-import AstroTextField, { AstroTextFieldProps } from "./AstroTextField";
+import AstroTextField, {
+  AstroTextFieldProps,
+  AstroTextFieldType,
+} from "./AstroTextField";
 
 export default {
   component: AstroTextField,
@@ -77,10 +80,30 @@ PasswordType.args = {
   type: "password",
 };
 
-export const TrailingIconAndPasswordType = Template.bind({});
-TrailingIconAndPasswordType.args = {
-  type: "password",
-  trailingIcon: <AiFillEye />,
+export const TrailingIconAndPasswordType = () => {
+  const [value, setValue] = React.useState<string>("");
+  const [type, setType] = React.useState<AstroTextFieldType>("password");
+
+  return (
+    <AstroTextField
+      onChange={(event) => {
+        setValue(event.target.value);
+      }}
+      trailingIcon={
+        <AiFillEye
+          onClick={() => {
+            if (type === "password") {
+              setType("text");
+            } else {
+              setType("password");
+            }
+          }}
+        />
+      }
+      type={type}
+      value={value}
+    />
+  );
 };
 
 export const AllProps = Template.bind({});
