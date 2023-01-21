@@ -1,21 +1,25 @@
 import { Story } from "@storybook/react";
 import * as React from "react";
-import AstroSwitch, { AstroSwitchProps } from "./AstroSwitch";
+import AstroCheckbox, { AstroCheckboxProps } from "./AstroCheckbox";
 
 export default {
-  component: AstroSwitch,
-  title: "Components/AstroSwitch",
+  component: AstroCheckbox,
+  title: "Components/AstroCheckbox",
 };
 
-const Template: Story<Omit<AstroSwitchProps, "isOn" | "onClick">> = (args) => {
-  const [astroSwitchState, toggleAstroSwitchState] =
-    React.useState<boolean>(true);
+const Template: Story<Omit<AstroCheckboxProps, "isOn" | "onClick">> = (
+  args
+) => {
+  const [isChecked, setIsChecked] = React.useState<boolean>(true);
 
   return (
-    <AstroSwitch
+    <AstroCheckbox
       {...args}
-      isOn={astroSwitchState}
-      onClick={() => toggleAstroSwitchState(!astroSwitchState)}
+      isChecked={isChecked}
+      onClick={() => {
+        console.log("clicked");
+        setIsChecked(!isChecked);
+      }}
     />
   );
 };
@@ -34,12 +38,13 @@ Secondary.args = {
 
 export const PrimaryAndLabel = Template.bind({});
 PrimaryAndLabel.args = {
-  label: "Astro Switch Label",
+  label: "Astro Checkbox Label",
   variant: "primary",
 };
 
 export const SecondaryAndLabel = Template.bind({});
 SecondaryAndLabel.args = {
-  label: "Astro Switch Label",
+  label: "Astro Checkbox Label",
   variant: "secondary",
 };
+
