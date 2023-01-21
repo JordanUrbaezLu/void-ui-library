@@ -9,8 +9,14 @@ export default {
   title: "Components/AstroMenu",
 };
 
-const Template: Story<Omit<AstroMenuProps, "children">> = (args) => {
-  const [value, setValue] = React.useState<string>("");
+const Template: Story<
+  Omit<
+    AstroMenuProps,
+    "children" | "isOpen" | "onClose" | "onOpen" | "trigger"
+  >
+> = (args) => {
+  const [value, setValue] = React.useState<string | undefined>(undefined);
+  const [isOpen, setIsOpen] = React.useState<boolean>(true);
 
   return (
     <>
@@ -19,7 +25,18 @@ const Template: Story<Omit<AstroMenuProps, "children">> = (args) => {
       >
         Value: {value}
       </div>
-      <AstroMenu setValue={setValue} {...args}>
+      <AstroMenu
+        {...args}
+        isOpen={isOpen}
+        onOpen={() => setIsOpen(true)}
+        onClose={(itemValue) => {
+          setIsOpen(false);
+          if (itemValue !== undefined) {
+            setValue(itemValue);
+          }
+        }}
+        trigger={<AstroButton>Trigger</AstroButton>}
+      >
         <AstroMenuItem>Menu Item One</AstroMenuItem>
         <AstroMenuItem>Menu Item Two</AstroMenuItem>
         <AstroMenuItem>Menu Item Three</AstroMenuItem>
@@ -31,7 +48,32 @@ const Template: Story<Omit<AstroMenuProps, "children">> = (args) => {
 
 export const Default = Template.bind({});
 
-export const AstroButtonTrigger = Template.bind({});
-AstroButtonTrigger.args = {
-  trigger: <AstroButton>Trigger</AstroButton>,
+export const AlignmentBottomLeft = Template.bind({});
+AlignmentBottomLeft.args = {
+  alignment: "bottomLeft",
+};
+
+export const AlignmentBottomRight = Template.bind({});
+AlignmentBottomRight.args = {
+  alignment: "bottomRight",
+};
+
+export const AlignmentBottomCenter = Template.bind({});
+AlignmentBottomCenter.args = {
+  alignment: "bottomCenter",
+};
+
+export const AlignmentTopLeft = Template.bind({});
+AlignmentTopLeft.args = {
+  alignment: "topLeft",
+};
+
+export const AlignmentTopRight = Template.bind({});
+AlignmentTopRight.args = {
+  alignment: "topRight",
+};
+
+export const AlignmentTopCenter = Template.bind({});
+AlignmentTopCenter.args = {
+  alignment: "topCenter",
 };

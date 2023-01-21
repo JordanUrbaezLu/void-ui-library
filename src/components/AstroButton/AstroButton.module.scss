@@ -17,9 +17,11 @@
   background-color: globals.$primary-color;
   color: black;
   border: 2px solid globals.$primary-color;
-  &:hover {
+  &:hover,
+  &:focus {
     color: globals.$secondary-color;
     border: 2px solid globals.$secondary-color;
+    outline: none;
   }
   &:active {
     background: globals.$primary-color-pseudo-class;
@@ -30,7 +32,8 @@
   background-color: globals.$secondary-color;
   color: black;
   border: 2px solid globals.$secondary-color;
-  &:hover {
+  &:hover,
+  &:focus {
     color: globals.$primary-color;
     border: 2px solid globals.$primary-color;
   }

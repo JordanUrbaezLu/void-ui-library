@@ -1,31 +1,64 @@
 import * as React from "react";
 import { CSSTransition } from "react-transition-group";
-import { AiOutlineEllipsis } from "react-icons/ai";
 import styles from "./AstroMenu.module.scss";
+import { getMenuAlignmentCalculations } from "../../utility/getMenuAlignmentCalculations";
+import { useOnClickOutside } from "../../hooks"
+
+export type AstroMenuAlignment =
+  | "bottomLeft"
+  | "bottomCenter"
+  | "bottomRight"
+  | "topLeft"
+  | "topCenter"
+  | "topRight";
 
 export interface AstroMenuProps {
+  /**
+   * The Menu's alignment relative to its trigger
+   *
+   * @default "bottomLeft"
+   */
+  alignment?: AstroMenuAlignment;
   /**
    * The content for the AstroMenu
    */
   children: React.ReactNode;
   /**
-   * The callback fired when requested to change the value
+   * If the AstroMenu is open
    */
-  setValue?: React.Dispatch<React.SetStateAction<string>>;
+  isOpen: boolean;
+  /**
+   * The callback fired when the AstroMenu opens
+   */
+  onOpen: () => void;
+  /**
+   * The callback fired when the AstroMenu closes
+   */
+  onClose: (itemValue?: string) => void;
   /**
    * The trigger for the AstroMenu
    */
-  trigger?: React.ReactElement;
+  trigger: React.ReactElement;
 }
 
 const AstroMenu: React.FC<AstroMenuProps> = (props) => {
-  const { children, setValue, trigger } = props;
-
-  const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const {
+    alignment = "bottomLeft",
+    children,
+    isOpen,
+    onOpen,
+    onClose,
+    trigger,
+  } = props;
 
   const [focusedMenuItem, setFocusedMenuItem] = React.useState<number>(0);
 
   const menuRef = React.useRef<HTMLDivElement>(null);
+
+  const [menuPositionStyle, setMenuPositionStyle] =
+    React.useState<React.CSSProperties | undefined>(undefined);
+
+  const triggerRef = React.useRef<HTMLDivElement>(null);
 
   const lastIndex = React.Children.count(children) - 1;
 
@@ -43,43 +76,70 @@ const AstroMenu: React.FC<AstroMenuProps> = (props) => {
 
   React.useEffect(() => {
     if (isOpen) {
-      const child = menuRef.current?.children[focusedMenuItem] as HTMLElement;
-      child?.focus();
+      const menuContainer = menuRef.current?.children[0] as HTMLElement;
+      const menuItem = menuContainer.children[focusedMenuItem] as HTMLElement;
+      menuItem?.focus();
     }
   }, [isOpen, focusedMenuItem]);
 
+  React.useEffect(() => {
+    setMenuPositionStyle(
+      getMenuAlignmentCalculations({
+        menuRef,
+        triggerRef,
+        alignment,
+      })
+    );
+  }, [alignment, menuRef, triggerRef, isOpen]);
+
+  useOnClickOutside(triggerRef, onClose);
+
   return (
     <div className={styles.container}>
-      {trigger ? (
-        React.cloneElement(trigger, {
-          onClick: () => setIsOpen(!isOpen),
-        })
-      ) : (
-        <AiOutlineEllipsis
-          className={styles.defaultTriggerContainer}
-          onClick={() => setIsOpen(!isOpen)}
-          onKeyDown={(event) => {
-            if (event.code === "Enter") {
-              setIsOpen(!isOpen);
-            }
-          }}
-          role="button"
-          tabIndex={0}
-        />
-      )}
-      <CSSTransition
-        in={isOpen}
-        timeout={150}
-        mountOnEnter
-        unmountOnExit
-        classNames={{
-          enter: styles.enter,
-          enterActive: styles.enterActive,
-          exit: styles.exit,
-          exitActive: styles.exitActive,
-        }}
+      {React.cloneElement(trigger, {
+        onClick: () => {
+          if (isOpen) {
+            onClose();
+          } else {
+            onOpen();
+          }
+        },
+        onKeyDown: (event: React.KeyboardEvent<HTMLElement>) => {
+          if (event.code === "Enter") {
+            onClose();
+          }
+        },
+        ref: triggerRef,
+        role: "button",
+        tabIndex: 0,
+      })}
+      <div
+        className={styles.astroMenuLayoutContainer}
+        style={menuPositionStyle}
+        ref={menuRef}
       >
-          <div className={styles.astroMenuContainer} ref={menuRef} role="menu">
+        <CSSTransition
+          in={isOpen}
+          timeout={150}
+          mountOnEnter
+          unmountOnExit
+          classNames={
+            alignment.startsWith("bottom")
+              ? {
+                  enter: styles.enterBottom,
+                  enterActive: styles.enterBottomActive,
+                  exit: styles.exitBottom,
+                  exitActive: styles.exitBottomActive,
+                }
+              : {
+                  enter: styles.enterTop,
+                  enterActive: styles.enterTopActive,
+                  exit: styles.exitTop,
+                  exitActive: styles.exitTopActive,
+                }
+          }
+        >
+          <div className={styles.astroMenuContainer} role="menu">
             {React.Children.map(children, (child, index) => {
               if (
                 React.isValidElement<React.HTMLAttributes<HTMLElement>>(child)
@@ -87,14 +147,16 @@ const AstroMenu: React.FC<AstroMenuProps> = (props) => {
                 return React.cloneElement(child, {
                   key: index,
                   onClick: () => {
-                    if (setValue) {
-                      setValue(child.props.children as string);
-                    }
-                    setIsOpen(false);
+                    onClose(child.props.children as string);
                   },
                   onKeyDown: (event: any) => {
-                    if (event.code === "Enter" || event.code === "Escape") {
-                      setIsOpen(false);
+                    if (event.code === "Escape") {
+                      onClose();
+                      triggerRef.current?.focus();
+                    }
+                    if (event.code === "Enter") {
+                      onClose(child.props.children as string);
+                      setTimeout(() => triggerRef.current?.focus());
                     }
                     if (event.code === "ArrowUp") {
                       focusPreviousItem();
@@ -104,14 +166,15 @@ const AstroMenu: React.FC<AstroMenuProps> = (props) => {
                     }
                   },
                   role: "menuitem",
-                  tabIndex: 0,
+                  tabIndex: index === focusedMenuItem ? 0 : undefined,
                 });
               } else {
                 return null;
               }
             })}
           </div>
-      </CSSTransition>
+        </CSSTransition>
+      </div>
     </div>
   );
 };

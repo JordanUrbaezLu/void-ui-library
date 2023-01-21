@@ -56,6 +56,7 @@ const AstroButton = React.forwardRef<HTMLButtonElement, AstroButtonProps>(
       trailingIcon,
       type,
       variant = "primary",
+      ...rest
     } = props;
 
     const classes = classNames(
@@ -90,6 +91,7 @@ const AstroButton = React.forwardRef<HTMLButtonElement, AstroButtonProps>(
         type={
           type === "reset" ? "reset" : type === "submit" ? "submit" : "button"
         }
+        {...rest}
       >
         {content}
       </button>
