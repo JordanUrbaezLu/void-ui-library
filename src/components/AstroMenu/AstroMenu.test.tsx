@@ -7,7 +7,12 @@ import AstroButton from "../AstroButton/AstroButton";
 describe("AstroMenu", () => {
   test("Should render component correctly.", () => {
     const { container } = render(
-      <AstroMenu>
+      <AstroMenu
+        isOpen={true}
+        onOpen={jest.fn}
+        onClose={jest.fn()}
+        trigger={<AstroButton>Trigger</AstroButton>}
+      >
         <AstroMenuItem>One</AstroMenuItem>
       </AstroMenu>
     );
@@ -18,7 +23,12 @@ describe("AstroMenu", () => {
 describe("Accessibility", () => {
   test("Should have no accessibility violations.", async () => {
     const { container } = render(
-      <AstroMenu>
+      <AstroMenu
+        isOpen={true}
+        onOpen={jest.fn}
+        onClose={jest.fn()}
+        trigger={<AstroButton>Trigger</AstroButton>}
+      >
         <AstroMenuItem>One</AstroMenuItem>
       </AstroMenu>
     );
@@ -30,7 +40,12 @@ describe("Accessibility", () => {
 describe("Props", () => {
   test("Should render children correctly.", () => {
     render(
-      <AstroMenu>
+      <AstroMenu
+        isOpen={true}
+        onOpen={jest.fn}
+        onClose={jest.fn()}
+        trigger={<AstroButton>Trigger</AstroButton>}
+      >
         <AstroMenuItem>One</AstroMenuItem>
       </AstroMenu>
     );
@@ -40,7 +55,12 @@ describe("Props", () => {
 
   test("Should render trigger correctly.", () => {
     render(
-      <AstroMenu trigger={<AstroButton>Trigger</AstroButton>}>
+      <AstroMenu
+        isOpen={true}
+        onOpen={jest.fn}
+        onClose={jest.fn()}
+        trigger={<AstroButton>Trigger</AstroButton>}
+      >
         <AstroMenuItem>One</AstroMenuItem>
       </AstroMenu>
     );

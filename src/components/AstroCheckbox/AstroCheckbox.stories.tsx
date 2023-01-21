@@ -16,10 +16,7 @@ const Template: Story<Omit<AstroCheckboxProps, "isOn" | "onClick">> = (
     <AstroCheckbox
       {...args}
       isChecked={isChecked}
-      onClick={() => {
-        console.log("clicked");
-        setIsChecked(!isChecked);
-      }}
+      onClick={() => setIsChecked(!isChecked)}
     />
   );
 };
@@ -47,4 +44,3 @@ SecondaryAndLabel.args = {
   label: "Astro Checkbox Label",
   variant: "secondary",
 };
-

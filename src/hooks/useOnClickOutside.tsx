@@ -1,0 +1,20 @@
+import * as React from "react";
+
+export const useOnClickOutside = (
+  ref: React.RefObject<HTMLDivElement>,
+  handler: () => void
+) => {
+  return React.useEffect(() => {
+    const checkIfOutside = (event: any) => {
+      const isOutside = !ref.current?.contains(event.target as Node);
+      if (isOutside) {
+        handler();
+      }
+    };
+    document.addEventListener("mousedown", checkIfOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", checkIfOutside);
+    };
+  });
+};
