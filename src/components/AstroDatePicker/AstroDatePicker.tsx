@@ -1,6 +1,6 @@
 import * as React from "react";
 import { AiFillCalendar } from "react-icons/ai";
-import { getDateString } from "../../utility/calendarUtilities";
+import { getDateString } from "../../utility/getAstroDatePickerCalendarUtilities";
 import AstroDatePickerCalendar from "./AstroDatePickerCalendar";
 import AstroTextField from "../AstroTextField/AstroTextField";
 import styles from "./AstroDatePicker.module.scss";

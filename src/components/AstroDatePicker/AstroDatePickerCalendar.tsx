@@ -8,7 +8,7 @@ import {
   getNextWeek,
   getPreviousDay,
   getPreviousWeek,
-} from "../../utility/calendarUtilities";
+} from "../../utility/getAstroDatePickerCalendarUtilities";
 import FocusTrap from "focus-trap-react";
 import classNames from "classnames";
 

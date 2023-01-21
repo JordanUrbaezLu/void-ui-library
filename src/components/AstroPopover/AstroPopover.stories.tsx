@@ -8,18 +8,22 @@ export default {
   title: "Components/AstroPopover",
 };
 
-const Template: Story<Omit<AstroPopoverProps, "isOpen" | "trigger">> = (
-  args
-) => {
-  const [isOpen, setIsOpen] = React.useState(true);
+const Template: Story<
+  Omit<
+    AstroPopoverProps,
+    "children" | "isOpen" | "toggleOpen" | "trigger"
+  >
+> = (args) => {
+  const [isOpen, setIsOpen] = React.useState<boolean>(true);
 
   return (
     <AstroPopover
+      {...args}
       isOpen={isOpen}
+      toggleOpen={() => setIsOpen(!isOpen)}
       trigger={
         <AstroButton onClick={() => setIsOpen(!isOpen)}>Trigger</AstroButton>
       }
-      {...args}
     />
   );
 };
@@ -58,7 +62,7 @@ BottomPositionAndNubbin.args = {
 export const LongText = Template.bind({});
 LongText.args = {
   text: "I am a Popover with very long text!",
-  position: "bottom"
+  position: "bottom",
 };
 
 export const AllProps = Template.bind({});

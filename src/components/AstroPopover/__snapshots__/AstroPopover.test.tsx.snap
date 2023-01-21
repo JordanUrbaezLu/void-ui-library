@@ -2,16 +2,23 @@
 
 exports[`AstroPopover Should render component correctly. 1`] = `
 <div
-  class="astroPopoverContainer"
+  class="container"
 >
-  <button>
+  <button
+    role="button"
+    tabindex="0"
+  >
     Button
   </button>
   <div
-    class="astroPopover bottom"
-    style="bottom: -4px;"
+    class="astroPopoverLayoutContainer"
+    style="transform: translate3d(0px, 5px, 0);"
   >
-    Popover
+    <div
+      class="astroPopover bottom"
+    >
+      Popover
+    </div>
   </div>
 </div>
 `;
