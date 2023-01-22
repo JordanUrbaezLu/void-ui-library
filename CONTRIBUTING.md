@@ -38,17 +38,25 @@
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm run start`
 
 Runs the app in development mode.\
 Open [http://localhost:#####](http://localhost:#####) to view it in the browser.
 
-### `npm test`
+### `npm run test`
 
 Runs all the unit tests for the components.\
 Unit tests use React Testing Library and Jest.
 
-The build is minified and the filenames include the hashes.
+Run `npm run test -- -u` to update component snapshots with Jest.
+
+### `npm run clean`
+
+Removes the `dist/` and `storybook-static/` directories.
+
+### `npm run build`
+
+Builds the optimized project and outputs it into the `dist/` folder.
 
 ### `npm run commit`
 
@@ -62,3 +70,7 @@ Open [http://localhost:#####](http://localhost:#####) to view Storybook in the b
 ### `npm run build-storybook`
 
 Builds a production ready, static version of your Storybook app to the `storybook-static` folder.
+
+### `npm run typecheck`
+
+Runs a typecheck through the entire project.
