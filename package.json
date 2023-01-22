@@ -51,8 +51,7 @@
   },
   "files": [],
   "license": "UNLICENSED",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "main": "dist",
   "peerDependenciesMeta": {
     "@types/react": {
       "optional": true
@@ -73,10 +72,6 @@
     "typecheck": "tsc --noEmit",
     "chromatic": "chromatic"
   },
-  "sideEffects": [
-    "dist/styles.css"
-  ],
-  "typings": "dist/index.d.ts",
   "dependencies": {
     "focus-trap-react": "^10.0.2",
     "react-icons": "^4.4.0",
