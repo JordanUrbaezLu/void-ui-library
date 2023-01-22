@@ -2,7 +2,7 @@ import * as React from "react";
 import { CSSTransition } from "react-transition-group";
 import styles from "./AstroPopover.module.scss";
 import classNames from "classnames";
-import { getRefHeight as getTriggerHeight } from "../../utility/getRefHeight";
+import { getAstroPopoverPositionCalculations } from "../../utility/getAstroPopoverPositionCalculations";
 
 export type AstroPopoverPosition = "bottom" | "top";
 
@@ -28,9 +28,13 @@ export interface AstroPopoverProps {
    */
   text: string;
   /**
+   * The callback fired when the AstroPopover toggles
+   */
+  toggleOpen: () => void;
+  /**
    * The trigger for the AstroPopover
    */
-  trigger: React.ReactNode;
+  trigger: React.ReactElement;
 }
 
 const AstroPopover: React.FC<AstroPopoverProps> = (props) => {
@@ -39,70 +43,72 @@ const AstroPopover: React.FC<AstroPopoverProps> = (props) => {
     isOpen,
     position = "bottom",
     text,
+    toggleOpen,
     trigger,
   } = props;
 
-  const [triggerHeight, setTriggerHeight] = React.useState<number>();
-
-  const triggerRef = React.useRef<HTMLDivElement>(null);
   const popoverRef = React.useRef<HTMLDivElement>(null);
 
-  const classes = classNames(
+  const [popoverPositionStyle, setPopoverPositionStyle] =
+    React.useState<React.CSSProperties | undefined>(undefined);
+
+  const triggerRef = React.useRef<HTMLDivElement>(null);
+
+  const astroPopover = classNames(
     styles.astroPopover,
     position === "bottom" && styles.bottom,
     position === "top" && styles.top,
     hasNubbin && styles.nubbin
   );
 
-  React.useEffect(() => {
-    const height = getTriggerHeight({
-      ref: triggerRef,
-    });
-    setTriggerHeight(height);
-  }, [isOpen]);
+  React.useLayoutEffect(() => {
+    setPopoverPositionStyle(
+      getAstroPopoverPositionCalculations({
+        popoverRef,
+        triggerRef,
+        position,
+        hasNubbin,
+      })
+    );
+  }, []);
 
   return (
-    <div ref={triggerRef} className={styles.astroPopoverContainer}>
-      {trigger}
-      <CSSTransition
-        in={isOpen}
-        timeout={200}
-        mountOnEnter
-        unmountOnExit
-        classNames={
-          position === "top"
-            ? {
-                enter: styles.enterTop,
-                enterActive: styles.enterTopActive,
-                exit: styles.exitTop,
-                exitActive: styles.exitTopActive,
-              }
-            : {
-                enter: styles.enterBottom,
-                enterActive: styles.enterBottomActive,
-                exit: styles.exitBottom,
-                exitActive: styles.exitBottomActive,
-              }
-        }
+    <div className={styles.container}>
+      {React.cloneElement(trigger, {
+        onClick: () => toggleOpen(),
+        ref: triggerRef,
+        role: "button",
+        tabIndex: 0,
+      })}
+      <div
+        className={styles.astroPopoverLayoutContainer}
+        style={popoverPositionStyle}
+        ref={popoverRef}
       >
-        <div
-          ref={popoverRef}
-          style={
+        <CSSTransition
+          in={isOpen}
+          timeout={250}
+          mountOnEnter
+          unmountOnExit
+          classNames={
             position === "top"
               ? {
-                  bottom: `${(triggerHeight || 0) + (hasNubbin ? 7 : 0) + 4}px`,
+                  enter: styles.enterTop,
+                  enterActive: styles.enterTopActive,
+                  exit: styles.exitTop,
+                  exitActive: styles.exitTopActive,
                 }
               : {
-                  bottom: `-${
-                    (triggerHeight || 0) + (hasNubbin ? 7 : 0) + 4
-                  }px`,
+                  enter: styles.enterBottom,
+                  enterActive: styles.enterBottomActive,
+                  exit: styles.exitBottom,
+                  exitActive: styles.exitBottomActive,
                 }
           }
-          className={classes}
         >
-          {text}
-        </div>
-      </CSSTransition>
+          <div className={astroPopover}>{text}</div>
+        </CSSTransition>
+      </div>
     </div>
   );
 };

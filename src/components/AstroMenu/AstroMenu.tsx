@@ -1,8 +1,8 @@
 import * as React from "react";
 import { CSSTransition } from "react-transition-group";
 import styles from "./AstroMenu.module.scss";
-import { getMenuAlignmentCalculations } from "../../utility/getMenuAlignmentCalculations";
-import { useOnClickOutside } from "../../hooks"
+import { getAstroMenuAlignmentCalculations } from "../../utility/getAstroMenuAlignmentCalculations";
+import { useOnClickOutside } from "../../hooks";
 
 export type AstroMenuAlignment =
   | "bottomLeft"
@@ -28,13 +28,13 @@ export interface AstroMenuProps {
    */
   isOpen: boolean;
   /**
-   * The callback fired when the AstroMenu opens
-   */
-  onOpen: () => void;
-  /**
    * The callback fired when the AstroMenu closes
    */
   onClose: (itemValue?: string) => void;
+  /**
+   * The callback fired when the AstroMenu opens
+   */
+  onOpen: () => void;
   /**
    * The trigger for the AstroMenu
    */
@@ -46,8 +46,8 @@ const AstroMenu: React.FC<AstroMenuProps> = (props) => {
     alignment = "bottomLeft",
     children,
     isOpen,
-    onOpen,
     onClose,
+    onOpen,
     trigger,
   } = props;
 
@@ -55,7 +55,7 @@ const AstroMenu: React.FC<AstroMenuProps> = (props) => {
 
   const menuRef = React.useRef<HTMLDivElement>(null);
 
-  const [menuPositionStyle, setMenuPositionStyle] =
+  const [menuAlignmentStyle, setMenuAlignmentStyle] =
     React.useState<React.CSSProperties | undefined>(undefined);
 
   const triggerRef = React.useRef<HTMLDivElement>(null);
@@ -82,15 +82,15 @@ const AstroMenu: React.FC<AstroMenuProps> = (props) => {
     }
   }, [isOpen, focusedMenuItem]);
 
-  React.useEffect(() => {
-    setMenuPositionStyle(
-      getMenuAlignmentCalculations({
+  React.useLayoutEffect(() => {
+    setMenuAlignmentStyle(
+      getAstroMenuAlignmentCalculations({
         menuRef,
         triggerRef,
         alignment,
       })
     );
-  }, [alignment, menuRef, triggerRef, isOpen]);
+  }, []);
 
   useOnClickOutside(triggerRef, onClose);
 
@@ -104,18 +104,13 @@ const AstroMenu: React.FC<AstroMenuProps> = (props) => {
             onOpen();
           }
         },
-        onKeyDown: (event: React.KeyboardEvent<HTMLElement>) => {
-          if (event.code === "Enter") {
-            onClose();
-          }
-        },
         ref: triggerRef,
         role: "button",
         tabIndex: 0,
       })}
       <div
         className={styles.astroMenuLayoutContainer}
-        style={menuPositionStyle}
+        style={menuAlignmentStyle}
         ref={menuRef}
       >
         <CSSTransition

@@ -5,7 +5,12 @@ import { axe } from "jest-axe";
 describe("AstroPopover", () => {
   test("Should render component correctly.", () => {
     const { container } = render(
-      <AstroPopover isOpen text="Popover" trigger={<button>Button</button>} />
+      <AstroPopover
+        isOpen
+        text="Popover"
+        toggleOpen={jest.fn}
+        trigger={<button>Button</button>}
+      />
     );
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -14,7 +19,12 @@ describe("AstroPopover", () => {
 describe("Accessibility", () => {
   test("Should have no accessibility violations.", async () => {
     const { container } = render(
-      <AstroPopover isOpen text="Popover" trigger={<button>Button</button>} />
+      <AstroPopover
+        isOpen
+        text="Popover"
+        toggleOpen={jest.fn}
+        trigger={<button>Button</button>}
+      />
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
@@ -27,6 +37,7 @@ describe("Props", () => {
       <AstroPopover
         isOpen
         text="Popover"
+        toggleOpen={jest.fn}
         trigger={<button>Button</button>}
       />
     );
@@ -40,6 +51,7 @@ describe("Props", () => {
           isOpen
           position={position}
           text="Popover"
+          toggleOpen={jest.fn}
           trigger={<button>Button</button>}
         />
       );
@@ -51,6 +63,7 @@ describe("Props", () => {
       <AstroPopover
         isOpen
         text="Popover"
+        toggleOpen={jest.fn}
         trigger={<button>Button</button>}
       />
     );
@@ -62,6 +75,7 @@ describe("Props", () => {
         hasNubbin
         isOpen
         text="Popover"
+        toggleOpen={jest.fn}
         trigger={<button>Button</button>}
       />
     );
@@ -73,6 +87,7 @@ describe("Props", () => {
         <AstroPopover
           isOpen={false}
           text="Popover"
+          toggleOpen={jest.fn}
           trigger={<button>Button</button>}
         />
       </div>
