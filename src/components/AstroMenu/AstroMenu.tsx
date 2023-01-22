@@ -41,7 +41,7 @@ export interface AstroMenuProps {
   trigger: React.ReactElement;
 }
 
-const AstroMenu: React.FC<AstroMenuProps> = (props) => {
+export const AstroMenu: React.FC<AstroMenuProps> = (props) => {
   const {
     alignment = "bottomLeft",
     children,
@@ -173,5 +173,3 @@ const AstroMenu: React.FC<AstroMenuProps> = (props) => {
     </div>
   );
 };
-
-export default AstroMenu;

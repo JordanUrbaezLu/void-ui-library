@@ -1,4 +1,4 @@
-import AstroAlert from "./AstroAlert";
+import { AstroAlert } from "./AstroAlert";
 
 export default {
   component: AstroAlert,

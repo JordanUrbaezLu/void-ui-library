@@ -1,6 +1,6 @@
 import { screen, render } from "@testing-library/react";
 import { axe } from "jest-axe";
-import AstroAlert, { AstroAlertVariant } from "./AstroAlert";
+import { AstroAlert, AstroAlertVariant } from "./AstroAlert";
 
 describe("AstroAlert", () => {
   test("Should render component correctly.", () => {

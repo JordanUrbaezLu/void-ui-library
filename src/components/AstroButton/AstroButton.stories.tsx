@@ -1,5 +1,5 @@
 import { Story } from "@storybook/react";
-import AstroButton, { AstroButtonProps } from "./AstroButton";
+import { AstroButton, AstroButtonProps } from "./AstroButton";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 export default {

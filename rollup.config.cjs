@@ -1,14 +1,20 @@
-import babel from "@rollup/plugin-babel";
-import commonjs from "@rollup/plugin-commonjs";
-import path from "path";
-import postcss from "rollup-plugin-postcss";
-import resolve from "@rollup/plugin-node-resolve";
+"use strict";
 
-import pkg from "./package.json";
+Object.defineProperty(exports, "__esModule", { value: true });
+
+var babel = require("@rollup/plugin-babel");
+var commonjs = require("@rollup/plugin-commonjs");
+var path = require("path");
+var postcss = require("rollup-plugin-postcss");
+const { nodeResolve } = require("@rollup/plugin-node-resolve");
+var pkg = require("./package.json");
 
 const extensions = [".js", ".jsx", ".ts", ".tsx"];
 
-export default {
+/**
+ * @type {import("rollup").RollupOptions}
+ */
+var rollup_config = {
   external: [
     /@babel\/runtime.*/,
     /react\/jsx.*/,
@@ -16,6 +22,17 @@ export default {
     ...Object.keys(pkg.devDependencies),
   ],
   input: path.resolve(__dirname, "src/index.tsx"),
+  onwarn: function (warning) {
+    // Skip certain warnings
+
+    // should intercept ... but doesn't in some rollup versions
+    if (warning.code === "THIS_IS_UNDEFINED") {
+      return;
+    }
+
+    // console.warn everything else
+    console.warn(warning.message);
+  },
   output: [
     {
       dir: path.resolve(__dirname, "dist"),
@@ -26,15 +43,14 @@ export default {
     },
     {
       dir: path.resolve(__dirname, "dist"),
-      entryFilenames: "[name].esm.js",
       format: "esm",
       preserveModules: true,
       preserveModulesRoot: path.resolve(__dirname, "src"),
     },
   ],
   plugins: [
-    resolve({ extensions }),
-    babel({
+    nodeResolve({ extensions }),
+    babel.babel({
       babelHelpers: "runtime",
       exclude: "node_modules",
       extensions,
@@ -46,3 +62,5 @@ export default {
     }),
   ],
 };
+
+exports.default = rollup_config;

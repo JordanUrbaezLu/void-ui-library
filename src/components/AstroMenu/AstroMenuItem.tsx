@@ -8,7 +8,7 @@ export interface AstroMenuItemProps {
   children: string;
 }
 
-const AstroMenuItem: React.FC<AstroMenuItemProps> = (props) => {
+export const AstroMenuItem: React.FC<AstroMenuItemProps> = (props) => {
   const { children, ...rest } = props;
 
   return (
@@ -17,5 +17,3 @@ const AstroMenuItem: React.FC<AstroMenuItemProps> = (props) => {
     </div>
   );
 };
-
-export default AstroMenuItem;

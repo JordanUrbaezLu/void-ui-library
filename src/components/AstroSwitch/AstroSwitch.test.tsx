@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import AstroSwitch, { AstroSwitchVariant } from "./AstroSwitch";
+import { AstroSwitch, AstroSwitchVariant } from "./AstroSwitch";
 import { axe } from "jest-axe";
 
 describe("AstroSwitch", () => {
@@ -28,7 +28,7 @@ describe("Props", () => {
     render(<AstroSwitch isOn onClick={jest.fn()} label={label} />);
     expect(screen.getByRole("switch")).toHaveTextContent(label);
   });
-  
+
   test.each<AstroSwitchVariant>(["primary", "secondary"])(
     "Should render variant correctly.",
     (variant) => {

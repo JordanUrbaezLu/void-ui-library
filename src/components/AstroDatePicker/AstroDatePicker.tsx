@@ -1,8 +1,8 @@
 import * as React from "react";
 import { AiFillCalendar } from "react-icons/ai";
 import { getDateString } from "../../utility/getAstroDatePickerCalendarUtilities";
-import AstroDatePickerCalendar from "./AstroDatePickerCalendar";
-import AstroTextField from "../AstroTextField/AstroTextField";
+import { AstroDatePickerCalendar } from "./AstroDatePickerCalendar";
+import { AstroTextField } from "../AstroTextField/AstroTextField";
 import styles from "./AstroDatePicker.module.scss";
 
 export interface AstroDatePickerProps {
@@ -20,7 +20,7 @@ export interface AstroDatePickerProps {
   value?: string;
 }
 
-const AstroDatePicker: React.FC<AstroDatePickerProps> = (props) => {
+export const AstroDatePicker: React.FC<AstroDatePickerProps> = (props) => {
   const { selectedDate, setValue, value } = props;
 
   const [selected, setSelected] =
@@ -59,5 +59,3 @@ const AstroDatePicker: React.FC<AstroDatePickerProps> = (props) => {
     </>
   );
 };
-
-export default AstroDatePicker;

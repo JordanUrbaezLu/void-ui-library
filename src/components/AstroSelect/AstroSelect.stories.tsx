@@ -1,6 +1,6 @@
 import { Story } from "@storybook/react";
-import AstroSelect, { AstroSelectProps } from "./AstroSelect";
-import AstroSelectItem from "./AstroSelectItem";
+import { AstroSelect, AstroSelectProps } from "./AstroSelect";
+import { AstroSelectItem } from "./AstroSelectItem";
 
 export default {
   component: AstroSelect,

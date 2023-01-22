@@ -28,7 +28,7 @@ export interface AstroAlertProps {
   variant?: AstroAlertVariant;
 }
 
-const AstroAlert: React.FC<AstroAlertProps> = (props) => {
+export const AstroAlert: React.FC<AstroAlertProps> = (props) => {
   const { children, closeable = false, variant = "error" } = props;
 
   const astroAlertContainer = classNames(
@@ -88,4 +88,3 @@ const AstroAlert: React.FC<AstroAlertProps> = (props) => {
   );
 };
 
-export default AstroAlert;

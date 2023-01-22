@@ -1,5 +1,5 @@
-import AstroNavbar from "./AstroNavbar";
-import AstroNavbarItem from "./AstroNavbarItem";
+import { AstroNavbar } from "./AstroNavbar";
+import { AstroNavbarItem } from "./AstroNavbarItem";
 
 export default {
   component: AstroNavbar,
@@ -52,27 +52,27 @@ Logo.parameters = {
 };
 
 export const Secondary = () => {
-    return (
-      <AstroNavbar
-        logoProps={{
-          link: "https://github.com/JordanUrbaezLu/astro-ui-library",
-          url: "https://www.pngkey.com/png/full/141-1415366_arctic-cat-logo-github-png.png",
-        }}
-        variant="secondary"
-      >
-        <AstroNavbarItem link="https://github.com/JordanUrbaezLu/astro-ui-library">
-          Github
-        </AstroNavbarItem>
-        <AstroNavbarItem link="https://github.com/JordanUrbaezLu/astro-ui-library">
-          Github
-        </AstroNavbarItem>
-        <AstroNavbarItem link="https://github.com/JordanUrbaezLu/astro-ui-library">
-          Github
-        </AstroNavbarItem>
-      </AstroNavbar>
-    );
-  };
-  
-  Secondary.parameters = {
-    layout: "fullscreen",
-  };
+  return (
+    <AstroNavbar
+      logoProps={{
+        link: "https://github.com/JordanUrbaezLu/astro-ui-library",
+        url: "https://www.pngkey.com/png/full/141-1415366_arctic-cat-logo-github-png.png",
+      }}
+      variant="secondary"
+    >
+      <AstroNavbarItem link="https://github.com/JordanUrbaezLu/astro-ui-library">
+        Github
+      </AstroNavbarItem>
+      <AstroNavbarItem link="https://github.com/JordanUrbaezLu/astro-ui-library">
+        Github
+      </AstroNavbarItem>
+      <AstroNavbarItem link="https://github.com/JordanUrbaezLu/astro-ui-library">
+        Github
+      </AstroNavbarItem>
+    </AstroNavbar>
+  );
+};
+
+Secondary.parameters = {
+  layout: "fullscreen",
+};

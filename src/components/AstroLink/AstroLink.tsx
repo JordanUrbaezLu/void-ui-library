@@ -21,7 +21,7 @@ export interface AstroLinkProps {
   variant?: AstroLinkVariant;
 }
 
-const AstroLink: React.FC<AstroLinkProps> = (props) => {
+export const AstroLink: React.FC<AstroLinkProps> = (props) => {
   const { children, href, variant = "primary" } = props;
 
   const linkContainer = classNames(
@@ -35,5 +35,3 @@ const AstroLink: React.FC<AstroLinkProps> = (props) => {
     </a>
   );
 };
-
-export default AstroLink;

@@ -62,8 +62,8 @@
     }
   },
   "scripts": {
-    "build": "run-p build:*",
-    "build:lib": "rollup --config rollup.config.js",
+    "build": "npm run clean && run-p build:*",
+    "build:lib": "rollup --config rollup.config.cjs",
     "build:types": "tsc --build tsconfig.lib.json",
     "clean": "rimraf dist",
     "start": "start-storybook",

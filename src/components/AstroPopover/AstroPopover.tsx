@@ -37,7 +37,7 @@ export interface AstroPopoverProps {
   trigger: React.ReactElement;
 }
 
-const AstroPopover: React.FC<AstroPopoverProps> = (props) => {
+export const AstroPopover: React.FC<AstroPopoverProps> = (props) => {
   const {
     hasNubbin = false,
     isOpen,
@@ -112,5 +112,3 @@ const AstroPopover: React.FC<AstroPopoverProps> = (props) => {
     </div>
   );
 };
-
-export default AstroPopover;

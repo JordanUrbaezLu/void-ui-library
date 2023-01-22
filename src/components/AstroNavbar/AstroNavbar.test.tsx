@@ -1,7 +1,7 @@
 import { screen, render } from "@testing-library/react";
 import { axe } from "jest-axe";
-import AstroNavbar, { AstroNavbarVariant } from "./AstroNavbar";
-import AstroNavbarItem from "./AstroNavbarItem";
+import { AstroNavbar, AstroNavbarVariant } from "./AstroNavbar";
+import { AstroNavbarItem } from "./AstroNavbarItem";
 
 describe("AstroCalendar", () => {
   test("Should render component correctly.", () => {

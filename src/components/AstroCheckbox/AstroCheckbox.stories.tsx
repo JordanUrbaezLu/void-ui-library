@@ -1,6 +1,6 @@
 import { Story } from "@storybook/react";
 import * as React from "react";
-import AstroCheckbox, { AstroCheckboxProps } from "./AstroCheckbox";
+import { AstroCheckbox, AstroCheckboxProps } from "./AstroCheckbox";
 
 export default {
   component: AstroCheckbox,

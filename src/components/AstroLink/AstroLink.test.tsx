@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import AstroLink, { AstroLinkVariant } from "./AstroLink";
+import { AstroLink, AstroLinkVariant } from "./AstroLink";
 import { axe } from "jest-axe";
 
 describe("AstroLink", () => {

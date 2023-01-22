@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import AstroDatePicker from "./AstroDatePicker";
+import { AstroDatePicker } from "./AstroDatePicker";
 
 describe("AstroDatePicker", () => {
   test("Should render component correctly.", () => {

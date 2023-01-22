@@ -28,7 +28,7 @@ export interface AstroCheckboxProps {
   variant?: AstroCheckboxVariant;
 }
 
-const AstroSwitch: React.FC<AstroCheckboxProps> = (props) => {
+export const AstroCheckbox: React.FC<AstroCheckboxProps> = (props) => {
   const {
     isChecked = false,
     label,
@@ -72,5 +72,3 @@ const AstroSwitch: React.FC<AstroCheckboxProps> = (props) => {
     </div>
   );
 };
-
-export default AstroSwitch;

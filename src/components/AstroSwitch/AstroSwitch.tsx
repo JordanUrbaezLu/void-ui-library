@@ -27,7 +27,7 @@ export interface AstroSwitchProps {
   variant?: AstroSwitchVariant;
 }
 
-const AstroSwitch: React.FC<AstroSwitchProps> = (props) => {
+export const AstroSwitch: React.FC<AstroSwitchProps> = (props) => {
   const { isOn = false, label, onClick, variant = "primary", ...rest } = props;
 
   const astroSwitchPill = classNames(
@@ -65,5 +65,3 @@ const AstroSwitch: React.FC<AstroSwitchProps> = (props) => {
     </button>
   );
 };
-
-export default AstroSwitch;

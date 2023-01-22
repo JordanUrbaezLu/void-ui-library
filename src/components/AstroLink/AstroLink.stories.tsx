@@ -1,5 +1,5 @@
 import { Story } from "@storybook/react";
-import AstroLink, { AstroLinkProps } from "./AstroLink";
+import { AstroLink, AstroLinkProps } from "./AstroLink";
 
 export default {
   component: AstroLink,
