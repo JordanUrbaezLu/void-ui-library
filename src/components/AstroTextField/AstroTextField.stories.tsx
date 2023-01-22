@@ -1,7 +1,8 @@
 import { Story } from "@storybook/react";
 import * as React from "react";
 import { AiFillEye, AiOutlineArrowRight } from "react-icons/ai";
-import AstroTextField, {
+import {
+  AstroTextField,
   AstroTextFieldProps,
   AstroTextFieldType,
 } from "./AstroTextField";

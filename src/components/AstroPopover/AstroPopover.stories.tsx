@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Story } from "@storybook/react";
-import AstroPopover, { AstroPopoverProps } from "./AstroPopover";
-import AstroButton from "../AstroButton/AstroButton";
+import { AstroPopover, AstroPopoverProps } from "./AstroPopover";
+import { AstroButton } from "../AstroButton/AstroButton";
 
 export default {
   component: AstroPopover,
@@ -9,10 +9,7 @@ export default {
 };
 
 const Template: Story<
-  Omit<
-    AstroPopoverProps,
-    "children" | "isOpen" | "toggleOpen" | "trigger"
-  >
+  Omit<AstroPopoverProps, "children" | "isOpen" | "toggleOpen" | "trigger">
 > = (args) => {
   const [isOpen, setIsOpen] = React.useState<boolean>(true);
 

@@ -59,7 +59,7 @@ export interface AstroTextFieldProps {
   variant?: AstroTextFieldVariant;
 }
 
-const AstroTextField: React.FC<AstroTextFieldProps> = (props) => {
+export const AstroTextField: React.FC<AstroTextFieldProps> = (props) => {
   const {
     variant = "primary",
     size = "medium",
@@ -121,5 +121,3 @@ const AstroTextField: React.FC<AstroTextFieldProps> = (props) => {
     </div>
   );
 };
-
-export default AstroTextField;

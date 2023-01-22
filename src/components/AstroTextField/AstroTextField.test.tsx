@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import AstroTextField, {
+import {
+  AstroTextField,
   AstroTextFieldSize,
   AstroTextFieldVariant,
   AstroTextFieldType,

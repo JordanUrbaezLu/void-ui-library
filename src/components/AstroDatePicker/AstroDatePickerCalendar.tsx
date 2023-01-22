@@ -27,7 +27,7 @@ export interface AstroDatePickerCalendarProps {
   selectedDate?: Date;
 }
 
-const AstroDatePickerCalendar: React.FC<AstroDatePickerCalendarProps> = (
+export const AstroDatePickerCalendar: React.FC<AstroDatePickerCalendarProps> = (
   props
 ) => {
   const { selectedDate, onSetDate, isOpen } = props;
@@ -183,5 +183,3 @@ const AstroDatePickerCalendar: React.FC<AstroDatePickerCalendarProps> = (
     </CSSTransition>
   );
 };
-
-export default AstroDatePickerCalendar;

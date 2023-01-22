@@ -31,7 +31,7 @@ export interface AstroSelectProps {
   variant?: AstroSelectVariant;
 }
 
-const AstroSelect: React.FC<AstroSelectProps> = (props) => {
+export const AstroSelect: React.FC<AstroSelectProps> = (props) => {
   const { children, label, variant = "primary", size = "medium" } = props;
   const containerClasses = classNames(
     styles.astroSelectContainer,
@@ -135,5 +135,3 @@ const AstroSelect: React.FC<AstroSelectProps> = (props) => {
     </div>
   );
 };
-
-export default AstroSelect;

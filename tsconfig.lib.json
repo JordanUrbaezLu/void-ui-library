@@ -1,14 +1,16 @@
 {
-    "$schema": "https://json.schemastore.org/tsconfig.json",
-    "compilerOptions": {
-        "declaration": true,
-        "declarationDir": "dist",
-        "emitDeclarationOnly": true,
-        "rootDir": "../astro-ui-library/"
-    },
-    "exclude": [
-        "*.stories.ts",
-        "*.stories.tsx"
-    ],
-    "extends": "./tsconfig.json"
+  "$schema": "https://json.schemastore.org/tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "dist",
+    "emitDeclarationOnly": true,
+    "rootDir": "./src/"
+  },
+  "exclude": [
+    "src/**/*.stories.tsx",
+    "src/**/*.test.tsx",
+    "jest.setup.ts",
+    "jest.config.ts"
+  ],
+  "extends": "./tsconfig.json"
 }

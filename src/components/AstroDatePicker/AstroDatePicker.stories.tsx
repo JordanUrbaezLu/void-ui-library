@@ -1,6 +1,6 @@
 import { Story } from "@storybook/react";
 import * as React from "react";
-import AstroDatePicker, { AstroDatePickerProps } from "./AstroDatePicker";
+import { AstroDatePicker, AstroDatePickerProps } from "./AstroDatePicker";
 
 export default {
   component: AstroDatePicker,

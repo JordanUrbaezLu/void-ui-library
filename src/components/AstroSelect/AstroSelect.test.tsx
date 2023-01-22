@@ -1,9 +1,10 @@
 import { render, screen } from "@testing-library/react";
-import AstroSelect, {
+import {
+  AstroSelect,
   AstroSelectVariant,
   AstroSelectSize,
 } from "./AstroSelect";
-import AstroSelectItem from "./AstroSelectItem";
+import { AstroSelectItem } from "./AstroSelectItem";
 import { axe } from "jest-axe";
 
 describe("AstroSelect", () => {

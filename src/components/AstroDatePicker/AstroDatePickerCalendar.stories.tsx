@@ -1,5 +1,6 @@
 import { Story } from "@storybook/react";
-import AstroDatePickerCalendar, {
+import {
+  AstroDatePickerCalendar,
   AstroDatePickerCalendarProps,
 } from "./AstroDatePickerCalendar";
 

@@ -1,8 +1,8 @@
 import { Story } from "@storybook/react";
 import * as React from "react";
-import AstroMenu, { AstroMenuProps } from "./AstroMenu";
-import AstroMenuItem from "./AstroMenuItem";
-import AstroButton from "../AstroButton/AstroButton";
+import { AstroMenu, AstroMenuProps } from "./AstroMenu";
+import { AstroMenuItem } from "./AstroMenuItem";
+import { AstroButton } from "../AstroButton/AstroButton";
 
 export default {
   component: AstroMenu,
@@ -10,10 +10,7 @@ export default {
 };
 
 const Template: Story<
-  Omit<
-    AstroMenuProps,
-    "children" | "isOpen" | "onClose" | "onOpen" | "trigger"
-  >
+  Omit<AstroMenuProps, "children" | "isOpen" | "onClose" | "onOpen" | "trigger">
 > = (args) => {
   const [value, setValue] = React.useState<string | undefined>(undefined);
   const [isOpen, setIsOpen] = React.useState<boolean>(true);

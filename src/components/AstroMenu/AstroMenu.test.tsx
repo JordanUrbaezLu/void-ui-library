@@ -1,8 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import AstroMenu from "./AstroMenu";
-import AstroMenuItem from "./AstroMenuItem";
+import {AstroMenu} from "./AstroMenu";
+import {AstroMenuItem} from "./AstroMenuItem";
 import { axe } from "jest-axe";
-import AstroButton from "../AstroButton/AstroButton";
+import {AstroButton} from "../AstroButton/AstroButton";
 
 describe("AstroMenu", () => {
   test("Should render component correctly.", () => {

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import AstroPopover, { AstroPopoverPosition } from "./AstroPopover";
+import { AstroPopover, AstroPopoverPosition } from "./AstroPopover";
 import { axe } from "jest-axe";
 
 describe("AstroPopover", () => {

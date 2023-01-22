@@ -33,7 +33,7 @@ export interface AstroNavbarProps {
   variant?: AstroNavbarVariant;
 }
 
-const AstroNavbar: React.FC<AstroNavbarProps> = (props) => {
+export const AstroNavbar: React.FC<AstroNavbarProps> = (props) => {
   const { children, logoProps, variant = "primary" } = props;
 
   const astroNavbarContainer = classNames(
@@ -77,5 +77,3 @@ const AstroNavbar: React.FC<AstroNavbarProps> = (props) => {
     </nav>
   );
 };
-
-export default AstroNavbar;

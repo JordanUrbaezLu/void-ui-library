@@ -6,7 +6,7 @@ interface AstroSelectItemProps {
   children: string;
 }
 
-const AstroSelectItem: React.FC<AstroSelectItemProps> = (props) => {
+export const AstroSelectItem: React.FC<AstroSelectItemProps> = (props) => {
   const { children, ...rest } = props;
   return (
     <div role="menuitem" {...rest}>
@@ -14,5 +14,3 @@ const AstroSelectItem: React.FC<AstroSelectItemProps> = (props) => {
     </div>
   );
 };
-
-export default AstroSelectItem;
