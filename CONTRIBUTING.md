@@ -1,16 +1,16 @@
-# Getting Started with Astro UI Library
+# Getting Started with Void UI
 
-![image](https://user-images.githubusercontent.com/93447469/190551386-74f76819-37ba-4e17-9217-3f87bed1a75b.png)
+![image](https://wallpaperaccess.com/full/2106068.png)
 
-## Start Contributing to Astro UI Library
+## Start Contributing to Void UI
 
 ### 1. Clone the repository to your local machine.
 
-`git clone https://github.com/JordanUrbaezLu/astro-ui-library`
+`git clone https://github.com/JordanUrbaezLu/void-ui`
 
 ### 2. Install node-modules and dependencies.
 
-`cd astro-ui-library`
+`cd void-ui`
 
 `npm install`
 

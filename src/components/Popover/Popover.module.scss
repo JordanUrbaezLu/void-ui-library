@@ -1,0 +1,95 @@
+@use "../../utility/globals";
+
+.container {
+  position: relative;
+}
+
+.popoverLayoutContainer {
+  left: 0;
+  top: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.popover {
+  color: rgb(223, 223, 223);
+  text-align: center;
+  min-width: 20px;
+  max-width: 250px;
+  background-color: rgb(60, 60, 60);
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 10px 16px;
+  text-overflow: wrap;
+  word-wrap: break-word;
+  z-index: 999;
+  &.nubbin {
+    &::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      z-index: 1000;
+      background-color: rgb(60, 60, 60);
+      position: absolute;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+}
+
+.bottom {
+  &::before {
+    top: 0;
+    left: 50%;
+  }
+}
+
+.top {
+  &::before {
+    top: 100%;
+    left: 50%;
+  }
+}
+
+.enterTop {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.enterTopActive {
+  transform: translateY(0px);
+  opacity: 1;
+  transition: all 250ms cubic-bezier(0.44, -0.01, 0.83, 0.53);
+}
+
+.exitTop {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.exitTopActive {
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: all 250ms cubic-bezier(0.44, -0.01, 0.83, 0.53);
+}
+
+.enterBottom {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.enterBottomActive {
+  transform: translateY(0px);
+  opacity: 1;
+  transition: all 250ms cubic-bezier(0.44, -0.01, 0.83, 0.53);
+}
+
+.exitBottom {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.exitBottomActive {
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 250ms cubic-bezier(0.44, -0.01, 0.83, 0.53);
+}
