@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField Should render component correctly. 1`] = `
+<div
+  class="container"
+>
+  <div
+    class="textFieldContainer"
+  >
+    <input
+      aria-label="textfield"
+      class="textField primary medium"
+      required=""
+      type="text"
+      value=""
+    />
+  </div>
+</div>
+`;

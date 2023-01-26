@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch Should render component correctly. 1`] = `
+<button
+  aria-checked="true"
+  class="switchPill primary on"
+  role="switch"
+  type="button"
+>
+  <span
+    class="switchIndicator primary on"
+  />
+  <span
+    class="switchLabel primary on"
+  >
+     Switch Label
+  </span>
+</button>
+`;

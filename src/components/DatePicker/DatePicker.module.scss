@@ -1,0 +1,15 @@
+@use "../../utility/globals";
+
+.datePickerIconContainer {
+  outline: none;
+  border-radius: 6px;
+  border: 3px solid transparent;
+  &:hover,
+  &:focus {
+    border: 3px solid globals.$primary-color;
+  }
+
+  &:active {
+    background-color: globals.$primary-color;
+  }
+}

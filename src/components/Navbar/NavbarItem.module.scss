@@ -1,0 +1,19 @@
+@use "../../utility/globals";
+
+.navbarItemLinkContainer {
+  color: black;
+  text-decoration: none;
+  padding: 20px;
+}
+
+.primary {
+    &:hover {
+        background-color: globals.$primary-color;
+      }
+}
+
+.secondary {
+  &:hover {
+    background-color: globals.$secondary-color;
+  }
+}

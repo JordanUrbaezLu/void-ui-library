@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Should render component correctly. 1`] = `
+<button
+  class="button medium primary"
+  type="button"
+>
+  Button
+</button>
+`;
