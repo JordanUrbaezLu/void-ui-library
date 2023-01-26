@@ -6,11 +6,11 @@
 
 ### 1. Clone the repository to your local machine.
 
-`git clone https://github.com/JordanUrbaezLu/void-ui`
+`git clone https://github.com/JordanUrbaezLu/void-ui-library`
 
 ### 2. Install node-modules and dependencies.
 
-`cd void-ui`
+`cd void-ui-library`
 
 `npm install`
 

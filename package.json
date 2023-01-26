@@ -1,9 +1,9 @@
 {
-  "name": "void-ui",
+  "name": "void-ui-library",
   "author": {
     "name": "JordanUrbaezLu"
   },
-  "homepage": "https://jordanurbaezlu.github.io/void-ui",
+  "homepage": "https://jordanurbaezlu.github.io/void-ui-library",
   "version": "0.0.0-development",
   "private": false,
   "devDependencies": {
@@ -79,5 +79,5 @@
   },
   "$schema": "https://json.schemastore.org/package.json",
   "readme": "ERROR: No README data found!",
-  "_id": "void-ui@0.0.0-development"
+  "_id": "void-ui-library@0.0.0-development"
 }

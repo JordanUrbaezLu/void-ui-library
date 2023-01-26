@@ -9,13 +9,13 @@ export default {
 export const Default = () => {
   return (
     <Navbar>
-      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui">
+      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui-library">
         Github
       </NavbarItem>
-      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui">
+      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui-library">
         Github
       </NavbarItem>
-      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui">
+      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui-library">
         Github
       </NavbarItem>
     </Navbar>
@@ -30,17 +30,17 @@ export const Logo = () => {
   return (
     <Navbar
       logoProps={{
-        link: "https://github.com/JordanUrbaezLu/void-ui",
+        link: "https://github.com/JordanUrbaezLu/void-ui-library",
         url: "https://www.pngkey.com/png/full/141-1415366_arctic-cat-logo-github-png.png",
       }}
     >
-      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui">
+      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui-library">
         Github
       </NavbarItem>
-      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui">
+      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui-library">
         Github
       </NavbarItem>
-      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui">
+      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui-library">
         Github
       </NavbarItem>
     </Navbar>
@@ -55,18 +55,18 @@ export const Secondary = () => {
   return (
     <Navbar
       logoProps={{
-        link: "https://github.com/JordanUrbaezLu/void-ui",
+        link: "https://github.com/JordanUrbaezLu/void-ui-library",
         url: "https://www.pngkey.com/png/full/141-1415366_arctic-cat-logo-github-png.png",
       }}
       variant="secondary"
     >
-      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui">
+      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui-library">
         Github
       </NavbarItem>
-      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui">
+      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui-library">
         Github
       </NavbarItem>
-      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui">
+      <NavbarItem link="https://github.com/JordanUrbaezLu/void-ui-library">
         Github
       </NavbarItem>
     </Navbar>
