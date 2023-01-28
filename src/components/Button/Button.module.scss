@@ -36,6 +36,7 @@
   &:focus {
     color: globals.$secondary-text-color-hover-and-focus;
     border: 2px solid globals.$secondary-border-color-hover-and-focus;
+    background-color: globals.$secondary-background-color-hover-and-active;
   }
   &:active {
     background-color: globals.$secondary-background-color-active;

@@ -1,9 +1,10 @@
 import { CSSTransition } from "react-transition-group";
 import styles from "./Select.module.scss";
-import itemStyles from "./SelectItem.module.scss";
 import { IoChevronDownSharp, IoChevronUpSharp } from "react-icons/io5";
 import * as React from "react";
 import { TextField } from "../TextField";
+import { SelectContainer } from "./SelectContainer";
+import { useOnClickOutside } from "../../hooks";
 
 export interface SelectProps {
   /**
@@ -27,9 +28,12 @@ export const Select: React.FC<SelectProps> = (props) => {
 
   const [isOpen, setIsOpen] = React.useState<boolean>(startsOpen);
   const [value, setValue] = React.useState<string>("");
+  const selectRef = React.useRef<HTMLDivElement>(null);
+
+  useOnClickOutside(selectRef, () => setIsOpen(false));
 
   return (
-    <div className={styles.selectContainer}>
+    <div className={styles.selectContainer} ref={selectRef}>
       <TextField
         size="large"
         selectable={false}
@@ -56,24 +60,9 @@ export const Select: React.FC<SelectProps> = (props) => {
           exitActive: styles.exitActive,
         }}
       >
-        <div className={styles.selectOptionsMenu} role="menu">
-          {React.Children.map(children, (child, index) => {
-            if (
-              React.isValidElement<React.HTMLAttributes<HTMLElement>>(child)
-            ) {
-              return React.cloneElement(child, {
-                className: itemStyles.selectItem,
-                key: index,
-                onClick: () => {
-                  setValue(child.props.children as string);
-                  setIsOpen(!isOpen);
-                },
-              });
-            } else {
-              return null;
-            }
-          })}
-        </div>
+        <SelectContainer setIsOpen={setIsOpen} setValue={setValue}>
+          {children}
+        </SelectContainer>
       </CSSTransition>
     </div>
   );

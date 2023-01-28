@@ -109,7 +109,6 @@ export const Menu: React.FC<MenuProps> = (props) => {
           }
         >
           <MenuContainer
-            isOpen={isOpen}
             menuRef={menuRef}
             onClose={onClose}
             triggerRef={triggerRef}

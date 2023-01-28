@@ -8,10 +8,6 @@ export interface MenuContainerProps {
    */
   children: React.ReactNode;
   /**
-   * If the Menu is open
-   */
-  isOpen: boolean;
-  /**
    * The menu's ref
    */
   menuRef: React.RefObject<HTMLDivElement>;
@@ -26,7 +22,7 @@ export interface MenuContainerProps {
 }
 
 export const MenuContainer: React.FC<MenuContainerProps> = (props) => {
-  const { children, isOpen, menuRef, onClose, triggerRef } = props;
+  const { children, menuRef, onClose, triggerRef } = props;
 
   const [focusedMenuItem, setFocusedMenuItem] = React.useState<number>(0);
 
@@ -45,12 +41,10 @@ export const MenuContainer: React.FC<MenuContainerProps> = (props) => {
   };
 
   React.useEffect(() => {
-    if (isOpen) {
-      const menuContainer = menuRef.current?.children[0] as HTMLElement;
-      const menuItem = menuContainer.children[focusedMenuItem] as HTMLElement;
-      menuItem?.focus();
-    }
-  }, [isOpen, focusedMenuItem]);
+    const menuContainer = menuRef.current?.children[0] as HTMLElement;
+    const menuItem = menuContainer.children[focusedMenuItem] as HTMLElement;
+    menuItem?.focus();
+  }, [focusedMenuItem]);
 
   useOnClickOutside([triggerRef, menuRef], onClose);
 
