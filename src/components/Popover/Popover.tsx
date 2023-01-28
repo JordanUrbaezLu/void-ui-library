@@ -70,7 +70,8 @@ export const Popover: React.FC<PopoverProps> = (props) => {
       })
     );
   }, []);
-  
+
+  // Show popover on tab focus and remove when focus out
   React.useEffect(() => {
     triggerRef.current?.addEventListener("focus", () => {
       setShowPopover(true);
