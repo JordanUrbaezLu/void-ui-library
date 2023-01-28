@@ -60,7 +60,7 @@
 .datePickerCalendarBodyContainer {
   display: flex;
   flex-wrap: wrap;
-  padding: 0px 12px 12px 12px;
+  padding: 0px 12px;
 }
 
 .datePickerCalendarDayContainer {
@@ -81,6 +81,11 @@
   user-select: none;
 
   &.selected {
+    background-color: globals.$primary-border-color;
+    border-color: globals.$primary-border-color !important;
+  }
+
+  &.today {
     border: 2px solid globals.$primary-text-color !important;
   }
 
@@ -94,4 +99,14 @@
     background-color: globals.$primary-background-color-active;
     border: 2px solid globals.$primary-background-color-active;
   }
+}
+
+.buttonContainer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 6px;
 }

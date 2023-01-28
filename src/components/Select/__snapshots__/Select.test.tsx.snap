@@ -12,6 +12,7 @@ exports[`Select Should render component correctly. 1`] = `
     >
       <input
         aria-label="textfield"
+        autocomplete="off"
         class="textField large inputContainer"
         id="void_textfield"
         required=""

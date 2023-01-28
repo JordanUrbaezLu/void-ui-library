@@ -101,7 +101,7 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
     disabled && styles.disabledLabel
   );
 
-  // Make textfield not selectable 
+  // Make textfield not selectable
   React.useEffect(() => {
     if (!selectable) {
       const textfield = document.getElementById(
@@ -122,6 +122,7 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
       <div className={inputContainer}>
         <input
           aria-label={label}
+          autoComplete="off"
           id="void_textfield"
           className={classNames(classes, className)}
           disabled={disabled}

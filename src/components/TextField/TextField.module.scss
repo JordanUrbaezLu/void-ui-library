@@ -104,6 +104,7 @@
   color: rgb(115, 115, 115);
   pointer-events: none;
   background-color: white;
+  transition: all 0.15s ease-in;
   &.labelSmall {
     margin-left: 6px;
     font-size: 12px;

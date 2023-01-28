@@ -1,19 +1,15 @@
 @use "../../utility/globals";
 
-.container {
-  position: relative;
+.customInput {
+  width: 125px;
 }
 
 .datePickerIconContainer {
   color: globals.$primary-background-color;
-  position: absolute;
-  top: 0;
-  left: 163px;
   outline: none;
   border-radius: 999px;
   border: 3px solid transparent;
-  padding: 3px;
-  margin: 4px;
+  padding: 4px;
   cursor: pointer;
   &:hover,
   &:focus {

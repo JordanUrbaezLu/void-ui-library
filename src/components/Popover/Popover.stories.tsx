@@ -14,7 +14,7 @@ const Template: Story<
     <Popover
       {...args}
       startsOpen
-      trigger={<Button variant="secondary">Trigger</Button>}
+      trigger={<Button variant="secondary">Hover Me!</Button>}
     />
   );
 };
@@ -52,13 +52,13 @@ BottomPositionAndNubbin.args = {
 
 export const LongText = Template.bind({});
 LongText.args = {
-  text: "I am a Popover with very long text!",
+  text: "I pop up when you hover over my trigger!",
   position: "bottom",
 };
 
 export const AllProps = Template.bind({});
 AllProps.args = {
-  text: "I am a Popover with very long text!",
+  text: "I pop up when you hover over my trigger!",
   position: "top",
   hasNubbin: true,
 };

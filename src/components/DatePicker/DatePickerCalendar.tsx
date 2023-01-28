@@ -1,7 +1,6 @@
 import * as React from "react";
 import { CSSTransition } from "react-transition-group";
 import styles from "./DatePickerCalendar.module.scss";
-import FocusTrap from "focus-trap-react";
 
 import { BaseDatePickerCalendar } from "./BaseDatePickerCalendar";
 
@@ -13,11 +12,7 @@ export interface DatePickerCalendarProps {
   /**
    * The callback fired when the DatePickerCalendar requests to close
    */
-  onClose: (date?: Date) => void;
-  /**
-   * The selected date for the DatePickerCalendar
-   */
-  selectedDate?: Date;
+  onClose: () => void;
   /**
    * The trigger ref for the DatePicker
    */
@@ -27,7 +22,7 @@ export interface DatePickerCalendarProps {
 export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = (
   props
 ) => {
-  const { selectedDate, onClose, isOpen, triggerRef } = props;
+  const { onClose, isOpen, triggerRef } = props;
 
   return (
     <CSSTransition
@@ -42,18 +37,7 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = (
         exitActive: styles.exitActive,
       }}
     >
-      <FocusTrap
-        focusTrapOptions={{
-          allowOutsideClick: true,
-          escapeDeactivates: false,
-        }}
-      >
-        <BaseDatePickerCalendar
-          onClose={onClose}
-          selectedDate={selectedDate}
-          triggerRef={triggerRef}
-        />
-      </FocusTrap>
+      <BaseDatePickerCalendar onClose={onClose} triggerRef={triggerRef} />
     </CSSTransition>
   );
 };
