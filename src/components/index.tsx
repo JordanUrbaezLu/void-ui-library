@@ -4,7 +4,6 @@ export * from "./Checkbox";
 export * from "./DatePicker";
 export * from "./Link";
 export * from "./Menu";
-export * from "./Navbar";
 export * from "./Popover";
 export * from "./Select";
 export * from "./Switch";

@@ -1,50 +1,51 @@
 @use "../../utility/globals";
 
 .button {
-  border-radius: 30px;
+  border: 2px solid globals.$primary-background-color;
   width: fit-content;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  &:hover {
-    cursor: pointer;
-  }
+  font-family: globals.$font-family;
   display: flex;
   flex-direction: row;
   align-items: center;
-  column-gap: 5px;
+  column-gap: 6px;
+  outline: none;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .primary {
-  background-color: globals.$primary-color;
-  color: black;
-  border: 2px solid globals.$primary-color;
+  background-color: globals.$primary-background-color;
+  color: globals.$primary-text-color;
   &:hover,
   &:focus {
-    color: globals.$secondary-color;
-    border: 2px solid globals.$secondary-color;
-    outline: none;
+    background-color: globals.$primary-background-color-hover-and-focus;
+    border: 2px solid globals.$primary-background-color-hover-and-focus;
   }
   &:active {
-    background: globals.$primary-color-pseudo-class;
+    background-color: globals.$primary-background-color-active;
+    border: 2px solid globals.$primary-background-color-active;
   }
 }
 
 .secondary {
-  background-color: globals.$secondary-color;
-  color: black;
-  border: 2px solid globals.$secondary-color;
+  background-color: white;
+  color: globals.$secondary-text-color;
+  border: 2px solid globals.$secondary-text-color;
   &:hover,
   &:focus {
-    color: globals.$primary-color;
-    border: 2px solid globals.$primary-color;
+    color: globals.$secondary-text-color-hover-and-focus;
+    border: 2px solid globals.$secondary-border-color-hover-and-focus;
   }
   &:active {
-    background: globals.$secondary-color-pseudo-class;
+    background-color: globals.$secondary-background-color-active;
   }
 }
 
 .small {
+  border-radius: 6px;
   font-size: 12px;
-  padding: 6px 8px;
+  padding: 4px 6px;
   .leadingIcon,
   .trailingIcon {
     height: 12px;
@@ -52,8 +53,9 @@
 }
 
 .medium {
+  border-radius: 8px;
   font-size: 16px;
-  padding: 8px 10px;
+  padding: 6px 9px;
   .leadingIcon,
   .trailingIcon {
     height: 16px;
@@ -61,17 +63,11 @@
 }
 
 .large {
+  border-radius: 10px;
   font-size: 20px;
-  padding: 10px 12px;
+  padding: 8px 12px;
   .leadingIcon,
   .trailingIcon {
     height: 20px;
   }
-}
-
-.disabled {
-  color: gray !important;
-  border: 2px solid gray !important;
-  background: rgb(0, 0, 0, 0.1) !important;
-  cursor: default !important;
 }

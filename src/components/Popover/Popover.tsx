@@ -14,9 +14,11 @@ export interface PopoverProps {
    */
   hasNubbin?: boolean;
   /**
-   * If the Popover is open
+   * If the Popover initially renders as open
+   *
+   * @default false
    */
-  isOpen: boolean;
+  startsOpen?: boolean;
   /**
    * The position of the Popover
    *
@@ -28,10 +30,6 @@ export interface PopoverProps {
    */
   text: string;
   /**
-   * The callback fired when the Popover toggles
-   */
-  toggleOpen: () => void;
-  /**
    * The trigger for the Popover
    */
   trigger: React.ReactElement;
@@ -40,12 +38,13 @@ export interface PopoverProps {
 export const Popover: React.FC<PopoverProps> = (props) => {
   const {
     hasNubbin = false,
-    isOpen,
+    startsOpen = false,
     position = "bottom",
     text,
-    toggleOpen,
     trigger,
   } = props;
+
+  const [showPopover, setShowPopover] = React.useState<boolean>(startsOpen);
 
   const popoverRef = React.useRef<HTMLDivElement>(null);
 
@@ -71,11 +70,32 @@ export const Popover: React.FC<PopoverProps> = (props) => {
       })
     );
   }, []);
+  
+  React.useEffect(() => {
+    triggerRef.current?.addEventListener("focus", () => {
+      setShowPopover(true);
+    });
+
+    triggerRef.current?.addEventListener("focusout", () => {
+      setShowPopover(false);
+    });
+
+    return () => {
+      triggerRef.current?.removeEventListener("focus", () => {
+        setShowPopover(true);
+      });
+
+      triggerRef.current?.removeEventListener("focusout", () => {
+        setShowPopover(false);
+      });
+    };
+  }, [triggerRef]);
 
   return (
     <div className={styles.container}>
       {React.cloneElement(trigger, {
-        onClick: () => toggleOpen(),
+        onMouseEnter: () => setShowPopover(true),
+        onMouseLeave: () => setShowPopover(false),
         ref: triggerRef,
         role: "button",
         tabIndex: 0,
@@ -86,8 +106,8 @@ export const Popover: React.FC<PopoverProps> = (props) => {
         ref={popoverRef}
       >
         <CSSTransition
-          in={isOpen}
-          timeout={250}
+          in={showPopover}
+          timeout={150}
           mountOnEnter
           unmountOnExit
           classNames={

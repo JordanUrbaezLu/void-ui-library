@@ -24,7 +24,7 @@ export const getMenuAlignmentCalculations = ({
 
   const triggerHeight = triggerRef.current?.getBoundingClientRect().height ?? 0;
 
-  const height = alignment.startsWith("bottom") ? triggerHeight : -menuHeight;
+  const height = alignment.startsWith("bottom") ? triggerHeight + 2 : -menuHeight - 2;
 
   return { transform: `translate3d(${left}px, ${height}px, 0)` };
 };

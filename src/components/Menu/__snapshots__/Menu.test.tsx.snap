@@ -14,7 +14,7 @@ exports[`Menu Should render component correctly. 1`] = `
   </button>
   <div
     class="menuLayoutContainer"
-    style="transform: translate3d(0px, 0px, 0);"
+    style="transform: translate3d(0px, 2px, 0);"
   >
     <div
       class="menuContainer"

@@ -1,8 +1,8 @@
 import * as React from "react";
 import { CSSTransition } from "react-transition-group";
 import styles from "./Menu.module.scss";
-import { getMenuAlignmentCalculations } from "../../utility/getMenuAlignmentCalculations"
-import { useOnClickOutside } from "../../hooks";
+import { getMenuAlignmentCalculations } from "../../utility/getMenuAlignmentCalculations";
+import { MenuContainer } from "./MenuContainer";
 
 export type MenuAlignment =
   | "bottomLeft"
@@ -51,36 +51,12 @@ export const Menu: React.FC<MenuProps> = (props) => {
     trigger,
   } = props;
 
-  const [focusedMenuItem, setFocusedMenuItem] = React.useState<number>(0);
-
   const menuRef = React.useRef<HTMLDivElement>(null);
 
   const [menuAlignmentStyle, setMenuAlignmentStyle] =
     React.useState<React.CSSProperties | undefined>(undefined);
 
   const triggerRef = React.useRef<HTMLDivElement>(null);
-
-  const lastIndex = React.Children.count(children) - 1;
-
-  const focusNextItem = () => {
-    setFocusedMenuItem((prevIndex) =>
-      prevIndex + 1 > lastIndex ? 0 : prevIndex + 1
-    );
-  };
-
-  const focusPreviousItem = () => {
-    setFocusedMenuItem((prevIndex) =>
-      prevIndex - 1 < 0 ? lastIndex : prevIndex - 1
-    );
-  };
-
-  React.useEffect(() => {
-    if (isOpen) {
-      const menuContainer = menuRef.current?.children[0] as HTMLElement;
-      const menuItem = menuContainer.children[focusedMenuItem] as HTMLElement;
-      menuItem?.focus();
-    }
-  }, [isOpen, focusedMenuItem]);
 
   React.useLayoutEffect(() => {
     setMenuAlignmentStyle(
@@ -91,8 +67,6 @@ export const Menu: React.FC<MenuProps> = (props) => {
       })
     );
   }, []);
-
-  useOnClickOutside(triggerRef, onClose);
 
   return (
     <div className={styles.container}>
@@ -134,40 +108,14 @@ export const Menu: React.FC<MenuProps> = (props) => {
                 }
           }
         >
-          <div className={styles.menuContainer} role="menu">
-            {React.Children.map(children, (child, index) => {
-              if (
-                React.isValidElement<React.HTMLAttributes<HTMLElement>>(child)
-              ) {
-                return React.cloneElement(child, {
-                  key: index,
-                  onClick: () => {
-                    onClose(child.props.children as string);
-                  },
-                  onKeyDown: (event: any) => {
-                    if (event.code === "Escape") {
-                      onClose();
-                      triggerRef.current?.focus();
-                    }
-                    if (event.code === "Enter") {
-                      onClose(child.props.children as string);
-                      setTimeout(() => triggerRef.current?.focus());
-                    }
-                    if (event.code === "ArrowUp") {
-                      focusPreviousItem();
-                    }
-                    if (event.code === "ArrowDown") {
-                      focusNextItem();
-                    }
-                  },
-                  role: "menuitem",
-                  tabIndex: index === focusedMenuItem ? 0 : undefined,
-                });
-              } else {
-                return null;
-              }
-            })}
-          </div>
+          <MenuContainer
+            isOpen={isOpen}
+            menuRef={menuRef}
+            onClose={onClose}
+            triggerRef={triggerRef}
+          >
+            {children}
+          </MenuContainer>
         </CSSTransition>
       </div>
     </div>

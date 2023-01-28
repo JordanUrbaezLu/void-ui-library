@@ -8,8 +8,7 @@ export default {
 };
 
 const Template: Story<Omit<SwitchProps, "isOn" | "onClick">> = (args) => {
-  const [switchState, toggleSwitchState] =
-    React.useState<boolean>(true);
+  const [switchState, toggleSwitchState] = React.useState<boolean>(true);
 
   return (
     <Switch
@@ -22,24 +21,7 @@ const Template: Story<Omit<SwitchProps, "isOn" | "onClick">> = (args) => {
 
 export const Default = Template.bind({});
 
-export const Primary = Template.bind({});
-Primary.args = {
-  variant: "primary",
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  variant: "secondary",
-};
-
-export const PrimaryAndLabel = Template.bind({});
-PrimaryAndLabel.args = {
+export const Label = Template.bind({});
+Label.args = {
   label: " Switch Label",
-  variant: "primary",
-};
-
-export const SecondaryAndLabel = Template.bind({});
-SecondaryAndLabel.args = {
-  label: " Switch Label",
-  variant: "secondary",
 };

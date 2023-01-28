@@ -20,46 +20,24 @@
   width: 42px;
   transition: all 0.15s ease-in;
 
-  &.primary {
-    &::before {
-      background: white;
-      border-radius: 999px;
-      content: "";
-      display: inline-block;
-      top: 3px;
-      right: 23px;
-      height: 16px;
-      width: 16px;
-      position: absolute;
-      transition: all 0.15s ease-in;
-    }
-  }
-
-  &.secondary {
-    &::before {
-      background: white;
-      border-radius: 999px;
-      content: "";
-      display: inline-block;
-      top: 3px;
-      right: 23px;
-      height: 16px;
-      width: 16px;
-      position: absolute;
-      transition: all 0.15s ease-in;
-    }
+  &::before {
+    background: white;
+    border-radius: 999px;
+    content: "";
+    display: inline-block;
+    top: 3px;
+    right: 23px;
+    height: 16px;
+    width: 16px;
+    position: absolute;
+    transition: all 0.15s ease-in;
   }
 
   &.on {
-    &.primary {
-      background: globals.$primary-color;
-    }
-
-    &.secondary {
-      background: globals.$secondary-color;
-    }
+    background: globals.$secondary-border-color-hover-and-focus;
 
     &::before {
+      background-color: globals.$secondary-background-color-active;
       transform: translateX(20px);
     }
   }
@@ -71,12 +49,6 @@
   transition: all 0.15s ease-in;
 
   &.on {
-    &.primary {
-      color: globals.$primary-color;
-    }
-
-    &.secondary {
-      color: globals.$secondary-color;
-    }
+    color: globals.$secondary-text-color-hover-and-focus;
   }
 }

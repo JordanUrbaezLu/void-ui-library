@@ -2,18 +2,18 @@ name: Deploy
 
 on:
   pull_request:
-    branches: 
+    branches:
       - main
     types: [closed]
 
-jobs: 
+jobs:
   deploy:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-        with: 
+        with:
           node-version: 16
       - run: npm ci
       - run: npm run build-storybook

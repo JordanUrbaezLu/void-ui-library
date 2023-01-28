@@ -7,7 +7,7 @@ import styles from "./DatePicker.module.scss";
 
 export interface DatePickerProps {
   /**
-   * The selected date for the  Date Picker
+   * The selected date for the DatePicker
    */
   selectedDate?: Date;
   /**
@@ -21,41 +21,45 @@ export interface DatePickerProps {
 }
 
 export const DatePicker: React.FC<DatePickerProps> = (props) => {
+  const triggerRef = React.useRef<HTMLDivElement>(null);
   const { selectedDate, setValue, value } = props;
 
   const [selected, setSelected] =
     React.useState<Date | undefined>(selectedDate);
   const [showCalendar, setShowCalendar] = React.useState<boolean>(false);
 
-  const setDate = (date: Date) => {
-    setValue(getDateString(date));
-    setSelected(date);
-    setShowCalendar((prev) => !prev);
+  const setDate = (date?: Date) => {
+    if (date) {
+      setValue(getDateString(date));
+      setSelected(date);
+      setShowCalendar((prev) => !prev);
+    } else {
+      setShowCalendar((prev) => !prev);
+    }
   };
 
   return (
-    <>
-      <TextField
-        onChange={() => {}}
-        trailingIcon={
-          <AiFillCalendar
-            className={styles.datePickerIconContainer}
-            onClick={() => setShowCalendar(!showCalendar)}
-            onKeyDown={(event) => {
-              if (event.code === "Enter") {
-                setShowCalendar(!showCalendar);
-              }
-            }}
-            tabIndex={0}
-          />
-        }
-        value={value}
-      />
+    <div className={styles.container}>
+      <TextField onChange={() => {}} value={value} label="Select a Date" />
+      <div ref={triggerRef}>
+        <AiFillCalendar
+          className={styles.datePickerIconContainer}
+          onClick={() => setShowCalendar(!showCalendar)}
+          onKeyDown={(event) => {
+            if (event.code === "Enter") {
+              setShowCalendar(!showCalendar);
+            }
+          }}
+          size={21}
+          tabIndex={0}
+        />
+      </div>
       <DatePickerCalendar
         isOpen={showCalendar}
-        onSetDate={setDate}
+        onClose={setDate}
         selectedDate={selected}
+        triggerRef={triggerRef}
       />
-    </>
+    </div>
   );
 };

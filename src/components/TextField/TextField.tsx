@@ -2,7 +2,6 @@ import classNames from "classnames";
 import * as React from "react";
 import styles from "./TextField.module.scss";
 
-export type TextFieldVariant = "primary" | "secondary" | "tertiary";
 export type TextFieldSize = "small" | "medium" | "large";
 export type TextFieldType =
   | "email"
@@ -14,7 +13,7 @@ export type TextFieldType =
   | "time"
   | "url";
 
-export interface TextFieldProps {
+export interface TextFieldProps extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * If the TextField is disabled
    *
@@ -48,27 +47,29 @@ export interface TextFieldProps {
    */
   type?: TextFieldType;
   /**
+   * If the TextField is selectable
+   *
+   * @default true
+   */
+  selectable?: boolean;
+  /**
    * The value for the TextField
    */
   value?: string;
-  /**
-   * The variant for the TextField
-   *
-   * @default "primary"
-   */
-  variant?: TextFieldVariant;
 }
 
 export const TextField: React.FC<TextFieldProps> = (props) => {
   const {
-    variant = "primary",
+    className,
     size = "medium",
     trailingIcon,
     disabled = false,
     onChange,
+    selectable = true,
     type = "text",
     label = "textfield",
     value,
+    ...rest
   } = props;
 
   const inputContainer = classNames(
@@ -78,9 +79,6 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
 
   const classes = classNames(
     styles.textField,
-    variant === "primary" && styles.primary,
-    variant === "secondary" && styles.secondary,
-    variant === "tertiary" && styles.tertiary,
     size === "small" && styles.small,
     size === "medium" && styles.medium,
     size === "large" && styles.large,
@@ -103,15 +101,33 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
     disabled && styles.disabledLabel
   );
 
+  // Make textfield not selectable 
+  React.useEffect(() => {
+    if (!selectable) {
+      const textfield = document.getElementById(
+        "void_textfield"
+      ) as HTMLInputElement;
+      textfield?.addEventListener(
+        "select",
+        () => {
+          textfield.selectionStart = textfield.selectionEnd;
+        },
+        false
+      );
+    }
+  }, []);
+
   return (
-    <div className={styles.container}>
+    <div className={styles.container} {...rest}>
       <div className={inputContainer}>
         <input
           aria-label={label}
-          className={classes}
+          id="void_textfield"
+          className={classNames(classes, className)}
           disabled={disabled}
           required
           onChange={onChange}
+          spellCheck={false}
           type={type}
           value={value}
         />

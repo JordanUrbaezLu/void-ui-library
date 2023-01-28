@@ -1,11 +1,18 @@
+@use "../../utility/globals";
+
 .menuItemContainer {
-  color: white;
+  color: globals.$primary-text-color;
   cursor: pointer;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  padding: 0px 8px;
+  padding: 2px 8px;
   user-select: none;
+  outline: none;
   &:hover,
   &:focus {
-    background-color: rgb(80, 80, 80);
+    background-color: globals.$primary-background-color-hover-and-focus;
+  }
+
+  &:active {
+    background-color: globals.$primary-background-color-active;
   }
 }

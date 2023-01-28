@@ -1,8 +1,10 @@
+@use "../../utility/globals";
+
 .alertContainer {
   display: flex;
   align-items: center;
   border-radius: 8px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: globals.$font-family;
   font-size: 14px;
   padding: 10px 12px;
   min-width: 250px;

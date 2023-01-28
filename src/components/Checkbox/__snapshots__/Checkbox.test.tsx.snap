@@ -9,7 +9,7 @@ exports[`Switch Should render component correctly. 1`] = `
     class="checkbox"
   >
     <svg
-      class="checkboxIcon primary"
+      class="checkboxIcon"
       fill="currentColor"
       height="34"
       stroke="currentColor"
@@ -26,11 +26,11 @@ exports[`Switch Should render component correctly. 1`] = `
       />
     </svg>
     <div
-      class="checkboxBorder primary"
+      class="checkboxBorder"
     />
   </div>
   <span
-    class="checkboxLabel primary checked"
+    class="checkboxLabel checked"
   >
     Checkbox Label
   </span>

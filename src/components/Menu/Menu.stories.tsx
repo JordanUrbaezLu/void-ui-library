@@ -12,34 +12,21 @@ export default {
 const Template: Story<
   Omit<MenuProps, "children" | "isOpen" | "onClose" | "onOpen" | "trigger">
 > = (args) => {
-  const [value, setValue] = React.useState<string | undefined>(undefined);
   const [isOpen, setIsOpen] = React.useState<boolean>(true);
 
   return (
-    <>
-      <div
-        style={{ fontFamily: "Verdana", paddingBottom: "4px", width: "200px" }}
-      >
-        Value: {value}
-      </div>
-      <Menu
-        {...args}
-        isOpen={isOpen}
-        onOpen={() => setIsOpen(true)}
-        onClose={(itemValue) => {
-          setIsOpen(false);
-          if (itemValue !== undefined) {
-            setValue(itemValue);
-          }
-        }}
-        trigger={<Button>Trigger</Button>}
-      >
-        <MenuItem>Menu Item One</MenuItem>
-        <MenuItem>Menu Item Two</MenuItem>
-        <MenuItem>Menu Item Three</MenuItem>
-        <MenuItem>Menu Item Four</MenuItem>
-      </Menu>
-    </>
+    <Menu
+      {...args}
+      isOpen={isOpen}
+      onOpen={() => setIsOpen(true)}
+      onClose={() => setIsOpen(false)}
+      trigger={<Button variant="secondary">Trigger</Button>}
+    >
+      <MenuItem>Menu Item One</MenuItem>
+      <MenuItem>Menu Item Two</MenuItem>
+      <MenuItem>Menu Item Three</MenuItem>
+      <MenuItem>Menu Item Four</MenuItem>
+    </Menu>
   );
 };
 

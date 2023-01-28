@@ -3,15 +3,15 @@
 exports[`Switch Should render component correctly. 1`] = `
 <button
   aria-checked="true"
-  class="switchPill primary on"
+  class="switchPill on"
   role="switch"
   type="button"
 >
   <span
-    class="switchIndicator primary on"
+    class="switchIndicator on"
   />
   <span
-    class="switchLabel primary on"
+    class="switchLabel on"
   >
      Switch Label
   </span>
