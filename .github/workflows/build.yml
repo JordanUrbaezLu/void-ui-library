@@ -1,16 +1,16 @@
-name: Storybook Build
+name: Build
 
 on:
   pull_request:
     branches: [main]
 
 jobs:
-  storybook-build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 16
-      - run: npm ci
-      - run: npm run build-storybook
+      - run: npm install && npm install -g rollup
+      - run: npm run build

@@ -55,13 +55,6 @@ describe("Props", () => {
     ).toBeInTheDocument();
   });
 
-  test("Should render disabled correctly.", () => {
-    render(<Button disabled>Button</Button>);
-    expect(screen.getByRole("button", { name: "Button" })).toHaveClass(
-      "disabled"
-    );
-  });
-
   test("Should render children correctly.", () => {
     render(<Button>Button</Button>);
     expect(

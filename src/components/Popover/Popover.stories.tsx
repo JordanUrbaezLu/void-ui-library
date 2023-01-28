@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Story } from "@storybook/react";
 import { Popover, PopoverProps } from "./Popover";
 import { Button } from "../Button/Button";
@@ -9,18 +8,13 @@ export default {
 };
 
 const Template: Story<
-  Omit<PopoverProps, "children" | "isOpen" | "toggleOpen" | "trigger">
+  Omit<PopoverProps, "children" | "startsOpen" | "trigger">
 > = (args) => {
-  const [isOpen, setIsOpen] = React.useState<boolean>(true);
-
   return (
     <Popover
       {...args}
-      isOpen={isOpen}
-      toggleOpen={() => setIsOpen(!isOpen)}
-      trigger={
-        <Button onClick={() => setIsOpen(!isOpen)}>Trigger</Button>
-      }
+      startsOpen
+      trigger={<Button variant="secondary">Trigger</Button>}
     />
   );
 };

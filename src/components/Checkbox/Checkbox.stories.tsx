@@ -7,40 +7,14 @@ export default {
   title: "Components/Checkbox",
 };
 
-const Template: Story<Omit<CheckboxProps, "isOn" | "onClick">> = (
-  args
-) => {
+export const Default = () => {
   const [isChecked, setIsChecked] = React.useState<boolean>(true);
 
   return (
     <Checkbox
-      {...args}
       isChecked={isChecked}
-      onClick={() => setIsChecked(!isChecked)}
+      onChange={() => setIsChecked(!isChecked)}
+      label="Checkbox"
     />
   );
-};
-
-export const Default = Template.bind({});
-
-export const Primary = Template.bind({});
-Primary.args = {
-  variant: "primary",
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  variant: "secondary",
-};
-
-export const PrimaryAndLabel = Template.bind({});
-PrimaryAndLabel.args = {
-  label: "Checkbox Label",
-  variant: "primary",
-};
-
-export const SecondaryAndLabel = Template.bind({});
-SecondaryAndLabel.args = {
-  label: "Checkbox Label",
-  variant: "secondary",
 };

@@ -3,7 +3,7 @@
 .container {
   display: flex;
   flex-direction: row;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: globals.$font-family;
 }
 
 .textFieldContainer {
@@ -17,141 +17,66 @@
 }
 
 .textField {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: 3px solid globals.$primary-background-color;
+  color: globals.$primary-background-color;
+  font-family: globals.$font-family;
   outline: none;
 
-  &.primary {
-    border: 3px solid globals.$primary-color;
+  &:hover,
+  &:focus {
+    border: 3px solid globals.$primary-background-color-hover-and-focus;
+  }
 
-    &:focus {
-      border: 3px solid globals.$primary-color-pseudo-class;
-    }
+  &:active {
+    border: 3px solid globals.$primary-background-color-active;
+  }
 
-    &.small {
-      border-radius: 6px;
-      font-size: 12px;
-      padding: 4px;
+  &.small {
+    border-radius: 6px;
+    font-size: 12px;
+    padding: 2px;
 
-      &:focus ~ .label,
-      &:valid ~ .label {
-        transform: translateX(-6px) translateY(-12px) scale(0.8);
-        color: globals.$primary-color;
-      }
-    }
-
-    &.medium {
-      border-radius: 8px;
-      font-size: 18px;
-      padding: 6px;
-
-      &:focus ~ .label,
-      &:valid ~ .label {
-        transform: translateX(-9px) translateY(-18px) scale(0.8);
-        color: globals.$primary-color;
-      }
-    }
-
-    &.large {
-      border-radius: 10px;
-      font-size: 24px;
-      padding: 8px;
-
-      &:focus ~ .label,
-      &:valid ~ .label {
-        transform: translateX(-12px) translateY(-24px) scale(0.8);
-        color: globals.$primary-color;
-      }
+    &:focus ~ .label,
+    &:valid ~ .label {
+      transform: translateY(-13px);
+      color: globals.$primary-background-color-hover-and-focus;
+      font-weight: 700;
+      margin-left: 6px;
+      font-size: 10px;
     }
   }
 
-  &.secondary {
-    border: 3px solid globals.$secondary-color;
+  &.medium {
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 4px;
 
-    &:focus {
-      border: 3px solid globals.$secondary-color-pseudo-class;
-    }
-
-    &.small {
-      border-radius: 6px;
-      font-size: 12px;
-      padding: 4px;
-
-      &:focus ~ .label,
-      &:valid ~ .label {
-        transform: translateX(-6px) translateY(-12px) scale(0.8);
-        color: globals.$secondary-color;
-      }
-    }
-
-    &.medium {
-      border-radius: 8px;
-      font-size: 18px;
-      padding: 6px;
-
-      &:focus ~ .label,
-      &:valid ~ .label {
-        transform: translateX(-9px) translateY(-18px) scale(0.8);
-        color: globals.$secondary-color;
-      }
-    }
-
-    &.large {
-      border-radius: 10px;
-      font-size: 24px;
-      padding: 8px;
-
-      &:focus ~ .label,
-      &:valid ~ .label {
-        transform: translateX(-12px) translateY(-24px) scale(0.8);
-        color: globals.$secondary-color;
-      }
+    &:focus ~ .label,
+    &:valid ~ .label {
+      transform: translateY(-18px);
+      color: globals.$primary-background-color-hover-and-focus;
+      font-weight: 700;
+      margin-left: 8px;
+      font-size: 14px;
     }
   }
 
-  &.tertiary {
-    border: 3px solid globals.$tertiary-color;
+  &.large {
+    border-radius: 10px;
+    font-size: 24px;
+    padding: 6px;
 
-    &:focus {
-      border: 3px solid globals.$tertiary-color-pseudo-class;
-    }
-
-    &.small {
-      border-radius: 6px;
-      font-size: 12px;
-      padding: 4px;
-
-      &:focus ~ .label,
-      &:valid ~ .label {
-        transform: translateX(-6px) translateY(-12px) scale(0.8);
-        color: globals.$tertiary-color;
-      }
-    }
-
-    &.medium {
-      border-radius: 8px;
+    &:focus ~ .label,
+    &:valid ~ .label {
+      transform: translateY(-24px);
+      color: globals.$primary-background-color-hover-and-focus;
+      font-weight: 700;
+      margin-left: 10px;
       font-size: 18px;
-      padding: 6px;
-
-      &:focus ~ .label,
-      &:valid ~ .label {
-        transform: translateX(-9px) translateY(-18px) scale(0.8);
-        color: globals.$tertiary-color;
-      }
-    }
-
-    &.large {
-      border-radius: 10px;
-      font-size: 24px;
-      padding: 8px;
-
-      &:focus ~ .label,
-      &:valid ~ .label {
-        transform: translateX(-12px) translateY(-24px) scale(0.8);
-        color: globals.$tertiary-color;
-      }
     }
   }
 }
+
 .icon {
   display: flex;
   align-items: center;
@@ -183,19 +108,19 @@
     margin-left: 6px;
     font-size: 12px;
     margin-top: 6px;
-    padding: 0px 2px;
+    padding: 0px 1px;
   }
   &.labelMedium {
     margin-left: 6px;
     font-size: 18px;
     margin-top: 8px;
-    padding: 0px 3px;
+    padding: 0px 2px;
   }
   &.labelLarge {
     margin-left: 12px;
     font-size: 24px;
     margin-top: 10px;
-    padding: 0px 4px;
+    padding: 0px 2px;
   }
   &.disabledLabel {
     background-color: rgb(220, 220, 220);

@@ -6,7 +6,7 @@
   text-decoration: none;
 
   &.primary {
-    color: globals.$primary-color;
+    color: globals.$primary-background-color;
   }
 
   &.primary::after {
@@ -18,12 +18,12 @@
     bottom: 0;
     left: 0;
     transform-origin: bottom right;
-    background-color: globals.$primary-color;
+    background-color: globals.$primary-background-color;
     transition: transform 0.25s ease-out;
   }
 
   &.secondary {
-    color: globals.$secondary-color;
+    color: globals.$secondary-text-color-hover-and-focus;
   }
 
   &.secondary::after {
@@ -35,7 +35,7 @@
     bottom: 0;
     left: 0;
     transform-origin: bottom right;
-    background-color: globals.$secondary-color;
+    background-color: globals.$secondary-text-color-hover-and-focus;
     transition: transform 0.25s ease-out;
   }
 

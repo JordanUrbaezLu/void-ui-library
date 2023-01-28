@@ -1,9 +1,13 @@
 import { render, screen } from "@testing-library/react";
-import { Switch, SwitchVariant } from "./Switch";
+import { Switch } from "./Switch";
 import { axe } from "jest-axe";
 
 describe("Switch", () => {
   test("Should render component correctly.", () => {
+    // Fixes some jest-axe issues
+    const { getComputedStyle } = window;
+    window.getComputedStyle = (elt) => getComputedStyle(elt);
+    // Fixes some jest-axe issues
     const { container } = render(
       <Switch isOn onClick={jest.fn()} label=" Switch Label" />
     );
@@ -28,19 +32,4 @@ describe("Props", () => {
     render(<Switch isOn onClick={jest.fn()} label={label} />);
     expect(screen.getByRole("switch")).toHaveTextContent(label);
   });
-
-  test.each<SwitchVariant>(["primary", "secondary"])(
-    "Should render variant correctly.",
-    (variant) => {
-      render(
-        <Switch
-          isOn
-          onClick={jest.fn()}
-          label="Switch Label"
-          variant={variant}
-        />
-      );
-      expect(screen.getByRole("switch")).toHaveClass(variant);
-    }
-  );
 });

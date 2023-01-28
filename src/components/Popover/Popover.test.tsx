@@ -5,12 +5,7 @@ import { axe } from "jest-axe";
 describe("Popover", () => {
   test("Should render component correctly.", () => {
     const { container } = render(
-      <Popover
-        isOpen
-        text="Popover"
-        toggleOpen={jest.fn}
-        trigger={<button>Button</button>}
-      />
+      <Popover startsOpen text="Popover" trigger={<button>Button</button>} />
     );
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -19,12 +14,7 @@ describe("Popover", () => {
 describe("Accessibility", () => {
   test("Should have no accessibility violations.", async () => {
     const { container } = render(
-      <Popover
-        isOpen
-        text="Popover"
-        toggleOpen={jest.fn}
-        trigger={<button>Button</button>}
-      />
+      <Popover startsOpen text="Popover" trigger={<button>Button</button>} />
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
@@ -34,12 +24,7 @@ describe("Accessibility", () => {
 describe("Props", () => {
   test("Should render text correctly.", () => {
     render(
-      <Popover
-        isOpen
-        text="Popover"
-        toggleOpen={jest.fn}
-        trigger={<button>Button</button>}
-      />
+      <Popover startsOpen text="Popover" trigger={<button>Button</button>} />
     );
     expect(screen.getByText("Popover")).toBeInTheDocument();
   });
@@ -48,10 +33,9 @@ describe("Props", () => {
     (position) => {
       render(
         <Popover
-          isOpen
+          startsOpen
           position={position}
           text="Popover"
-          toggleOpen={jest.fn}
           trigger={<button>Button</button>}
         />
       );
@@ -60,12 +44,7 @@ describe("Props", () => {
   );
   test("Should render trigger correctly.", () => {
     render(
-      <Popover
-        isOpen
-        text="Popover"
-        toggleOpen={jest.fn}
-        trigger={<button>Button</button>}
-      />
+      <Popover startsOpen text="Popover" trigger={<button>Button</button>} />
     );
     expect(screen.getByRole("button", { name: "Button" })).toBeInTheDocument();
   });
@@ -73,21 +52,19 @@ describe("Props", () => {
     render(
       <Popover
         hasNubbin
-        isOpen
+        startsOpen
         text="Popover"
-        toggleOpen={jest.fn}
         trigger={<button>Button</button>}
       />
     );
     expect(screen.getByText("Popover")).toHaveClass("nubbin");
   });
-  test("Should render isOpen correctly.", () => {
+  test("Should render startsOpen correctly.", () => {
     render(
       <div data-testid="div">
         <Popover
-          isOpen={false}
+          startsOpen={false}
           text="Popover"
-          toggleOpen={jest.fn}
           trigger={<button>Button</button>}
         />
       </div>

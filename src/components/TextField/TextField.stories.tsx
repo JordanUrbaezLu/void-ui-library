@@ -1,20 +1,14 @@
 import { Story } from "@storybook/react";
 import * as React from "react";
 import { AiFillEye, AiOutlineArrowRight } from "react-icons/ai";
-import {
-  TextField,
-  TextFieldProps,
-  TextFieldType,
-} from "./TextField";
+import { TextField, TextFieldProps, TextFieldType } from "./TextField";
 
 export default {
   component: TextField,
   title: "Components/TextField",
 };
 
-const Template: Story<Omit<TextFieldProps, "value" | "onChange">> = (
-  args
-) => {
+const Template: Story<Omit<TextFieldProps, "value" | "onChange">> = (args) => {
   const [value, setValue] = React.useState<string>("");
 
   return (
@@ -29,21 +23,6 @@ const Template: Story<Omit<TextFieldProps, "value" | "onChange">> = (
 };
 
 export const Default = Template.bind({});
-
-export const Primary = Template.bind({});
-Primary.args = {
-  variant: "primary",
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  variant: "secondary",
-};
-
-export const Tertiary = Template.bind({});
-Tertiary.args = {
-  variant: "tertiary",
-};
 
 export const Small = Template.bind({});
 Small.args = {
@@ -107,11 +86,30 @@ export const TrailingIconAndPasswordType = () => {
   );
 };
 
-export const AllProps = Template.bind({});
-AllProps.args = {
-  variant: "secondary",
-  size: "small",
-  type: "password",
-  trailingIcon: <AiFillEye />,
-  label: "TextField",
+export const AllProps = () => {
+  const [value, setValue] = React.useState<string>("");
+  const [type, setType] = React.useState<TextFieldType>("password");
+
+  return (
+    <TextField
+      label="TextField"
+      size="small"
+      onChange={(event) => {
+        setValue(event.target.value);
+      }}
+      trailingIcon={
+        <AiFillEye
+          onClick={() => {
+            if (type === "password") {
+              setType("text");
+            } else {
+              setType("password");
+            }
+          }}
+        />
+      }
+      type={type}
+      value={value}
+    />
+  );
 };

@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import {
   TextField,
   TextFieldSize,
-  TextFieldVariant,
   TextFieldType,
 } from "./TextField";
 import { axe } from "jest-axe";
@@ -27,14 +26,6 @@ describe("Accessibility", () => {
 });
 
 describe("Props", () => {
-  test.each<TextFieldVariant>(["primary", "secondary", "tertiary"])(
-    "Should render variants correctly.",
-    (variant) => {
-      render(<TextField onChange={jest.fn()} variant={variant} />);
-      expect(screen.getByLabelText("textfield")).toHaveClass(variant);
-    }
-  );
-
   test.each<TextFieldSize>(["small", "medium", "large"])(
     "Should render size correctly.",
     (size) => {

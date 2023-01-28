@@ -7,15 +7,7 @@
   top: 0;
   position: absolute;
   z-index: 1;
-}
-
-.menuContainer {
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(50, 50, 50);
-  border-radius: 4px;
-  padding: 6px 0px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  white-space: nowrap;
 }
 
 .enterBottom {
