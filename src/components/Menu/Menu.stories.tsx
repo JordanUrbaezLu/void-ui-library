@@ -20,7 +20,7 @@ const Template: Story<
       isOpen={isOpen}
       onOpen={() => setIsOpen(true)}
       onClose={() => setIsOpen(false)}
-      trigger={<Button variant="secondary">Trigger</Button>}
+      trigger={<Button variant="secondary">Click Me!</Button>}
     >
       <MenuItem>Menu Item One</MenuItem>
       <MenuItem>Menu Item Two</MenuItem>

@@ -9,7 +9,14 @@ export default {
 
 const Template: Story<DatePickerProps> = () => {
   const [value, setValue] = React.useState<string>("");
-  return <DatePicker setValue={setValue} value={value} />;
+  return (
+    <DatePicker
+      selected={new Date(2022, 5, 2)}
+      setValue={setValue}
+      startsOpen
+      value={value}
+    />
+  );
 };
 
 export const Default = Template.bind({});
