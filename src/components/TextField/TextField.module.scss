@@ -3,6 +3,7 @@
 .container {
   display: flex;
   flex-direction: row;
+  align-items: center;
   font-family: globals.$font-family;
 }
 
@@ -74,27 +75,6 @@
       margin-left: 10px;
       font-size: 18px;
     }
-  }
-}
-
-.icon {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  user-select: none;
-  &.iconSmall {
-    font-size: 21px;
-    padding: 1px;
-  }
-
-  &.iconMedium {
-    font-size: 28px;
-    padding: 3px;
-  }
-
-  &.iconLarge {
-    font-size: 35px;
-    padding: 5px;
   }
 }
 

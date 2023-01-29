@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 12px;
+  padding: 8px;
 }
 
 .datePickerCalendarNavigationMonth {
@@ -27,28 +27,26 @@
 }
 
 .datePickerCalendarNavigationIcon {
+  color: globals.$primary-text-color !important;
   cursor: pointer;
   padding: 8px;
   outline: none;
   border-radius: 1000px;
-  border: 2px solid transparent;
 
   &:hover,
   &:focus {
-    background-color: globals.$primary-background-color-hover-and-focus;
-    border: 2px solid globals.$primary-background-color-hover-and-focus;
+    background-color: globals.$primary-background-color-hover-and-focus !important;
   }
 
   &:active {
-    background-color: globals.$primary-background-color-active;
-    border: 2px solid globals.$primary-background-color-active;
+    background-color: globals.$primary-background-color-active !important;
   }
 }
 
 .datePickerCalendarHeaderContainer {
   display: flex;
   flex-direction: row;
-  padding: 4px 12px;
+  padding: 2px 12px;
 }
 
 .datePickerCalendarHeaderLabel {
@@ -108,5 +106,5 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 8px 6px;
+  padding: 6px 4px;
 }
