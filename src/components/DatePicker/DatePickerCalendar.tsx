@@ -16,7 +16,7 @@ export interface DatePickerCalendarProps {
   /**
    * The trigger ref for the DatePicker
    */
-  triggerRef: React.RefObject<HTMLDivElement>;
+  triggerRef: React.RefObject<HTMLButtonElement>;
 }
 
 export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = (

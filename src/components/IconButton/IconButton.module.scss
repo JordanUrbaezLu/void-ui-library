@@ -1,0 +1,38 @@
+@use "../../utility/globals";
+
+.iconButton {
+  background-color: transparent;
+  border: none;
+  color: globals.$primary-background-color;
+  outline: none;
+  border-radius: 999px;
+  cursor: pointer;
+
+  &.small {
+    padding: 7px;
+    max-width: 32px;
+    max-height: 32px;
+  }
+
+  &.medium {
+    padding: 8px;
+    max-width: 38px;
+    max-height: 38px;
+  }
+
+  &.large {
+    padding: 9px;
+    max-width: 44px;
+    max-height: 44px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: globals.$primary-text-color;
+  }
+
+  &:active {
+    background-color: globals.$primary-background-color-active;
+    color: globals.$primary-text-color;
+  }
+}

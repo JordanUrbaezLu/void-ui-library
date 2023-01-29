@@ -2,7 +2,12 @@ import * as React from "react";
 import styles from "./BaseDatePickerCalendar.module.scss";
 import classNames from "classnames";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
-import { IoChevronBackSharp, IoChevronForwardSharp } from "react-icons/io5";
+import {
+  TfiAngleLeft,
+  TfiAngleRight,
+  TfiAngleDoubleRight,
+  TfiAngleDoubleLeft,
+} from "react-icons/tfi";
 import {
   getCalendarDays,
   getNextDay,
@@ -13,6 +18,7 @@ import {
 import { DatePickerContext } from "./DatePickerContext";
 import { Button } from "../Button";
 import FocusTrap from "focus-trap-react";
+import { IconButton } from "../IconButton/IconButton";
 
 export interface BaseDatePickerCalendarProps {
   /**
@@ -22,7 +28,7 @@ export interface BaseDatePickerCalendarProps {
   /**
    * The trigger ref for the DatePicker
    */
-  triggerRef: React.RefObject<HTMLDivElement>;
+  triggerRef: React.RefObject<HTMLButtonElement>;
 }
 
 export const BaseDatePickerCalendar: React.FC<BaseDatePickerCalendarProps> = (
@@ -42,8 +48,16 @@ export const BaseDatePickerCalendar: React.FC<BaseDatePickerCalendarProps> = (
     setDate(new Date(date.getFullYear(), date.getMonth() + 1, date.getDate()));
   };
 
+  const increaseYear = () => {
+    setDate(new Date(date.getFullYear() + 1, date.getMonth(), date.getDate()));
+  };
+
   const decreaseMonth = () => {
     setDate(new Date(date.getFullYear(), date.getMonth() - 1, date.getDate()));
+  };
+
+  const decreaseYear = () => {
+    setDate(new Date(date.getFullYear() - 1, date.getMonth(), date.getDate()));
   };
 
   React.useEffect(() => {
@@ -61,36 +75,44 @@ export const BaseDatePickerCalendar: React.FC<BaseDatePickerCalendarProps> = (
     <FocusTrap
       focusTrapOptions={{
         allowOutsideClick: true,
-        escapeDeactivates: false,
+        escapeDeactivates: true,
       }}
     >
       <div className={styles.datePickerCalendarContainer} ref={calendarRef}>
         <div className={styles.datePickerCalendarNavigationContainer}>
-          <IoChevronBackSharp
-            className={styles.datePickerCalendarNavigationIcon}
-            onClick={decreaseMonth}
-            onKeyDown={(event) => {
-              if (event.key === "Enter") {
-                decreaseMonth();
-              }
-            }}
-            tabIndex={0}
-          />
+          <div style={{ display: "flex", gap: "2px" }}>
+            <IconButton
+              className={styles.datePickerCalendarNavigationIcon}
+              content={<TfiAngleDoubleLeft />}
+              size="medium"
+              onClick={decreaseYear}
+            />
+            <IconButton
+              className={styles.datePickerCalendarNavigationIcon}
+              content={<TfiAngleLeft />}
+              size="medium"
+              onClick={decreaseMonth}
+            />
+          </div>
           <div className={styles.datePickerCalendarNavigationMonth}>
             {`${date.toLocaleString("en-US", {
               month: "long",
             })} ${date.getFullYear()}`}
           </div>
-          <IoChevronForwardSharp
-            className={styles.datePickerCalendarNavigationIcon}
-            onClick={increaseMonth}
-            onKeyDown={(event) => {
-              if (event.key === "Enter") {
-                increaseMonth();
-              }
-            }}
-            tabIndex={0}
-          />
+          <div style={{ display: "flex", gap: "2px" }}>
+            <IconButton
+              className={styles.datePickerCalendarNavigationIcon}
+              content={<TfiAngleRight />}
+              size="medium"
+              onClick={increaseMonth}
+            />
+            <IconButton
+              className={styles.datePickerCalendarNavigationIcon}
+              content={<TfiAngleDoubleRight />}
+              size="medium"
+              onClick={increaseYear}
+            />
+          </div>
         </div>
         <div className={styles.datePickerCalendarHeaderContainer}>
           {headerLabels.map((label, index) => {

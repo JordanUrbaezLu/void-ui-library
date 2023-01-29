@@ -5,10 +5,11 @@ import { DatePickerCalendar } from "./DatePickerCalendar";
 import { TextField } from "../TextField/TextField";
 import styles from "./DatePicker.module.scss";
 import { DatePickerContext } from "./DatePickerContext";
+import { IconButton } from "../IconButton/IconButton";
 
 export interface DatePickerProps {
   /**
-   * The selected date for the DatePicker
+   * The initial selected date for the DatePicker
    */
   selected?: Date;
   /**
@@ -28,8 +29,9 @@ export interface DatePickerProps {
 }
 
 export const DatePicker: React.FC<DatePickerProps> = (props) => {
-  const triggerRef = React.useRef<HTMLDivElement>(null);
   const { selected, setValue, startsOpen = false, value } = props;
+
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
 
   const [selectedDate, setSelectedDate] =
     React.useState<Date | undefined>(selected);
@@ -49,22 +51,14 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
         value={value}
         label="Select a Date"
         trailingIcon={
-          <div style={{ maxWidth: "34px", maxHeight: "34px" }} ref={triggerRef}>
-            <AiFillCalendar
-              className={styles.datePickerIconContainer}
-              onClick={() => setShowCalendar(!showCalendar)}
-              onKeyDown={(event) => {
-                if (event.code === "Enter") {
-                  setShowCalendar(!showCalendar);
-                }
-              }}
-              size={21}
-              tabIndex={0}
-            />
-          </div>
+          <IconButton
+            content={<AiFillCalendar />}
+            size="medium"
+            onClick={() => setShowCalendar(!showCalendar)}
+            ref={triggerRef}
+          />
         }
       />
-
       <DatePickerCalendar
         isOpen={showCalendar}
         onClose={() => setShowCalendar(false)}

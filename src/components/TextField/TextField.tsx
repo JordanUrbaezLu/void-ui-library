@@ -85,15 +85,7 @@ export const TextField = React.forwardRef<HTMLDivElement, TextFieldProps>(
       size === "large" && styles.large,
       disabled && styles.disabled
     );
-
-    const iconClasses = classNames(
-      styles.icon,
-      size === "small" && styles.iconSmall,
-      size === "medium" && styles.iconMedium,
-      size === "large" && styles.iconLarge,
-      disabled && styles.disabled
-    );
-
+    
     const labelClasses = classNames(
       styles.label,
       size === "small" && styles.labelSmall,
@@ -137,7 +129,7 @@ export const TextField = React.forwardRef<HTMLDivElement, TextFieldProps>(
             <span className={labelClasses}>{label}</span>
           )}
         </div>
-        {trailingIcon && <span className={iconClasses}>{trailingIcon}</span>}
+        {trailingIcon && trailingIcon}
       </div>
     );
   }
