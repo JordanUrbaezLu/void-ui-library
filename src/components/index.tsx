@@ -1,3 +1,5 @@
+import "normalize.css";
+
 export * from "./Alert";
 export * from "./Button";
 export * from "./Checkbox";

@@ -35,6 +35,7 @@ export const BaseDatePickerCalendar: React.FC<BaseDatePickerCalendarProps> = (
   props
 ) => {
   const { onClose, triggerRef } = props;
+  
   const { selectedDate, setSelectedDate } = React.useContext(DatePickerContext);
   const [date, setDate] = React.useState<Date>(selectedDate ?? new Date());
   const [focusedDate, setFocusedDate] = React.useState<number>(0);
