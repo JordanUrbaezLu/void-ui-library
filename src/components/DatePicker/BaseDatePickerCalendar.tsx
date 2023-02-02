@@ -1,7 +1,7 @@
 import * as React from "react";
 import styles from "./BaseDatePickerCalendar.module.scss";
 import classNames from "classnames";
-import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import { useOnClickOutside, useOnKeyDown } from "../../hooks";
 import {
   TfiAngleLeft,
   TfiAngleRight,
@@ -35,12 +35,12 @@ export const BaseDatePickerCalendar: React.FC<BaseDatePickerCalendarProps> = (
   props
 ) => {
   const { onClose, triggerRef } = props;
-  
+
   const { selectedDate, setSelectedDate } = React.useContext(DatePickerContext);
   const [date, setDate] = React.useState<Date>(selectedDate ?? new Date());
   const [focusedDate, setFocusedDate] = React.useState<number>(0);
   const [days, setDays] = React.useState<Array<number | null>>([]);
-  const daysRefs = React.useRef<Array<HTMLDivElement | null>>([]);
+  const daysRefs = React.useRef<Array<HTMLButtonElement | null>>([]);
   const calendarRef = React.useRef<HTMLDivElement>(null);
 
   const headerLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -70,15 +70,11 @@ export const BaseDatePickerCalendar: React.FC<BaseDatePickerCalendarProps> = (
     daysRefs.current[focusedDate]?.focus();
   }, [focusedDate]);
 
-  useOnClickOutside([calendarRef, triggerRef], () => onClose());
+  useOnClickOutside([calendarRef, triggerRef], onClose);
+  useOnKeyDown(["Escape"], onClose);
 
   return (
-    <FocusTrap
-      focusTrapOptions={{
-        allowOutsideClick: true,
-        escapeDeactivates: true,
-      }}
-    >
+    <FocusTrap>
       <div className={styles.datePickerCalendarContainer} ref={calendarRef}>
         <div className={styles.datePickerCalendarNavigationContainer}>
           <div style={{ display: "flex", gap: "2px" }}>
@@ -144,7 +140,7 @@ export const BaseDatePickerCalendar: React.FC<BaseDatePickerCalendarProps> = (
                   className={styles.datePickerCalendarDayContainer}
                   key={index}
                 >
-                  <div
+                  <button
                     className={classNames(
                       styles.datePickerCalendarDay,
                       isSelected && styles.selected,
@@ -182,7 +178,7 @@ export const BaseDatePickerCalendar: React.FC<BaseDatePickerCalendarProps> = (
                     ref={(el) => (daysRefs.current[day] = el)}
                   >
                     {day}
-                  </div>
+                  </button>
                 </div>
               );
             } else {

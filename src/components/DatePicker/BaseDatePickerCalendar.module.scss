@@ -77,6 +77,8 @@
   width: 34px;
   margin: auto;
   user-select: none;
+  background-color: transparent;
+  color: globals.$primary-text-color;
 
   &.selected {
     background-color: globals.$primary-border-color;

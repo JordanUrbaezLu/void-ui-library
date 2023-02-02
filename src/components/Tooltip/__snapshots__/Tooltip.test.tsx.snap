@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Popover Should render component correctly. 1`] = `
+exports[`Tooltip Should render component correctly. 1`] = `
 <div
   class="container"
 >
@@ -11,13 +11,13 @@ exports[`Popover Should render component correctly. 1`] = `
     Button
   </button>
   <div
-    class="popoverLayoutContainer"
+    class="tooltipLayoutContainer"
     style="transform: translate3d(0px, 5px, 0);"
   >
     <div
-      class="popover bottom"
+      class="tooltip bottom"
     >
-      Popover
+      Tooltip
     </div>
   </div>
 </div>

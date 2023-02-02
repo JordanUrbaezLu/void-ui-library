@@ -2,7 +2,7 @@ import classNames from "classnames";
 import * as React from "react";
 import styles from "./Switch.module.scss";
 
-export interface SwitchProps {
+export interface SwitchProps extends React.ComponentPropsWithoutRef<"button"> {
   /**
    * If the Switch is on
    *
@@ -20,22 +20,17 @@ export interface SwitchProps {
 }
 
 export const Switch: React.FC<SwitchProps> = (props) => {
-  const { isOn = false, label, onClick, ...rest } = props;
+  const { className, isOn = false, label, onClick, ...rest } = props;
 
   const switchPill = classNames(
+    className,
     styles.switchPill,
     isOn && styles.on
   );
 
-  const switchIndicator = classNames(
-    styles.switchIndicator,
-    isOn && styles.on
-  );
+  const switchIndicator = classNames(styles.switchIndicator, isOn && styles.on);
 
-  const switchLabel = classNames(
-    styles.switchLabel,
-    isOn && styles.on
-  );
+  const switchLabel = classNames(styles.switchLabel, isOn && styles.on);
 
   return (
     <button

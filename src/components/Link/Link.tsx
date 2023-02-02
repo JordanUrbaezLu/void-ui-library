@@ -4,7 +4,7 @@ import styles from "./Link.module.scss";
 
 export type LinkVariant = "primary" | "secondary";
 
-export interface LinkProps {
+export interface LinkProps extends React.ComponentPropsWithoutRef<"a"> {
   /**
    * The content for the Link
    */
@@ -22,15 +22,16 @@ export interface LinkProps {
 }
 
 export const Link: React.FC<LinkProps> = (props) => {
-  const { children, href, variant = "primary" } = props;
+  const { className, children, href, variant = "primary", ...rest } = props;
 
   const linkContainer = classNames(
+    className,
     styles.linkContainer,
     variant === "primary" ? styles.primary : styles.secondary
   );
 
   return (
-    <a className={linkContainer} href={href}>
+    <a className={linkContainer} href={href} {...rest}>
       {children}
     </a>
   );

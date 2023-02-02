@@ -1,69 +1,72 @@
 import * as React from "react";
 import { CSSTransition } from "react-transition-group";
-import styles from "./Popover.module.scss";
+import styles from "./Tooltip.module.scss";
 import classNames from "classnames";
-import { getPopoverPositionCalculations } from "../../utility/getPopoverPositionCalculations";
+import { getTooltipPositionCalculations } from "../../utility/getTooltipPositionCalculations";
+import { useShowOnFocus } from "../../hooks";
 
-export type PopoverPosition = "bottom" | "top";
+export type TooltipPosition = "bottom" | "top";
 
-export interface PopoverProps {
+export interface TooltipProps extends React.ComponentPropsWithoutRef<"div"> {
   /**
-   * If the Popover has a nubbin
+   * If the Tooltip has a nubbin
    *
    * @default false
    */
   hasNubbin?: boolean;
   /**
-   * If the Popover initially renders as open
+   * If the Tooltip initially renders as open
    *
    * @default false
    */
   startsOpen?: boolean;
   /**
-   * The position of the Popover
+   * The position of the Tooltip
    *
    * @default "bottom"
    */
-  position?: PopoverPosition;
+  position?: TooltipPosition;
   /**
-   * The text for the Popover
+   * The text for the Tooltip
    */
   text: string;
   /**
-   * The trigger for the Popover
+   * The trigger for the Tooltip
    */
   trigger: React.ReactElement;
 }
 
-export const Popover: React.FC<PopoverProps> = (props) => {
+export const Tooltip: React.FC<TooltipProps> = (props) => {
   const {
+    className,
     hasNubbin = false,
     startsOpen = false,
     position = "bottom",
     text,
     trigger,
+    ...rest
   } = props;
 
-  const [showPopover, setShowPopover] = React.useState<boolean>(startsOpen);
+  const [showTooltip, setShowTooltip] = React.useState<boolean>(startsOpen);
 
-  const popoverRef = React.useRef<HTMLDivElement>(null);
+  const tooltipRef = React.useRef<HTMLDivElement>(null);
 
-  const [popoverPositionStyle, setPopoverPositionStyle] =
+  const [tooltipPositionStyle, setTooltipPositionStyle] =
     React.useState<React.CSSProperties | undefined>(undefined);
 
   const triggerRef = React.useRef<HTMLDivElement>(null);
 
-  const popover = classNames(
-    styles.popover,
+  const tooltip = classNames(
+    styles.tooltip,
     position === "bottom" && styles.bottom,
     position === "top" && styles.top,
     hasNubbin && styles.nubbin
   );
 
   React.useLayoutEffect(() => {
-    setPopoverPositionStyle(
-      getPopoverPositionCalculations({
-        popoverRef,
+    setTooltipPositionStyle(
+      getTooltipPositionCalculations({
+        tooltipRef,
         triggerRef,
         position,
         hasNubbin,
@@ -71,43 +74,24 @@ export const Popover: React.FC<PopoverProps> = (props) => {
     );
   }, []);
 
-  // Show popover on tab focus and remove when focus out
-  React.useEffect(() => {
-    triggerRef.current?.addEventListener("focus", () => {
-      setShowPopover(true);
-    });
-
-    triggerRef.current?.addEventListener("focusout", () => {
-      setShowPopover(false);
-    });
-
-    return () => {
-      triggerRef.current?.removeEventListener("focus", () => {
-        setShowPopover(true);
-      });
-
-      triggerRef.current?.removeEventListener("focusout", () => {
-        setShowPopover(false);
-      });
-    };
-  }, [triggerRef]);
+  useShowOnFocus(triggerRef, setShowTooltip);
 
   return (
-    <div className={styles.container}>
+    <div className={classNames(className, styles.container)} {...rest}>
       {React.cloneElement(trigger, {
-        onMouseEnter: () => setShowPopover(true),
-        onMouseLeave: () => setShowPopover(false),
+        onMouseEnter: () => setShowTooltip(true),
+        onMouseLeave: () => setShowTooltip(false),
         ref: triggerRef,
         role: "button",
         tabIndex: 0,
       })}
       <div
-        className={styles.popoverLayoutContainer}
-        style={popoverPositionStyle}
-        ref={popoverRef}
+        className={styles.tooltipLayoutContainer}
+        style={tooltipPositionStyle}
+        ref={tooltipRef}
       >
         <CSSTransition
-          in={showPopover}
+          in={showTooltip}
           timeout={150}
           mountOnEnter
           unmountOnExit
@@ -127,7 +111,7 @@ export const Popover: React.FC<PopoverProps> = (props) => {
                 }
           }
         >
-          <div className={popover}>{text}</div>
+          <div className={tooltip}>{text}</div>
         </CSSTransition>
       </div>
     </div>

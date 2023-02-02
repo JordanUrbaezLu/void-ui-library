@@ -3,7 +3,7 @@ import * as React from "react";
 import styles from "./Checkbox.module.scss";
 import { BiCheckSquare } from "react-icons/bi";
 
-export interface CheckboxProps {
+export interface CheckboxProps extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * If the Checkbox is on
    *
@@ -21,11 +21,15 @@ export interface CheckboxProps {
 }
 
 export const Checkbox: React.FC<CheckboxProps> = (props) => {
-  const { isChecked = false, label, onChange, ...rest } = props;
+  const { className, isChecked = false, label, onChange, ...rest } = props;
 
   return (
-    <div className={styles.checkboxContainer} role="checkbox">
-      <div className={styles.checkbox} {...rest}>
+    <div
+      className={classNames(className, styles.checkboxContainer)}
+      role="checkbox"
+      {...rest}
+    >
+      <div className={styles.checkbox}>
         {isChecked && (
           <BiCheckSquare
             className={styles.checkboxIcon}

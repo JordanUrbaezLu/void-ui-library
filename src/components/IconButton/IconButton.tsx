@@ -7,7 +7,7 @@ export type IconButtonSize = "small" | "medium" | "large";
 export interface IconButtonProps extends React.ComponentPropsWithRef<"button"> {
   /**
    * The accessibile label for the Icon Button
-   * 
+   *
    * @default "Icon Button"
    */
   ariaLabel?: string;
@@ -37,6 +37,7 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
       content,
       size = "medium",
       onClick,
+      ...rest
     } = props;
 
     const iconButtonContentClasses = classNames(
@@ -55,6 +56,7 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
         className={iconButtonContentClasses}
         onClick={onClick}
         ref={ref}
+        {...rest}
       >
         {React.cloneElement(content, {
           size: iconSizeNumber,

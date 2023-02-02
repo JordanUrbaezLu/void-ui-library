@@ -1,0 +1,32 @@
+.modalContainer {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: fit-content;
+  width: 400px;
+}
+
+.modalHeader {
+  box-sizing: border-box;
+  display: flex;
+  padding: 15px 15px 0px 15px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.modalContent {
+  padding: 30px;
+  text-align: center;
+}
+
+.modalButtons {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.modalTitle {
+  align-self: center;
+}

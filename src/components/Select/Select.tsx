@@ -5,8 +5,9 @@ import * as React from "react";
 import { TextField } from "../TextField";
 import { SelectContainer } from "./SelectContainer";
 import { useOnClickOutside } from "../../hooks";
+import classNames from "classnames";
 
-export interface SelectProps {
+export interface SelectProps extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * The content for the Select
    */
@@ -24,7 +25,7 @@ export interface SelectProps {
 }
 
 export const Select: React.FC<SelectProps> = (props) => {
-  const { children, label, startsOpen = false } = props;
+  const { className, children, label, startsOpen = false, ...rest } = props;
 
   const [isOpen, setIsOpen] = React.useState<boolean>(startsOpen);
   const [value, setValue] = React.useState<string>("");
@@ -33,7 +34,11 @@ export const Select: React.FC<SelectProps> = (props) => {
   useOnClickOutside(selectRef, () => setIsOpen(false));
 
   return (
-    <div className={styles.selectContainer} ref={selectRef}>
+    <div
+      className={classNames(className, styles.selectContainer)}
+      ref={selectRef}
+      {...rest}
+    >
       <TextField
         size="large"
         selectable={false}
