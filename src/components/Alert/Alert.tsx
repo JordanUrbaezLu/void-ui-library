@@ -9,7 +9,7 @@ import { FiAlertTriangle, FiX } from "react-icons/fi";
 
 export type AlertVariant = "error" | "info" | "success" | "warning";
 
-export interface AlertProps {
+export interface AlertProps extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * The content for the Alert.
    */
@@ -29,9 +29,16 @@ export interface AlertProps {
 }
 
 export const Alert: React.FC<AlertProps> = (props) => {
-  const { children, closeable = false, variant = "error" } = props;
+  const {
+    className,
+    children,
+    closeable = false,
+    variant = "error",
+    ...rest
+  } = props;
 
   const alertContainer = classNames(
+    className,
     styles.alertContainer,
     variant === "error" && styles.error,
     variant === "info" && styles.info,
@@ -66,7 +73,7 @@ export const Alert: React.FC<AlertProps> = (props) => {
       mountOnEnter
       unmountOnExit
     >
-      <div className={alertContainer}>
+      <div className={alertContainer} {...rest}>
         <div>
           <div className={styles.alertTitleContainer}>
             <div className={styles.alertIcon}>{alertIcon}</div>
@@ -87,4 +94,3 @@ export const Alert: React.FC<AlertProps> = (props) => {
     </CSSTransition>
   );
 };
-

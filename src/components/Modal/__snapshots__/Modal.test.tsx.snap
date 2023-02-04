@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal Should render component correctly. 1`] = `
+<button
+  class="button medium primary"
+  role="button"
+  tabindex="0"
+  type="button"
+>
+  Trigger
+</button>
+`;

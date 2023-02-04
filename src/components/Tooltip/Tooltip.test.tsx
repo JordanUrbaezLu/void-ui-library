@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { Popover, PopoverPosition } from "./Popover";
+import { Tooltip, TooltipPosition } from "./Tooltip";
 import { axe } from "jest-axe";
 
-describe("Popover", () => {
+describe("Tooltip", () => {
   test("Should render component correctly.", () => {
     const { container } = render(
-      <Popover startsOpen text="Popover" trigger={<button>Button</button>} />
+      <Tooltip startsOpen text="Tooltip" trigger={<button>Button</button>} />
     );
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -14,7 +14,7 @@ describe("Popover", () => {
 describe("Accessibility", () => {
   test("Should have no accessibility violations.", async () => {
     const { container } = render(
-      <Popover startsOpen text="Popover" trigger={<button>Button</button>} />
+      <Tooltip startsOpen text="Tooltip" trigger={<button>Button</button>} />
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
@@ -24,51 +24,51 @@ describe("Accessibility", () => {
 describe("Props", () => {
   test("Should render text correctly.", () => {
     render(
-      <Popover startsOpen text="Popover" trigger={<button>Button</button>} />
+      <Tooltip startsOpen text="Tooltip" trigger={<button>Button</button>} />
     );
-    expect(screen.getByText("Popover")).toBeInTheDocument();
+    expect(screen.getByText("Tooltip")).toBeInTheDocument();
   });
-  test.each<PopoverPosition>(["top", "bottom"])(
+  test.each<TooltipPosition>(["top", "bottom"])(
     "Should render positions correctly.",
     (position) => {
       render(
-        <Popover
+        <Tooltip
           startsOpen
           position={position}
-          text="Popover"
+          text="Tooltip"
           trigger={<button>Button</button>}
         />
       );
-      expect(screen.getByText("Popover")).toHaveClass(position);
+      expect(screen.getByText("Tooltip")).toHaveClass(position);
     }
   );
   test("Should render trigger correctly.", () => {
     render(
-      <Popover startsOpen text="Popover" trigger={<button>Button</button>} />
+      <Tooltip startsOpen text="Tooltip" trigger={<button>Button</button>} />
     );
     expect(screen.getByRole("button", { name: "Button" })).toBeInTheDocument();
   });
   test("Should render hasNubbin correctly.", () => {
     render(
-      <Popover
+      <Tooltip
         hasNubbin
         startsOpen
-        text="Popover"
+        text="Tooltip"
         trigger={<button>Button</button>}
       />
     );
-    expect(screen.getByText("Popover")).toHaveClass("nubbin");
+    expect(screen.getByText("Tooltip")).toHaveClass("nubbin");
   });
   test("Should render startsOpen correctly.", () => {
     render(
       <div data-testid="div">
-        <Popover
+        <Tooltip
           startsOpen={false}
-          text="Popover"
+          text="Tooltip"
           trigger={<button>Button</button>}
         />
       </div>
     );
-    expect(screen.getByTestId("div")).not.toHaveTextContent("Popover");
+    expect(screen.getByTestId("div")).not.toHaveTextContent("Tooltip");
   });
 });

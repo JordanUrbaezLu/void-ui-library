@@ -6,7 +6,7 @@ export type ButtonVariant = "primary" | "secondary";
 export type ButtonSize = "small" | "medium" | "large";
 export type ButtonType = "button" | "submit" | "reset";
 
-export interface ButtonProps {
+export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   /**
    * The content for the Button
    */
@@ -48,6 +48,7 @@ export interface ButtonProps {
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
     const {
+      className,
       children,
       disabled = "false",
       leadingIcon,
@@ -60,6 +61,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     } = props;
 
     const classes = classNames(
+      className,
       styles.button,
       size === "small"
         ? styles.small

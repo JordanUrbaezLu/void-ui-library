@@ -3,6 +3,7 @@ import { CSSTransition } from "react-transition-group";
 import styles from "./Menu.module.scss";
 import { getMenuAlignmentCalculations } from "../../utility/getMenuAlignmentCalculations";
 import { MenuContainer } from "./MenuContainer";
+import classNames from "classnames";
 
 export type MenuAlignment =
   | "bottomLeft"
@@ -12,7 +13,7 @@ export type MenuAlignment =
   | "topCenter"
   | "topRight";
 
-export interface MenuProps {
+export interface MenuProps extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * The Menu's alignment relative to its trigger
    *
@@ -44,11 +45,13 @@ export interface MenuProps {
 export const Menu: React.FC<MenuProps> = (props) => {
   const {
     alignment = "bottomLeft",
+    className,
     children,
     isOpen,
     onClose,
     onOpen,
     trigger,
+    ...rest
   } = props;
 
   const menuRef = React.useRef<HTMLDivElement>(null);
@@ -69,7 +72,7 @@ export const Menu: React.FC<MenuProps> = (props) => {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div className={classNames(className, styles.container)} {...rest}>
       {React.cloneElement(trigger, {
         onClick: () => {
           if (isOpen) {

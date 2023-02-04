@@ -61,12 +61,7 @@ export const BaseDateRangePickerCalendars: React.FC<BaseDateRangePickerCalendars
     };
 
     return (
-      <FocusTrap
-        focusTrapOptions={{
-          allowOutsideClick: true,
-          escapeDeactivates: false,
-        }}
-      >
+      <FocusTrap>
         <div
           className={styles.dateRangePickerCalendarsContainer}
           ref={calendarsRef}

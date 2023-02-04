@@ -7,7 +7,7 @@ import styles from "./DatePicker.module.scss";
 import { DatePickerContext } from "./DatePickerContext";
 import { IconButton } from "../IconButton/IconButton";
 
-export interface DatePickerProps {
+export interface DatePickerProps extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * The initial selected date for the DatePicker
    */
@@ -29,7 +29,14 @@ export interface DatePickerProps {
 }
 
 export const DatePicker: React.FC<DatePickerProps> = (props) => {
-  const { selected, setValue, startsOpen = false, value } = props;
+  const {
+    className,
+    selected,
+    setValue,
+    startsOpen = false,
+    value,
+    ...rest
+  } = props;
 
   const triggerRef = React.useRef<HTMLButtonElement>(null);
 
@@ -45,25 +52,27 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     <DatePickerContext.Provider
       value={{ selectedDate: selectedDate, setSelectedDate: setSelectedDate }}
     >
-      <TextField
-        className={styles.customInput}
-        onChange={() => {}}
-        value={value}
-        label="Select a Date"
-        trailingIcon={
-          <IconButton
-            content={<AiFillCalendar />}
-            size="medium"
-            onClick={() => setShowCalendar(!showCalendar)}
-            ref={triggerRef}
-          />
-        }
-      />
-      <DatePickerCalendar
-        isOpen={showCalendar}
-        onClose={() => setShowCalendar(false)}
-        triggerRef={triggerRef}
-      />
+      <div className={className} {...rest}>
+        <TextField
+          className={styles.customInput}
+          onChange={() => {}}
+          value={value}
+          label="Select a Date"
+          trailingIcon={
+            <IconButton
+              content={<AiFillCalendar />}
+              size="medium"
+              onClick={() => setShowCalendar(!showCalendar)}
+              ref={triggerRef}
+            />
+          }
+        />
+        <DatePickerCalendar
+          isOpen={showCalendar}
+          onClose={() => setShowCalendar(false)}
+          triggerRef={triggerRef}
+        />
+      </div>
     </DatePickerContext.Provider>
   );
 };
