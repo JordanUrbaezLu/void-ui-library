@@ -15,7 +15,11 @@ export const Small = () => (
 );
 
 export const Medium = () => (
-  <IconButton content={<FaReact />} onClick={() => {}} size="medium" />
+  <IconButton
+    content={<FaReact />}
+    onClick={() => {}}
+    size="medium"
+  />
 );
 
 export const Large = () => (

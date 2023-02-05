@@ -21,10 +21,13 @@ export interface MenuContainerProps {
   triggerRef: React.RefObject<HTMLElement>;
 }
 
-export const MenuContainer: React.FC<MenuContainerProps> = (props) => {
+export const MenuContainer: React.FC<MenuContainerProps> = (
+  props
+) => {
   const { children, menuRef, onClose, triggerRef } = props;
 
-  const [focusedMenuItem, setFocusedMenuItem] = React.useState<number>(0);
+  const [focusedMenuItem, setFocusedMenuItem] =
+    React.useState<number>(0);
 
   const lastIndex = React.Children.count(children) - 1;
 
@@ -42,7 +45,9 @@ export const MenuContainer: React.FC<MenuContainerProps> = (props) => {
 
   React.useEffect(() => {
     const menuContainer = menuRef.current?.children[0] as HTMLElement;
-    const menuItem = menuContainer.children[focusedMenuItem] as HTMLElement;
+    const menuItem = menuContainer.children[
+      focusedMenuItem
+    ] as HTMLElement;
     menuItem?.focus();
   }, [focusedMenuItem]);
 
@@ -51,34 +56,33 @@ export const MenuContainer: React.FC<MenuContainerProps> = (props) => {
   return (
     <div className={styles.menuContainer} role="menu">
       {React.Children.map(children, (child, index) => {
-        if (React.isValidElement<React.HTMLAttributes<HTMLElement>>(child)) {
-          return React.cloneElement(child, {
-            key: index,
-            onClick: () => {
-              onClose(child.props.children as string);
-            },
-            onKeyDown: (event: any) => {
-              if (event.code === "Escape") {
-                onClose();
-                triggerRef.current?.focus();
-              }
-              if (event.code === "Enter") {
-                onClose(child.props.children as string);
-                setTimeout(() => triggerRef.current?.focus());
-              }
-              if (event.code === "ArrowUp") {
-                focusPreviousItem();
-              }
-              if (event.code === "ArrowDown") {
-                focusNextItem();
-              }
-            },
-            role: "menuitem",
-            tabIndex: index === focusedMenuItem ? 0 : undefined,
-          });
-        } else {
-          return null;
-        }
+        const menuItem = child as React.ReactElement;
+
+        return React.cloneElement(menuItem, {
+          key: index,
+          onClick: () => {
+            onClose(menuItem.props.children as string);
+            triggerRef.current?.focus();
+          },
+          onKeyDown: (event: any) => {
+            if (event.code === "Escape") {
+              onClose();
+              triggerRef.current?.focus();
+            }
+            if (event.code === "Space") {
+              onClose(menuItem.props.children as string);
+              triggerRef.current?.focus();
+            }
+            if (event.code === "ArrowUp") {
+              focusPreviousItem();
+            }
+            if (event.code === "ArrowDown") {
+              focusNextItem();
+            }
+          },
+          role: "menuitem",
+          tabIndex: index === focusedMenuItem ? 0 : undefined,
+        });
       })}
     </div>
   );

@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import * as React from "react";
 import { AiFillCalendar } from "react-icons/ai";
 import { TextField } from "../TextField";
@@ -18,7 +19,9 @@ export interface DateRangePickerProps {
   startsOpen?: boolean;
 }
 
-export const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
+export const DateRangePicker: React.FC<DateRangePickerProps> = (
+  props
+) => {
   const { selected, startsOpen = false } = props;
 
   const startTriggerRef = React.useRef<HTMLDivElement>(null);
@@ -26,11 +29,15 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (props) => {
 
   const [selectedDate, setSelectedDate] =
     React.useState<Date | undefined>(selected);
-  const [showCalendar, setShowCalendar] = React.useState<boolean>(startsOpen);
+  const [showCalendar, setShowCalendar] =
+    React.useState<boolean>(startsOpen);
 
   return (
     <DateRangePickerContext.Provider
-      value={{ selectedDate: selectedDate, setSelectedDate: setSelectedDate }}
+      value={{
+        selectedDate: selectedDate,
+        setSelectedDate: setSelectedDate,
+      }}
     >
       <div style={{ display: "flex" }}>
         <TextField

@@ -13,7 +13,8 @@ export type MenuAlignment =
   | "topCenter"
   | "topRight";
 
-export interface MenuProps extends React.ComponentPropsWithoutRef<"div"> {
+export interface MenuProps
+  extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * The Menu's alignment relative to its trigger
    *
@@ -26,8 +27,10 @@ export interface MenuProps extends React.ComponentPropsWithoutRef<"div"> {
   children: React.ReactNode;
   /**
    * If the Menu is open
+   * 
+   * @default false
    */
-  isOpen: boolean;
+  isOpen?: boolean;
   /**
    * The callback fired when the Menu closes
    */
@@ -47,7 +50,7 @@ export const Menu: React.FC<MenuProps> = (props) => {
     alignment = "bottomLeft",
     className,
     children,
-    isOpen,
+    isOpen = false,
     onClose,
     onOpen,
     trigger,
@@ -72,7 +75,10 @@ export const Menu: React.FC<MenuProps> = (props) => {
   }, []);
 
   return (
-    <div className={classNames(className, styles.container)} {...rest}>
+    <div
+      className={classNames(className, styles.container)}
+      {...rest}
+    >
       {React.cloneElement(trigger, {
         onClick: () => {
           if (isOpen) {

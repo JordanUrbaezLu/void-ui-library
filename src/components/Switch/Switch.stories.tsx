@@ -7,8 +7,11 @@ export default {
   title: "Components/Switch",
 };
 
-const Template: Story<Omit<SwitchProps, "isOn" | "onClick">> = (args) => {
-  const [switchState, toggleSwitchState] = React.useState<boolean>(true);
+const Template: Story<Omit<SwitchProps, "isOn" | "onClick">> = (
+  args
+) => {
+  const [switchState, toggleSwitchState] =
+    React.useState<boolean>(true);
 
   return (
     <Switch

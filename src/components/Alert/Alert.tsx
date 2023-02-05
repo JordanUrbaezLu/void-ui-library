@@ -6,10 +6,12 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BiAlarmExclamation } from "react-icons/bi";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FiAlertTriangle, FiX } from "react-icons/fi";
+import { IconButton } from "../IconButton";
 
 export type AlertVariant = "error" | "info" | "success" | "warning";
 
-export interface AlertProps extends React.ComponentPropsWithoutRef<"div"> {
+export interface AlertProps
+  extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * The content for the Alert.
    */
@@ -63,6 +65,13 @@ export const Alert: React.FC<AlertProps> = (props) => {
     </>
   );
 
+  const alertCloseButton = classNames(
+    variant === "error" && styles.errorButton,
+    variant === "info" && styles.infoButton,
+    variant === "success" && styles.successButton,
+    variant === "warning" && styles.warningButton
+  );
+
   const [isOpen, setIsOpen] = React.useState<boolean>(true);
 
   return (
@@ -82,12 +91,12 @@ export const Alert: React.FC<AlertProps> = (props) => {
           <span>{children}</span>
         </div>
         {closeable && (
-          <FiX
-            className={styles.alertCloseButton}
+          <IconButton
+            className={alertCloseButton}
+            content={<FiX />}
             onClick={() => {
               setIsOpen(false);
             }}
-            size="30px"
           />
         )}
       </div>

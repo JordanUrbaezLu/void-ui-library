@@ -20,7 +20,8 @@
   &:hover,
   &:focus {
     background-color: globals.$primary-background-color-hover-and-focus;
-    border: 2px solid globals.$primary-background-color-hover-and-focus;
+    border: 2px solid
+      globals.$primary-background-color-hover-and-focus;
   }
   &:active {
     background-color: globals.$primary-background-color-active;

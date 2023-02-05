@@ -13,7 +13,12 @@ export type TextFieldType =
   | "time"
   | "url";
 
-export interface TextFieldProps extends React.ComponentPropsWithoutRef<"div"> {
+export interface TextFieldProps
+  extends React.ComponentPropsWithoutRef<"div"> {
+  /**
+   * The accessible label for the TextField
+   */
+  ariaLabel?: string;
   /**
    * If the TextField is disabled
    *
@@ -58,79 +63,71 @@ export interface TextFieldProps extends React.ComponentPropsWithoutRef<"div"> {
   value?: string;
 }
 
-export const TextField = React.forwardRef<HTMLDivElement, TextFieldProps>(
-  (props, ref) => {
-    const {
-      className,
-      size = "medium",
-      trailingIcon,
-      disabled = false,
-      onChange,
-      selectable = true,
-      type = "text",
-      label = "textfield",
-      value,
-      ...rest
-    } = props;
+export const TextField = React.forwardRef<
+  HTMLDivElement,
+  TextFieldProps
+>((props, ref) => {
+  const {
+    ariaLabel = "textbox",
+    className,
+    size = "medium",
+    trailingIcon,
+    disabled = false,
+    onChange,
+    selectable = true,
+    type = "text",
+    label = "textfield",
+    value,
+    ...rest
+  } = props;
 
-    const inputContainer = classNames(
-      styles.textFieldContainer,
-      disabled && styles.disabled
-    );
+  const inputContainer = classNames(
+    styles.textFieldContainer,
+    disabled && styles.disabled
+  );
 
-    const classes = classNames(
-      styles.textField,
-      size === "small" && styles.small,
-      size === "medium" && styles.medium,
-      size === "large" && styles.large,
-      disabled && styles.disabled
-    );
-    
-    const labelClasses = classNames(
-      styles.label,
-      size === "small" && styles.labelSmall,
-      size === "medium" && styles.labelMedium,
-      size === "large" && styles.labelLarge,
-      disabled && styles.disabledLabel
-    );
+  const classes = classNames(
+    styles.textField,
+    size === "small" && styles.small,
+    size === "medium" && styles.medium,
+    size === "large" && styles.large,
+    disabled && styles.disabled
+  );
 
-    // Make textfield not selectable
-    React.useEffect(() => {
-      if (!selectable) {
-        const textfield = document.getElementById(
-          "void_textfield"
-        ) as HTMLInputElement;
-        textfield?.addEventListener(
-          "select",
-          () => {
-            textfield.selectionStart = textfield.selectionEnd;
-          },
-          false
-        );
-      }
-    }, []);
+  const labelClasses = classNames(
+    styles.label,
+    size === "small" && styles.labelSmall,
+    size === "medium" && styles.labelMedium,
+    size === "large" && styles.labelLarge,
+    disabled && styles.disabledLabel
+  );
 
-    return (
-      <div className={styles.container} ref={ref} {...rest}>
-        <div className={inputContainer}>
-          <input
-            aria-label={label}
-            autoComplete="off"
-            id="void_textfield"
-            className={classNames(classes, className)}
-            disabled={disabled}
-            required
-            onChange={onChange}
-            spellCheck={false}
-            type={type}
-            value={value}
-          />
-          {label !== "textfield" && (
-            <span className={labelClasses}>{label}</span>
-          )}
-        </div>
-        {trailingIcon && trailingIcon}
+  return (
+    <div
+      aria-label={ariaLabel}
+      className={styles.container}
+      ref={ref}
+      {...rest}
+      role="textbox"
+    >
+      <div className={inputContainer}>
+        <input
+          aria-label={label}
+          autoComplete="off"
+          id="void_textfield"
+          className={classNames(classes, className)}
+          disabled={disabled}
+          required
+          onChange={onChange}
+          spellCheck={false}
+          type={type}
+          value={value}
+        />
+        {label !== "textfield" && (
+          <span className={labelClasses}>{label}</span>
+        )}
       </div>
-    );
-  }
-);
+      {trailingIcon && trailingIcon}
+    </div>
+  );
+});

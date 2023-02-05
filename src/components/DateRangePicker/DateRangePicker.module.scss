@@ -13,7 +13,8 @@
   cursor: pointer;
   &:hover,
   &:focus {
-    border: 3px solid globals.$primary-background-color-hover-and-focus;
+    border: 3px solid
+      globals.$primary-background-color-hover-and-focus;
   }
 
   &:active {

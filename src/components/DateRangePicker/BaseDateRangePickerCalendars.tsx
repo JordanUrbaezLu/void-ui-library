@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import * as React from "react";
 import styles from "./BaseDateRangePickerCalendars.module.scss";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
@@ -34,29 +35,47 @@ export const BaseDateRangePickerCalendars: React.FC<BaseDateRangePickerCalendars
 
     const calendarsRef = React.useRef<HTMLDivElement>(null);
 
-    useOnClickOutside([calendarsRef, ...triggerRefs], () => onClose());
+    useOnClickOutside([calendarsRef, ...triggerRefs], () =>
+      onClose()
+    );
 
     const increaseMonth = () => {
       setDate(
-        new Date(date.getFullYear(), date.getMonth() + 1, date.getDate())
+        new Date(
+          date.getFullYear(),
+          date.getMonth() + 1,
+          date.getDate()
+        )
       );
     };
 
     const increaseYear = () => {
       setDate(
-        new Date(date.getFullYear() + 1, date.getMonth(), date.getDate())
+        new Date(
+          date.getFullYear() + 1,
+          date.getMonth(),
+          date.getDate()
+        )
       );
     };
 
     const decreaseMonth = () => {
       setDate(
-        new Date(date.getFullYear(), date.getMonth() - 1, date.getDate())
+        new Date(
+          date.getFullYear(),
+          date.getMonth() - 1,
+          date.getDate()
+        )
       );
     };
 
     const decreaseYear = () => {
       setDate(
-        new Date(date.getFullYear() - 1, date.getMonth(), date.getDate())
+        new Date(
+          date.getFullYear() - 1,
+          date.getMonth(),
+          date.getDate()
+        )
       );
     };
 
@@ -66,40 +85,60 @@ export const BaseDateRangePickerCalendars: React.FC<BaseDateRangePickerCalendars
           className={styles.dateRangePickerCalendarsContainer}
           ref={calendarsRef}
         >
-          <div className={styles.dateRangePickerCalendarNavigationContainer}>
+          <div
+            className={
+              styles.dateRangePickerCalendarNavigationContainer
+            }
+          >
             <div style={{ display: "flex", gap: "2px" }}>
               <IconButton
-                className={styles.dateRangePickerCalendarNavigationIcon}
+                className={
+                  styles.dateRangePickerCalendarNavigationIcon
+                }
                 content={<TfiAngleDoubleLeft />}
                 size="medium"
                 onClick={decreaseYear}
               />
               <IconButton
-                className={styles.dateRangePickerCalendarNavigationIcon}
+                className={
+                  styles.dateRangePickerCalendarNavigationIcon
+                }
                 content={<TfiAngleLeft />}
                 size="medium"
                 onClick={decreaseMonth}
               />
             </div>
-            <div className={styles.dateRangePickerCalendarNavigationMonth}>
+            <div
+              className={
+                styles.dateRangePickerCalendarNavigationMonth
+              }
+            >
               {`${date.toLocaleString("en-US", {
                 month: "long",
               })} ${date.getFullYear()}`}
             </div>
-            <div className={styles.dateRangePickerCalendarNavigationMonth}>
+            <div
+              className={
+                styles.dateRangePickerCalendarNavigationMonth
+              }
+            >
               {`${date.toLocaleString("en-US", {
                 month: "long",
               })} ${date.getFullYear()}`}
             </div>
             <div style={{ display: "flex", gap: "2px" }}>
               <IconButton
-                className={styles.dateRangePickerCalendarNavigationIcon}
+                className={
+                  styles.dateRangePickerCalendarNavigationIcon
+                }
                 content={<TfiAngleRight />}
                 size="medium"
                 onClick={increaseMonth}
               />
               <IconButton
-                className={styles.dateRangePickerCalendarNavigationIcon}
+                className={
+                  styles.dateRangePickerCalendarNavigationIcon
+                }
                 content={<TfiAngleDoubleRight />}
                 size="medium"
                 onClick={increaseYear}

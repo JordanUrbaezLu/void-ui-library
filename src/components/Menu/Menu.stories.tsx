@@ -10,7 +10,10 @@ export default {
 };
 
 const Template: Story<
-  Omit<MenuProps, "children" | "isOpen" | "onClose" | "onOpen" | "trigger">
+  Omit<
+    MenuProps,
+    "children" | "isOpen" | "onClose" | "onOpen" | "trigger"
+  >
 > = (args) => {
   const [isOpen, setIsOpen] = React.useState<boolean>(true);
 
@@ -18,8 +21,14 @@ const Template: Story<
     <Menu
       {...args}
       isOpen={isOpen}
-      onOpen={() => setIsOpen(true)}
-      onClose={() => setIsOpen(false)}
+      onOpen={() => {
+        console.log("Open");
+        setIsOpen(true);
+      }}
+      onClose={() => {
+        console.log("Close");
+        setIsOpen(false);
+      }}
       trigger={<Button variant="secondary">Click Me!</Button>}
     >
       <MenuItem>Menu Item One</MenuItem>

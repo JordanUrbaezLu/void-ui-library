@@ -4,7 +4,8 @@ import classNames from "classnames";
 
 export type IconButtonSize = "small" | "medium" | "large";
 
-export interface IconButtonProps extends React.ComponentPropsWithRef<"button"> {
+export interface IconButtonProps
+  extends React.ComponentPropsWithRef<"button"> {
   /**
    * The accessibile label for the Icon Button
    *
@@ -29,39 +30,41 @@ export interface IconButtonProps extends React.ComponentPropsWithRef<"button"> {
   onClick: () => void;
 }
 
-export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
-  (props, ref) => {
-    const {
-      ariaLabel = "Icon Button",
-      className,
-      content,
-      size = "medium",
-      onClick,
-      ...rest
-    } = props;
+export const IconButton = React.forwardRef<
+  HTMLButtonElement,
+  IconButtonProps
+>((props, ref) => {
+  const {
+    ariaLabel = "Icon Button",
+    className,
+    content,
+    size = "medium",
+    onClick,
+    ...rest
+  } = props;
 
-    const iconButtonContentClasses = classNames(
-      className,
-      styles.iconButton,
-      size === "small" && styles.small,
-      size === "medium" && styles.medium,
-      size === "large" && styles.large
-    );
+  const iconButtonContentClasses = classNames(
+    className,
+    styles.iconButton,
+    size === "small" && styles.small,
+    size === "medium" && styles.medium,
+    size === "large" && styles.large
+  );
 
-    const iconSizeNumber = size === "medium" ? 22 : size === "small" ? 18 : 26;
+  const iconSizeNumber =
+    size === "medium" ? 22 : size === "small" ? 18 : 26;
 
-    return (
-      <button
-        aria-label={ariaLabel}
-        className={iconButtonContentClasses}
-        onClick={onClick}
-        ref={ref}
-        {...rest}
-      >
-        {React.cloneElement(content, {
-          size: iconSizeNumber,
-        })}
-      </button>
-    );
-  }
-);
+  return (
+    <button
+      aria-label={ariaLabel}
+      className={iconButtonContentClasses}
+      onClick={onClick}
+      ref={ref}
+      {...rest}
+    >
+      {React.cloneElement(content, {
+        size: iconSizeNumber,
+      })}
+    </button>
+  );
+});

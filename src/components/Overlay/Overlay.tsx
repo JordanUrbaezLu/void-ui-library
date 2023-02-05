@@ -2,11 +2,12 @@ import classNames from "classnames";
 import * as React from "react";
 import styles from "./Overlay.module.scss";
 
-export interface OverlayProps extends React.ComponentPropsWithoutRef<"div"> {
+export interface OverlayProps
+  extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * The content for the Overlay
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * If the Overlay shows the background
    *
@@ -19,7 +20,12 @@ export interface OverlayProps extends React.ComponentPropsWithoutRef<"div"> {
  * @utility
  */
 export const Overlay: React.FC<OverlayProps> = (props) => {
-  const { className, children, showBackground = true, ...rest } = props;
+  const {
+    className,
+    children,
+    showBackground = true,
+    ...rest
+  } = props;
 
   return (
     <div

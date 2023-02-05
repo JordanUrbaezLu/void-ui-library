@@ -6,9 +6,15 @@ export default {
   title: "Components/Link",
 };
 
-const Template: Story<Omit<LinkProps, "children" | "href">> = (args) => {
+const Template: Story<Omit<LinkProps, "children" | "href">> = (
+  args
+) => {
   return (
-    <Link children="Google.com" href="https://www.google.com/" {...args} />
+    <Link
+      children="Google.com"
+      href="https://www.google.com/"
+      {...args}
+    />
   );
 };
 

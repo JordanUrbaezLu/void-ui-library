@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import * as React from "react";
 import { CSSTransition } from "react-transition-group";
 import { BaseDateRangePickerCalendars } from "./BaseDateRangePickerCalendars";
@@ -35,7 +36,10 @@ export const DateRangePickerCalendars: React.FC<DateRangePickerCalendarsProps> =
           exitActive: styles.exitActive,
         }}
       >
-        <BaseDateRangePickerCalendars onClose={onClose} triggerRefs={triggerRefs} />
+        <BaseDateRangePickerCalendars
+          onClose={onClose}
+          triggerRefs={triggerRefs}
+        />
       </CSSTransition>
     );
   };

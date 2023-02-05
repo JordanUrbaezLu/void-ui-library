@@ -3,11 +3,17 @@ import { CSSTransition } from "react-transition-group";
 import styles from "./Tooltip.module.scss";
 import classNames from "classnames";
 import { getTooltipPositionCalculations } from "../../utility/getTooltipPositionCalculations";
-import { useShowOnFocus } from "../../hooks";
+import {
+  useOnFocus,
+  useOnFocusOut,
+  useOnHover,
+  useOnHoverOut,
+} from "../../hooks";
 
 export type TooltipPosition = "bottom" | "top";
 
-export interface TooltipProps extends React.ComponentPropsWithoutRef<"div"> {
+export interface TooltipProps
+  extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * If the Tooltip has a nubbin
    *
@@ -47,7 +53,8 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
     ...rest
   } = props;
 
-  const [showTooltip, setShowTooltip] = React.useState<boolean>(startsOpen);
+  const [showTooltip, setShowTooltip] =
+    React.useState<boolean>(startsOpen);
 
   const tooltipRef = React.useRef<HTMLDivElement>(null);
 
@@ -74,13 +81,20 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
     );
   }, []);
 
-  useShowOnFocus(triggerRef, setShowTooltip);
+  // Show tooltip on focus or hover
+  useOnFocus(triggerRef, () => setShowTooltip(true));
+  useOnHover(triggerRef, () => setShowTooltip(true));
+
+  // Hide tooltip on focus out or hover out
+  useOnFocusOut(triggerRef, () => setShowTooltip(false));
+  useOnHoverOut(triggerRef, () => setShowTooltip(false));
 
   return (
-    <div className={classNames(className, styles.container)} {...rest}>
+    <div
+      className={classNames(className, styles.container)}
+      {...rest}
+    >
       {React.cloneElement(trigger, {
-        onMouseEnter: () => setShowTooltip(true),
-        onMouseLeave: () => setShowTooltip(false),
         ref: triggerRef,
         role: "button",
         tabIndex: 0,
@@ -111,7 +125,9 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
                 }
           }
         >
-          <div className={tooltip}>{text}</div>
+          <div className={tooltip} role="tooltip">
+            {text}
+          </div>
         </CSSTransition>
       </div>
     </div>
