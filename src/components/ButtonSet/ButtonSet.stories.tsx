@@ -14,3 +14,12 @@ export const Default = () => (
     <Button variant="secondary">Void</Button>
   </ButtonSet>
 );
+
+export const Column = () => (
+  <ButtonSet flexDirection="column">
+    <Button>Galaxy</Button>
+    <Button variant="secondary">Dark Matter</Button>
+    <Button>Gravity</Button>
+    <Button variant="secondary">Void</Button>
+  </ButtonSet>
+);

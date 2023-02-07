@@ -1,14 +1,20 @@
 import { Story } from "@storybook/react";
 import * as React from "react";
 import { AiFillEye, AiOutlineArrowRight } from "react-icons/ai";
-import { TextField, TextFieldProps, TextFieldType } from "./TextField";
+import {
+  TextField,
+  TextFieldProps,
+  TextFieldType,
+} from "./TextField";
 
 export default {
   component: TextField,
   title: "Components/TextField",
 };
 
-const Template: Story<Omit<TextFieldProps, "value" | "onChange">> = (args) => {
+const Template: Story<Omit<TextFieldProps, "value" | "onChange">> = (
+  args
+) => {
   const [value, setValue] = React.useState<string>("");
 
   return (

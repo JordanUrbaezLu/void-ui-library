@@ -1,6 +1,9 @@
 import { Story } from "@storybook/react";
 import { Button, ButtonProps } from "./Button";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+import {
+  AiOutlineArrowLeft,
+  AiOutlineArrowRight,
+} from "react-icons/ai";
 
 export default {
   component: Button,

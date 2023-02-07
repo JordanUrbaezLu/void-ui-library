@@ -6,7 +6,8 @@ export type ButtonVariant = "primary" | "secondary";
 export type ButtonSize = "small" | "medium" | "large";
 export type ButtonType = "button" | "submit" | "reset";
 
-export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
+export interface ButtonProps
+  extends React.ComponentPropsWithoutRef<"button"> {
   /**
    * The content for the Button
    */
@@ -45,56 +46,61 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   variant?: ButtonVariant;
 }
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, ref) => {
-    const {
-      className,
-      children,
-      disabled = "false",
-      leadingIcon,
-      onClick,
-      size = "medium",
-      trailingIcon,
-      type,
-      variant = "primary",
-      ...rest
-    } = props;
+export const Button = React.forwardRef<
+  HTMLButtonElement,
+  ButtonProps
+>((props, ref) => {
+  const {
+    className,
+    children,
+    disabled = "false",
+    leadingIcon,
+    onClick,
+    size = "medium",
+    trailingIcon,
+    type,
+    variant = "primary",
+    ...rest
+  } = props;
 
-    const classes = classNames(
-      className,
-      styles.button,
-      size === "small"
-        ? styles.small
-        : size === "large"
-        ? styles.large
-        : styles.medium,
-      variant === "secondary" ? styles.secondary : styles.primary
-    );
+  const classes = classNames(
+    className,
+    styles.button,
+    size === "small"
+      ? styles.small
+      : size === "large"
+      ? styles.large
+      : styles.medium,
+    variant === "secondary" ? styles.secondary : styles.primary
+  );
 
-    const content = (
-      <>
-        {leadingIcon && (
-          <span className={styles.leadingIcon}>{leadingIcon}</span>
-        )}
-        {children}
-        {trailingIcon && (
-          <span className={styles.trailingIcon}>{trailingIcon}</span>
-        )}
-      </>
-    );
+  const content = (
+    <>
+      {leadingIcon && (
+        <span className={styles.leadingIcon}>{leadingIcon}</span>
+      )}
+      {children}
+      {trailingIcon && (
+        <span className={styles.trailingIcon}>{trailingIcon}</span>
+      )}
+    </>
+  );
 
-    return (
-      <button
-        className={classes}
-        onClick={onClick}
-        ref={ref}
-        type={
-          type === "reset" ? "reset" : type === "submit" ? "submit" : "button"
-        }
-        {...rest}
-      >
-        {content}
-      </button>
-    );
-  }
-);
+  return (
+    <button
+      className={classes}
+      onClick={onClick}
+      ref={ref}
+      type={
+        type === "reset"
+          ? "reset"
+          : type === "submit"
+          ? "submit"
+          : "button"
+      }
+      {...rest}
+    >
+      {content}
+    </button>
+  );
+});

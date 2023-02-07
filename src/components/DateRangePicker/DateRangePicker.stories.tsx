@@ -1,5 +1,8 @@
 import { Story } from "@storybook/react";
-import { DateRangePicker, DateRangePickerProps } from "./DateRangePicker";
+import {
+  DateRangePicker,
+  DateRangePickerProps,
+} from "./DateRangePicker";
 
 export default {
   component: DateRangePicker,
@@ -7,7 +10,9 @@ export default {
 };
 
 const Template: Story<DateRangePickerProps> = () => {
-  return <DateRangePicker selected={new Date(2022, 5, 2)} startsOpen />;
+  return (
+    <DateRangePicker selected={new Date(2022, 5, 2)} startsOpen />
+  );
 };
 
 export const Default = Template.bind({});

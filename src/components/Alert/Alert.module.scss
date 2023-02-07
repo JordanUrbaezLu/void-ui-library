@@ -8,6 +8,7 @@
   font-size: 14px;
   padding: 10px 12px;
   min-width: 250px;
+  column-gap: 10px;
 
   &.error {
     background-color: rgba(red, 0.2);
@@ -72,4 +73,36 @@
 .exitActive {
   opacity: 0;
   transition: all 400ms ease-in-out;
+}
+
+.errorButton {
+  &:hover,
+  &:focus {
+    background-color: red !important;
+    color: black !important;
+  }
+}
+
+.infoButton {
+  &:hover,
+  &:focus {
+    background-color: blue !important;
+    color: black !important;
+  }
+}
+
+.successButton {
+  &:hover,
+  &:focus {
+    background-color: green !important;
+    color: black !important;
+  }
+}
+
+.warningButton {
+  &:hover,
+  &:focus {
+    background-color: orange !important;
+    color: black !important;
+  }
 }

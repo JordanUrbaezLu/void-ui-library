@@ -22,11 +22,11 @@ export const Warning = () => (
 );
 
 export const LongText = () => (
-  <Alert>
-    I am some very long text for the Alert component!
-  </Alert>
+  <Alert>I am some very long text for the Alert component!</Alert>
 );
 
 export const Closeable = () => (
-  <Alert closeable variant="info">I am a closeable Alert component!</Alert>
+  <Alert closeable variant="info">
+    I am a closeable Alert component!
+  </Alert>
 );

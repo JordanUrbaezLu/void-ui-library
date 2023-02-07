@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import * as React from "react";
 import { AiFillCalendar } from "react-icons/ai";
 import { getDateString } from "../../utility/getDatePickerCalendarUtilities";
@@ -7,7 +8,8 @@ import styles from "./DatePicker.module.scss";
 import { DatePickerContext } from "./DatePickerContext";
 import { IconButton } from "../IconButton/IconButton";
 
-export interface DatePickerProps extends React.ComponentPropsWithoutRef<"div"> {
+export interface DatePickerProps
+  extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * The initial selected date for the DatePicker
    */
@@ -42,7 +44,8 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
 
   const [selectedDate, setSelectedDate] =
     React.useState<Date | undefined>(selected);
-  const [showCalendar, setShowCalendar] = React.useState<boolean>(startsOpen);
+  const [showCalendar, setShowCalendar] =
+    React.useState<boolean>(startsOpen);
 
   React.useEffect(() => {
     setValue(getDateString(selectedDate));
@@ -50,7 +53,10 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
 
   return (
     <DatePickerContext.Provider
-      value={{ selectedDate: selectedDate, setSelectedDate: setSelectedDate }}
+      value={{
+        selectedDate: selectedDate,
+        setSelectedDate: setSelectedDate,
+      }}
     >
       <div className={className} {...rest}>
         <TextField

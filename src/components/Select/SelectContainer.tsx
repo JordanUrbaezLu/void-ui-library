@@ -8,7 +8,7 @@ export interface SelectContainerProps {
    */
   children: React.ReactNode;
   /**
-   * The callback fired when requesting to show or hide the SelectContainer 
+   * The callback fired when requesting to show or hide the SelectContainer
    */
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   /**
@@ -17,24 +17,24 @@ export interface SelectContainerProps {
   setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const SelectContainer: React.FC<SelectContainerProps> = (props) => {
+export const SelectContainer: React.FC<SelectContainerProps> = (
+  props
+) => {
   const { children, setIsOpen, setValue } = props;
 
   return (
     <div className={styles.selectOptionsMenu} role="menu">
       {React.Children.map(children, (child, index) => {
-        if (React.isValidElement<React.HTMLAttributes<HTMLElement>>(child)) {
-          return React.cloneElement(child, {
-            className: itemStyles.selectItem,
-            key: index,
-            onClick: () => {
-              setValue(child.props.children as string);
-              setIsOpen((prev) => !prev);
-            },
-          });
-        } else {
-          return null;
-        }
+        const selectItem = child as React.ReactElement;
+
+        return React.cloneElement(selectItem, {
+          className: itemStyles.selectItem,
+          key: index,
+          onClick: () => {
+            setValue(selectItem.props.children as string);
+            setIsOpen((prev) => !prev);
+          },
+        });
       })}
     </div>
   );

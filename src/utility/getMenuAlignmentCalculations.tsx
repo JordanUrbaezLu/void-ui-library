@@ -5,13 +5,15 @@ export const getMenuAlignmentCalculations = ({
   triggerRef,
   alignment,
 }: {
-  menuRef: React.RefObject<HTMLDivElement>;
-  triggerRef: React.RefObject<HTMLDivElement>;
+  menuRef: React.RefObject<HTMLElement>;
+  triggerRef: React.RefObject<HTMLElement>;
   alignment: MenuAlignment;
 }) => {
-  const menuWidth = menuRef.current?.getBoundingClientRect().width ?? 0;
+  const menuWidth =
+    menuRef.current?.getBoundingClientRect().width ?? 0;
 
-  const triggerWidth = triggerRef.current?.getBoundingClientRect().width ?? 0;
+  const triggerWidth =
+    triggerRef.current?.getBoundingClientRect().width ?? 0;
 
   const left =
     alignment === "topLeft" || alignment === "bottomLeft"
@@ -20,9 +22,11 @@ export const getMenuAlignmentCalculations = ({
       ? (triggerWidth - menuWidth) / 2
       : triggerWidth - menuWidth;
 
-  const menuHeight = menuRef.current?.getBoundingClientRect().height ?? 0;
+  const menuHeight =
+    menuRef.current?.getBoundingClientRect().height ?? 0;
 
-  const triggerHeight = triggerRef.current?.getBoundingClientRect().height ?? 0;
+  const triggerHeight =
+    triggerRef.current?.getBoundingClientRect().height ?? 0;
 
   const top = alignment.startsWith("bottom")
     ? triggerHeight + 2

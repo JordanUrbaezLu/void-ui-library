@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonSet Should render component correctly. 1`] = `
+<ul
+  class="buttonSet"
+>
+  <li
+    class="buttonSetItem"
+  >
+    <button
+      class="button medium primary"
+      type="button"
+    >
+      Button
+    </button>
+  </li>
+  <li
+    class="buttonSetItem"
+  >
+    <button
+      class="button medium primary"
+      type="button"
+    >
+      Button
+    </button>
+  </li>
+  <li
+    class="buttonSetItem"
+  >
+    <button
+      class="button medium primary"
+      type="button"
+    >
+      Button
+    </button>
+  </li>
+</ul>
+`;

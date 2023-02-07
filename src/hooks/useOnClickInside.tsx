@@ -1,12 +1,15 @@
 import * as React from "react";
 
 export const useOnClickInside = (
-  ref: React.RefObject<HTMLDivElement>,
+  ref: React.RefObject<HTMLElement> | React.RefObject<HTMLElement>[],
   handler: () => void
 ) => {
   return React.useEffect(() => {
     const checkIfInside = (event: any) => {
-      const isInside = ref.current?.contains(event.target as Node);
+      const elementRefs = Array.isArray(ref) ? ref : [ref];
+      const isInside = elementRefs.some((refs) =>
+        refs.current?.contains(event.target as Node)
+      );
       if (isInside) {
         handler();
       }
@@ -16,5 +19,5 @@ export const useOnClickInside = (
     return () => {
       document.removeEventListener("mousedown", checkIfInside);
     };
-  });
+  }, [ref]);
 };

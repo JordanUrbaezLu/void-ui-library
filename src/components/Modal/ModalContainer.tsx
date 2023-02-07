@@ -1,12 +1,16 @@
 import * as React from "react";
 import styles from "./ModalContainer.module.scss";
 import { IconButton } from "../IconButton/IconButton";
-import { useOnClickOutside } from "../../hooks";
+import { useOnClickOutside, useOnKeyDown } from "../../hooks";
 import { TbX } from "react-icons/tb";
 import { useLockBodyScroll } from "../../hooks/useLockBodyScroll";
-import FocusTrap from "focus-trap-react";
+import { FocusTrap } from "../FocusTrap/FocusTrap";
 
 export interface ModalContainerProps {
+  /**
+   * The accessible label for the Modal
+   */
+  ariaLabel: string;
   /**
    * The buttons for the Modal
    */
@@ -29,8 +33,11 @@ export interface ModalContainerProps {
   title: string;
 }
 
-export const ModalContainer: React.FC<ModalContainerProps> = (props) => {
-  const { buttons, content, isOpen, onClose, title } = props;
+export const ModalContainer: React.FC<ModalContainerProps> = (
+  props
+) => {
+  const { ariaLabel, buttons, content, isOpen, onClose, title } =
+    props;
 
   const modalRef = React.useRef<HTMLDivElement>(null);
 
@@ -38,15 +45,24 @@ export const ModalContainer: React.FC<ModalContainerProps> = (props) => {
 
   useOnClickOutside(modalRef, onClose);
 
+  useOnKeyDown(["Escape"], onClose);
+
   return (
     <FocusTrap>
-      <div className={styles.modalContainer} ref={modalRef}>
+      <div
+        aria-label={ariaLabel}
+        className={styles.modalContainer}
+        ref={modalRef}
+        role="dialog"
+      >
         <div className={styles.modalHeader}>
           <div className={styles.modalTitle}>{title}</div>
-          <IconButton content={<TbX />} onClick={onClose}/>
+          <IconButton content={<TbX />} onClick={onClose} />
         </div>
         <div className={styles.modalContent}>{content}</div>
-        {buttons && <div className={styles.modalButtons}>{buttons}</div>}
+        {buttons && (
+          <div className={styles.modalButtons}>{buttons}</div>
+        )}
       </div>
     </FocusTrap>
   );

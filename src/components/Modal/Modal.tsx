@@ -6,6 +6,10 @@ import { CSSTransition } from "react-transition-group";
 
 export interface ModalProps {
   /**
+   * The accessible label for the Modal
+   */
+  ariaLabel?: string;
+  /**
    * The buttons for the Modal
    */
   buttons?: React.ReactNode;
@@ -22,9 +26,9 @@ export interface ModalProps {
   /**
    * If the Modal is open
    *
-   * @default false
+   * @default flase
    */
-  isOpen: boolean;
+  isOpen?: boolean;
   /**
    * The callback fired when the Modal closes
    */
@@ -45,6 +49,7 @@ export interface ModalProps {
 
 export const Modal: React.FC<ModalProps> = (props) => {
   const {
+    ariaLabel = "Modal",
     buttons,
     content,
     hasOverlay = true,
@@ -77,6 +82,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
         <Overlay showBackground={hasOverlay}>
           <div className={styles.modalBackground}>
             <ModalContainer
+              ariaLabel={ariaLabel}
               buttons={buttons}
               content={content}
               isOpen={isOpen}

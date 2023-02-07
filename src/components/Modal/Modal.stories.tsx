@@ -51,7 +51,8 @@ WithButtons.parameters = {
 };
 
 export const WithNestedModals = () => {
-  const [isFirstModalOpen, setIsFirstModalOpen] = React.useState<boolean>(true);
+  const [isFirstModalOpen, setIsFirstModalOpen] =
+    React.useState<boolean>(true);
   const [isSecondModalOpen, setSecondModalIsOpen] =
     React.useState<boolean>(true);
 
@@ -72,7 +73,9 @@ export const WithNestedModals = () => {
             isOpen={isSecondModalOpen}
             onOpen={() => setSecondModalIsOpen(true)}
             onClose={() => setSecondModalIsOpen(false)}
-            trigger={<Button variant="secondary">Open Second Modal!</Button>}
+            trigger={
+              <Button variant="secondary">Open Second Modal!</Button>
+            }
             title="Modal Title"
           />
         </ButtonSet>

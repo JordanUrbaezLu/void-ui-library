@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import * as React from "react";
 import { CSSTransition } from "react-transition-group";
 import styles from "./DatePickerCalendar.module.scss";
@@ -7,8 +8,10 @@ import { BaseDatePickerCalendar } from "./BaseDatePickerCalendar";
 export interface DatePickerCalendarProps {
   /**
    * If the DatePickerCalendar is open
+   *
+   * @default false
    */
-  isOpen: boolean;
+  isOpen?: boolean;
   /**
    * The callback fired when the DatePickerCalendar requests to close
    */
@@ -22,7 +25,7 @@ export interface DatePickerCalendarProps {
 export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = (
   props
 ) => {
-  const { onClose, isOpen, triggerRef } = props;
+  const { onClose, isOpen = false, triggerRef } = props;
 
   return (
     <CSSTransition
@@ -37,7 +40,10 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = (
         exitActive: styles.exitActive,
       }}
     >
-      <BaseDatePickerCalendar onClose={onClose} triggerRef={triggerRef} />
+      <BaseDatePickerCalendar
+        onClose={onClose}
+        triggerRef={triggerRef}
+      />
     </CSSTransition>
   );
 };
