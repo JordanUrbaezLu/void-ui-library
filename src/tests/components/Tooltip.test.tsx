@@ -1,4 +1,5 @@
 import {
+  act,
   fireEvent,
   render,
   screen,
@@ -9,6 +10,7 @@ import {
   TooltipPosition,
 } from "../../components/Tooltip/Tooltip";
 import { axe } from "jest-axe";
+import React from "react";
 
 describe("Tooltip", () => {
   test("Should render component correctly.", () => {
@@ -50,6 +52,29 @@ describe("Interaction", () => {
     expect(screen.getByText("Tooltip")).toBeInTheDocument();
 
     fireEvent.mouseLeave(screen.getByRole("button"));
+  });
+
+  test("Should show tooltip correctly on focus.", () => {
+    render(
+      <React.Fragment>
+        <Tooltip text="Tooltip" trigger={<button>Button</button>} />
+        <button>Outside</button>
+      </React.Fragment>
+    );
+
+    const buttonElement = screen.getAllByRole("button")[0];
+
+    act(() => buttonElement.focus());
+
+    expect(buttonElement).toHaveFocus();
+
+    expect(screen.getByText("Tooltip")).toBeInTheDocument();
+
+    const outsideElement = screen.getAllByRole("button")[1];
+
+    act(() => outsideElement.focus());
+
+    expect(outsideElement).toHaveFocus();
   });
 });
 

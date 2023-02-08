@@ -2,10 +2,6 @@ import { screen, render } from "@testing-library/react";
 import { axe } from "jest-axe";
 import { Alert, AlertVariant } from "../../components/Alert/Alert";
 
-beforeEach(() => {
-  jest.spyOn(console, "warn").mockImplementation(() => {});
-});
-
 describe("Alert", () => {
   test("Should render component correctly.", () => {
     const { container } = render(<Alert>This is an alert!</Alert>);

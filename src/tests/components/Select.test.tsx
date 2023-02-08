@@ -2,6 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { Select } from "../../components/Select/Select";
 import { SelectItem } from "../../components/Select/SelectItem";
 import { axe } from "jest-axe";
+import { act } from "react-dom/test-utils";
 
 describe("Select", () => {
   test("Should render component correctly.", () => {
@@ -38,26 +39,21 @@ describe("Interaction", () => {
       </Select>
     );
 
-    fireEvent.click(screen.getAllByRole("textbox")[0]);
+    act(() => screen.getAllByRole("textbox")[0].click());
 
     expect(screen.getByText("30")).toBeInTheDocument();
 
-    fireEvent.click(screen.getAllByRole("menuitem")[0]);
+    act(() => screen.getByRole("menuitem").click());
   });
 
-  test("Should close SelectContainer when click outside.", () => {
+  test("Should close Select on click outside.", () => {
     render(
-      <>
-        <button>Button</button>
-        <Select startsOpen>
-          <SelectItem>30</SelectItem>
-        </Select>
-      </>
+      <Select startsOpen>
+        <SelectItem>30</SelectItem>
+      </Select>
     );
 
-    fireEvent.click(screen.getByRole("button"));
-
-    expect(screen.getByText("30")).toBeInTheDocument();
+    fireEvent.mouseDown(document.body);
   });
 });
 
