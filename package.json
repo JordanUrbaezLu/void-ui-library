@@ -78,7 +78,8 @@
     "focus-trap-react": "^10.0.2",
     "react-focus-lock": "^2.9.3",
     "react-icons": "^4.7.1",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "recharts": "^2.3.2"
   },
   "$schema": "https://json.schemastore.org/package.json",
   "readme": "ERROR: No README data found!",
