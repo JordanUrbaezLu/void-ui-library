@@ -18,7 +18,7 @@ import {
 } from "../../utility/getDatePickerCalendarUtilities";
 import { DatePickerContext } from "./DatePickerContext";
 import { Button } from "../Button";
-import FocusTrap from "focus-trap-react";
+import { FocusTrap } from "../FocusTrap/FocusTrap";
 import { IconButton } from "../IconButton/IconButton";
 
 export interface BaseDatePickerCalendarProps {
@@ -111,11 +111,11 @@ export const BaseDatePickerCalendar: React.FC<BaseDatePickerCalendarProps> =
     useOnKeyDown(["Escape"], onClose);
 
     return (
-      <FocusTrap>
-        <div
-          className={styles.datePickerCalendarContainer}
-          ref={calendarRef}
-        >
+      <div
+        className={styles.datePickerCalendarContainer}
+        ref={calendarRef}
+      >
+        <FocusTrap>
           <div
             className={styles.datePickerCalendarNavigationContainer}
           >
@@ -256,7 +256,7 @@ export const BaseDatePickerCalendar: React.FC<BaseDatePickerCalendarProps> =
               Clear
             </Button>
           </div>
-        </div>
-      </FocusTrap>
+        </FocusTrap>
+      </div>
     );
   };

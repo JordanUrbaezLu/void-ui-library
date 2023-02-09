@@ -2,7 +2,7 @@
 import * as React from "react";
 import styles from "./BaseDateRangePickerCalendars.module.scss";
 import { useOnClickOutside } from "../../hooks/useOnClickOutside";
-import FocusTrap from "focus-trap-react";
+import { FocusTrap } from "../FocusTrap/FocusTrap";
 import {
   TfiAngleLeft,
   TfiAngleRight,
@@ -80,11 +80,12 @@ export const BaseDateRangePickerCalendars: React.FC<BaseDateRangePickerCalendars
     };
 
     return (
-      <FocusTrap>
-        <div
-          className={styles.dateRangePickerCalendarsContainer}
-          ref={calendarsRef}
-        >
+      <div
+        className={styles.dateRangePickerCalendarsContainer}
+        ref={calendarsRef}
+      >
+        {" "}
+        <FocusTrap>
           <div
             className={
               styles.dateRangePickerCalendarNavigationContainer
@@ -145,7 +146,7 @@ export const BaseDateRangePickerCalendars: React.FC<BaseDateRangePickerCalendars
               />
             </div>
           </div>
-        </div>
-      </FocusTrap>
+        </FocusTrap>
+      </div>
     );
   };
