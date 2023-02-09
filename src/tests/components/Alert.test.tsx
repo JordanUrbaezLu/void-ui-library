@@ -29,7 +29,6 @@ describe("Props", () => {
 
     expect(closeButton).toBeInTheDocument();
 
-    // Jest console.error, wrap with act(() => {})?
     closeButton.click();
   });
   test.each<AlertVariant>(["error", "info", "success", "warning"])(

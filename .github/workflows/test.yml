@@ -15,9 +15,9 @@ jobs:
     # give the steps to run
     steps:
       # get the source code into the vm
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       # setup nodeJS to be able to run the commands/scripts
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
       # run "npm install" script which is a clean install of packages
