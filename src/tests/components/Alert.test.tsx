@@ -1,4 +1,4 @@
-import { screen, render } from "@testing-library/react";
+import { screen, render, act } from "@testing-library/react";
 import { axe } from "jest-axe";
 import { Alert, AlertVariant } from "../../components/Alert/Alert";
 
@@ -29,7 +29,7 @@ describe("Props", () => {
 
     expect(closeButton).toBeInTheDocument();
 
-    closeButton.click();
+    act(() => closeButton.click());
   });
   test.each<AlertVariant>(["error", "info", "success", "warning"])(
     "Should render variants correctly.",

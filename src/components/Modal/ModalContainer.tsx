@@ -5,12 +5,15 @@ import { useOnClickOutside, useOnKeyDown } from "../../hooks";
 import { TbX } from "react-icons/tb";
 import { useLockBodyScroll } from "../../hooks/useLockBodyScroll";
 import { FocusTrap } from "../FocusTrap/FocusTrap";
+import { Divider } from "../Divider/Divider";
+import classNames from "classnames";
 
-export interface ModalContainerProps {
+export interface ModalContainerProps
+  extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * The accessible label for the Modal
    */
-  ariaLabel: string;
+  ariaLabel?: string;
   /**
    * The buttons for the Modal
    */
@@ -21,8 +24,10 @@ export interface ModalContainerProps {
   content: string;
   /**
    * If the Modal is open
+   *
+   * @default false
    */
-  isOpen: boolean;
+  isOpen?: boolean;
   /**
    * The callback fired when the Modal closes
    */
@@ -33,11 +38,22 @@ export interface ModalContainerProps {
   title: string;
 }
 
+/**
+ * @private
+ */
 export const ModalContainer: React.FC<ModalContainerProps> = (
   props
 ) => {
-  const { ariaLabel, buttons, content, isOpen, onClose, title } =
-    props;
+  const {
+    ariaLabel,
+    buttons,
+    className,
+    content,
+    isOpen = false,
+    onClose,
+    title,
+    ...rest
+  } = props;
 
   const modalRef = React.useRef<HTMLDivElement>(null);
 
@@ -51,17 +67,25 @@ export const ModalContainer: React.FC<ModalContainerProps> = (
     <FocusTrap>
       <div
         aria-label={ariaLabel}
-        className={styles.modalContainer}
+        className={classNames(className, styles.modalContainer)}
         ref={modalRef}
         role="dialog"
+        {...rest}
       >
         <div className={styles.modalHeader}>
           <div className={styles.modalTitle}>{title}</div>
-          <IconButton content={<TbX />} onClick={onClose} />
+          <IconButton
+            className={styles.modalIcon}
+            content={<TbX />}
+            onClick={onClose}
+          />
         </div>
         <div className={styles.modalContent}>{content}</div>
         {buttons && (
-          <div className={styles.modalButtons}>{buttons}</div>
+          <>
+            <Divider direction="horizontal" stroke={1} />
+            <div className={styles.modalButtons}>{buttons}</div>
+          </>
         )}
       </div>
     </FocusTrap>

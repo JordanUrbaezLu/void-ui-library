@@ -28,6 +28,9 @@ export interface SelectProps
   label?: string;
 }
 
+/**
+ * @public
+ */
 export const Select: React.FC<SelectProps> = (props) => {
   const {
     className,

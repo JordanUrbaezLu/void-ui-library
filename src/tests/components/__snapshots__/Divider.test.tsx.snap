@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider Should render component correctly. 1`] = `
+<span
+  class="divider"
+  role="separator"
+  style="border-top: 1px solid #c8c8c8;"
+/>
+`;

@@ -8,6 +8,9 @@ export interface DaterPickerContext {
   >;
 }
 
+/**
+ * @private
+ */
 export const DatePickerContext =
   React.createContext<DaterPickerContext>({
     selectedDate: undefined,

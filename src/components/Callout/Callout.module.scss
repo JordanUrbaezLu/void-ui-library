@@ -1,0 +1,38 @@
+.callout {
+  display: inline-block;
+  position: relative;
+  box-sizing: inherit;
+}
+
+.enter {
+  opacity: 0;
+  .top & {
+    transform: translateY(-100px);
+  }
+
+  .bottom & {
+    transform: translateY(100px);
+  }
+
+  .left & {
+    transform: translateX(-100px);
+  }
+
+  .right & {
+    transform: translateX(100px);
+  }
+}
+
+.enterActive {
+  opacity: 1;
+  transition: all 200ms;
+}
+
+.exit {
+  opacity: 1;
+}
+
+.exitActive {
+  opacity: 0;
+  transition: all 200ms;
+}

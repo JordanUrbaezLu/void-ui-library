@@ -17,7 +17,7 @@ export interface OverlayProps
 }
 
 /**
- * @utility
+ * @public
  */
 export const Overlay: React.FC<OverlayProps> = (props) => {
   const {

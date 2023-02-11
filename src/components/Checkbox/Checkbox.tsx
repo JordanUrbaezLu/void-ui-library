@@ -1,5 +1,5 @@
-import classNames from "classnames";
 import * as React from "react";
+import classNames from "classnames";
 import styles from "./Checkbox.module.scss";
 import { BiCheckSquare } from "react-icons/bi";
 
@@ -21,6 +21,9 @@ export interface CheckboxProps
   onChange: () => void;
 }
 
+/**
+ * @public
+ */
 export const Checkbox: React.FC<CheckboxProps> = (props) => {
   const {
     className,

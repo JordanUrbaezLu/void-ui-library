@@ -1,9 +1,11 @@
+@use "../../utility/globals";
+
 .modalContainer {
-  background-color: white;
+  background: globals.$primary-background-color;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  height: fit-content;
   width: 400px;
+  color: globals.$primary-text-color;
 }
 
 .modalHeader {
@@ -15,7 +17,7 @@
 }
 
 .modalContent {
-  padding: 30px;
+  padding: 30px 30px 50px 30px;
   text-align: center;
 }
 
@@ -29,4 +31,17 @@
 
 .modalTitle {
   align-self: center;
+}
+
+.modalIcon {
+  color: globals.$primary-text-color !important;
+
+  &:hover,
+  &:focus {
+    background-color: globals.$primary-background-color-hover-and-focus !important;
+  }
+
+  &:active {
+    background-color: globals.$primary-background-color-active !important;
+  }
 }

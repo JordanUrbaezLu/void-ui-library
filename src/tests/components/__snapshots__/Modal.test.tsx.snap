@@ -1,12 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal Should render component correctly. 1`] = `
-<button
-  class="button medium primary"
-  role="button"
-  tabindex="0"
-  type="button"
+<div
+  class="react-ripples mediumRipple"
+  style="position: relative; display: inline-flex; overflow: hidden;"
 >
-  Trigger
-</button>
+  <button
+    class="button medium primary"
+    role="button"
+    tabindex="0"
+    type="button"
+  >
+    Trigger
+  </button>
+  <s
+    style="position: absolute; border-radius: 50%; opacity: 0; width: 35px; height: 35px; transform: translate(-50%, -50%); pointer-events: none;"
+  />
+</div>
 `;

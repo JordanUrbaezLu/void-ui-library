@@ -22,9 +22,6 @@ export const Default = () => {
     />
   );
 };
-Default.parameters = {
-  layout: "padded",
-};
 
 export const WithButtons = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(true);
@@ -33,21 +30,18 @@ export const WithButtons = () => {
     <Modal
       buttons={
         <ButtonSet>
-          <Button variant="secondary">Cancel</Button>
-          <Button variant="secondary">Confirm</Button>
+          <Button>Cancel</Button>
+          <Button>Confirm</Button>
         </ButtonSet>
       }
       content="Modal Content"
       isOpen={isOpen}
       onOpen={() => setIsOpen(true)}
       onClose={() => setIsOpen(false)}
-      trigger={<Button variant="secondary">Open Modal!</Button>}
+      trigger={<Button>Open Modal!</Button>}
       title="Modal Title"
     />
   );
-};
-WithButtons.parameters = {
-  layout: "padded",
 };
 
 export const WithNestedModals = () => {
@@ -60,12 +54,12 @@ export const WithNestedModals = () => {
     <Modal
       buttons={
         <ButtonSet>
-          <Button variant="secondary">Cancel</Button>
+          <Button>Cancel</Button>
           <Modal
             buttons={
               <ButtonSet>
-                <Button variant="secondary">Cancel</Button>
-                <Button variant="secondary">Confirm</Button>
+                <Button>Cancel</Button>
+                <Button>Confirm</Button>
               </ButtonSet>
             }
             content="Modal Content"
@@ -73,9 +67,7 @@ export const WithNestedModals = () => {
             isOpen={isSecondModalOpen}
             onOpen={() => setSecondModalIsOpen(true)}
             onClose={() => setSecondModalIsOpen(false)}
-            trigger={
-              <Button variant="secondary">Open Second Modal!</Button>
-            }
+            trigger={<Button>Open Second Modal!</Button>}
             title="Modal Title"
           />
         </ButtonSet>
@@ -88,7 +80,4 @@ export const WithNestedModals = () => {
       title="Modal Title"
     />
   );
-};
-WithNestedModals.parameters = {
-  layout: "padded",
 };

@@ -15,6 +15,9 @@ export interface FocusTrapProps
   returnFocus?: boolean;
 }
 
+/**
+ * @public
+ */
 export const FocusTrap: React.FC<FocusTrapProps> = (props) => {
   const { children, returnFocus = true, ...rest } = props;
 

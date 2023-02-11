@@ -46,9 +46,6 @@ export const LineChart = () => (
     type="line"
   />
 );
-LineChart.parameters = {
-  layout: "padded",
-};
 
 export const BarChart = () => (
   <Chart
@@ -58,6 +55,4 @@ export const BarChart = () => (
     type="bar"
   />
 );
-BarChart.parameters = {
-  layout: "padded",
-};
+

@@ -30,6 +30,9 @@ export interface DatePickerProps
   value?: string;
 }
 
+/**
+ * @public
+ */
 export const DatePicker: React.FC<DatePickerProps> = (props) => {
   const {
     className,

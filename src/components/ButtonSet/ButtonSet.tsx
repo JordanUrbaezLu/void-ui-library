@@ -16,6 +16,9 @@ export interface ButtonSetProps
   flexDirection?: "row" | "column";
 }
 
+/**
+ * @public
+ */
 export const ButtonSet: React.FC<ButtonSetProps> = (props) => {
   const {
     className,

@@ -30,6 +30,9 @@ export interface AlertProps
   variant?: AlertVariant;
 }
 
+/**
+ * @public
+ */
 export const Alert: React.FC<AlertProps> = (props) => {
   const {
     className,

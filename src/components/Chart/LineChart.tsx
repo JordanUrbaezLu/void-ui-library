@@ -29,6 +29,9 @@ export interface LineChartProps {
   title: string;
 }
 
+/**
+ * @private
+ */
 export const LineChart: React.FC<LineChartProps> = (props) => {
   const { data, dataKeys, strokes, title } = props;
   return (

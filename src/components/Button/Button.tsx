@@ -1,6 +1,7 @@
 import * as React from "react";
 import styles from "./Button.module.scss";
 import classNames from "classnames";
+import Ripples from "react-ripples";
 
 export type ButtonVariant = "primary" | "secondary";
 export type ButtonSize = "small" | "medium" | "large";
@@ -46,6 +47,9 @@ export interface ButtonProps
   variant?: ButtonVariant;
 }
 
+/**
+ * @public
+ */
 export const Button = React.forwardRef<
   HTMLButtonElement,
   ButtonProps
@@ -86,21 +90,35 @@ export const Button = React.forwardRef<
     </>
   );
 
+  const rippleSize = classNames(
+    size === "small"
+      ? styles.smallRipple
+      : size === "large"
+      ? styles.largeRipple
+      : styles.mediumRipple
+  );
+
   return (
-    <button
-      className={classes}
-      onClick={onClick}
-      ref={ref}
-      type={
-        type === "reset"
-          ? "reset"
-          : type === "submit"
-          ? "submit"
-          : "button"
-      }
-      {...rest}
+    <Ripples
+      className={rippleSize}
+      color="rgba(38, 25, 49, 0.85)"
+      during={300}
     >
-      {content}
-    </button>
+      <button
+        className={classes}
+        onClick={onClick}
+        ref={ref}
+        type={
+          type === "reset"
+            ? "reset"
+            : type === "submit"
+            ? "submit"
+            : "button"
+        }
+        {...rest}
+      >
+        {content}
+      </button>
+    </Ripples>
   );
 });

@@ -30,6 +30,9 @@ export interface IconButtonProps
   onClick: () => void;
 }
 
+/**
+ * @public
+ */
 export const IconButton = React.forwardRef<
   HTMLButtonElement,
   IconButtonProps

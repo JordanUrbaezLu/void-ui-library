@@ -42,6 +42,9 @@ export interface TooltipProps
   trigger: React.ReactElement;
 }
 
+/**
+ * @public
+ */
 export const Tooltip: React.FC<TooltipProps> = (props) => {
   const {
     className,

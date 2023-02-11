@@ -63,6 +63,9 @@ export interface TextFieldProps
   value?: string;
 }
 
+/**
+ * @public
+ */
 export const TextField = React.forwardRef<
   HTMLDivElement,
   TextFieldProps
