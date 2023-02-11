@@ -19,14 +19,17 @@ export interface ChartProps {
   title: string;
   /**
    * The type for the Chart
-   * 
+   *
    * @default "line"
    */
   type?: ChartType;
 }
 
+/**
+ * @public
+ */
 export const Chart: React.FC<ChartProps> = (props) => {
-  const { data, dataKeys, title, type = "line" } = props;
+  const { data, dataKeys, title, type = "line", ...rest } = props;
   const strokes = [
     "#4c00b0",
     "#8a00c2",
@@ -41,6 +44,7 @@ export const Chart: React.FC<ChartProps> = (props) => {
       dataKeys={dataKeys}
       strokes={strokes}
       title={title}
+      {...rest}
     />
   ) : (
     <BarChart
@@ -48,6 +52,7 @@ export const Chart: React.FC<ChartProps> = (props) => {
       dataKeys={dataKeys}
       strokes={strokes}
       title={title}
+      {...rest}
     />
   );
 };

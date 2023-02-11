@@ -22,6 +22,9 @@ export interface DatePickerCalendarProps {
   triggerRef: React.RefObject<HTMLButtonElement>;
 }
 
+/**
+ * @private
+ */
 export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = (
   props
 ) => {

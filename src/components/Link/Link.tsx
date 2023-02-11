@@ -22,6 +22,9 @@ export interface LinkProps
   variant?: LinkVariant;
 }
 
+/**
+ * @public
+ */
 export const Link: React.FC<LinkProps> = (props) => {
   const {
     className,

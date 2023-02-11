@@ -1,18 +1,26 @@
+import classNames from "classnames";
 import * as React from "react";
 import styles from "./MenuItem.module.scss";
 
-export interface MenuItemProps {
+export interface MenuItemProps
+  extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * The content for the MenuItem
    */
   children: string;
 }
 
+/**
+ * @public
+ */
 export const MenuItem: React.FC<MenuItemProps> = (props) => {
-  const { children, ...rest } = props;
+  const { className, children, ...rest } = props;
 
   return (
-    <div className={styles.menuItemContainer} {...rest}>
+    <div
+      className={classNames(className, styles.menuItemContainer)}
+      {...rest}
+    >
       {children}
     </div>
   );

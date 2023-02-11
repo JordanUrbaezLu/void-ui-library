@@ -4,6 +4,9 @@ import { Button } from "../Button/Button";
 
 export default {
   component: Tooltip,
+  parameters: {
+    layout: "centered",
+  },
   title: "Components/Tooltip",
 };
 
@@ -21,31 +24,31 @@ const Template: Story<
 
 export const Default = Template.bind({});
 Default.args = {
-  text: "Tooltip",
+  text: "Tooltip!",
 };
 
 export const TopPosition = Template.bind({});
 TopPosition.args = {
-  text: "Tooltip",
+  text: "Tooltip!",
   position: "top",
 };
 
 export const BottomPosition = Template.bind({});
 BottomPosition.args = {
-  text: "Tooltip",
+  text: "Tooltip!",
   position: "bottom",
 };
 
 export const TopPositionAndNubbin = Template.bind({});
 TopPositionAndNubbin.args = {
-  text: "Tooltip",
+  text: "Tooltip!",
   position: "top",
   hasNubbin: true,
 };
 
 export const BottomPositionAndNubbin = Template.bind({});
 BottomPositionAndNubbin.args = {
-  text: "Tooltip",
+  text: "Tooltip!",
   position: "bottom",
   hasNubbin: true,
 };

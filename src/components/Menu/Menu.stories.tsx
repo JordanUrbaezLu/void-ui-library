@@ -3,9 +3,14 @@ import * as React from "react";
 import { Menu, MenuProps } from "./Menu";
 import { MenuItem } from "./MenuItem";
 import { Button } from "../Button/Button";
+import { MenuDivider } from "./MenuDivider";
+import { MenuHeader } from "./MenuHeader";
 
 export default {
   component: Menu,
+  parameters: {
+    layout: "centered",
+  },
   title: "Components/Menu",
 };
 
@@ -69,4 +74,34 @@ AlignmentTopRight.args = {
 export const AlignmentTopCenter = Template.bind({});
 AlignmentTopCenter.args = {
   alignment: "topCenter",
+};
+
+export const WithDividerAndHeader = () => {
+  const [isOpen, setIsOpen] = React.useState<boolean>(true);
+
+  return (
+    <Menu
+      isOpen={isOpen}
+      onOpen={() => {
+        console.log("Open");
+        setIsOpen(true);
+      }}
+      onClose={() => {
+        console.log("Close");
+        setIsOpen(false);
+      }}
+      trigger={<Button>Click Me!</Button>}
+    >
+      <MenuItem>New File</MenuItem>
+      <MenuItem>New Folder</MenuItem>
+      <MenuItem>Save As</MenuItem>
+      <MenuDivider />
+      <MenuHeader>Edit</MenuHeader>
+      <MenuItem>Cut</MenuItem>
+      <MenuItem>Copy</MenuItem>
+      <MenuItem>Paste</MenuItem>
+      <MenuDivider />
+      <MenuItem>Print</MenuItem>
+    </Menu>
+  );
 };

@@ -45,6 +45,10 @@ export interface MenuProps
   trigger: React.ReactElement;
 }
 
+
+/**
+ * @public
+ */
 export const Menu: React.FC<MenuProps> = (props) => {
   const {
     alignment = "bottomLeft",

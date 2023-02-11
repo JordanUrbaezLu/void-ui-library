@@ -1,5 +1,8 @@
+@use "../../utility/globals";
+
 .container {
   position: relative;
+  font-family: globals.$font-family;
 }
 
 .menuLayoutContainer {

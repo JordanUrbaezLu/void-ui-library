@@ -1,6 +1,6 @@
 import * as React from "react";
 import styles from "./MenuContainer.module.scss";
-import { useOnClickOutside } from "../../hooks";
+import { useOnClickOutside, useOnKeyDown } from "../../hooks";
 
 export interface MenuContainerProps {
   /**
@@ -21,6 +21,9 @@ export interface MenuContainerProps {
   triggerRef: React.RefObject<HTMLElement>;
 }
 
+/**
+ * @private
+ */
 export const MenuContainer: React.FC<MenuContainerProps> = (
   props
 ) => {
@@ -51,6 +54,11 @@ export const MenuContainer: React.FC<MenuContainerProps> = (
     menuItem?.focus();
   }, [focusedMenuItem]);
 
+  useOnKeyDown(["Escape"], () => {
+    onClose();
+    triggerRef.current?.focus();
+  });
+
   useOnClickOutside([triggerRef, menuRef], onClose);
 
   return (
@@ -65,10 +73,6 @@ export const MenuContainer: React.FC<MenuContainerProps> = (
             triggerRef.current?.focus();
           },
           onKeyDown: (event: any) => {
-            if (event.code === "Escape") {
-              onClose();
-              triggerRef.current?.focus();
-            }
             if (event.code === "Space") {
               onClose(menuItem.props.children as string);
               triggerRef.current?.focus();

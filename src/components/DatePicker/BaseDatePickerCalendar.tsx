@@ -32,6 +32,9 @@ export interface BaseDatePickerCalendarProps {
   triggerRef: React.RefObject<HTMLButtonElement>;
 }
 
+/**
+ * @private
+ */
 export const BaseDatePickerCalendar: React.FC<BaseDatePickerCalendarProps> =
   (props) => {
     const { onClose, triggerRef } = props;
@@ -108,6 +111,7 @@ export const BaseDatePickerCalendar: React.FC<BaseDatePickerCalendarProps> =
     }, [focusedDate]);
 
     useOnClickOutside([calendarRef, triggerRef], onClose);
+
     useOnKeyDown(["Escape"], onClose);
 
     return (

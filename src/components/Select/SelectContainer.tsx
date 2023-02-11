@@ -17,6 +17,9 @@ export interface SelectContainerProps {
   setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
+/**
+ * @private
+ */
 export const SelectContainer: React.FC<SelectContainerProps> = (
   props
 ) => {

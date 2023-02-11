@@ -10,11 +10,12 @@ module.exports = {
   ],
 
   core: {
-    builder: "webpack5",
+    builder: {
+      name: "webpack5",
+    },
   },
 
   features: {
-    postcss: false,
     storyStoreV7: true,
   },
 
@@ -34,13 +35,13 @@ module.exports = {
 
           {
             include: path.resolve(__dirname, ".."),
-            test: /\.scss$/,
+            test: /\.module\.scss$/,
             use: [
               "style-loader",
-
               {
                 loader: "css-loader",
                 options: {
+                  importLoaders: 1,
                   modules: {
                     localIdentName: "[local]--[hash:base64:5]",
                   },

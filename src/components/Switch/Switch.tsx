@@ -20,6 +20,9 @@ export interface SwitchProps
   onClick: () => void;
 }
 
+/**
+ * @public
+ */
 export const Switch: React.FC<SwitchProps> = (props) => {
   const { className, isOn = false, label, onClick, ...rest } = props;
 

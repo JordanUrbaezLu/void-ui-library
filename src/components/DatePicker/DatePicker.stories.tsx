@@ -20,6 +20,4 @@ const Template: Story<DatePickerProps> = () => {
 };
 
 export const Default = Template.bind({});
-Default.parameters = {
-  layout: "padded",
-};
+

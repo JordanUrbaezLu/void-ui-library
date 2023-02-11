@@ -1,10 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button Should render component correctly. 1`] = `
-<button
-  class="button medium primary"
-  type="button"
+<div
+  class="react-ripples mediumRipple"
+  style="position: relative; display: inline-flex; overflow: hidden;"
 >
-  Button
-</button>
+  <button
+    class="button medium primary"
+    type="button"
+  >
+    Button
+  </button>
+  <s
+    style="position: absolute; border-radius: 50%; opacity: 0; width: 35px; height: 35px; transform: translate(-50%, -50%); pointer-events: none;"
+  />
+</div>
 `;

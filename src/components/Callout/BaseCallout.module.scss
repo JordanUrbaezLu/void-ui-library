@@ -1,0 +1,20 @@
+@use "../../utility/globals";
+
+.baseCallout {
+  border-radius: 4px;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 150px;
+}
+
+.content {
+  background: red;
+  border-radius: 4px;
+  padding: 8px;
+  position: relative;
+}
+
+.label {
+  color: blue;
+  font-family: globals.$font-family;
+}

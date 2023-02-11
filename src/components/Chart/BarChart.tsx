@@ -29,6 +29,9 @@ export interface BarChartProps {
   title: string;
 }
 
+/**
+ * @private
+ */
 export const BarChart: React.FC<BarChartProps> = (props) => {
   const { data, dataKeys, strokes, title } = props;
   return (
