@@ -5,19 +5,16 @@ import {
   screen,
   waitFor,
 } from "@testing-library/react";
-import {
-  Tooltip,
-  TooltipPosition,
-} from "../../components/Tooltip/Tooltip";
+import { Popup, PopupPosition } from "../../components/Popup/Popup";
 import { axe } from "jest-axe";
 import React from "react";
 
-describe("Tooltip", () => {
+describe("Popup", () => {
   test("Should render component correctly.", () => {
     const { container } = render(
-      <Tooltip
+      <Popup
         startsOpen
-        text="Tooltip"
+        text="Popup"
         trigger={<button>Button</button>}
       />
     );
@@ -28,9 +25,9 @@ describe("Tooltip", () => {
 describe("Accessibility", () => {
   test("Should have no accessibility violations.", async () => {
     const { container } = render(
-      <Tooltip
+      <Popup
         startsOpen
-        text="Tooltip"
+        text="Popup"
         trigger={<button>Button</button>}
       />
     );
@@ -40,24 +37,22 @@ describe("Accessibility", () => {
 });
 
 describe("Interaction", () => {
-  test("Should show tooltip correctly on hover.", async () => {
-    render(
-      <Tooltip text="Tooltip" trigger={<button>Button</button>} />
-    );
+  test("Should show popup correctly on hover.", async () => {
+    render(<Popup text="Popup" trigger={<button>Button</button>} />);
 
     fireEvent.mouseEnter(screen.getByRole("button"));
 
     await waitFor(() => screen.getByRole("tooltip"));
 
-    expect(screen.getByText("Tooltip")).toBeInTheDocument();
+    expect(screen.getByText("Popup")).toBeInTheDocument();
 
     fireEvent.mouseLeave(screen.getByRole("button"));
   });
 
-  test("Should show tooltip correctly on focus.", () => {
+  test("Should show popup correctly on focus.", () => {
     render(
       <React.Fragment>
-        <Tooltip text="Tooltip" trigger={<button>Button</button>} />
+        <Popup text="Popup" trigger={<button>Button</button>} />
         <button>Outside</button>
       </React.Fragment>
     );
@@ -68,7 +63,7 @@ describe("Interaction", () => {
 
     expect(buttonElement).toHaveFocus();
 
-    expect(screen.getByText("Tooltip")).toBeInTheDocument();
+    expect(screen.getByText("Popup")).toBeInTheDocument();
 
     const outsideElement = screen.getAllByRole("button")[1];
 
@@ -81,33 +76,33 @@ describe("Interaction", () => {
 describe("Props", () => {
   test("Should render text correctly.", () => {
     render(
-      <Tooltip
+      <Popup
         startsOpen
-        text="Tooltip"
+        text="Popup"
         trigger={<button>Button</button>}
       />
     );
-    expect(screen.getByText("Tooltip")).toBeInTheDocument();
+    expect(screen.getByText("Popup")).toBeInTheDocument();
   });
-  test.each<TooltipPosition>(["top", "bottom"])(
+  test.each<PopupPosition>(["top", "bottom"])(
     "Should render positions correctly.",
     (position) => {
       render(
-        <Tooltip
+        <Popup
           startsOpen
           position={position}
-          text="Tooltip"
+          text="Popup"
           trigger={<button>Button</button>}
         />
       );
-      expect(screen.getByText("Tooltip")).toHaveClass(position);
+      expect(screen.getByText("Popup")).toHaveClass(position);
     }
   );
   test("Should render trigger correctly.", () => {
     render(
-      <Tooltip
+      <Popup
         startsOpen
-        text="Tooltip"
+        text="Popup"
         trigger={<button>Button</button>}
       />
     );
@@ -117,27 +112,25 @@ describe("Props", () => {
   });
   test("Should render hasNubbin correctly.", () => {
     render(
-      <Tooltip
+      <Popup
         hasNubbin
         startsOpen
-        text="Tooltip"
+        text="Popup"
         trigger={<button>Button</button>}
       />
     );
-    expect(screen.getByText("Tooltip")).toHaveClass("nubbin");
+    expect(screen.getByText("Popup")).toHaveClass("nubbin");
   });
   test("Should render startsOpen correctly.", () => {
     render(
       <div data-testid="div">
-        <Tooltip
+        <Popup
           startsOpen={false}
-          text="Tooltip"
+          text="Popup"
           trigger={<button>Button</button>}
         />
       </div>
     );
-    expect(screen.getByTestId("div")).not.toHaveTextContent(
-      "Tooltip"
-    );
+    expect(screen.getByTestId("div")).not.toHaveTextContent("Popup");
   });
 });

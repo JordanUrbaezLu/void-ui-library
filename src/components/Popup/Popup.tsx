@@ -1,8 +1,8 @@
 import * as React from "react";
 import { CSSTransition } from "react-transition-group";
-import styles from "./Tooltip.module.scss";
+import styles from "./Popup.module.scss";
 import classNames from "classnames";
-import { getTooltipPositionCalculations } from "../../utility/getTooltipPositionCalculations";
+import { getPopupPositionCalculations } from "../../utility/getPopupPositionCalculations";
 import {
   useOnFocus,
   useOnFocusOut,
@@ -10,34 +10,34 @@ import {
   useOnHoverOut,
 } from "../../hooks";
 
-export type TooltipPosition = "bottom" | "top";
+export type PopupPosition = "bottom" | "top";
 
-export interface TooltipProps
+export interface PopupProps
   extends React.ComponentPropsWithoutRef<"div"> {
   /**
-   * If the Tooltip has a nubbin
+   * If the Popup has a nubbin
    *
    * @default false
    */
   hasNubbin?: boolean;
   /**
-   * If the Tooltip initially renders as open
+   * If the Popup initially renders as open
    *
    * @default false
    */
   startsOpen?: boolean;
   /**
-   * The position of the Tooltip
+   * The position of the Popup
    *
    * @default "bottom"
    */
-  position?: TooltipPosition;
+  position?: PopupPosition;
   /**
-   * The text for the Tooltip
+   * The text for the Popup
    */
   text: string;
   /**
-   * The trigger for the Tooltip
+   * The trigger for the Popup
    */
   trigger: React.ReactElement;
 }
@@ -45,7 +45,7 @@ export interface TooltipProps
 /**
  * @public
  */
-export const Tooltip: React.FC<TooltipProps> = (props) => {
+export const Popup: React.FC<PopupProps> = (props) => {
   const {
     className,
     hasNubbin = false,
@@ -56,27 +56,27 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
     ...rest
   } = props;
 
-  const [showTooltip, setShowTooltip] =
+  const [showPopup, setShowPopup] =
     React.useState<boolean>(startsOpen);
 
-  const tooltipRef = React.useRef<HTMLDivElement>(null);
+  const popupRef = React.useRef<HTMLDivElement>(null);
 
-  const [tooltipPositionStyle, setTooltipPositionStyle] =
+  const [popupPositionStyle, setPopupPositionStyle] =
     React.useState<React.CSSProperties | undefined>(undefined);
 
   const triggerRef = React.useRef<HTMLDivElement>(null);
 
-  const tooltip = classNames(
-    styles.tooltip,
+  const popup = classNames(
+    styles.popup,
     position === "bottom" && styles.bottom,
     position === "top" && styles.top,
     hasNubbin && styles.nubbin
   );
 
   React.useLayoutEffect(() => {
-    setTooltipPositionStyle(
-      getTooltipPositionCalculations({
-        tooltipRef,
+    setPopupPositionStyle(
+      getPopupPositionCalculations({
+        popupRef,
         triggerRef,
         position,
         hasNubbin,
@@ -84,13 +84,13 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
     );
   }, []);
 
-  // Show tooltip on focus or hover
-  useOnFocus(triggerRef, () => setShowTooltip(true));
-  useOnHover(triggerRef, () => setShowTooltip(true));
+  // Show Popup on focus or hover
+  useOnFocus(triggerRef, () => setShowPopup(true));
+  useOnHover(triggerRef, () => setShowPopup(true));
 
-  // Hide tooltip on focus out or hover out
-  useOnFocusOut(triggerRef, () => setShowTooltip(false));
-  useOnHoverOut(triggerRef, () => setShowTooltip(false));
+  // Hide Popup on focus out or hover out
+  useOnFocusOut(triggerRef, () => setShowPopup(false));
+  useOnHoverOut(triggerRef, () => setShowPopup(false));
 
   return (
     <div
@@ -103,12 +103,12 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
         tabIndex: 0,
       })}
       <div
-        className={styles.tooltipLayoutContainer}
-        style={tooltipPositionStyle}
-        ref={tooltipRef}
+        className={styles.popupLayoutContainer}
+        style={popupPositionStyle}
+        ref={popupRef}
       >
         <CSSTransition
-          in={showTooltip}
+          in={showPopup}
           timeout={150}
           mountOnEnter
           unmountOnExit
@@ -128,7 +128,7 @@ export const Tooltip: React.FC<TooltipProps> = (props) => {
                 }
           }
         >
-          <div className={tooltip} role="tooltip">
+          <div className={popup} role="tooltip">
             {text}
           </div>
         </CSSTransition>

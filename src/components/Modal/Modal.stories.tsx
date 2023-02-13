@@ -23,7 +23,7 @@ export const Default = () => {
   );
 };
 
-export const WithButtons = () => {
+export const WithButtonSet = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(true);
 
   return (

@@ -9,11 +9,7 @@ import { axe } from "jest-axe";
 describe("IconButton", () => {
   test("Should render component correctly.", () => {
     const { container } = render(
-      <IconButton
-        content={<FaReact />}
-        size="medium"
-        onClick={jest.fn()}
-      />
+      <IconButton content={<FaReact />} size="medium" />
     );
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -22,11 +18,7 @@ describe("IconButton", () => {
 describe("Accessibility", () => {
   test("Should have no accessibility violations.", async () => {
     const { container } = render(
-      <IconButton
-        content={<FaReact />}
-        size="medium"
-        onClick={jest.fn()}
-      />
+      <IconButton content={<FaReact />} size="medium" />
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
@@ -60,7 +52,6 @@ describe("Props", () => {
           ariaLabel={`${size} icon button`}
           content={<FaReact />}
           size={size}
-          onClick={jest.fn()}
         />
       );
       expect(

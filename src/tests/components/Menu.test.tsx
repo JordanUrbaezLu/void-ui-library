@@ -13,7 +13,7 @@ import { act } from "react-dom/test-utils";
 // Disable console.error for each test in this file
 // console.error Warning: `NaN` is an invalid value for the `left` css style property. (Ripples Click)
 beforeEach(() => {
-  jest.spyOn(console, 'error').mockImplementation(() => {});
+  jest.spyOn(console, "error").mockImplementation(() => {});
 });
 
 describe("Menu", () => {
@@ -109,6 +109,25 @@ describe("Interaction", () => {
     });
 
     fireEvent(firstMenuItem, event);
+
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  test("Should trigger onClose on Escape key down.", () => {
+    const onClose = jest.fn();
+
+    render(
+      <Menu
+        isOpen
+        onOpen={jest.fn()}
+        onClose={onClose}
+        trigger={<Button>Trigger</Button>}
+      >
+        <MenuItem>One</MenuItem>
+      </Menu>
+    );
+
+    fireEvent.keyDown(document.body, { key: "Escape" });
 
     expect(onClose).toHaveBeenCalledTimes(1);
   });

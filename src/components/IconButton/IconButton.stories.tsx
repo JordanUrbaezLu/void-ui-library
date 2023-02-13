@@ -1,27 +1,18 @@
 import { IconButton } from "./IconButton";
 import { FaReact } from "react-icons/fa";
+import { FlexRowContainer } from "../../../.storybook/components/FlexRowContainer";
 
 export default {
   component: IconButton,
   title: "Components/IconButton",
 };
 
-export const Default = () => (
-  <IconButton content={<FaReact />} onClick={() => {}} />
-);
-
-export const Small = () => (
-  <IconButton content={<FaReact />} onClick={() => {}} size="small" />
-);
-
-export const Medium = () => (
-  <IconButton
-    content={<FaReact />}
-    onClick={() => {}}
-    size="medium"
-  />
-);
-
-export const Large = () => (
-  <IconButton content={<FaReact />} onClick={() => {}} size="large" />
-);
+export const Size = () => {
+  return (
+    <FlexRowContainer>
+      <IconButton content={<FaReact />} size="small" />
+      <IconButton content={<FaReact />} size="medium" />
+      <IconButton content={<FaReact />} size="large" />
+    </FlexRowContainer>
+  );
+};

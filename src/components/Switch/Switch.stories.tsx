@@ -24,7 +24,7 @@ const Template: Story<Omit<SwitchProps, "isOn" | "onClick">> = (
 
 export const Default = Template.bind({});
 
-export const Label = Template.bind({});
-Label.args = {
+export const WithLabel = Template.bind({});
+WithLabel.args = {
   label: " Switch Label",
 };

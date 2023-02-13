@@ -1,0 +1,53 @@
+@use "../../utility/globals";
+
+.bottomSheetContainer {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px 10px 0px 0px;
+  background: globals.$primary-background-color;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: 100%;
+  width: 600px;
+  color: globals.$primary-text-color;
+}
+
+.bottomSheetHeader {
+  box-sizing: border-box;
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+}
+
+.bottomSheetContent {
+  padding: 30px 30px 50px 30px;
+  text-align: center;
+}
+
+.bottomSheetButtons {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.bottomSheetButtonsContainer {
+  margin-top: auto;
+}
+
+.bottomSheetTitle {
+  align-self: center;
+}
+
+.bottomSheetIcon {
+  color: globals.$primary-text-color !important;
+
+  &:hover,
+  &:focus {
+    background-color: globals.$primary-background-color-hover-and-focus !important;
+  }
+
+  &:active {
+    background-color: globals.$primary-background-color-active !important;
+  }
+}

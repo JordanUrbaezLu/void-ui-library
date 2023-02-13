@@ -1,0 +1,31 @@
+@use "../../utility/globals";
+
+.panelBackground {
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  font-family: globals.$font-family;
+}
+
+.enter {
+  opacity: 0;
+}
+
+.enterActive {
+  opacity: 1;
+  transition: all 250ms ease-in-out;
+}
+
+.exit {
+  opacity: 1;
+}
+
+.exitActive {
+  opacity: 0;
+  transition: all 250ms ease-in-out;
+}

@@ -40,7 +40,7 @@ describe("Accessibility", () => {
 });
 
 describe("Interaction", () => {
-  test("Should close on Escape key down.", () => {
+  test("Should trigger onClose on Escape key down.", () => {
     const onClose = jest.fn();
 
     render(

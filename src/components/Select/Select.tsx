@@ -62,9 +62,15 @@ export const Select: React.FC<SelectProps> = (props) => {
         onClick={() => setIsOpen(!isOpen)}
       />
       {isOpen ? (
-        <IoChevronUpSharp aria-label="Chevron Up" className={styles.icon} />
+        <IoChevronUpSharp
+          aria-label="Chevron Up"
+          className={styles.icon}
+        />
       ) : (
-        <IoChevronDownSharp aria-label="Chevron Down" className={styles.icon} />
+        <IoChevronDownSharp
+          aria-label="Chevron Down"
+          className={styles.icon}
+        />
       )}
       <CSSTransition
         in={isOpen}

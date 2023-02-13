@@ -1,2 +1,2 @@
 /* istanbul ignore file */
-export * from "./Tooltip";
+export * from "./Badge";
