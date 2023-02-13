@@ -1,19 +1,23 @@
 import * as React from "react";
 import styles from "./Modal.module.scss";
 import { Overlay } from "../Overlay/Overlay";
-import {
-  ModalContainer,
-  ModalContainerProps,
-} from "./ModalContainer";
+import { BaseModal, BaseModalProps } from "./BaseModal";
+import { useLockBodyScroll } from "../../hooks/useLockBodyScroll";
 import { CSSTransition } from "react-transition-group";
 
-export interface ModalProps extends ModalContainerProps {
+export interface ModalProps extends BaseModalProps {
   /**
    * If the Modal has an overlay
    *
    * @default true
    */
   hasOverlay?: boolean;
+  /**
+   * If the Modal is open
+   *
+   * @default false
+   */
+  isOpen?: boolean;
   /**
    * The callback fired when the Modal opens
    */
@@ -42,6 +46,8 @@ export const Modal: React.FC<ModalProps> = (props) => {
     ...rest
   } = props;
 
+  useLockBodyScroll(isOpen);
+
   return (
     <>
       {React.cloneElement(trigger, {
@@ -63,12 +69,11 @@ export const Modal: React.FC<ModalProps> = (props) => {
       >
         <Overlay showBackground={hasOverlay}>
           <div className={styles.modalBackground}>
-            <ModalContainer
+            <BaseModal
               ariaLabel={ariaLabel}
               buttons={buttons}
               className={className}
               content={content}
-              isOpen={isOpen}
               onClose={onClose}
               title={title}
               {...rest}

@@ -1,39 +1,32 @@
 import * as React from "react";
-import styles from "./ModalContainer.module.scss";
+import styles from "./BaseBottomSheet.module.scss";
 import { IconButton } from "../IconButton/IconButton";
 import { useOnClickOutside, useOnKeyDown } from "../../hooks";
 import { TbX } from "react-icons/tb";
-import { useLockBodyScroll } from "../../hooks/useLockBodyScroll";
 import { FocusTrap } from "../FocusTrap/FocusTrap";
 import { Divider } from "../Divider/Divider";
 import classNames from "classnames";
 
-export interface ModalContainerProps
+export interface BaseBottomSheetProps
   extends React.ComponentPropsWithoutRef<"div"> {
   /**
-   * The accessible label for the Modal
+   * The accessible label for the BottomSheet
    */
   ariaLabel?: string;
   /**
-   * The buttons for the Modal
+   * The buttons for the BottomSheet
    */
   buttons?: React.ReactNode;
   /**
-   * The content for the Modal
+   * The content for the BottomSheet
    */
   content: string;
   /**
-   * If the Modal is open
-   *
-   * @default false
-   */
-  isOpen?: boolean;
-  /**
-   * The callback fired when the Modal closes
+   * The callback fired when the BottomSheet closes
    */
   onClose: () => void;
   /**
-   * The title for the Modal
+   * The title for the BottomSheet
    */
   title: string;
 }
@@ -41,7 +34,7 @@ export interface ModalContainerProps
 /**
  * @private
  */
-export const ModalContainer: React.FC<ModalContainerProps> = (
+export const BaseBottomSheet: React.FC<BaseBottomSheetProps> = (
   props
 ) => {
   const {
@@ -49,17 +42,14 @@ export const ModalContainer: React.FC<ModalContainerProps> = (
     buttons,
     className,
     content,
-    isOpen = false,
     onClose,
     title,
     ...rest
   } = props;
 
-  const modalRef = React.useRef<HTMLDivElement>(null);
+  const bottomSheetRef = React.useRef<HTMLDivElement>(null);
 
-  useLockBodyScroll(isOpen);
-
-  useOnClickOutside(modalRef, onClose);
+  useOnClickOutside(bottomSheetRef, onClose);
 
   useOnKeyDown(["Escape"], onClose);
 
@@ -67,24 +57,24 @@ export const ModalContainer: React.FC<ModalContainerProps> = (
     <FocusTrap>
       <div
         aria-label={ariaLabel}
-        className={classNames(className, styles.modalContainer)}
-        ref={modalRef}
+        className={classNames(className, styles.bottomSheetContainer)}
+        ref={bottomSheetRef}
         role="dialog"
         {...rest}
       >
-        <div className={styles.modalHeader}>
-          <div className={styles.modalTitle}>{title}</div>
+        <div className={styles.bottomSheetHeader}>
+          <div className={styles.bottomSheetTitle}>{title}</div>
           <IconButton
-            className={styles.modalIcon}
+            className={styles.bottomSheetIcon}
             content={<TbX />}
             onClick={onClose}
           />
         </div>
-        <div className={styles.modalContent}>{content}</div>
+        <div className={styles.bottomSheetContent}>{content}</div>
         {buttons && (
           <>
             <Divider direction="horizontal" stroke={1} />
-            <div className={styles.modalButtons}>{buttons}</div>
+            <div className={styles.bottomSheetButtons}>{buttons}</div>
           </>
         )}
       </div>

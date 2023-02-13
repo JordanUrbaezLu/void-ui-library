@@ -11,7 +11,7 @@ export * from "./Link";
 export * from "./Menu";
 export * from "./Modal";
 export * from "./Overlay";
+export * from "./Popup";
 export * from "./Select";
 export * from "./Switch";
 export * from "./TextField";
-export * from "./Tooltip";

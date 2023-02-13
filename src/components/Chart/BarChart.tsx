@@ -63,11 +63,7 @@ export const BarChart: React.FC<BarChartProps> = (props) => {
       <Tooltip />
       {dataKeys.map((dataKey, index) => {
         return (
-          <Bar
-            dataKey={dataKey}
-            key={index}
-            fill={strokes[index]}
-          />
+          <Bar dataKey={dataKey} key={index} fill={strokes[index]} />
         );
       })}
     </RechartsBarChart>

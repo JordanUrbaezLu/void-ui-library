@@ -24,10 +24,6 @@ export interface IconButtonProps
    * @default "medium"
    */
   size?: IconButtonSize;
-  /**
-   * The callback fired when the IconButton is clicked
-   */
-  onClick: () => void;
 }
 
 /**
@@ -42,7 +38,6 @@ export const IconButton = React.forwardRef<
     className,
     content,
     size = "medium",
-    onClick,
     ...rest
   } = props;
 
@@ -61,7 +56,6 @@ export const IconButton = React.forwardRef<
     <button
       aria-label={ariaLabel}
       className={iconButtonContentClasses}
-      onClick={onClick}
       ref={ref}
       {...rest}
     >

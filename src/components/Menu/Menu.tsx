@@ -27,7 +27,7 @@ export interface MenuProps
   children: React.ReactNode;
   /**
    * If the Menu is open
-   * 
+   *
    * @default false
    */
   isOpen?: boolean;
@@ -44,7 +44,6 @@ export interface MenuProps
    */
   trigger: React.ReactElement;
 }
-
 
 /**
  * @public

@@ -76,6 +76,7 @@
   },
   "dependencies": {
     "classnames": "2.2.6",
+    "framer-motion": "^9.0.2",
     "react-focus-lock": "2.5.0",
     "react-icons": "4.7.1",
     "react-ripples": "2.2.1",

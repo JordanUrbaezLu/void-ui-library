@@ -4,6 +4,7 @@ import {
   AiOutlineArrowLeft,
   AiOutlineArrowRight,
 } from "react-icons/ai";
+import { FlexRowContainer } from "../../../.storybook/components/FlexRowContainer";
 
 export default {
   component: Button,
@@ -16,29 +17,23 @@ const Template: Story<ButtonProps> = (args) => {
 
 export const Default = Template.bind({});
 
-export const Primary = Template.bind({});
-Primary.args = {
-  variant: "primary",
+export const Size = () => {
+  return (
+    <FlexRowContainer>
+      <Button size="small">Small</Button>
+      <Button size="medium">Medium</Button>
+      <Button size="large">Large</Button>
+    </FlexRowContainer>
+  );
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  variant: "secondary",
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: "small",
-};
-
-export const Medium = Template.bind({});
-Medium.args = {
-  size: "medium",
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  size: "large",
+export const Variant = () => {
+  return (
+    <FlexRowContainer>
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+    </FlexRowContainer>
+  );
 };
 
 export const Disabled = Template.bind({});

@@ -1,31 +1,20 @@
-import { Story } from "@storybook/react";
-import { Link, LinkProps } from "./Link";
+import { FlexRowContainer } from "../../../.storybook/components/FlexRowContainer";
+import { Link } from "./Link";
 
 export default {
   component: Link,
   title: "Components/Link",
 };
 
-const Template: Story<Omit<LinkProps, "children" | "href">> = (
-  args
-) => {
+export const Variant = () => {
   return (
-    <Link
-      children="Google.com"
-      href="https://www.google.com/"
-      {...args}
-    />
+    <FlexRowContainer>
+      <Link href="#" variant="primary">
+        Primary
+      </Link>
+      <Link href="#" variant="secondary">
+        Secondary
+      </Link>
+    </FlexRowContainer>
   );
-};
-
-export const Default = Template.bind({});
-
-export const Primary = Template.bind({});
-Primary.args = {
-  variant: "primary",
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  variant: "secondary",
 };

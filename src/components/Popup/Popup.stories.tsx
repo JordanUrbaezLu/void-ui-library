@@ -1,20 +1,20 @@
 import { Story } from "@storybook/react";
-import { Tooltip, TooltipProps } from "./Tooltip";
+import { Popup, PopupProps } from "./Popup";
 import { Button } from "../Button/Button";
 
 export default {
-  component: Tooltip,
+  component: Popup,
   parameters: {
     layout: "centered",
   },
-  title: "Components/Tooltip",
+  title: "Components/Popup",
 };
 
 const Template: Story<
-  Omit<TooltipProps, "children" | "startsOpen" | "trigger">
+  Omit<PopupProps, "children" | "startsOpen" | "trigger">
 > = (args) => {
   return (
-    <Tooltip
+    <Popup
       {...args}
       startsOpen
       trigger={<Button variant="secondary">Hover Me!</Button>}
@@ -24,31 +24,31 @@ const Template: Story<
 
 export const Default = Template.bind({});
 Default.args = {
-  text: "Tooltip!",
+  text: "Popup!",
 };
 
 export const TopPosition = Template.bind({});
 TopPosition.args = {
-  text: "Tooltip!",
+  text: "Popup!",
   position: "top",
 };
 
 export const BottomPosition = Template.bind({});
 BottomPosition.args = {
-  text: "Tooltip!",
+  text: "Popup!",
   position: "bottom",
 };
 
 export const TopPositionAndNubbin = Template.bind({});
 TopPositionAndNubbin.args = {
-  text: "Tooltip!",
+  text: "Popup!",
   position: "top",
   hasNubbin: true,
 };
 
 export const BottomPositionAndNubbin = Template.bind({});
 BottomPositionAndNubbin.args = {
-  text: "Tooltip!",
+  text: "Popup!",
   position: "bottom",
   hasNubbin: true,
 };

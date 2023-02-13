@@ -50,31 +50,37 @@ export const AlignmentBottomLeft = Template.bind({});
 AlignmentBottomLeft.args = {
   alignment: "bottomLeft",
 };
+AlignmentBottomLeft.storyName = "Alignment: Bottom Left";
 
 export const AlignmentBottomRight = Template.bind({});
 AlignmentBottomRight.args = {
   alignment: "bottomRight",
 };
+AlignmentBottomRight.storyName = "Alignment: Bottom Right";
 
 export const AlignmentBottomCenter = Template.bind({});
 AlignmentBottomCenter.args = {
   alignment: "bottomCenter",
 };
+AlignmentBottomCenter.storyName = "Alignment: Bottom Center";
 
 export const AlignmentTopLeft = Template.bind({});
 AlignmentTopLeft.args = {
   alignment: "topLeft",
 };
+AlignmentTopLeft.storyName = "Alignment: Top Left";
 
 export const AlignmentTopRight = Template.bind({});
 AlignmentTopRight.args = {
   alignment: "topRight",
 };
+AlignmentTopRight.storyName = "Alignment: Top Right";
 
 export const AlignmentTopCenter = Template.bind({});
 AlignmentTopCenter.args = {
   alignment: "topCenter",
 };
+AlignmentTopCenter.storyName = "Alignment: Top Center";
 
 export const WithDividerAndHeader = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(true);

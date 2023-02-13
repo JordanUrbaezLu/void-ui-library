@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tooltip Should render component correctly. 1`] = `
+exports[`Popup Should render component correctly. 1`] = `
 <div
   class="container"
 >
@@ -11,14 +11,14 @@ exports[`Tooltip Should render component correctly. 1`] = `
     Button
   </button>
   <div
-    class="tooltipLayoutContainer"
+    class="popupLayoutContainer"
     style="transform: translate3d(0px, 5px, 0);"
   >
     <div
-      class="tooltip bottom"
+      class="popup bottom"
       role="tooltip"
     >
-      Tooltip
+      Popup
     </div>
   </div>
 </div>
