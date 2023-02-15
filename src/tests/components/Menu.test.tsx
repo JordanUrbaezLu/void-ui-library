@@ -13,7 +13,7 @@ import { act } from "react-dom/test-utils";
 // Disable console.error for each test in this file
 // console.error Warning: `NaN` is an invalid value for the `left` css style property. (Ripples Click)
 beforeEach(() => {
-  jest.spyOn(console, "error").mockImplementation(() => {});
+  jest.spyOn(console, "error").mockImplementation(() => undefined);
 });
 
 describe("Menu", () => {

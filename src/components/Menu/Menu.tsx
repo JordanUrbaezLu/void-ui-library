@@ -47,6 +47,10 @@ export interface MenuProps
 
 /**
  * @public
+ *
+ * @description
+ *
+ * The Menu component will display a list of items to a user.
  */
 export const Menu: React.FC<MenuProps> = (props) => {
   const {
@@ -77,12 +81,28 @@ export const Menu: React.FC<MenuProps> = (props) => {
     );
   }, []);
 
+  React.useEffect(() => {
+    const addClass = () => {
+      triggerRef.current?.classList.add("color");
+    };
+
+    triggerRef.current?.addEventListener("mousedown", addClass);
+
+    return () => {
+      triggerRef.current?.removeEventListener("mousedown", addClass);
+    };
+  });
+
   return (
     <div
       className={classNames(className, styles.container)}
       {...rest}
     >
       {React.cloneElement(trigger, {
+        className: classNames(
+          isOpen && styles.isOpen,
+          styles.trigger
+        ),
         onClick: () => {
           if (isOpen) {
             onClose();
@@ -132,3 +152,5 @@ export const Menu: React.FC<MenuProps> = (props) => {
     </div>
   );
 };
+
+Menu.displayName = "Menu";

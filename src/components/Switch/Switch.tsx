@@ -22,6 +22,10 @@ export interface SwitchProps
 
 /**
  * @public
+ *
+ * @description
+ *
+ * The Switch component is used to toggle states.
  */
 export const Switch: React.FC<SwitchProps> = (props) => {
   const { className, isOn = false, label, onClick, ...rest } = props;
@@ -56,3 +60,5 @@ export const Switch: React.FC<SwitchProps> = (props) => {
     </button>
   );
 };
+
+Switch.displayName = "Switch";

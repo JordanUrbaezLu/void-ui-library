@@ -72,7 +72,7 @@ export const MenuContainer: React.FC<MenuContainerProps> = (
             onClose(menuItem.props.children as string);
             triggerRef.current?.focus();
           },
-          onKeyDown: (event: any) => {
+          onKeyDown: (event: React.KeyboardEvent<HTMLElement>) => {
             if (event.code === "Space") {
               onClose(menuItem.props.children as string);
               triggerRef.current?.focus();
@@ -91,3 +91,5 @@ export const MenuContainer: React.FC<MenuContainerProps> = (
     </div>
   );
 };
+
+MenuContainer.displayName = "MenuContainer";

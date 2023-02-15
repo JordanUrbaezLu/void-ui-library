@@ -18,6 +18,10 @@ export interface ButtonSetProps
 
 /**
  * @public
+ *
+ * @description
+ *
+ * The Button Set is a group of similar Buttons.
  */
 export const ButtonSet: React.FC<ButtonSetProps> = (props) => {
   const {
@@ -46,3 +50,5 @@ export const ButtonSet: React.FC<ButtonSetProps> = (props) => {
     </ul>
   );
 };
+
+ButtonSet.displayName = "ButtonSet";

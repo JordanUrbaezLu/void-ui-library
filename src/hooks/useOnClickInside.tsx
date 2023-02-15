@@ -5,7 +5,7 @@ export const useOnClickInside = (
   handler: () => void
 ) => {
   return React.useEffect(() => {
-    const checkIfInside = (event: any) => {
+    const checkIfInside = (event: MouseEvent) => {
       const elementRefs = Array.isArray(ref) ? ref : [ref];
       const isInside = elementRefs.some((refs) =>
         refs.current?.contains(event.target as Node)

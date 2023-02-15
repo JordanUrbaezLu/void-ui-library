@@ -44,6 +44,11 @@ export interface PopupProps
 
 /**
  * @public
+ *
+ * @description
+ *
+ * The Popup component is a display that shows when hovering
+ * over an element.
  */
 export const Popup: React.FC<PopupProps> = (props) => {
   const {
@@ -136,3 +141,5 @@ export const Popup: React.FC<PopupProps> = (props) => {
     </div>
   );
 };
+
+Popup.displayName = "Popup";

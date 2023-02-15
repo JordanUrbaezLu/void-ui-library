@@ -6,12 +6,8 @@ import { act } from "react-dom/test-utils";
 
 describe("Select", () => {
   test("Should render component correctly.", () => {
-    // Fixes some jest-axe issues
-    const { getComputedStyle } = window;
-    window.getComputedStyle = (elt) => getComputedStyle(elt);
-    // Fixes some jest-axe issues
     const { container } = render(
-      <Select>
+      <Select onClose={jest.fn()} onOpen={jest.fn()}>
         <SelectItem>30</SelectItem>
       </Select>
     );
@@ -22,7 +18,7 @@ describe("Select", () => {
 describe("Accessibility", () => {
   test("Should have no accessibility violations.", async () => {
     const { container } = render(
-      <Select>
+      <Select onClose={jest.fn()} onOpen={jest.fn()}>
         <SelectItem>30</SelectItem>
       </Select>
     );
@@ -34,21 +30,26 @@ describe("Accessibility", () => {
 describe("Interaction", () => {
   test("Should open SelectContainer on click.", () => {
     render(
-      <Select>
+      <Select
+        isOpen
+        onClose={jest.fn()}
+        onOpen={jest.fn()}
+        placeholder="Number"
+      >
         <SelectItem>30</SelectItem>
       </Select>
     );
 
-    act(() => screen.getAllByRole("textbox")[0].click());
+    act(() => screen.getByRole("button").click());
 
     expect(screen.getByText("30")).toBeInTheDocument();
 
-    act(() => screen.getByRole("menuitem").click());
+    act(() => screen.getByRole("listitem").click());
   });
 
   test("Should close Select on click outside.", () => {
     render(
-      <Select startsOpen>
+      <Select onClose={jest.fn()} onOpen={jest.fn()}>
         <SelectItem>30</SelectItem>
       </Select>
     );
@@ -60,7 +61,11 @@ describe("Interaction", () => {
 describe("Props", () => {
   test("Should render label correctly.", () => {
     render(
-      <Select label="Select">
+      <Select
+        onClose={jest.fn()}
+        onOpen={jest.fn()}
+        placeholder="Select"
+      >
         <SelectItem>30</SelectItem>
       </Select>
     );
@@ -69,7 +74,7 @@ describe("Props", () => {
 
   test("Should render correct Chevron when open.", () => {
     render(
-      <Select startsOpen>
+      <Select isOpen onClose={jest.fn()} onOpen={jest.fn()}>
         <SelectItem>30</SelectItem>
       </Select>
     );
@@ -78,7 +83,7 @@ describe("Props", () => {
 
   test("Should render correct Chevron when closed.", () => {
     render(
-      <Select>
+      <Select onClose={jest.fn()} onOpen={jest.fn()}>
         <SelectItem>30</SelectItem>
       </Select>
     );

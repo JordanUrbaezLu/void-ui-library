@@ -9,7 +9,7 @@ exports[`Menu Should render component correctly. 1`] = `
     style="position: relative; display: inline-flex; overflow: hidden;"
   >
     <button
-      class="button medium primary"
+      class="isOpen trigger button medium primary"
       role="button"
       tabindex="0"
       type="button"

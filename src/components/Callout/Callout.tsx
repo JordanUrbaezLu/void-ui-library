@@ -57,3 +57,5 @@ export const Callout: React.FC<CalloutProps> = (props) => {
     </span>
   );
 };
+
+Callout.displayName = "Callout";

@@ -50,3 +50,5 @@ export const DatePickerCalendar: React.FC<DatePickerCalendarProps> = (
     </CSSTransition>
   );
 };
+
+DatePickerCalendar.displayName = "DatePickerCalendar";

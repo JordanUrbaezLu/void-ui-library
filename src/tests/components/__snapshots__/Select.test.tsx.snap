@@ -5,43 +5,29 @@ exports[`Select Should render component correctly. 1`] = `
   class="selectContainer"
 >
   <div
-    aria-label="textbox"
-    class="container"
-    role="textbox"
+    class="selectInput"
   >
     <div
-      class="textFieldContainer"
-    >
-      <input
-        aria-label="textfield"
-        autocomplete="off"
-        class="textField large inputContainer"
-        id="void_textfield"
-        required=""
-        spellcheck="false"
-        type="text"
-        value=""
-      />
-    </div>
-  </div>
-  <svg
-    aria-label="Chevron Down"
-    class="icon"
-    fill="currentColor"
-    height="1em"
-    stroke="currentColor"
-    stroke-width="0"
-    viewBox="0 0 512 512"
-    width="1em"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M112 184l144 144 144-144"
-      fill="none"
-      stroke-linecap="square"
-      stroke-miterlimit="10"
-      stroke-width="48"
+      style="color: gray;"
     />
-  </svg>
+  </div>
+  <button
+    aria-label="Chevron Down"
+    class="icon iconButton medium"
+  >
+    <svg
+      fill="currentColor"
+      height="22"
+      stroke="currentColor"
+      stroke-width="0"
+      viewBox="0 0 512 512"
+      width="22"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M128 192l128 128 128-128z"
+      />
+    </svg>
+  </button>
 </div>
 `;

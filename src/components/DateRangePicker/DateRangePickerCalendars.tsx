@@ -19,6 +19,9 @@ export interface DateRangePickerCalendarsProps {
   triggerRefs: React.RefObject<HTMLDivElement>[];
 }
 
+/**
+ * @private
+ */
 export const DateRangePickerCalendars: React.FC<DateRangePickerCalendarsProps> =
   (props) => {
     const { isOpen, onClose, triggerRefs } = props;
@@ -43,3 +46,5 @@ export const DateRangePickerCalendars: React.FC<DateRangePickerCalendarsProps> =
       </CSSTransition>
     );
   };
+
+DateRangePickerCalendars.displayName = "DateRangePickerCalendars";

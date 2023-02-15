@@ -14,5 +14,5 @@ export interface DaterPickerContext {
 export const DatePickerContext =
   React.createContext<DaterPickerContext>({
     selectedDate: undefined,
-    setSelectedDate: () => {},
+    setSelectedDate: () => undefined,
   });

@@ -28,6 +28,11 @@ export interface IconButtonProps
 
 /**
  * @public
+ *
+ * @description
+ *
+ * The Icon Button component displays an icon and
+ * allows a user to take an action.
  */
 export const IconButton = React.forwardRef<
   HTMLButtonElement,
@@ -65,3 +70,5 @@ export const IconButton = React.forwardRef<
     </button>
   );
 });
+
+IconButton.displayName = "IconButton";

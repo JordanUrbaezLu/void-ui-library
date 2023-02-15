@@ -19,6 +19,13 @@ export interface DateRangePickerProps {
   startsOpen?: boolean;
 }
 
+/**
+ * @public
+ *
+ * @description
+ *
+ * The Date Range Picker component allows a user to select a range of dates.
+ */
 export const DateRangePicker: React.FC<DateRangePickerProps> = (
   props
 ) => {
@@ -42,7 +49,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (
       <div style={{ display: "flex" }}>
         <TextField
           className={styles.customInput}
-          onChange={() => {}}
+          onChange={() => undefined}
           label="Start Date"
           trailingIcon={
             <div
@@ -65,7 +72,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (
         />
         <TextField
           className={styles.customInput}
-          onChange={() => {}}
+          onChange={() => undefined}
           label="End Date"
           trailingIcon={
             <div
@@ -95,3 +102,5 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (
     </DateRangePickerContext.Provider>
   );
 };
+
+DateRangePicker.displayName = "DateRangePicker";

@@ -23,6 +23,10 @@ export interface CheckboxProps
 
 /**
  * @public
+ *
+ * @description
+ *
+ * The Checkbox allows a user to select an item.
  */
 export const Checkbox: React.FC<CheckboxProps> = (props) => {
   const {
@@ -62,3 +66,5 @@ export const Checkbox: React.FC<CheckboxProps> = (props) => {
     </div>
   );
 };
+
+Checkbox.displayName = "Checkbox";

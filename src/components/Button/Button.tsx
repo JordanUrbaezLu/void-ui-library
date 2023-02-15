@@ -13,10 +13,10 @@ export interface ButtonProps
    * The content for the Button
    */
   children: React.ReactNode;
-  /**
-   * If the Button is disabled
-   */
-  disabled?: boolean;
+  // /**
+  //  * If the Button is disabled
+  //  */
+  // disabled?: boolean;
   /**
    * The leading icon for the Button
    */
@@ -49,6 +49,10 @@ export interface ButtonProps
 
 /**
  * @public
+ *
+ * @description
+ *
+ * The Button component is used to allows user to take an action.
  */
 export const Button = React.forwardRef<
   HTMLButtonElement,
@@ -57,7 +61,7 @@ export const Button = React.forwardRef<
   const {
     className,
     children,
-    disabled = "false",
+    // disabled = "false",
     leadingIcon,
     onClick,
     size = "medium",
@@ -102,7 +106,7 @@ export const Button = React.forwardRef<
     <Ripples
       className={rippleSize}
       color="rgba(38, 25, 49, 0.85)"
-      during={300}
+      during={500}
     >
       <button
         className={classes}
@@ -122,3 +126,5 @@ export const Button = React.forwardRef<
     </Ripples>
   );
 });
+
+Button.displayName = "Button";

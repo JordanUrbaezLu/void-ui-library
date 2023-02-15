@@ -8,7 +8,7 @@ export interface ChartProps {
   /**
    * The data for the Chart
    */
-  data: Array<Object>;
+  data: Array<object>;
   /**
    * The data keys for the LineChart
    */
@@ -27,6 +27,10 @@ export interface ChartProps {
 
 /**
  * @public
+ *
+ * @description
+ *
+ * The Chart component is used to display some complex data to a user.
  */
 export const Chart: React.FC<ChartProps> = (props) => {
   const { data, dataKeys, title, type = "line", ...rest } = props;
@@ -56,3 +60,5 @@ export const Chart: React.FC<ChartProps> = (props) => {
     />
   );
 };
+
+Chart.displayName = "Chart";

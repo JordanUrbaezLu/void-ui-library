@@ -14,7 +14,7 @@ export interface LineChartProps {
   /**
    * The data for the LineChart
    */
-  data: Array<Object>;
+  data: Array<object>;
   /**
    * The data keys for the LineChart
    */
@@ -74,3 +74,5 @@ export const LineChart: React.FC<LineChartProps> = (props) => {
     </RechartsLineChart>
   );
 };
+
+LineChart.displayName = "LineChart";
