@@ -59,6 +59,7 @@ export const Select: React.FC<SelectProps> = (props) => {
     React.useState<number | undefined>(selected);
   const [value, setValue] = React.useState<string>();
   const selectRef = React.useRef<HTMLDivElement>(null);
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
 
   React.useEffect(() => {
     if (selectedIndex !== undefined) {
@@ -99,6 +100,7 @@ export const Select: React.FC<SelectProps> = (props) => {
           className={styles.icon}
           content={<IoMdArrowDropup />}
           onClick={onClose}
+          ref={triggerRef}
         />
       ) : (
         <IconButton
@@ -106,6 +108,7 @@ export const Select: React.FC<SelectProps> = (props) => {
           className={styles.icon}
           content={<IoMdArrowDropdown />}
           onClick={onOpen}
+          ref={triggerRef}
         />
       )}
       <CSSTransition
@@ -127,6 +130,7 @@ export const Select: React.FC<SelectProps> = (props) => {
           onClose={onClose}
           onSetSelectedIndex={onSetSelectedIndex}
           selectRef={selectRef}
+          triggerRef={triggerRef}
         >
           {children}
         </SelectContainer>

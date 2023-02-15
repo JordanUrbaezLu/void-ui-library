@@ -4,6 +4,8 @@ import { SelectProps } from "./Select";
 import styles from "./SelectContainer.module.scss";
 import itemStyles from "./SelectItem.module.scss";
 import { useOnClickOutside, useOnKeyDown } from "../../hooks";
+import { SelectItem } from "./SelectItem";
+import { useSelectFocus } from "../../hooks/useSelectFocus";
 
 export interface SelectContainerProps extends SelectProps {
   /**
@@ -14,6 +16,10 @@ export interface SelectContainerProps extends SelectProps {
    * The ref for the Select
    */
   selectRef: React.RefObject<HTMLDivElement>;
+  /**
+   * The trigger ref for the Select
+   */
+  triggerRef: React.RefObject<HTMLButtonElement>;
 }
 
 /**
@@ -26,36 +32,62 @@ export const SelectContainer: React.FC<SelectContainerProps> = (
     children,
     selected,
     onClose,
-    onOpen,
-    isOpen,
     onSetSelectedIndex,
     selectRef,
+    triggerRef,
   } = props;
 
+  const selectContainerRef = React.useRef<HTMLDivElement>(null);
+
+  const { focusNextItem, focusPreviousItem, focusedSelectItemIndex } =
+    useSelectFocus(children, selectContainerRef, selected);
+
   useOnClickOutside(selectRef, onClose);
-  useOnKeyDown(["Escape"], onClose);
+  useOnKeyDown(["Escape"], () => {
+    onClose();
+    triggerRef.current?.focus();
+  });
 
   return (
-    <div className={styles.selectOptionsMenu} role="listbox">
+    <div
+      className={styles.selectOptionsMenu}
+      ref={selectContainerRef}
+      role="listbox"
+    >
       {React.Children.map(children, (child, index) => {
         const selectItem = child as React.ReactElement;
 
-        return React.cloneElement(selectItem, {
-          className: classNames(
-            itemStyles.selectItem,
-            selected === index && itemStyles.selected
-          ),
-          key: index,
-          onClick: () => {
-            if (isOpen) {
+        if (selectItem.type === SelectItem) {
+          return React.cloneElement(selectItem, {
+            className: classNames(
+              itemStyles.selectItem,
+              selected === index && itemStyles.selected
+            ),
+            key: index,
+            onClick: () => {
               onClose();
-            } else {
-              onOpen();
-            }
-            onSetSelectedIndex(index);
-          },
-          role: "listitem",
-        });
+              onSetSelectedIndex(index);
+            },
+            onKeyDown: (event: React.KeyboardEvent<HTMLElement>) => {
+              if (event.code === "Space") {
+                onClose();
+                onSetSelectedIndex(index);
+                triggerRef.current?.focus();
+              }
+              if (event.code === "ArrowUp") {
+                focusPreviousItem();
+              }
+              if (event.code === "ArrowDown") {
+                focusNextItem();
+              }
+            },
+            role: "listitem",
+            tabIndex:
+              index === focusedSelectItemIndex ? 0 : undefined,
+          });
+        } else {
+          return null;
+        }
       })}
     </div>
   );

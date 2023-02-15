@@ -1,11 +1,12 @@
 .callout {
+  box-sizing: inherit;
   display: inline-block;
   position: relative;
-  box-sizing: inherit;
 }
 
 .enter {
   opacity: 0;
+
   .top & {
     transform: translateY(-100px);
   }

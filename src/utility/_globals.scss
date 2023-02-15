@@ -1,24 +1,22 @@
-@import url("https://fonts.cdnfonts.com/css/poppins");
+@import "https://fonts.cdnfonts.com/css/poppins";
 
-$primary-color: rgb(255, 183, 77);
-$primary-color-pseudo-class: rgb(255, 203, 87);
+$primary-color: rgb(255 183 77);
+$primary-color-pseudo-class: rgb(255 203 87);
 $secondary-color: rgb(147 51 234);
-$secondary-color-pseudo-class: rgb(160, 76, 240);
+$secondary-color-pseudo-class: rgb(160 76 240);
 $tertiary-color: darkgray;
 $tertiary-color-pseudo-class: lightgray;
-
-$primary-background-color: rgb(60, 60, 60);
-$primary-background-color-hover-and-focus: rgb(100, 100, 100);
-$primary-background-color-active: rgb(38, 25, 49);
-$primary-border-color: rgb(20, 20, 20);
-$primary-border-color-hover-and-focus: rgb(35, 10, 35);
-$primary-border-color-active: rgb(0, 0, 0);
-$primary-text-color: rgb(235, 235, 235);
+$primary-background-color: rgb(60 60 60);
+$primary-background-color-hover-and-focus: rgb(100 100 100);
+$primary-background-color-active: rgb(38 25 49);
+$primary-border-color: rgb(20 20 20);
+$primary-border-color-hover-and-focus: rgb(35 10 35);
+$primary-border-color-active: rgb(0 0 0);
+$primary-text-color: rgb(235 235 235);
 $font-family: "Poppins", sans-serif;
-$primary-box-shadow: rgb(56, 20, 56);
-
-$secondary-text-color: rgb(100, 100, 100);
-$secondary-text-color-hover-and-focus: rgb(38, 25, 49);
-$secondary-border-color-hover-and-focus: rgb(38, 25, 49);
-$secondary-background-color-hover-and-active: rgb(240, 240, 240);
-$secondary-background-color-active: rgb(238, 230, 240);
+$primary-box-shadow: rgb(56 20 56);
+$secondary-text-color: rgb(100 100 100);
+$secondary-text-color-hover-and-focus: rgb(38 25 49);
+$secondary-border-color-hover-and-focus: rgb(38 25 49);
+$secondary-background-color-hover-and-active: rgb(240 240 240);
+$secondary-background-color-active: rgb(238 230 240);

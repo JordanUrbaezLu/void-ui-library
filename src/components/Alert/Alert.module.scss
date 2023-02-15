@@ -1,15 +1,15 @@
 @use "../../utility/globals";
 
 .alertContainer {
-  display: flex;
   align-items: center;
   border-radius: 8px;
+  column-gap: 10px;
+  display: flex;
   font-family: globals.$font-family;
   font-size: 14px;
-  padding: 10px 12px;
   min-width: 250px;
+  padding: 10px 12px;
   width: fit-content;
-  column-gap: 10px;
 
   &.error {
     background-color: rgba(red, 0.2);
@@ -33,9 +33,9 @@
 }
 
 .alertTitle {
-  font-weight: 700;
-  display: flex;
   align-items: center;
+  display: flex;
+  font-weight: 700;
 
   &.error {
     color: red;
@@ -60,8 +60,8 @@
 }
 
 .alertIcon {
-  display: flex;
   align-items: center;
+  display: flex;
   font-size: 22px;
   padding-right: 8px;
 }

@@ -18,12 +18,15 @@
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "no-console": "error",
+    // All Files: error  'React' must be in scope when using JSX  react/react-in-jsx-scope
     "react/react-in-jsx-scope": "off",
-    "react/no-unescaped-entities": "off"
+    // error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+    "react/no-unescaped-entities": "off",
+    "react/sort-default-props": 2
   },
   "settings": {
     "react": {
-      "version": "999.999.999"
+      "version": "detect"
     }
   }
 }

@@ -1,16 +1,16 @@
 @use "../../utility/globals";
 
 .container {
-  position: relative;
   font-family: globals.$font-family;
+  position: relative;
 }
 
 .menuLayoutContainer {
   left: 0;
-  top: 0;
   position: absolute;
-  z-index: 1;
+  top: 0;
   white-space: nowrap;
+  z-index: 1;
 }
 
 .enterBottom {
@@ -19,19 +19,19 @@
 }
 
 .enterBottomActive {
-  transform: translateY(0px);
   opacity: 1;
+  transform: translateY(0);
   transition: all 150ms ease-in-out;
 }
 
 .exitBottom {
-  transform: translateY(0px);
   opacity: 1;
+  transform: translateY(0);
 }
 
 .exitBottomActive {
-  transform: translateY(-8px);
   opacity: 0;
+  transform: translateY(-8px);
   transition: all 150ms ease-in-out;
 }
 
@@ -41,19 +41,19 @@
 }
 
 .enterTopActive {
-  transform: translateY(0px);
   opacity: 1;
+  transform: translateY(0);
   transition: all 150ms ease-in-out;
 }
 
 .exitTop {
-  transform: translateY(0px);
   opacity: 1;
+  transform: translateY(0);
 }
 
 .exitTopActive {
-  transform: translateY(8px);
   opacity: 0;
+  transform: translateY(8px);
   transition: all 150ms ease-in-out;
 }
 

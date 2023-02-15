@@ -3,27 +3,27 @@
 .iconButton {
   background-color: transparent;
   border: none;
-  color: globals.$primary-background-color;
-  outline: none;
   border-radius: 999px;
+  color: globals.$primary-background-color;
   cursor: pointer;
+  outline: none;
 
   &.small {
-    padding: 7px;
-    max-width: 32px;
     max-height: 32px;
+    max-width: 32px;
+    padding: 7px;
   }
 
   &.medium {
-    padding: 8px;
-    max-width: 38px;
     max-height: 38px;
+    max-width: 38px;
+    padding: 8px;
   }
 
   &.large {
-    padding: 9px;
-    max-width: 44px;
     max-height: 44px;
+    max-width: 44px;
+    padding: 9px;
   }
 
   &:hover,

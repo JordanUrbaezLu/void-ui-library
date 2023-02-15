@@ -12,5 +12,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm install && npm install -g eslint
+      - run: npm install 
+      - run: npm install -g eslint 
+      - run: npm install -g stylelint
+      - run: npm isntall -g typescript
       - run: npm run lint

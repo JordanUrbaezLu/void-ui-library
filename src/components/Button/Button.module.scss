@@ -1,14 +1,15 @@
 @use "../../utility/globals";
 
 .button {
+  align-items: center;
   border: 2px solid globals.$primary-background-color;
-  width: fit-content;
-  font-family: globals.$font-family;
+  column-gap: 6px;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  column-gap: 6px;
+  font-family: globals.$font-family;
   outline: none;
+  width: fit-content;
+
   &:hover {
     cursor: pointer;
   }
@@ -17,12 +18,14 @@
 .primary {
   background-color: globals.$primary-background-color;
   color: globals.$primary-text-color;
+
   &:hover,
   &:focus {
     background-color: globals.$primary-background-color-hover-and-focus;
     border: 2px solid
       globals.$primary-background-color-hover-and-focus;
   }
+
   &:active {
     background-color: globals.$primary-background-color-active;
     border: 2px solid globals.$primary-background-color-active;
@@ -31,14 +34,16 @@
 
 .secondary {
   background-color: white;
-  color: globals.$secondary-text-color;
   border: 2px solid globals.$secondary-text-color;
+  color: globals.$secondary-text-color;
+
   &:hover,
   &:focus {
-    color: globals.$secondary-text-color-hover-and-focus;
-    border: 2px solid globals.$secondary-border-color-hover-and-focus;
     background-color: globals.$secondary-background-color-hover-and-active;
+    border: 2px solid globals.$secondary-border-color-hover-and-focus;
+    color: globals.$secondary-text-color-hover-and-focus;
   }
+
   &:active {
     background-color: globals.$secondary-background-color-active;
   }
@@ -47,8 +52,9 @@
 .small {
   border-radius: 6px;
   font-size: 12px;
-  padding: 4px 6px;
   height: 25.8px;
+  padding: 4px 6px;
+
   .leadingIcon,
   .trailingIcon {
     height: 12px;
@@ -58,8 +64,9 @@
 .medium {
   border-radius: 8px;
   font-size: 16px;
-  padding: 6px 9px;
   height: 34.5px;
+  padding: 6px 9px;
+
   .leadingIcon,
   .trailingIcon {
     height: 16px;
@@ -69,8 +76,9 @@
 .large {
   border-radius: 10px;
   font-size: 20px;
-  padding: 8px 12px;
   height: 43px;
+  padding: 8px 12px;
+
   .leadingIcon,
   .trailingIcon {
     height: 20px;

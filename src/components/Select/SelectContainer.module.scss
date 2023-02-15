@@ -1,13 +1,13 @@
 @use "../../utility/globals";
 
 .selectOptionsMenu {
-  margin-top: 2px;
+  background-color: globals.$primary-background-color;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
-  border-radius: 4px;
-  padding: 4px 0px;
-  background-color: globals.$primary-background-color;
+  margin-top: 2px;
+  padding: 4px 0;
   position: absolute;
-  z-index: 1;
   width: 142px;
+  z-index: 1;
 }
