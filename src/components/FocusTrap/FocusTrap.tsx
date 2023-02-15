@@ -17,6 +17,10 @@ export interface FocusTrapProps
 
 /**
  * @public
+ *
+ * @description
+ *
+ * The Focus Trap component traps the users focus within a DOM node.
  */
 export const FocusTrap: React.FC<FocusTrapProps> = (props) => {
   const { children, returnFocus = true, ...rest } = props;
@@ -27,3 +31,5 @@ export const FocusTrap: React.FC<FocusTrapProps> = (props) => {
     </FocusLock>
   );
 };
+
+FocusTrap.displayName = "FocusTrap";

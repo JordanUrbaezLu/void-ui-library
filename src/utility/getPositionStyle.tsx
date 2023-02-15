@@ -27,14 +27,6 @@ export const getPositionStyle = ({
       width: 0,
     };
 
-  console.log(referrerDOMRect.height);
-
-  console.log(referrerDOMRect.width);
-
-  console.log(targetDOMRect.height);
-
-  console.log(targetDOMRect.width);
-
   const { left, top } = calculatePosition({
     referrerHeight: referrerDOMRect.height,
     referrerWidth: referrerDOMRect.width,

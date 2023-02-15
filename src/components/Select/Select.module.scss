@@ -2,14 +2,14 @@
 
 .selectContainer {
   user-select: none;
-  min-width: 142px;
+  width: 142px;
   position: relative;
+  font-family: globals.$font-family;
 }
 
 .select {
   border-radius: 5px;
   outline: none !important;
-  font-family: globals.$font-family;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -19,15 +19,20 @@
   font-size: 16px;
 }
 
-.inputContainer {
-  cursor: pointer !important;
-  max-width: 120px;
-  background: transparent;
-  caret-color: transparent;
-  padding-left: 10px !important;
-  height: 53px !important;
-  box-sizing: border-box !important;
-  min-width: 142px !important;
+.selectInput {
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  width: 142px;
+  border: 2px solid globals.$primary-background-color;
+  padding: 10px;
+  height: 46px;
+  box-sizing: border-box;
+  font-size: 18px;
+  transition: all 200ms ease-in;
+  &.isOpen {
+    box-shadow: 0 0 5px 5px globals.$primary-box-shadow;
+  }
 }
 
 .label {
@@ -39,14 +44,10 @@
 }
 
 .icon {
-  display: flex;
-  cursor: pointer;
-  margin-left: auto;
-  font-size: 28px;
   position: absolute;
-  left: 104px;
-  top: 13px;
-  z-index: -1;
+  left: 100px;
+  top: 4px;
+  z-index: 1;
 }
 
 .enter {

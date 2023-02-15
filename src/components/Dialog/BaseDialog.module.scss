@@ -1,0 +1,65 @@
+@use "../../utility/globals";
+
+.dialogContainer {
+  background: globals.$primary-background-color;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 400px;
+  color: globals.$primary-text-color;
+
+  &.center {
+    border-radius: 10px;
+  }
+
+  &.bottom {
+    border-radius: 10px 10px 0px 0px;
+    width: 600px;
+  }
+
+  &.left,
+  &.right {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+}
+
+.dialogHeader {
+  box-sizing: border-box;
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+}
+
+.dialogContent {
+  padding: 30px 30px 50px 30px;
+  text-align: center;
+}
+
+.dialogButtons {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.dialogTitle {
+  align-self: center;
+}
+
+.dialogButtonsContainer {
+  margin-top: auto;
+}
+
+.dialogIcon {
+  color: globals.$primary-text-color !important;
+
+  &:hover,
+  &:focus {
+    background-color: globals.$primary-background-color-hover-and-focus !important;
+  }
+
+  &:active {
+    background-color: globals.$primary-background-color-active !important;
+  }
+}

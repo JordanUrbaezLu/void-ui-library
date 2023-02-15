@@ -25,3 +25,5 @@ export const MenuHeader: React.FC<MenuHeaderProps> = (props) => {
     </div>
   );
 };
+
+MenuHeader.displayName = "MenuHeader";

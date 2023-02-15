@@ -3,7 +3,7 @@ import * as React from "react";
 import { Menu, MenuProps } from "./Menu";
 import { MenuItem } from "./MenuItem";
 import { Button } from "../Button/Button";
-import { MenuDivider } from "./MenuDivider";
+import { MenuSeparator } from "./MenuSeparator";
 import { MenuHeader } from "./MenuHeader";
 
 export default {
@@ -26,14 +26,8 @@ const Template: Story<
     <Menu
       {...args}
       isOpen={isOpen}
-      onOpen={() => {
-        console.log("Open");
-        setIsOpen(true);
-      }}
-      onClose={() => {
-        console.log("Close");
-        setIsOpen(false);
-      }}
+      onOpen={() => setIsOpen(true)}
+      onClose={() => setIsOpen(false)}
       trigger={<Button variant="secondary">Click Me!</Button>}
     >
       <MenuItem>Menu Item One</MenuItem>
@@ -88,25 +82,19 @@ export const WithDividerAndHeader = () => {
   return (
     <Menu
       isOpen={isOpen}
-      onOpen={() => {
-        console.log("Open");
-        setIsOpen(true);
-      }}
-      onClose={() => {
-        console.log("Close");
-        setIsOpen(false);
-      }}
+      onOpen={() => setIsOpen(true)}
+      onClose={() => setIsOpen(false)}
       trigger={<Button>Click Me!</Button>}
     >
       <MenuItem>New File</MenuItem>
       <MenuItem>New Folder</MenuItem>
       <MenuItem>Save As</MenuItem>
-      <MenuDivider />
+      <MenuSeparator />
       <MenuHeader>Edit</MenuHeader>
       <MenuItem>Cut</MenuItem>
       <MenuItem>Copy</MenuItem>
       <MenuItem>Paste</MenuItem>
-      <MenuDivider />
+      <MenuSeparator />
       <MenuItem>Print</MenuItem>
     </Menu>
   );

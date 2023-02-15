@@ -31,3 +31,5 @@ export const BaseCallout = React.forwardRef<
     </div>
   );
 });
+
+BaseCallout.displayName = "BaseCallout";

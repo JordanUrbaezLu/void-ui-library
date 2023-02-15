@@ -52,12 +52,6 @@ export interface TextFieldProps
    */
   type?: TextFieldType;
   /**
-   * If the TextField is selectable
-   *
-   * @default true
-   */
-  selectable?: boolean;
-  /**
    * The value for the TextField
    */
   value?: string;
@@ -65,6 +59,11 @@ export interface TextFieldProps
 
 /**
  * @public
+ *
+ * @description
+ *
+ * The Text Field component is used to allow a user to
+ * type in a textbox.
  */
 export const TextField = React.forwardRef<
   HTMLDivElement,
@@ -77,7 +76,6 @@ export const TextField = React.forwardRef<
     trailingIcon,
     disabled = false,
     onChange,
-    selectable = true,
     type = "text",
     label = "textfield",
     value,
@@ -134,3 +132,5 @@ export const TextField = React.forwardRef<
     </div>
   );
 });
+
+TextField.displayName = "TextField";

@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Overlay Should render component correctly. 1`] = `
-<div
-  class="overlay"
-/>
-`;

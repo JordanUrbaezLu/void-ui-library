@@ -13,8 +13,10 @@ interface SelectItemProps
 export const SelectItem: React.FC<SelectItemProps> = (props) => {
   const { className, children, ...rest } = props;
   return (
-    <div className={className} role="menuitem" {...rest}>
+    <div className={className} {...rest}>
       {children}
     </div>
   );
 };
+
+SelectItem.displayName = "SelectItem";

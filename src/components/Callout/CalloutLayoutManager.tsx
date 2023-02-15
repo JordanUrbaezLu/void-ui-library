@@ -41,3 +41,5 @@ export const CalloutLayoutManager: React.FC<CalloutLayoutContainerProps> =
       />
     );
   };
+
+CalloutLayoutManager.displayName = "CalloutLayoutManager";

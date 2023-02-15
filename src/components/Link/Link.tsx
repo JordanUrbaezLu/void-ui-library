@@ -24,6 +24,10 @@ export interface LinkProps
 
 /**
  * @public
+ *
+ * @description
+ *
+ * The Link component allows a user to navigate to a new page.
  */
 export const Link: React.FC<LinkProps> = (props) => {
   const {
@@ -46,3 +50,5 @@ export const Link: React.FC<LinkProps> = (props) => {
     </a>
   );
 };
+
+Link.displayName = "Link";

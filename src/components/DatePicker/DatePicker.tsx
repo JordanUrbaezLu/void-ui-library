@@ -32,6 +32,10 @@ export interface DatePickerProps
 
 /**
  * @public
+ *
+ * @description
+ *
+ * The Date Picker allows users to select a date on a calendar.
  */
 export const DatePicker: React.FC<DatePickerProps> = (props) => {
   const {
@@ -64,7 +68,7 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
       <div className={className} {...rest}>
         <TextField
           className={styles.customInput}
-          onChange={() => {}}
+          onChange={() => undefined}
           value={value}
           label="Select a Date"
           trailingIcon={
@@ -85,3 +89,5 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
     </DatePickerContext.Provider>
   );
 };
+
+DatePicker.displayName = "DatePicker";

@@ -14,7 +14,7 @@ export interface BarChartProps {
   /**
    * The data for the LineChart
    */
-  data: Array<Object>;
+  data: Array<object>;
   /**
    * The data keys for the LineChart
    */
@@ -69,3 +69,5 @@ export const BarChart: React.FC<BarChartProps> = (props) => {
     </RechartsBarChart>
   );
 };
+
+BarChart.displayName = "BarChart";

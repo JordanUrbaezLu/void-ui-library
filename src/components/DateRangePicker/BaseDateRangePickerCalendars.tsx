@@ -23,6 +23,9 @@ export interface BaseDateRangePickerCalendarsProps {
   triggerRefs: React.RefObject<HTMLDivElement>[];
 }
 
+/**
+ * @private
+ */
 export const BaseDateRangePickerCalendars: React.FC<BaseDateRangePickerCalendarsProps> =
   (props) => {
     const { onClose, triggerRefs } = props;
@@ -84,7 +87,6 @@ export const BaseDateRangePickerCalendars: React.FC<BaseDateRangePickerCalendars
         className={styles.dateRangePickerCalendarsContainer}
         ref={calendarsRef}
       >
-        {" "}
         <FocusTrap>
           <div
             className={
@@ -150,3 +152,6 @@ export const BaseDateRangePickerCalendars: React.FC<BaseDateRangePickerCalendars
       </div>
     );
   };
+
+BaseDateRangePickerCalendars.displayName =
+  "BaseDateRangePickerCalendars";

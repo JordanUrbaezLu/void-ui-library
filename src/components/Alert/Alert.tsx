@@ -32,6 +32,11 @@ export interface AlertProps
 
 /**
  * @public
+ *
+ * @description
+ *
+ * The Alert component is a notification towards an action a
+ * user has recently taken.
  */
 export const Alert: React.FC<AlertProps> = (props) => {
   const {
@@ -106,3 +111,5 @@ export const Alert: React.FC<AlertProps> = (props) => {
     </CSSTransition>
   );
 };
+
+Alert.displayName = "Alert";

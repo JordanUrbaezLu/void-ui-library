@@ -21,10 +21,10 @@ export const getCalendarDays = (date: Date) => {
   ).getDay();
 
   const fillerBefore = [...Array(firstDayOfWeek).keys()].map(
-    (day) => null
+    () => null
   );
   const fillerAfter = [...Array(6 - lastDayOfWeek).keys()].map(
-    (day) => null
+    () => null
   );
 
   return [...fillerBefore, ...days, ...fillerAfter];

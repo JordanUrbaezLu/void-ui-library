@@ -15,6 +15,13 @@ export interface BadgeProps extends IconButtonProps {
   title: string;
 }
 
+/**
+ * @public
+ *
+ * @description
+ *
+ * The Badge is a simple display icon with fun animations.
+ */
 export const Badge: React.FC<BadgeProps> = (props) => {
   const {
     ariaLabel = "Badge",
@@ -35,3 +42,5 @@ export const Badge: React.FC<BadgeProps> = (props) => {
     />
   );
 };
+
+Badge.displayName = "Badge";

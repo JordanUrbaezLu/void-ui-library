@@ -264,3 +264,5 @@ export const BaseDatePickerCalendar: React.FC<BaseDatePickerCalendarProps> =
       </div>
     );
   };
+
+BaseDatePickerCalendar.displayName = "BaseDatePickerCalendar";

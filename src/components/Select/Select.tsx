@@ -1,14 +1,10 @@
 import { CSSTransition } from "react-transition-group";
 import styles from "./Select.module.scss";
-import {
-  IoChevronDownSharp,
-  IoChevronUpSharp,
-} from "react-icons/io5";
+import { IoMdArrowDropup, IoMdArrowDropdown } from "react-icons/io";
 import * as React from "react";
-import { TextField } from "../TextField";
 import { SelectContainer } from "./SelectContainer";
-import { useOnClickOutside } from "../../hooks";
 import classNames from "classnames";
+import { IconButton } from "../IconButton";
 
 export interface SelectProps
   extends React.ComponentPropsWithoutRef<"div"> {
@@ -17,34 +13,64 @@ export interface SelectProps
    */
   children: React.ReactNode;
   /**
-   * If the Select initially renders as open
+   * If the Select is open
    *
    * @default false
    */
-  startsOpen?: boolean;
+  isOpen?: boolean;
   /**
-   * The label for the Select
+   * The callback fired when the Select closes
    */
-  label?: string;
+  onClose: () => void;
+  /**
+   * The callback fired when the Select opens
+   */
+  onOpen: () => void;
+  /**
+   * The placeholder for the Select
+   */
+  placeholder?: string;
+  /**
+   * The initial selected item's index for the Select
+   */
+  selected?: number;
 }
 
 /**
  * @public
+ *
+ * @description
+ *
+ * The Select component displays a dropdown of selectable options.
  */
 export const Select: React.FC<SelectProps> = (props) => {
   const {
     className,
     children,
-    label,
-    startsOpen = false,
+    isOpen = false,
+    onClose,
+    onOpen,
+    placeholder,
+    selected,
     ...rest
   } = props;
 
-  const [isOpen, setIsOpen] = React.useState<boolean>(startsOpen);
-  const [value, setValue] = React.useState<string>("");
+  const [selectedIndex, setSelectedIndex] =
+    React.useState<number | undefined>(selected);
+  const [value, setValue] = React.useState<string>();
   const selectRef = React.useRef<HTMLDivElement>(null);
 
-  useOnClickOutside(selectRef, () => setIsOpen(false));
+  React.useEffect(() => {
+    if (selectedIndex !== undefined) {
+      setValue(
+        React.Children.toArray(children)[selectedIndex] as string
+      );
+    }
+  }, [selectedIndex]);
+
+  const onSetSelectedIndex = (index: number) => {
+    setSelectedIndex(index);
+  };
 
   return (
     <div
@@ -52,24 +78,34 @@ export const Select: React.FC<SelectProps> = (props) => {
       ref={selectRef}
       {...rest}
     >
-      <TextField
-        size="large"
-        selectable={false}
-        onChange={() => {}}
-        value={value}
-        label={label}
-        className={styles.inputContainer}
-        onClick={() => setIsOpen(!isOpen)}
-      />
+      <div
+        className={classNames(
+          styles.selectInput,
+          isOpen && styles.isOpen
+        )}
+        onClick={() => {
+          if (isOpen) {
+            onClose();
+          } else {
+            onOpen();
+          }
+        }}
+      >
+        {value ?? <div style={{ color: "gray" }}>{placeholder}</div>}
+      </div>
       {isOpen ? (
-        <IoChevronUpSharp
-          aria-label="Chevron Up"
+        <IconButton
+          ariaLabel="Chevron Up"
           className={styles.icon}
+          content={<IoMdArrowDropup />}
+          onClick={onClose}
         />
       ) : (
-        <IoChevronDownSharp
-          aria-label="Chevron Down"
+        <IconButton
+          ariaLabel="Chevron Down"
           className={styles.icon}
+          content={<IoMdArrowDropdown />}
+          onClick={onOpen}
         />
       )}
       <CSSTransition
@@ -84,10 +120,19 @@ export const Select: React.FC<SelectProps> = (props) => {
           exitActive: styles.exitActive,
         }}
       >
-        <SelectContainer setIsOpen={setIsOpen} setValue={setValue}>
+        <SelectContainer
+          selected={selectedIndex}
+          isOpen={isOpen}
+          onOpen={onOpen}
+          onClose={onClose}
+          onSetSelectedIndex={onSetSelectedIndex}
+          selectRef={selectRef}
+        >
           {children}
         </SelectContainer>
       </CSSTransition>
     </div>
   );
 };
+
+Select.displayName = "Select";

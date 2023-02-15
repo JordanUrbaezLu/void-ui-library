@@ -1,20 +1,19 @@
+import classNames from "classnames";
 import * as React from "react";
+import { SelectProps } from "./Select";
 import styles from "./SelectContainer.module.scss";
 import itemStyles from "./SelectItem.module.scss";
+import { useOnClickOutside, useOnKeyDown } from "../../hooks";
 
-export interface SelectContainerProps {
+export interface SelectContainerProps extends SelectProps {
   /**
-   * The content for the SelectContainer
+   * The callback fired when requesting to change selected index
    */
-  children: React.ReactNode;
+  onSetSelectedIndex: (index: number) => void;
   /**
-   * The callback fired when requesting to show or hide the SelectContainer
+   * The ref for the Select
    */
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  /**
-   * The callback fired when requesting to change the value
-   */
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  selectRef: React.RefObject<HTMLDivElement>;
 }
 
 /**
@@ -23,22 +22,43 @@ export interface SelectContainerProps {
 export const SelectContainer: React.FC<SelectContainerProps> = (
   props
 ) => {
-  const { children, setIsOpen, setValue } = props;
+  const {
+    children,
+    selected,
+    onClose,
+    onOpen,
+    isOpen,
+    onSetSelectedIndex,
+    selectRef,
+  } = props;
+
+  useOnClickOutside(selectRef, onClose);
+  useOnKeyDown(["Escape"], onClose);
 
   return (
-    <div className={styles.selectOptionsMenu} role="menu">
+    <div className={styles.selectOptionsMenu} role="listbox">
       {React.Children.map(children, (child, index) => {
         const selectItem = child as React.ReactElement;
 
         return React.cloneElement(selectItem, {
-          className: itemStyles.selectItem,
+          className: classNames(
+            itemStyles.selectItem,
+            selected === index && itemStyles.selected
+          ),
           key: index,
           onClick: () => {
-            setValue(selectItem.props.children as string);
-            setIsOpen((prev) => !prev);
+            if (isOpen) {
+              onClose();
+            } else {
+              onOpen();
+            }
+            onSetSelectedIndex(index);
           },
+          role: "listitem",
         });
       })}
     </div>
   );
 };
+
+SelectContainer.displayName = "SelectContainer";
