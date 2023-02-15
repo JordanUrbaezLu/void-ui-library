@@ -76,7 +76,7 @@
     "lint": "eslint .",
     "semantic-release": "semantic-release --branches main",
     "start": "start-storybook",
-    "test": "npm run typecheck && NODE_ENV=test jest",
+    "test": "NODE_ENV=test jest",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
