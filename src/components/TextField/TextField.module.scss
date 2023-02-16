@@ -1,19 +1,20 @@
 @use "../../utility/globals";
 
 .container {
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
   font-family: globals.$font-family;
 }
 
 .textFieldContainer {
   display: flex;
   flex-direction: column;
+
   .disabled {
-    border: 3px solid rgb(220, 220, 220) !important;
+    background-color: rgb(220 220 220);
+    border: 3px solid rgb(220 220 220) !important;
     cursor: default !important;
-    background-color: rgb(220, 220, 220);
   }
 }
 
@@ -40,11 +41,11 @@
 
     &:focus ~ .label,
     &:valid ~ .label {
-      transform: translateY(-13px);
       color: globals.$primary-background-color-hover-and-focus;
+      font-size: 10px;
       font-weight: 700;
       margin-left: 6px;
-      font-size: 10px;
+      transform: translateY(-13px);
     }
   }
 
@@ -55,11 +56,11 @@
 
     &:focus ~ .label,
     &:valid ~ .label {
-      transform: translateY(-18px);
       color: globals.$primary-background-color-hover-and-focus;
+      font-size: 14px;
       font-weight: 700;
       margin-left: 8px;
-      font-size: 14px;
+      transform: translateY(-18px);
     }
   }
 
@@ -70,41 +71,45 @@
 
     &:focus ~ .label,
     &:valid ~ .label {
-      transform: translateY(-24px);
       color: globals.$primary-background-color-hover-and-focus;
+      font-size: 18px;
       font-weight: 700;
       margin-left: 10px;
-      font-size: 18px;
+      transform: translateY(-24px);
     }
   }
 }
 
 .label {
+  background-color: white;
+  color: rgb(115 115 115);
+  pointer-events: none;
   position: absolute;
   transition: all 0.2s ease-in;
-  color: rgb(115, 115, 115);
-  pointer-events: none;
-  background-color: white;
   transition: all 0.15s ease-in;
+
   &.labelSmall {
-    margin-left: 6px;
     font-size: 12px;
-    margin-top: 6px;
-    padding: 0px 1px;
-  }
-  &.labelMedium {
     margin-left: 6px;
+    margin-top: 6px;
+    padding: 0 1px;
+  }
+
+  &.labelMedium {
     font-size: 18px;
+    margin-left: 6px;
     margin-top: 8px;
-    padding: 0px 2px;
+    padding: 0 2px;
   }
+
   &.labelLarge {
-    margin-left: 12px;
     font-size: 24px;
+    margin-left: 12px;
     margin-top: 10px;
-    padding: 0px 2px;
+    padding: 0 2px;
   }
+
   &.disabledLabel {
-    background-color: rgb(220, 220, 220);
+    background-color: rgb(220 220 220);
   }
 }

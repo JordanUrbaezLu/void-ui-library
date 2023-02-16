@@ -1,47 +1,49 @@
 @use "../../utility/globals";
 
 .statusContainer {
-  display: flex;
   align-items: center;
-  width: fit-content;
+  display: flex;
   font-family: globals.$font-family;
+  width: fit-content;
 }
 
 .status {
+  border-radius: 1000px;
+  height: 20px;
+  margin: 6px;
   position: relative;
   width: 20px;
-  height: 20px;
-  border-radius: 1000px;
-  margin: 6px;
 
   &.online {
-    background-color: rgb(66, 237, 66);
-    width: 16px;
+    background-color: rgb(66 237 66);
     height: 16px;
     margin: 8px;
+    width: 16px;
   }
 
   &.online::before {
-    position: absolute;
-    content: "";
     animation: pulse 1.2s ease infinite;
-    background-color: rgb(66, 237, 66);
-    width: 20px;
-    height: 20px;
+    background-color: rgb(66 237 66);
     border-radius: 1000px;
+    content: "";
+    height: 20px;
     left: -2px;
+    position: absolute;
     top: -2px;
+    width: 20px;
 
     @keyframes pulse {
       0% {
         transform: scale(1, 1);
       }
+
       50% {
         opacity: 0.3;
       }
+
       100% {
-        transform: scale(1.3);
         opacity: 0;
+        transform: scale(1.3);
       }
     }
   }
@@ -53,47 +55,47 @@
   }
 
   &.away {
-    background-color: rgb(255, 184, 51);
-    width: 14px;
+    background-color: rgb(255 184 51);
     height: 14px;
     margin: 9px;
+    width: 14px;
   }
 
   &.away::before {
-    display: block;
-    position: relative;
+    background-color: transparent;
+    border: 1px solid rgb(255 184 51);
+    border-radius: 1000px;
+    box-sizing: border-box;
     content: "";
+    display: block;
+    height: 20px;
     left: -3px;
+    position: relative;
     top: -3px;
     width: 20px;
-    height: 20px;
-    background-color: transparent;
-    box-sizing: border-box;
-    border: 1px solid rgb(255, 184, 51);
-    border-radius: 1000px;
   }
 
   &.busy {
-    background-color: rgb(240, 0, 0);
+    background-color: rgb(240 0 0);
   }
 
   &.busy::before {
-    display: block;
-    position: relative;
-    content: "";
-    width: 12px;
-    height: 4px;
-    top: 8px;
-    left: 4px;
-    border-radius: 1000px;
     background-color: white;
+    border-radius: 1000px;
+    content: "";
+    display: block;
+    height: 4px;
+    left: 4px;
+    position: relative;
+    top: 8px;
+    width: 12px;
     z-index: 1;
   }
 }
 
 .label {
   &.online {
-    color: rgb(66, 237, 66);
+    color: rgb(66 237 66);
   }
 
   &.offline {
@@ -101,10 +103,10 @@
   }
 
   &.away {
-    color: rgb(255, 184, 51);
+    color: rgb(255 184 51);
   }
 
   &.busy {
-    color: rgb(240, 0, 0);
+    color: rgb(240 0 0);
   }
 }

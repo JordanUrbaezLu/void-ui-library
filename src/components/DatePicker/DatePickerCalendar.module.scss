@@ -4,18 +4,18 @@
 }
 
 .enterActive {
-  transform: translateY(0px);
   opacity: 1;
+  transform: translateY(0);
   transition: all 200ms ease-in-out;
 }
 
 .exit {
-  transform: translateY(0px);
   opacity: 1;
+  transform: translateY(0);
 }
 
 .exitActive {
-  transform: translateY(-6px);
   opacity: 0;
+  transform: translateY(-6px);
   transition: all 200ms ease-in-out;
 }

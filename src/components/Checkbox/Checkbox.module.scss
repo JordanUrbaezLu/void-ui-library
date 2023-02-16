@@ -2,12 +2,15 @@
 
 .checkboxContainer {
   align-items: center;
-  display: flex;
   color: globals.$primary-background-color;
+  display: flex;
+  font-family: globals.$font-family;
+
   &:hover,
   &:focus {
     color: globals.$primary-background-color-hover-and-focus;
   }
+
   &:active {
     color: globals.$primary-background-color-active;
   }
@@ -21,19 +24,21 @@
 
 .checkboxBorder {
   border: 4px solid globals.$primary-background-color;
-  &:hover,
-  &:focus {
-    border: 4px solid
-      globals.$primary-background-color-hover-and-focus;
-  }
-  &:active {
-    border: 4px solid globals.$primary-background-color-active;
-  }
   border-radius: 4px;
   cursor: pointer;
   display: block;
   height: 26px;
   width: 26px;
+
+  &:hover,
+  &:focus {
+    border: 4px solid
+      globals.$primary-background-color-hover-and-focus;
+  }
+
+  &:active {
+    border: 4px solid globals.$primary-background-color-active;
+  }
 }
 
 .checkboxIcon {
@@ -44,13 +49,9 @@
 }
 
 .checkboxLabel {
-  color: globals.$primary-color;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.checkboxLabel {
   color: gray !important;
   margin-left: 8px;
+
   &.checked {
     color: globals.$primary-background-color !important;
   }

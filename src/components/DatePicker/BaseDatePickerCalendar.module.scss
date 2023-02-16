@@ -2,15 +2,15 @@
 
 .datePickerCalendarContainer {
   background: globals.$primary-background-color;
-  margin-top: 2px;
   border-radius: 10px;
+  box-shadow: rgb(0 0 0 / 35%) 0 5px 15px;
   color: globals.$primary-text-color;
   display: flex;
-  font-family: globals.$font-family;
   flex-direction: column;
-  width: 360px;
+  font-family: globals.$font-family;
+  margin-top: 2px;
   position: absolute;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 360px;
 }
 
 .datePickerCalendarNavigationContainer {
@@ -21,9 +21,9 @@
 }
 
 .datePickerCalendarNavigationMonth {
+  align-items: center;
   display: flex;
   user-select: none;
-  align-items: center;
 }
 
 .datePickerCalendarNavigationIcon {
@@ -46,15 +46,15 @@
 }
 
 .datePickerCalendarHeaderLabel {
-  text-align: center;
   flex: 1 1 0px;
+  text-align: center;
   user-select: none;
 }
 
 .datePickerCalendarBodyContainer {
   display: flex;
   flex-wrap: wrap;
-  padding: 0px 12px;
+  padding: 0 12px;
 }
 
 .datePickerCalendarDayContainer {
@@ -62,19 +62,19 @@
 }
 
 .datePickerCalendarDay {
-  display: flex;
-  border-radius: 1000px;
-  cursor: pointer;
-  justify-content: center;
   align-items: center;
-  border: 2px solid transparent;
-  outline: none;
-  height: 34px;
-  width: 34px;
-  margin: auto;
-  user-select: none;
   background-color: transparent;
+  border: 2px solid transparent;
+  border-radius: 1000px;
   color: globals.$primary-text-color;
+  cursor: pointer;
+  display: flex;
+  height: 34px;
+  justify-content: center;
+  margin: auto;
+  outline: none;
+  user-select: none;
+  width: 34px;
 
   &.selected {
     background-color: globals.$primary-border-color;
@@ -99,11 +99,11 @@
 }
 
 .buttonContainer {
+  align-items: center;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
-  width: 100%;
   padding: 6px 4px;
+  width: 100%;
 }

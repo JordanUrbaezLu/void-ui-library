@@ -1,51 +1,52 @@
 @use "../../utility/globals";
 
 .selectContainer {
+  font-family: globals.$font-family;
+  position: relative;
   user-select: none;
   width: 142px;
-  position: relative;
-  font-family: globals.$font-family;
 }
 
 .select {
+  align-items: center;
+  border: 3px solid globals.$primary-background-color;
   border-radius: 5px;
-  outline: none !important;
+  column-gap: 6px;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  column-gap: 6px;
-  border: 3px solid globals.$primary-background-color;
-  padding: 10px 6px;
   font-size: 16px;
+  outline: none !important;
+  padding: 10px 6px;
 }
 
 .selectInput {
-  border-radius: 6px;
-  display: flex;
   align-items: center;
-  width: 142px;
   border: 2px solid globals.$primary-background-color;
-  padding: 10px;
-  height: 46px;
+  border-radius: 6px;
   box-sizing: border-box;
+  display: flex;
   font-size: 18px;
-  transition: all 200ms ease-in;
+  height: 46px;
+  padding: 10px;
+  transition: all 130ms ease-in;
+  width: 142px;
+
   &.isOpen {
     box-shadow: 0 0 5px 5px globals.$primary-box-shadow;
   }
 }
 
 .label {
-  font-family: globals.$font-family;
-  padding-left: 8px;
   color: globals.$primary-background-color;
+  font-family: globals.$font-family;
   font-size: 14px;
+  padding-left: 8px;
   user-select: none;
 }
 
 .icon {
-  position: absolute;
   left: 100px;
+  position: absolute;
   top: 4px;
   z-index: 1;
 }
@@ -56,18 +57,18 @@
 }
 
 .enterActive {
-  transform: translateY(0px);
   opacity: 1;
+  transform: translateY(0);
   transition: all 200ms ease-in-out;
 }
 
 .exit {
-  transform: translateY(0px);
   opacity: 1;
+  transform: translateY(0);
 }
 
 .exitActive {
-  transform: translateY(-6px);
   opacity: 0;
+  transform: translateY(-6px);
   transition: all 200ms ease-in-out;
 }

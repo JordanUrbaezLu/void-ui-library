@@ -4,10 +4,11 @@
   border-radius: 4px;
   color: globals.$primary-text-color;
   cursor: pointer;
-  padding: 2px 5px;
   margin: 1px 5px;
-  user-select: none;
   outline: none;
+  padding: 2px 5px;
+  user-select: none;
+
   &:hover,
   &:focus {
     background-color: globals.$primary-background-color-hover-and-focus;

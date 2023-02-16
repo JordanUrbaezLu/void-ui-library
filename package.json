@@ -51,6 +51,10 @@
     "sass": "^1.55.0",
     "sass-loader": "^13.0.2",
     "semantic-release": "^19.0.5",
+    "stylelint": "^15.1.0",
+    "stylelint-config-css-modules": "^4.2.0",
+    "stylelint-config-standard-scss": "^7.0.1",
+    "stylelint-order": "^6.0.2",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.3"
   },
@@ -73,11 +77,13 @@
     "chromatic": "chromatic",
     "clean": "rimraf dist && rimraf storybook-static",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,mdx,css,scss}\"",
-    "lint": "eslint .",
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint .",
+    "lint:stylelint": "npx stylelint '**/*.scss'",
+    "lint:typecheck": "tsc --noEmit",
     "semantic-release": "semantic-release --branches main",
     "start": "start-storybook",
-    "test": "NODE_ENV=test jest",
-    "typecheck": "tsc --noEmit"
+    "test": "NODE_ENV=test jest"
   },
   "dependencies": {
     "classnames": "2.2.6",

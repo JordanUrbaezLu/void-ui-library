@@ -1,54 +1,55 @@
 @use "../../utility/globals";
 
 .container {
-  position: relative;
   font-family: globals.$font-family;
   font-size: 14px;
+  position: relative;
 }
 
 .popupLayoutContainer {
   left: 0;
-  top: 0;
   position: absolute;
+  top: 0;
   z-index: 1;
 }
 
 .popup {
-  color: globals.$primary-text-color;
-  text-align: center;
-  min-width: 120px;
-  max-width: 120px;
   background-color: globals.$primary-background-color;
   border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgb(0 0 0 / 35%) 0 5px 15px;
+  color: globals.$primary-text-color;
+  max-width: 120px;
+  min-width: 120px;
   padding: 10px 16px;
+  text-align: center;
   text-overflow: wrap;
   word-wrap: break-word;
   z-index: 1;
+
   &.nubbin {
     &::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      z-index: 2;
       background-color: globals.$primary-background-color;
+      content: "";
+      height: 10px;
       position: absolute;
       transform: translate(-50%, -50%) rotate(45deg);
+      width: 10px;
+      z-index: 2;
     }
   }
 }
 
 .bottom {
   &::before {
-    top: 0;
     left: 50%;
+    top: 0;
   }
 }
 
 .top {
   &::before {
-    top: 100%;
     left: 50%;
+    top: 100%;
   }
 }
 
@@ -58,19 +59,19 @@
 }
 
 .enterTopActive {
-  transform: translateY(0px);
   opacity: 1;
+  transform: translateY(0);
   transition: all 150ms cubic-bezier(0.44, -0.01, 0.83, 0.53);
 }
 
 .exitTop {
-  transform: translateY(0px);
   opacity: 1;
+  transform: translateY(0);
 }
 
 .exitTopActive {
-  transform: translateY(-10px);
   opacity: 0;
+  transform: translateY(-10px);
   transition: all 150ms cubic-bezier(0.44, -0.01, 0.83, 0.53);
 }
 
@@ -80,18 +81,18 @@
 }
 
 .enterBottomActive {
-  transform: translateY(0px);
   opacity: 1;
+  transform: translateY(0);
   transition: all 150ms cubic-bezier(0.44, -0.01, 0.83, 0.53);
 }
 
 .exitBottom {
-  transform: translateY(0px);
   opacity: 1;
+  transform: translateY(0);
 }
 
 .exitBottomActive {
-  transform: translateY(10px);
   opacity: 0;
+  transform: translateY(10px);
   transition: all 150ms cubic-bezier(0.44, -0.01, 0.83, 0.53);
 }

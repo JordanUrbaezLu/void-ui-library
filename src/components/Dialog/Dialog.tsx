@@ -48,7 +48,7 @@ export const Dialog: React.FC<DialogProps> = (props) => {
     onOpen,
     title,
     trigger,
-    variant,
+    variant = "center",
     ...rest
   } = props;
 

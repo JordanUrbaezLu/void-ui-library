@@ -1,19 +1,20 @@
 @use "../../utility/globals";
 
 .selectItem {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  text-align: left;
-  padding: 5px 5px 5px 12px;
   color: white;
   cursor: pointer;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 16px;
+  outline: none;
+  padding: 5px 5px 5px 12px;
+  text-align: left;
 
   &.selected {
-    background-color: rgb(108, 88, 116);
+    background-color: rgb(97 70 109);
 
     &:hover,
     &:focus {
-      background-color: rgb(113, 98, 119);
+      background-color: rgb(110 97 115);
     }
 
     &:active {

@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-css-modules"
+  ],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "order/properties-alphabetical-order": true,
+    "color-function-notation": null,
+    "selector-class-pattern": null,
+    "no-descending-specificity": null
+  }
+}
