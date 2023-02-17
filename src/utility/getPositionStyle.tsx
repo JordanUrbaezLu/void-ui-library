@@ -7,6 +7,9 @@ export type CalculatePositionFn = (dimensions: {
   targetWidth: number;
 }) => { left: number; top: number };
 
+// Give refs of each target.
+// Create a function to use that will transform the style.
+// Use the refs and the function to transform style.
 export const getPositionStyle = ({
   calculatePosition,
   referrerRef,

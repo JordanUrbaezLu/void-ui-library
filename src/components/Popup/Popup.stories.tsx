@@ -1,6 +1,9 @@
 import { Story } from "@storybook/react";
+import * as React from "react";
+import { within, userEvent } from "@storybook/testing-library";
 import { Popup, PopupProps } from "./Popup";
 import { Button } from "../Button/Button";
+import { allowPositionCalculations } from "../../../.storybook/utilities/allowPositionCalculations";
 
 export default {
   component: Popup,
@@ -11,57 +14,194 @@ export default {
 };
 
 const Template: Story<
-  Omit<PopupProps, "children" | "startsOpen" | "trigger">
+  Omit<PopupProps, "text"> & Pick<Partial<PopupProps>, "text">
 > = (args) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
   return (
     <Popup
+      text="I am a Popup!"
       {...args}
-      startsOpen
-      trigger={<Button variant="secondary">Hover Me!</Button>}
-    />
+      isOpen={isOpen}
+      onClose={() => setIsOpen(false)}
+      onOpen={() => setIsOpen(true)}
+    >
+      <Button variant="secondary">Hover Me!</Button>
+    </Popup>
   );
 };
 
 export const Default = Template.bind({});
-Default.args = {
-  text: "Popup!",
+Default.play = ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  allowPositionCalculations(() =>
+    userEvent.hover(canvas.getByRole("button"))
+  );
 };
 
-export const TopPosition = Template.bind({});
-TopPosition.args = {
-  text: "Popup!",
-  position: "top",
-};
-
-export const BottomPosition = Template.bind({});
-BottomPosition.args = {
-  text: "Popup!",
+export const PositionBottom = Template.bind({});
+PositionBottom.args = {
   position: "bottom",
 };
-
-export const TopPositionAndNubbin = Template.bind({});
-TopPositionAndNubbin.args = {
-  text: "Popup!",
-  position: "top",
-  hasNubbin: true,
+PositionBottom.play = ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  allowPositionCalculations(() =>
+    userEvent.hover(canvas.getByRole("button"))
+  );
 };
+PositionBottom.storyName = "Position: Bottom";
 
-export const BottomPositionAndNubbin = Template.bind({});
-BottomPositionAndNubbin.args = {
-  text: "Popup!",
-  position: "bottom",
-  hasNubbin: true,
-};
-
-export const LongText = Template.bind({});
-LongText.args = {
-  text: "I pop up when you hover over my trigger!",
+export const PositionBottomWithIndicator = Template.bind({});
+PositionBottomWithIndicator.args = {
+  hasIndicator: true,
   position: "bottom",
 };
-
-export const AllProps = Template.bind({});
-AllProps.args = {
-  text: "I pop up when you hover over my trigger!",
-  position: "top",
-  hasNubbin: true,
+PositionBottomWithIndicator.play = ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  allowPositionCalculations(() =>
+    userEvent.hover(canvas.getByRole("button"))
+  );
 };
+PositionBottomWithIndicator.storyName =
+  "Position: Bottom with Indicator";
+
+export const PositionBottomWithIndicatorAndLongText = Template.bind(
+  {}
+);
+PositionBottomWithIndicatorAndLongText.args = {
+  hasIndicator: true,
+  position: "bottom",
+  text: "I am some very, very, very, very long text!!!!!!",
+};
+PositionBottomWithIndicatorAndLongText.play = ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  allowPositionCalculations(() =>
+    userEvent.hover(canvas.getByRole("button"))
+  );
+};
+PositionBottomWithIndicatorAndLongText.storyName =
+  "Position: Bottom with Indicator and Long Text ";
+
+export const PositionTop = Template.bind({});
+PositionTop.args = {
+  position: "top",
+};
+PositionTop.play = ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  allowPositionCalculations(() =>
+    userEvent.hover(canvas.getByRole("button"))
+  );
+};
+PositionTop.storyName = "Position: Top";
+
+export const PositionTopWithIndicator = Template.bind({});
+PositionTopWithIndicator.args = {
+  hasIndicator: true,
+  position: "top",
+};
+PositionTopWithIndicator.play = ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  allowPositionCalculations(() =>
+    userEvent.hover(canvas.getByRole("button"))
+  );
+};
+PositionTopWithIndicator.storyName =
+  "Position: Top with Indicator";
+
+export const PositionTopWithIndicatorAndLongText = Template.bind({});
+PositionTopWithIndicatorAndLongText.args = {
+  hasIndicator: true,
+  position: "top",
+  text: "I am some very, very, very, very long text!!!!!!",
+};
+PositionTopWithIndicatorAndLongText.play = ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  allowPositionCalculations(() =>
+    userEvent.hover(canvas.getByRole("button"))
+  );
+};
+PositionTopWithIndicatorAndLongText.storyName =
+  "Position: Top with Indicator and Long Text ";
+
+export const PositionLeft = Template.bind({});
+PositionLeft.args = {
+  position: "left",
+};
+PositionLeft.play = ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  allowPositionCalculations(() =>
+    userEvent.hover(canvas.getByRole("button"))
+  );
+};
+PositionLeft.storyName = "Position: Left";
+
+export const PositionLeftWithIndicator = Template.bind({});
+PositionLeftWithIndicator.args = {
+  hasIndicator: true,
+  position: "left",
+};
+PositionLeftWithIndicator.play = ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  allowPositionCalculations(() =>
+    userEvent.hover(canvas.getByRole("button"))
+  );
+};
+PositionLeftWithIndicator.storyName = "Position: Left with Indicator";
+
+export const PositionLeftWithIndicatorAndLongText = Template.bind({});
+PositionLeftWithIndicatorAndLongText.args = {
+  hasIndicator: true,
+  position: "left",
+  text: "I am some very, very, very, very long text!!!!!!",
+};
+PositionLeftWithIndicatorAndLongText.play = ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  allowPositionCalculations(() =>
+    userEvent.hover(canvas.getByRole("button"))
+  );
+};
+PositionLeftWithIndicatorAndLongText.storyName =
+  "Position: Left with Indicator and Long Text ";
+
+export const PositionRight = Template.bind({});
+PositionRight.args = {
+  position: "right",
+};
+PositionRight.play = ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  allowPositionCalculations(() =>
+    userEvent.hover(canvas.getByRole("button"))
+  );
+};
+PositionRight.storyName = "Position: Right";
+
+export const PositionRightWithIndicator = Template.bind({});
+PositionRightWithIndicator.args = {
+  hasIndicator: true,
+  position: "right",
+};
+PositionRightWithIndicator.play = ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  allowPositionCalculations(() =>
+    userEvent.hover(canvas.getByRole("button"))
+  );
+};
+PositionRightWithIndicator.storyName =
+  "Position: Right with Indicator";
+
+export const PositionRightWithIndicatorAndLongText = Template.bind(
+  {}
+);
+PositionRightWithIndicatorAndLongText.args = {
+  hasIndicator: true,
+  position: "right",
+  text: "I am some very, very, very, very long text!!!!!!",
+};
+PositionRightWithIndicatorAndLongText.play = ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  allowPositionCalculations(() =>
+    userEvent.hover(canvas.getByRole("button"))
+  );
+};
+PositionRightWithIndicatorAndLongText.storyName =
+  "Position: Right with Indicator and Long Text ";

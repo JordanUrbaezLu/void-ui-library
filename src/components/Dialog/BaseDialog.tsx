@@ -37,8 +37,6 @@ export interface BaseDialogProps
   title: string;
   /**
    * The variant of the Dialog
-   *
-   * @default "center"
    */
   variant?: BaseDialogVariant;
 }
@@ -54,7 +52,7 @@ export const BaseDialog: React.FC<BaseDialogProps> = (props) => {
     content,
     onClose,
     title,
-    variant = "center",
+    variant,
     ...rest
   } = props;
 

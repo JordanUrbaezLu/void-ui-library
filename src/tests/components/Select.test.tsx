@@ -3,11 +3,11 @@ import {
   render,
   screen,
   createEvent,
+  act,
 } from "@testing-library/react";
 import { Select } from "../../components/Select/Select";
 import { SelectItem } from "../../components/Select/SelectItem";
 import { axe } from "jest-axe";
-import { act } from "react-dom/test-utils";
 
 describe("Select", () => {
   test("Should render component correctly.", () => {
@@ -140,6 +140,53 @@ describe("Interaction", () => {
     fireEvent(selectItem, arrowDownEvent);
 
     expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  test("Should focus select items correctly.", () => {
+    render(
+      <Select isOpen onClose={jest.fn()} onOpen={jest.fn()}>
+        <SelectItem>30</SelectItem>
+        <SelectItem>40</SelectItem>
+      </Select>
+    );
+
+    const firstItem = screen.getAllByRole("listitem")[0];
+
+    const secondItem = screen.getAllByRole("listitem")[1];
+
+    expect(firstItem).toHaveFocus();
+
+    const event1 = createEvent.keyDown(firstItem, {
+      code: "ArrowDown",
+    });
+
+    fireEvent(firstItem, event1);
+
+    expect(secondItem).toHaveFocus();
+
+    const event2 = createEvent.keyDown(secondItem, {
+      code: "ArrowDown",
+    });
+
+    fireEvent(secondItem, event2);
+
+    expect(firstItem).toHaveFocus();
+
+    const event3 = createEvent.keyDown(firstItem, {
+      code: "ArrowUp",
+    });
+
+    fireEvent(firstItem, event3);
+
+    expect(secondItem).toHaveFocus();
+
+    const event4 = createEvent.keyDown(secondItem, {
+      code: "ArrowUp",
+    });
+
+    fireEvent(secondItem, event4);
+
+    expect(firstItem).toHaveFocus();
   });
 });
 
