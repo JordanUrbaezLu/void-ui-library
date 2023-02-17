@@ -5,7 +5,7 @@ import styles from "./BasePopup.module.scss";
 
 export type BasePopupPosition = "bottom" | "top" | "left" | "right";
 
-export interface BasePopup
+export interface BasePopupProps
   extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * If the Popup has an indicator
@@ -21,7 +21,7 @@ export interface BasePopup
   text: string;
 }
 
-export const BasePopup = React.forwardRef<HTMLDivElement, BasePopup>(
+export const BasePopup = React.forwardRef<HTMLDivElement, BasePopupProps>(
   (props, ref) => {
     const { hasIndicator, position, text } = props;
 

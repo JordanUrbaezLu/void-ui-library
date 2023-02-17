@@ -1,60 +1,48 @@
 @use "../../utility/globals";
 
 .container {
+  box-sizing: inherit;
+  display: inline-block;
   font-family: globals.$font-family;
   position: relative;
 }
 
-.menuLayoutContainer {
-  left: 0;
-  position: absolute;
-  top: 0;
-  white-space: nowrap;
-  z-index: 1;
-}
-
-.enterBottom {
+.enter {
   opacity: 0;
-  transform: translateY(-8px);
+
+  .top & {
+    transform: translateY(-50px);
+  }
+
+  .bottom & {
+    transform: translateY(50px);
+  }
 }
 
-.enterBottomActive {
+.enterActive {
   opacity: 1;
-  transform: translateY(0);
-  transition: all 150ms ease-in-out;
+  transition: all 150ms;
+
+  .container & {
+    transform: none;
+  }
 }
 
-.exitBottom {
+.exit {
   opacity: 1;
-  transform: translateY(0);
 }
 
-.exitBottomActive {
+.exitActive {
   opacity: 0;
-  transform: translateY(-8px);
-  transition: all 150ms ease-in-out;
-}
+  transition: all 150ms;
 
-.enterTop {
-  opacity: 0;
-  transform: translateY(8px);
-}
+  .top & {
+    transform: translateY(-50px);
+  }
 
-.enterTopActive {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 150ms ease-in-out;
-}
-
-.exitTop {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.exitTopActive {
-  opacity: 0;
-  transform: translateY(8px);
-  transition: all 150ms ease-in-out;
+  .bottom & {
+    transform: translateY(50px);
+  }
 }
 
 .trigger {

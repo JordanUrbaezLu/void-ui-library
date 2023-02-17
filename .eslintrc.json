@@ -22,7 +22,8 @@
     "react/react-in-jsx-scope": "off",
     // error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
     "react/no-unescaped-entities": "off",
-    "react/sort-default-props": 2
+    "react/sort-default-props": 2,
+    "react/no-children-prop": "off"
   },
   "settings": {
     "react": {

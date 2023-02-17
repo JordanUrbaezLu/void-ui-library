@@ -71,7 +71,7 @@ export const Popup: React.FC<PopupProps> = (props) => {
     ...rest
   } = props;
 
-  const ref = React.useRef<HTMLDivElement>(null);
+  const popupRef = React.useRef<HTMLDivElement>(null);
 
   const triggerRef = React.useRef<HTMLDivElement>(null);
 
@@ -109,7 +109,7 @@ export const Popup: React.FC<PopupProps> = (props) => {
         }}
         in={isOpen}
         mountOnEnter
-        nodeRef={ref}
+        nodeRef={popupRef}
         timeout={200}
         unmountOnExit
       >
@@ -121,7 +121,7 @@ export const Popup: React.FC<PopupProps> = (props) => {
           <BasePopup
             hasIndicator={hasIndicator}
             position={position}
-            ref={ref}
+            ref={popupRef}
             text={text}
           />
         </PopupLayoutContainer>

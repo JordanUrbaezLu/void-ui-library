@@ -1,9 +1,9 @@
 import * as React from "react";
 import { CSSTransition } from "react-transition-group";
 import styles from "./Menu.module.scss";
-import { getMenuAlignmentCalculations } from "../../utility/getMenuAlignmentCalculations";
-import { MenuContainer } from "./MenuContainer";
 import classNames from "classnames";
+import { BaseMenu } from "./BaseMenu";
+import { MenuLayoutContainer } from "./MenuLayoutContainer";
 
 export type MenuAlignment =
   | "bottomLeft"
@@ -13,8 +13,7 @@ export type MenuAlignment =
   | "topCenter"
   | "topRight";
 
-export interface MenuProps
-  extends React.ComponentPropsWithoutRef<"div"> {
+export interface MenuProps {
   /**
    * The Menu's alignment relative to its trigger
    *
@@ -55,7 +54,6 @@ export interface MenuProps
 export const Menu: React.FC<MenuProps> = (props) => {
   const {
     alignment = "bottomLeft",
-    className,
     children,
     isOpen = false,
     onClose,
@@ -66,36 +64,15 @@ export const Menu: React.FC<MenuProps> = (props) => {
 
   const menuRef = React.useRef<HTMLDivElement>(null);
 
-  const [menuAlignmentStyle, setMenuAlignmentStyle] =
-    React.useState<React.CSSProperties | undefined>(undefined);
-
   const triggerRef = React.useRef<HTMLDivElement>(null);
 
-  React.useLayoutEffect(() => {
-    setMenuAlignmentStyle(
-      getMenuAlignmentCalculations({
-        menuRef,
-        triggerRef,
-        alignment,
-      })
-    );
-  }, []);
-
-  React.useEffect(() => {
-    const addClass = () => {
-      triggerRef.current?.classList.add("color");
-    };
-
-    triggerRef.current?.addEventListener("mousedown", addClass);
-
-    return () => {
-      triggerRef.current?.removeEventListener("mousedown", addClass);
-    };
-  });
-
   return (
-    <div
-      className={classNames(className, styles.container)}
+    <span
+      className={classNames(
+        alignment.startsWith("bottom") && styles.bottom,
+        alignment.startsWith("top") && styles.top,
+        styles.container
+      )}
       {...rest}
     >
       {React.cloneElement(trigger, {
@@ -114,42 +91,33 @@ export const Menu: React.FC<MenuProps> = (props) => {
         role: "button",
         tabIndex: 0,
       })}
-      <div
-        className={styles.menuLayoutContainer}
-        style={menuAlignmentStyle}
-        ref={menuRef}
+      <CSSTransition
+        classNames={{
+          enter: styles.enter,
+          enterActive: styles.enterActive,
+          exit: styles.exit,
+          exitActive: styles.exitActive,
+        }}
+        in={isOpen}
+        mountOnEnter
+        nodeRef={menuRef}
+        timeout={150}
+        unmountOnExit
       >
-        <CSSTransition
-          in={isOpen}
-          timeout={150}
-          mountOnEnter
-          unmountOnExit
-          classNames={
-            alignment.startsWith("bottom")
-              ? {
-                  enter: styles.enterBottom,
-                  enterActive: styles.enterBottomActive,
-                  exit: styles.exitBottom,
-                  exitActive: styles.exitBottomActive,
-                }
-              : {
-                  enter: styles.enterTop,
-                  enterActive: styles.enterTopActive,
-                  exit: styles.exitTop,
-                  exitActive: styles.exitTopActive,
-                }
-          }
+        <MenuLayoutContainer
+          alignment={alignment}
+          triggerRef={triggerRef}
         >
-          <MenuContainer
-            menuRef={menuRef}
+          <BaseMenu
             onClose={onClose}
+            ref={menuRef}
             triggerRef={triggerRef}
           >
             {children}
-          </MenuContainer>
-        </CSSTransition>
-      </div>
-    </div>
+          </BaseMenu>
+        </MenuLayoutContainer>
+      </CSSTransition>
+    </span>
   );
 };
 

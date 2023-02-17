@@ -10,12 +10,13 @@ export type CalculatePositionFn = (dimensions: {
 // Give refs of each target.
 // Create a function to use that will transform the style.
 // Use the refs and the function to transform style.
-export const getPositionStyle = ({
-  calculatePosition,
+// Used for components with multiple different layouts.
+export const getLayoutStyle = ({
+  calculateLayout,
   referrerRef,
   targetRef,
 }: {
-  calculatePosition: CalculatePositionFn;
+  calculateLayout: CalculatePositionFn;
   referrerRef: React.RefObject<HTMLElement>;
   targetRef: React.RefObject<HTMLElement>;
 }) => {
@@ -30,7 +31,7 @@ export const getPositionStyle = ({
       width: 0,
     };
 
-  const { left, top } = calculatePosition({
+  const { left, top } = calculateLayout({
     referrerHeight: referrerDOMRect.height,
     referrerWidth: referrerDOMRect.width,
     targetHeight: targetDOMRect.height,
