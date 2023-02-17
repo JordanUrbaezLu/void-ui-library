@@ -1,98 +1,62 @@
 @use "../../utility/globals";
 
 .container {
+  box-sizing: inherit;
+  display: inline-block;
   font-family: globals.$font-family;
-  font-size: 14px;
   position: relative;
 }
 
-.popupLayoutContainer {
-  left: 0;
-  position: absolute;
-  top: 0;
-  z-index: 1;
-}
+.enter {
+  opacity: 0;
 
-.popup {
-  background-color: globals.$primary-background-color;
-  border-radius: 4px;
-  box-shadow: rgb(0 0 0 / 35%) 0 5px 15px;
-  color: globals.$primary-text-color;
-  max-width: 120px;
-  min-width: 120px;
-  padding: 10px 16px;
-  text-align: center;
-  text-overflow: wrap;
-  word-wrap: break-word;
-  z-index: 1;
+  .top & {
+    transform: translateY(-50px);
+  }
 
-  &.nubbin {
-    &::before {
-      background-color: globals.$primary-background-color;
-      content: "";
-      height: 10px;
-      position: absolute;
-      transform: translate(-50%, -50%) rotate(45deg);
-      width: 10px;
-      z-index: 2;
-    }
+  .bottom & {
+    transform: translateY(50px);
+  }
+
+  .left & {
+    transform: translateX(-50px);
+  }
+
+  .right & {
+    transform: translateX(50px);
   }
 }
 
-.bottom {
-  &::before {
-    left: 50%;
-    top: 0;
+.enterActive {
+  opacity: 1;
+  transition: all 200ms;
+
+  .container & {
+    transform: none;
   }
 }
 
-.top {
-  &::before {
-    left: 50%;
-    top: 100%;
+.exit {
+  opacity: 1;
+}
+
+.exitActive {
+  opacity: 0;
+  transition: all 200ms;
+
+  .top & {
+    transform: translateY(-50px);
   }
-}
 
-.enterTop {
-  opacity: 0;
-  transform: translateY(-10px);
-}
+  .bottom & {
+    transform: translateY(50px);
+  }
 
-.enterTopActive {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 150ms cubic-bezier(0.44, -0.01, 0.83, 0.53);
-}
+  .left & {
+    transform: translateX(-50px);
+  }
 
-.exitTop {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.exitTopActive {
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: all 150ms cubic-bezier(0.44, -0.01, 0.83, 0.53);
-}
-
-.enterBottom {
-  opacity: 0;
-  transform: translateY(10px);
-}
-
-.enterBottomActive {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 150ms cubic-bezier(0.44, -0.01, 0.83, 0.53);
-}
-
-.exitBottom {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.exitBottomActive {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 150ms cubic-bezier(0.44, -0.01, 0.83, 0.53);
+  .right & {
+    transform: translateX(50px);
+  }
 }

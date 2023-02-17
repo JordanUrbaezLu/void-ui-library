@@ -1,22 +1,15 @@
-import {
-  act,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from "@testing-library/react";
-import { Popup, PopupPosition } from "../../components/Popup/Popup";
+import { render, screen } from "@testing-library/react";
+import { Popup } from "../../components/Popup";
 import { axe } from "jest-axe";
-import React from "react";
+import { Button } from "../../components/Button";
+import { BasePopupPosition } from "../../components/Popup/BasePopup";
 
 describe("Popup", () => {
   test("Should render component correctly.", () => {
     const { container } = render(
-      <Popup
-        startsOpen
-        text="Popup"
-        trigger={<button>Button</button>}
-      />
+      <Popup onClose={jest.fn()} onOpen={jest.fn()} text="Popup">
+        <Button>Trigger</Button>
+      </Popup>
     );
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -25,11 +18,9 @@ describe("Popup", () => {
 describe("Accessibility", () => {
   test("Should have no accessibility violations.", async () => {
     const { container } = render(
-      <Popup
-        startsOpen
-        text="Popup"
-        trigger={<button>Button</button>}
-      />
+      <Popup onClose={jest.fn()} onOpen={jest.fn()} text="Popup">
+        <Button>Trigger</Button>
+      </Popup>
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
@@ -37,100 +28,60 @@ describe("Accessibility", () => {
 });
 
 describe("Interaction", () => {
-  test("Should show popup correctly on hover.", async () => {
-    render(<Popup text="Popup" trigger={<button>Button</button>} />);
+  test("Should trigger onOpen and onClose correctly.", () => {
+    const onOpen = jest.fn();
+    const onClose = jest.fn();
 
-    fireEvent.mouseEnter(screen.getByRole("button"));
-
-    await waitFor(() => screen.getByRole("tooltip"));
-
-    expect(screen.getByText("Popup")).toBeInTheDocument();
-
-    fireEvent.mouseLeave(screen.getByRole("button"));
-  });
-
-  test("Should show popup correctly on focus.", () => {
     render(
-      <React.Fragment>
-        <Popup text="Popup" trigger={<button>Button</button>} />
-        <button>Outside</button>
-      </React.Fragment>
+      <>
+        <button>Button</button>
+        <Popup onClose={onClose} onOpen={onOpen} text="Popup">
+          <Button>Trigger</Button>
+        </Popup>
+      </>
     );
 
-    const buttonElement = screen.getAllByRole("button")[0];
+    screen.getAllByRole("button")[1].focus();
 
-    act(() => buttonElement.focus());
+    expect(onOpen).toHaveBeenCalledTimes(1);
 
-    expect(buttonElement).toHaveFocus();
+    screen.getAllByRole("button")[0].focus();
 
-    expect(screen.getByText("Popup")).toBeInTheDocument();
-
-    const outsideElement = screen.getAllByRole("button")[1];
-
-    act(() => outsideElement.focus());
-
-    expect(outsideElement).toHaveFocus();
+    expect(onClose).toHaveBeenCalledTimes(1);
   });
 });
 
 describe("Props", () => {
-  test("Should render text correctly.", () => {
-    render(
-      <Popup
-        startsOpen
-        text="Popup"
-        trigger={<button>Button</button>}
-      />
-    );
-    expect(screen.getByText("Popup")).toBeInTheDocument();
-  });
-  test.each<PopupPosition>(["top", "bottom"])(
-    "Should render positions correctly.",
+  test.each<BasePopupPosition>(["bottom", "top", "left", "right"])(
+    "Should render position correctly.",
     (position) => {
       render(
         <Popup
-          startsOpen
+          isOpen
+          onClose={jest.fn()}
+          onOpen={jest.fn()}
           position={position}
           text="Popup"
-          trigger={<button>Button</button>}
-        />
+        >
+          <Button>Trigger</Button>
+        </Popup>
       );
-      expect(screen.getByText("Popup")).toHaveClass(position);
+      expect(screen.getByRole("tooltip")).toHaveClass(position);
     }
   );
-  test("Should render trigger correctly.", () => {
+
+  test("Should render indicator correctly.", () => {
     render(
       <Popup
-        startsOpen
+        hasIndicator
+        isOpen
+        onClose={jest.fn()}
+        onOpen={jest.fn()}
         text="Popup"
-        trigger={<button>Button</button>}
-      />
+      >
+        <Button>Trigger</Button>
+      </Popup>
     );
-    expect(
-      screen.getByRole("button", { name: "Button" })
-    ).toBeInTheDocument();
-  });
-  test("Should render hasNubbin correctly.", () => {
-    render(
-      <Popup
-        hasNubbin
-        startsOpen
-        text="Popup"
-        trigger={<button>Button</button>}
-      />
-    );
-    expect(screen.getByText("Popup")).toHaveClass("nubbin");
-  });
-  test("Should render startsOpen correctly.", () => {
-    render(
-      <div data-testid="div">
-        <Popup
-          startsOpen={false}
-          text="Popup"
-          trigger={<button>Button</button>}
-        />
-      </div>
-    );
-    expect(screen.getByTestId("div")).not.toHaveTextContent("Popup");
+    expect(screen.getByRole("tooltip")).toHaveClass("indicator");
   });
 });

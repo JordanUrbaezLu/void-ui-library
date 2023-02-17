@@ -2,30 +2,43 @@ import * as React from "react";
 import { CSSTransition } from "react-transition-group";
 import styles from "./Popup.module.scss";
 import classNames from "classnames";
-import { getPopupPositionCalculations } from "../../utility/getPopupPositionCalculations";
 import {
   useOnFocus,
   useOnFocusOut,
   useOnHover,
   useOnHoverOut,
 } from "../../hooks";
+import {
+  BasePopup,
+  BasePopupPosition as PopupPosition,
+} from "./BasePopup";
+import { PopupLayoutContainer } from "./PopupLayoutContainer";
 
-export type PopupPosition = "bottom" | "top";
-
-export interface PopupProps
-  extends React.ComponentPropsWithoutRef<"div"> {
+export interface PopupProps {
   /**
-   * If the Popup has a nubbin
+   * The trigger for the Popup
+   */
+  children: React.ReactElement;
+  /**
+   * If the Popup has an indicator
    *
    * @default false
    */
-  hasNubbin?: boolean;
+  hasIndicator?: boolean;
   /**
-   * If the Popup initially renders as open
+   * If the Popup is open
    *
    * @default false
    */
-  startsOpen?: boolean;
+  isOpen?: boolean;
+  /**
+   * The callback fired when the Popup closes
+   */
+  onClose: (itemValue?: string) => void;
+  /**
+   * The callback fired when the Popup opens
+   */
+  onOpen: () => void;
   /**
    * The position of the Popup
    *
@@ -36,10 +49,6 @@ export interface PopupProps
    * The text for the Popup
    */
   text: string;
-  /**
-   * The trigger for the Popup
-   */
-  trigger: React.ReactElement;
 }
 
 /**
@@ -52,93 +61,72 @@ export interface PopupProps
  */
 export const Popup: React.FC<PopupProps> = (props) => {
   const {
-    className,
-    hasNubbin = false,
-    startsOpen = false,
+    children,
+    hasIndicator = false,
+    isOpen = false,
+    onClose,
+    onOpen,
     position = "bottom",
     text,
-    trigger,
     ...rest
   } = props;
 
-  const [showPopup, setShowPopup] =
-    React.useState<boolean>(startsOpen);
-
-  const popupRef = React.useRef<HTMLDivElement>(null);
-
-  const [popupPositionStyle, setPopupPositionStyle] =
-    React.useState<React.CSSProperties | undefined>(undefined);
+  const ref = React.useRef<HTMLDivElement>(null);
 
   const triggerRef = React.useRef<HTMLDivElement>(null);
 
-  const popup = classNames(
-    styles.popup,
-    position === "bottom" && styles.bottom,
-    position === "top" && styles.top,
-    hasNubbin && styles.nubbin
-  );
-
-  React.useLayoutEffect(() => {
-    setPopupPositionStyle(
-      getPopupPositionCalculations({
-        popupRef,
-        triggerRef,
-        position,
-        hasNubbin,
-      })
-    );
-  }, []);
-
   // Show Popup on focus or hover
-  useOnFocus(triggerRef, () => setShowPopup(true));
-  useOnHover(triggerRef, () => setShowPopup(true));
+  useOnFocus(triggerRef, onOpen);
+  useOnHover(triggerRef, onOpen);
 
   // Hide Popup on focus out or hover out
-  useOnFocusOut(triggerRef, () => setShowPopup(false));
-  useOnHoverOut(triggerRef, () => setShowPopup(false));
+  useOnFocusOut(triggerRef, onClose);
+  useOnHoverOut(triggerRef, onClose);
 
   return (
-    <div
-      className={classNames(className, styles.container)}
+    <span
+      className={classNames(
+        position === "bottom" && styles.bottom,
+        position === "top" && styles.top,
+        position === "left" && styles.left,
+        position === "right" && styles.right,
+        styles.container
+      )}
       {...rest}
     >
-      {React.cloneElement(trigger, {
+      {React.cloneElement(React.Children.only(children), {
         ref: triggerRef,
         role: "button",
         tabIndex: 0,
       })}
-      <div
-        className={styles.popupLayoutContainer}
-        style={popupPositionStyle}
-        ref={popupRef}
+
+      <CSSTransition
+        classNames={{
+          enter: styles.enter,
+          enterActive: styles.enterActive,
+          exit: styles.exit,
+          exitActive: styles.exitActive,
+        }}
+        in={isOpen}
+        mountOnEnter
+        nodeRef={ref}
+        timeout={200}
+        unmountOnExit
       >
-        <CSSTransition
-          in={showPopup}
-          timeout={150}
-          mountOnEnter
-          unmountOnExit
-          classNames={
-            position === "top"
-              ? {
-                  enter: styles.enterTop,
-                  enterActive: styles.enterTopActive,
-                  exit: styles.exitTop,
-                  exitActive: styles.exitTopActive,
-                }
-              : {
-                  enter: styles.enterBottom,
-                  enterActive: styles.enterBottomActive,
-                  exit: styles.exitBottom,
-                  exitActive: styles.exitBottomActive,
-                }
-          }
+        <PopupLayoutContainer
+          hasIndicator={hasIndicator}
+          position={position}
+          triggerRef={triggerRef}
         >
-          <div className={popup} role="tooltip">
-            {text}
-          </div>
-        </CSSTransition>
-      </div>
-    </div>
+          <BasePopup
+            hasIndicator={hasIndicator}
+            position={position}
+            ref={ref}
+            text={text}
+          />
+        </PopupLayoutContainer>
+      </CSSTransition>
+    </span>
   );
 };
 

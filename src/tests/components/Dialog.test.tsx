@@ -131,6 +131,12 @@ describe("Props", () => {
       render(
         <Dialog
           ariaLabel={variant}
+          buttons={
+            <ButtonSet>
+              <Button>Cancel</Button>
+              <Button>Confirm</Button>
+            </ButtonSet>
+          }
           content="Dialog Content"
           isOpen
           onOpen={jest.fn}
