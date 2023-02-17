@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Menu Should render component correctly. 1`] = `
-<div
-  class="container"
+<span
+  class="bottom container"
 >
   <div
     class="react-ripples mediumRipple"
@@ -21,21 +21,24 @@ exports[`Menu Should render component correctly. 1`] = `
     />
   </div>
   <div
-    class="menuLayoutContainer"
+    class="bottom layoutContainer"
     style="transform: translate3d(0px, 2px, 0);"
   >
     <div
-      class="menuContainer"
-      role="menu"
+      class="baseMenu"
     >
       <div
-        class="menuItemContainer"
-        role="menuitem"
-        tabindex="0"
+        role="menu"
       >
-        One
+        <div
+          class="menuItemContainer"
+          role="menuitem"
+          tabindex="0"
+        >
+          One
+        </div>
       </div>
     </div>
   </div>
-</div>
+</span>
 `;

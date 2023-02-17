@@ -2,16 +2,19 @@ import { Story } from "@storybook/react";
 import * as React from "react";
 import { Select, SelectProps } from "./Select";
 import { SelectItem } from "./SelectItem";
+import { within, userEvent } from "@storybook/testing-library";
+import { allowLayoutCalculations } from "../../../.storybook/utilities/allowLayoutCalculations";
 
 export default {
   component: Select,
+  parameters: {
+    chromatic: { delay: 2000 },
+  },
   title: "Components/Select",
 };
 
-const Template: Story<
-  Omit<SelectProps, "children" | "isOpen" | "onClose" | "onOpen">
-> = (args) => {
-  const [isOpen, setIsOpen] = React.useState<boolean>(true);
+const Template: Story<SelectProps> = (args) => {
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
   return (
     <Select
@@ -28,22 +31,41 @@ const Template: Story<
 };
 
 export const Default = Template.bind({});
+Default.play = ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  allowLayoutCalculations(() =>
+    userEvent.click(canvas.getByRole("button"))
+  );
+};
 
 export const Placeholder = Template.bind({});
 Placeholder.args = {
   placeholder: "State",
+};
+Placeholder.play = ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  allowLayoutCalculations(() =>
+    userEvent.click(canvas.getByRole("button"))
+  );
 };
 
 export const Selected = Template.bind({});
 Selected.args = {
   selected: 1,
 };
+Selected.play = ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  allowLayoutCalculations(() =>
+    userEvent.click(canvas.getByRole("button"))
+  );
+};
 
-export const WithManySelectItems = () => {
-  const [isOpen, setIsOpen] = React.useState<boolean>(true);
+export const WithManySelectItems: Story<SelectProps> = (args) => {
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
   return (
     <Select
+      {...args}
       isOpen={isOpen}
       onOpen={() => setIsOpen(true)}
       onClose={() => setIsOpen(false)}
@@ -58,5 +80,12 @@ export const WithManySelectItems = () => {
       <SelectItem>80</SelectItem>
       <SelectItem>90</SelectItem>
     </Select>
+  );
+};
+
+WithManySelectItems.play = ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  allowLayoutCalculations(() =>
+    userEvent.click(canvas.getByRole("button"))
   );
 };

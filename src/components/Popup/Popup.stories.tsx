@@ -3,11 +3,13 @@ import * as React from "react";
 import { within, userEvent } from "@storybook/testing-library";
 import { Popup, PopupProps } from "./Popup";
 import { Button } from "../Button/Button";
-import { allowPositionCalculations } from "../../../.storybook/utilities/allowPositionCalculations";
+import { allowLayoutCalculations } from "../../../.storybook/utilities/allowLayoutCalculations";
 
 export default {
   component: Popup,
+  // Delay Chromatic capture to allow animation for Storybook play to run for Popup
   parameters: {
+    chromatic: { delay: 2000 },
     layout: "centered",
   },
   title: "Components/Popup",
@@ -34,7 +36,7 @@ const Template: Story<
 export const Default = Template.bind({});
 Default.play = ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  allowPositionCalculations(() =>
+  allowLayoutCalculations(() =>
     userEvent.hover(canvas.getByRole("button"))
   );
 };
@@ -45,7 +47,7 @@ PositionBottom.args = {
 };
 PositionBottom.play = ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  allowPositionCalculations(() =>
+  allowLayoutCalculations(() =>
     userEvent.hover(canvas.getByRole("button"))
   );
 };
@@ -58,7 +60,7 @@ PositionBottomWithIndicator.args = {
 };
 PositionBottomWithIndicator.play = ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  allowPositionCalculations(() =>
+  allowLayoutCalculations(() =>
     userEvent.hover(canvas.getByRole("button"))
   );
 };
@@ -75,7 +77,7 @@ PositionBottomWithIndicatorAndLongText.args = {
 };
 PositionBottomWithIndicatorAndLongText.play = ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  allowPositionCalculations(() =>
+  allowLayoutCalculations(() =>
     userEvent.hover(canvas.getByRole("button"))
   );
 };
@@ -88,7 +90,7 @@ PositionTop.args = {
 };
 PositionTop.play = ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  allowPositionCalculations(() =>
+  allowLayoutCalculations(() =>
     userEvent.hover(canvas.getByRole("button"))
   );
 };
@@ -101,12 +103,11 @@ PositionTopWithIndicator.args = {
 };
 PositionTopWithIndicator.play = ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  allowPositionCalculations(() =>
+  allowLayoutCalculations(() =>
     userEvent.hover(canvas.getByRole("button"))
   );
 };
-PositionTopWithIndicator.storyName =
-  "Position: Top with Indicator";
+PositionTopWithIndicator.storyName = "Position: Top with Indicator";
 
 export const PositionTopWithIndicatorAndLongText = Template.bind({});
 PositionTopWithIndicatorAndLongText.args = {
@@ -116,7 +117,7 @@ PositionTopWithIndicatorAndLongText.args = {
 };
 PositionTopWithIndicatorAndLongText.play = ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  allowPositionCalculations(() =>
+  allowLayoutCalculations(() =>
     userEvent.hover(canvas.getByRole("button"))
   );
 };
@@ -129,7 +130,7 @@ PositionLeft.args = {
 };
 PositionLeft.play = ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  allowPositionCalculations(() =>
+  allowLayoutCalculations(() =>
     userEvent.hover(canvas.getByRole("button"))
   );
 };
@@ -142,7 +143,7 @@ PositionLeftWithIndicator.args = {
 };
 PositionLeftWithIndicator.play = ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  allowPositionCalculations(() =>
+  allowLayoutCalculations(() =>
     userEvent.hover(canvas.getByRole("button"))
   );
 };
@@ -156,7 +157,7 @@ PositionLeftWithIndicatorAndLongText.args = {
 };
 PositionLeftWithIndicatorAndLongText.play = ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  allowPositionCalculations(() =>
+  allowLayoutCalculations(() =>
     userEvent.hover(canvas.getByRole("button"))
   );
 };
@@ -169,7 +170,7 @@ PositionRight.args = {
 };
 PositionRight.play = ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  allowPositionCalculations(() =>
+  allowLayoutCalculations(() =>
     userEvent.hover(canvas.getByRole("button"))
   );
 };
@@ -182,7 +183,7 @@ PositionRightWithIndicator.args = {
 };
 PositionRightWithIndicator.play = ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  allowPositionCalculations(() =>
+  allowLayoutCalculations(() =>
     userEvent.hover(canvas.getByRole("button"))
   );
 };
@@ -199,7 +200,7 @@ PositionRightWithIndicatorAndLongText.args = {
 };
 PositionRightWithIndicatorAndLongText.play = ({ canvasElement }) => {
   const canvas = within(canvasElement);
-  allowPositionCalculations(() =>
+  allowLayoutCalculations(() =>
     userEvent.hover(canvas.getByRole("button"))
   );
 };

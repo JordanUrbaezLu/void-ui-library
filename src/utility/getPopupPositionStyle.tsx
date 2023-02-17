@@ -1,5 +1,5 @@
 import { BasePopupPosition } from "../components/Popup/BasePopup";
-import { getPositionStyle } from "./getPositionStyle";
+import { getLayoutStyle } from "./getLayoutStyle";
 
 export const getPopupPositionStyle = ({
   position,
@@ -10,8 +10,8 @@ export const getPopupPositionStyle = ({
   referrerRef: React.RefObject<HTMLElement>;
   targetRef: React.RefObject<HTMLElement>;
 }) =>
-  getPositionStyle({
-    calculatePosition({
+  getLayoutStyle({
+    calculateLayout({
       referrerHeight,
       referrerWidth,
       targetHeight,

@@ -1,10 +1,10 @@
 import * as React from "react";
-import { getPositionStyle } from "../../utility";
+import { getLayoutStyle } from "../../utility";
 
-describe("getPositionStyle", () => {
+describe("getLayoutStyle", () => {
   test("Should return a null transform style on inadequate refs.", () => {
-    const style = getPositionStyle({
-      calculatePosition({
+    const style = getLayoutStyle({
+      calculateLayout({
         referrerHeight,
         referrerWidth,
         targetHeight,

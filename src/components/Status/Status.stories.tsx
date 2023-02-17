@@ -11,7 +11,7 @@ export const Variant = () => {
     <FlexColumnContainer>
       <Status variant="online" label="Online" />
       <Status variant="away" label="Away" />
-      <Status variant="busy" label="Busy" />{" "}
+      <Status variant="busy" label="Busy" />
       <Status variant="offline" label="Offline" />
     </FlexColumnContainer>
   );
