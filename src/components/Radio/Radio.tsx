@@ -1,24 +1,27 @@
 import * as React from "react";
 import classNames from "classnames";
-import styles from "./Checkbox.module.scss";
-import { MdCheckBoxOutlineBlank, MdCheckBox } from "react-icons/md";
+import styles from "./Radio.module.scss";
+import {
+  MdRadioButtonUnchecked,
+  MdRadioButtonChecked,
+} from "react-icons/md";
 import { IconButton } from "../IconButton";
 import { Typography } from "../Typography/Typography";
 
-export interface CheckboxProps
+export interface RadioProps
   extends React.ComponentPropsWithoutRef<"button"> {
   /**
-   * If the Checkbox is checked
+   * If the Radio is selected
    *
    * @default false
    */
-  isChecked?: boolean;
+  isSelected?: boolean;
   /**
-   * The label for the Checkbox
+   * The label for the Radio
    */
   label?: string;
   /**
-   * The callback fired when requesting to change the Checkbox state
+   * The callback fired when requesting to change the Radio state
    */
   onChange: () => void;
 }
@@ -28,12 +31,12 @@ export interface CheckboxProps
  *
  * @description
  *
- * The Checkbox allows a user to select an item.
+ * The Radio allows a user to select an item.
  */
-export const Checkbox: React.FC<CheckboxProps> = (props) => {
+export const Radio: React.FC<RadioProps> = (props) => {
   const {
     className,
-    isChecked = false,
+    isSelected = false,
     label,
     onChange,
     ...rest
@@ -44,18 +47,22 @@ export const Checkbox: React.FC<CheckboxProps> = (props) => {
       <IconButton
         className={classNames(
           className,
-          isChecked && styles.isChecked,
-          styles.checkboxIcon
+          isSelected && styles.isSelected,
+          styles.radioIcon
         )}
         content={
-          isChecked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />
+          isSelected ? (
+            <MdRadioButtonChecked />
+          ) : (
+            <MdRadioButtonUnchecked />
+          )
         }
         onClick={onChange}
-        role="checkbox"
+        role="radio"
         {...rest}
       />
       <Typography
-        className={classNames(isChecked && styles.checked)}
+        className={classNames(isSelected && styles.selected)}
         variant="secondary"
       >
         {label}
@@ -64,4 +71,4 @@ export const Checkbox: React.FC<CheckboxProps> = (props) => {
   );
 };
 
-Checkbox.displayName = "Checkbox";
+Radio.displayName = "Radio";

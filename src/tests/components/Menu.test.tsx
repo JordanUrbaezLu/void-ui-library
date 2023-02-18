@@ -4,8 +4,13 @@ import {
   render,
   screen,
 } from "@testing-library/react";
-import { Menu } from "../../components/Menu/Menu";
-import { MenuItem } from "../../components/Menu/MenuItem";
+import {
+  Menu,
+  MenuAlignment,
+  MenuSeparator,
+  MenuItem,
+  MenuHeader,
+} from "../../components/Menu";
 import { axe } from "jest-axe";
 import { Button } from "../../components/Button/Button";
 import { act } from "react-dom/test-utils";
@@ -153,7 +158,7 @@ describe("Interaction", () => {
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
-  test("Should handle focus correctly.", () => {
+  test("Should handle focus correctly", () => {
     render(
       <Menu
         isOpen
@@ -162,7 +167,9 @@ describe("Interaction", () => {
         trigger={<Button>Trigger</Button>}
       >
         <MenuItem>One</MenuItem>
+        <MenuSeparator />
         <MenuItem>Two</MenuItem>
+        <MenuHeader>Header</MenuHeader>
         <MenuItem>Three</MenuItem>
       </Menu>
     );
@@ -276,5 +283,27 @@ describe("Props", () => {
       </Menu>
     );
     expect(screen.queryByRole("menu")).not.toBeInTheDocument();
+  });
+
+  test.each<MenuAlignment>([
+    "bottomLeft",
+    "bottomCenter",
+    "bottomRight",
+    "topLeft",
+    "topCenter",
+    "topRight",
+  ])("Should render alignment correctly.", (alignment) => {
+    render(
+      <Menu
+        alignment={alignment}
+        isOpen
+        onOpen={jest.fn}
+        onClose={jest.fn()}
+        trigger={<Button>Trigger</Button>}
+      >
+        <MenuItem>One</MenuItem>
+      </Menu>
+    );
+    expect(screen.getByRole("menuitem")).toBeInTheDocument();
   });
 });

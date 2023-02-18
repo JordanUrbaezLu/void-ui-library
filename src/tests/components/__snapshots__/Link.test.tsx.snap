@@ -6,7 +6,7 @@ exports[`Link Should render component correctly. 1`] = `
   href="https://www.google.com/"
 >
   <div
-    class="typography typographyH2 primary normal"
+    class="typography typographyh2 primary normal"
   >
     Google.com
   </div>

@@ -15,7 +15,7 @@ exports[`Menu Should render component correctly. 1`] = `
       type="button"
     >
       <div
-        class="typography typography typographyH2 primary normal"
+        class="typography typography typographyh2 primary normal"
       >
         Trigger
       </div>
@@ -35,7 +35,7 @@ exports[`Menu Should render component correctly. 1`] = `
         role="menu"
       >
         <div
-          class="menuItemContainer typography typographyH2 primary normal"
+          class="menuItemContainer typography typographyh2 primary normal"
           role="menuitem"
           tabindex="0"
         >

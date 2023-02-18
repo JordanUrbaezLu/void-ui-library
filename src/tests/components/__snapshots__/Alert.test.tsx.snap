@@ -31,13 +31,13 @@ exports[`Alert Should render component correctly. 1`] = `
         </svg>
       </div>
       <div
-        class="alertTitle error typography typographyH2 primary bold"
+        class="alertTitle error typography typographyh2 primary bold"
       >
         ERROR
       </div>
     </div>
     <div
-      class="typography typographyH3 secondary normal"
+      class="typography typographyh3 secondary normal"
     >
       This is an alert!
     </div>

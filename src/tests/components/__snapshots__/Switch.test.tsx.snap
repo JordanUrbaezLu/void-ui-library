@@ -11,7 +11,7 @@ exports[`Switch Should render component correctly. 1`] = `
     class="switchIndicator on"
   />
   <div
-    class="switchLabel on typography typographyH2 primary normal"
+    class="switchLabel on typography typographyh2 primary normal"
   >
      Switch Label
   </div>

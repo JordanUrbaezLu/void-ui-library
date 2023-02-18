@@ -61,6 +61,14 @@ describe("Props", () => {
       screen.getByRole("button", { name: "Button" })
     ).toBeInTheDocument();
   });
+
+  test("Should render disabled correctly.", () => {
+    render(<Button disabled>Button</Button>);
+    expect(
+      screen.getByRole("button", { name: "Button" })
+    ).toHaveClass("disabled");
+  });
+
   test.each<ButtonType>(["button", "reset", "submit"])(
     "Should render type correctly.",
     (type) => {

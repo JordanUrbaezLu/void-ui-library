@@ -34,10 +34,15 @@ describe("Props", () => {
   test.each<AlertVariant>(["error", "info", "success", "warning"])(
     "Should render variants correctly.",
     (variant) => {
-      render(<Alert variant={variant}>Alert</Alert>);
+      render(
+        <Alert closeable variant={variant}>
+          Alert
+        </Alert>
+      );
       expect(
         document.getElementsByClassName("alertContainer")[0]
       ).toHaveClass(variant);
+      expect(screen.getByRole("button")).toBeInTheDocument();
     }
   );
 });
