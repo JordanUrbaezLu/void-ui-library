@@ -7,27 +7,28 @@
   display: flex;
   font-family: globals.$font-family;
   font-size: 14px;
+  justify-content: space-between;
   min-width: 250px;
   padding: 10px 12px;
   width: fit-content;
 
   &.error {
-    background-color: rgba(red, 0.2);
+    background-color: rgb(255, 210, 210);
     border: 3px solid red;
   }
 
   &.info {
-    background-color: rgba(blue, 0.2);
+    background-color: rgb(210, 210, 255);
     border: 3px solid blue;
   }
 
   &.success {
-    background-color: rgba(green, 0.2);
+    background-color: rgb(210, 255, 210);
     border: 3px solid green;
   }
 
   &.warning {
-    background-color: rgba(orange, 0.2);
+    background-color: rgb(255, 236, 200);
     border: 3px solid orange;
   }
 }
@@ -76,34 +77,51 @@
   transition: all 400ms ease-in-out;
 }
 
+.closeButton {
+  background-color: transparent !important;
+  color: black !important;
+}
+
 .errorButton {
   &:hover,
   &:focus {
-    background-color: red !important;
-    color: black !important;
+    background-color: rgb(255, 180, 180) !important;
+  }
+
+  &:active {
+    background-color: rgb(255, 150, 150) !important;
   }
 }
 
 .infoButton {
   &:hover,
   &:focus {
-    background-color: blue !important;
-    color: black !important;
+    background-color: rgb(180, 180, 255) !important;
+  }
+
+  &:active {
+    background-color: rgb(150, 150, 255) !important;
   }
 }
 
 .successButton {
   &:hover,
   &:focus {
-    background-color: green !important;
-    color: black !important;
+    background-color: rgb(180, 255, 180) !important;
+  }
+
+  &:active {
+    background-color: rgb(150, 255, 150) !important;
   }
 }
 
 .warningButton {
   &:hover,
   &:focus {
-    background-color: orange !important;
-    color: black !important;
+    background-color: rgb(255, 225, 170) !important;
+  }
+
+  &:active {
+    background-color: rgb(255, 215, 140) !important;
   }
 }

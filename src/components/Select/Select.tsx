@@ -97,7 +97,7 @@ export const Select: React.FC<SelectProps> = (props) => {
       {isOpen ? (
         <IconButton
           ariaLabel="Chevron Up"
-          className={styles.icon}
+          className={styles.selectIcon}
           content={<IoMdArrowDropup />}
           onClick={onClose}
           ref={triggerRef}
@@ -105,7 +105,7 @@ export const Select: React.FC<SelectProps> = (props) => {
       ) : (
         <IconButton
           ariaLabel="Chevron Down"
-          className={styles.icon}
+          className={styles.selectIcon}
           content={<IoMdArrowDropdown />}
           onClick={onOpen}
           ref={triggerRef}

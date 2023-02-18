@@ -125,13 +125,11 @@ export const BaseDatePickerCalendar: React.FC<BaseDatePickerCalendarProps> =
           >
             <div style={{ display: "flex", gap: "2px" }}>
               <IconButton
-                className={styles.datePickerCalendarNavigationIcon}
                 content={<TfiAngleDoubleLeft />}
                 size="medium"
                 onClick={decreaseYear}
               />
               <IconButton
-                className={styles.datePickerCalendarNavigationIcon}
                 content={<TfiAngleLeft />}
                 size="medium"
                 onClick={decreaseMonth}
@@ -144,13 +142,11 @@ export const BaseDatePickerCalendar: React.FC<BaseDatePickerCalendarProps> =
             </div>
             <div style={{ display: "flex", gap: "2px" }}>
               <IconButton
-                className={styles.datePickerCalendarNavigationIcon}
                 content={<TfiAngleRight />}
                 size="medium"
                 onClick={increaseMonth}
               />
               <IconButton
-                className={styles.datePickerCalendarNavigationIcon}
                 content={<TfiAngleDoubleRight />}
                 size="medium"
                 onClick={increaseYear}

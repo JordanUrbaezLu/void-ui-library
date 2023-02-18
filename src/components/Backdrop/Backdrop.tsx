@@ -35,7 +35,8 @@ export const Backdrop: React.FC<BackdropProps> = (props) => {
   return (
     <div
       className={classNames(
-        showBackground ? styles.backdrop : styles.noBackground,
+        styles.backdrop,
+        !showBackground && styles.noBackground,
         className
       )}
       {...rest}

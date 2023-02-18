@@ -19,12 +19,6 @@ export interface DatePickerProps
    */
   setValue: React.Dispatch<React.SetStateAction<string>>;
   /**
-   * If the DatePicker initially renders as open
-   *
-   * @default false
-   */
-  startsOpen?: boolean;
-  /**
    * The value for the DatePicker
    */
   value?: string;
@@ -38,21 +32,13 @@ export interface DatePickerProps
  * The Date Picker allows users to select a date on a calendar.
  */
 export const DatePicker: React.FC<DatePickerProps> = (props) => {
-  const {
-    className,
-    selected,
-    setValue,
-    startsOpen = false,
-    value,
-    ...rest
-  } = props;
+  const { className, selected, setValue, value, ...rest } = props;
 
   const triggerRef = React.useRef<HTMLButtonElement>(null);
 
   const [selectedDate, setSelectedDate] =
     React.useState<Date | undefined>(selected);
-  const [showCalendar, setShowCalendar] =
-    React.useState<boolean>(startsOpen);
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     setValue(getDateString(selectedDate));
@@ -75,14 +61,14 @@ export const DatePicker: React.FC<DatePickerProps> = (props) => {
             <IconButton
               content={<AiFillCalendar />}
               size="medium"
-              onClick={() => setShowCalendar(!showCalendar)}
+              onClick={() => setIsOpen(!isOpen)}
               ref={triggerRef}
             />
           }
         />
         <DatePickerCalendar
-          isOpen={showCalendar}
-          onClose={() => setShowCalendar(false)}
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
           triggerRef={triggerRef}
         />
       </div>

@@ -3,21 +3,13 @@
 .button {
   align-items: center;
   border: 2px solid globals.$primary-background-color;
-  column-gap: 6px;
+  cursor: pointer;
   display: flex;
-  flex-direction: row;
-  font-family: globals.$font-family;
   outline: none;
-  width: fit-content;
-
-  &:hover {
-    cursor: pointer;
-  }
 }
 
 .primary {
   background-color: globals.$primary-background-color;
-  color: globals.$primary-text-color;
 
   &:hover,
   &:focus {
@@ -35,7 +27,6 @@
 .secondary {
   background-color: white;
   border: 2px solid globals.$secondary-text-color;
-  color: globals.$secondary-text-color;
 
   &:hover,
   &:focus {
@@ -51,7 +42,6 @@
 
 .small {
   border-radius: 6px;
-  font-size: 12px;
   height: 25.8px;
   padding: 4px 6px;
 
@@ -63,7 +53,6 @@
 
 .medium {
   border-radius: 8px;
-  font-size: 16px;
   height: 34.5px;
   padding: 6px 9px;
 
@@ -75,7 +64,6 @@
 
 .large {
   border-radius: 10px;
-  font-size: 20px;
   height: 43px;
   padding: 8px 12px;
 
@@ -95,4 +83,21 @@
 
 .largeRipple {
   border-radius: 10px;
+}
+
+.typography {
+  align-items: center;
+  display: flex;
+  gap: 6px;
+}
+
+.disableRipple {
+  pointer-events: none !important;
+}
+
+.disabled {
+  background-color: lightgray !important;
+  border: 2px solid lightgray;
+  cursor: default !important;
+  user-select: none !important;
 }

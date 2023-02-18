@@ -74,6 +74,7 @@ export const Alert: React.FC<AlertProps> = (props) => {
   );
 
   const alertCloseButton = classNames(
+    styles.closeButton,
     variant === "error" && styles.errorButton,
     variant === "info" && styles.infoButton,
     variant === "success" && styles.successButton,

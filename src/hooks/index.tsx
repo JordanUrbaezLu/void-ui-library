@@ -8,3 +8,4 @@ export * from "./useOnFocusOut";
 export * from "./useOnHover";
 export * from "./useOnHoverOut";
 export * from "./useOnKeyDown";
+export * from "./useSelectFocus";

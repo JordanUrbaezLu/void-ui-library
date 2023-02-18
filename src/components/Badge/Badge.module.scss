@@ -4,17 +4,11 @@
   cursor: default;
   transition: all 200ms ease-in;
 
-  &:focus {
-    background: none;
-  }
-
   &:hover {
-    background: globals.$primary-text-color;
     transform: scale(1.1);
   }
 
   &:active {
-    color: globals.$primary-background-color;
     transform: rotate(180deg) scale(1.1);
   }
 }
