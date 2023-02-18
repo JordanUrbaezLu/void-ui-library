@@ -10,10 +10,10 @@ exports[`Switch Should render component correctly. 1`] = `
   <span
     class="switchIndicator on"
   />
-  <span
-    class="switchLabel on"
+  <div
+    class="switchLabel on typography typographyH2 primary normal"
   >
      Switch Label
-  </span>
+  </div>
 </button>
 `;

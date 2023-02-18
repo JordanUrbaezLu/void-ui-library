@@ -6,15 +6,31 @@ export default {
   title: "Components/Link",
 };
 
+export const Default = () => (
+  <div
+    style={{
+      background: "rgb(60 60 60)",
+      padding: "6px",
+      width: "fit-content",
+    }}
+  >
+    <Link href="#">Default</Link>
+  </div>
+);
+
 export const Variant = () => {
   return (
     <FlexRowContainer>
-      <Link href="#" variant="primary">
-        Primary
-      </Link>
-      <Link href="#" variant="secondary">
-        Secondary
-      </Link>
+      <div style={{ background: "rgb(60 60 60)", padding: "6px" }}>
+        <Link href="#" variant="primary">
+          Primary
+        </Link>
+      </div>
+      <div>
+        <Link href="#" variant="secondary">
+          Secondary
+        </Link>
+      </div>
     </FlexRowContainer>
   );
 };

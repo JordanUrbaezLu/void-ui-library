@@ -6,6 +6,8 @@ export default {
   title: "Components/Separator",
 };
 
+export const Default = () => <Separator />;
+
 export const Stroke = () => {
   return (
     <FlexColumnContainer>

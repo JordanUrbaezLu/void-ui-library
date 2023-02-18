@@ -62,12 +62,6 @@ const WithHeaderAndSeparatorTemplate: Story<MenuProps> = (args) => {
 };
 
 export const Default = Template.bind({});
-Default.play = ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  allowLayoutCalculations(() =>
-    userEvent.click(canvas.getByRole("button"))
-  );
-};
 
 export const AlignmentBottomLeft = Template.bind({});
 AlignmentBottomLeft.args = {

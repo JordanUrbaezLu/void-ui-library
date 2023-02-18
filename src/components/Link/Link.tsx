@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import * as React from "react";
+import { Typography } from "../Typography/Typography";
 import styles from "./Link.module.scss";
 
 export type LinkVariant = "primary" | "secondary";
@@ -38,15 +39,19 @@ export const Link: React.FC<LinkProps> = (props) => {
     ...rest
   } = props;
 
-  const linkContainer = classNames(
-    className,
-    styles.linkContainer,
-    variant === "primary" ? styles.primary : styles.secondary
-  );
-
   return (
-    <a className={linkContainer} href={href} {...rest}>
-      {children}
+    <a
+      className={classNames(
+        className,
+        styles.linkContainer,
+        variant === "primary" ? styles.primary : styles.secondary
+      )}
+      href={href}
+      {...rest}
+    >
+      <Typography type="h2" variant={variant}>
+        {children}
+      </Typography>
     </a>
   );
 };

@@ -9,7 +9,7 @@ export default {
 };
 
 export const Default = () => {
-  const [isOpen, setIsOpen] = React.useState<boolean>(true);
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
   return (
     <Dialog

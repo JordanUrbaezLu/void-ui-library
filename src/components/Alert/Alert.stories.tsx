@@ -28,10 +28,18 @@ export const Variant = () => {
 export const VariantAndCloseable = () => {
   return (
     <FlexColumnContainer>
-      <Alert closeable variant="error">There was an error!</Alert>
-      <Alert closeable variant="info">Here's some information.</Alert>
-      <Alert closeable variant="success">That was successful!</Alert>
-      <Alert closeable variant="warning">This is a warning!</Alert>
+      <Alert closeable variant="error">
+        There was an error!
+      </Alert>
+      <Alert closeable variant="info">
+        Here's some information.
+      </Alert>
+      <Alert closeable variant="success">
+        That was successful!
+      </Alert>
+      <Alert closeable variant="warning">
+        This is a warning!
+      </Alert>
     </FlexColumnContainer>
   );
 };

@@ -5,6 +5,10 @@ exports[`Link Should render component correctly. 1`] = `
   class="linkContainer primary"
   href="https://www.google.com/"
 >
-  Google.com
+  <div
+    class="typography typographyH2 primary normal"
+  >
+    Google.com
+  </div>
 </a>
 `;

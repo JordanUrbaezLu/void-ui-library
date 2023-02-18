@@ -7,7 +7,7 @@ export type TypographyVariant = "primary" | "secondary";
 export type TypographyWeight = "light" | "normal" | "bold";
 
 export interface TypographyProps
-  extends React.ComponentPropsWithoutRef<"span"> {
+  extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * The content for the Typography
    */
@@ -51,7 +51,7 @@ export const Typography: React.FC<TypographyProps> = (props) => {
   } = props;
 
   return (
-    <span
+    <div
       className={classNames(
         className,
         styles.typography,
@@ -67,6 +67,6 @@ export const Typography: React.FC<TypographyProps> = (props) => {
       {...rest}
     >
       {children}
-    </span>
+    </div>
   );
 };

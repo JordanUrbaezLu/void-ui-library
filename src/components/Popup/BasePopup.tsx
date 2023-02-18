@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import * as React from "react";
+import { Typography } from "../Typography/Typography";
 
 import styles from "./BasePopup.module.scss";
 
@@ -21,27 +22,30 @@ export interface BasePopupProps
   text: string;
 }
 
-export const BasePopup = React.forwardRef<HTMLDivElement, BasePopupProps>(
-  (props, ref) => {
-    const { hasIndicator, position, text } = props;
+export const BasePopup = React.forwardRef<
+  HTMLDivElement,
+  BasePopupProps
+>((props, ref) => {
+  const { hasIndicator, position, text } = props;
 
-    return (
-      <div
-        className={classNames(
-          hasIndicator && styles.indicator,
-          position === "bottom" && styles.bottom,
-          position === "top" && styles.top,
-          position === "left" && styles.left,
-          position === "right" && styles.right,
-          styles.basePopup
-        )}
-        ref={ref}
-        role="tooltip"
-      >
+  return (
+    <div
+      className={classNames(
+        hasIndicator && styles.indicator,
+        position === "bottom" && styles.bottom,
+        position === "top" && styles.top,
+        position === "left" && styles.left,
+        position === "right" && styles.right,
+        styles.basePopup
+      )}
+      ref={ref}
+      role="tooltip"
+    >
+      <Typography type="h2" variant="primary">
         {text}
-      </div>
-    );
-  }
-);
+      </Typography>
+    </div>
+  );
+});
 
 BasePopup.displayName = "BasePopup";

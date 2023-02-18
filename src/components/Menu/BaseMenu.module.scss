@@ -1,5 +1,7 @@
+@use "../../utility/globals";
+
 .baseMenu {
-  background-color: rgb(50 50 50);
+  background-color: globals.$primary-background-color;
   border-radius: 4px;
   box-shadow: rgb(0 0 0 / 35%) 0 5px 15px;
   display: flex;

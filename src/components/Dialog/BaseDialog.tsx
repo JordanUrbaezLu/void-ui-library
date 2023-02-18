@@ -6,6 +6,7 @@ import { TbX } from "react-icons/tb";
 import { FocusTrap } from "../FocusTrap/FocusTrap";
 import { Separator } from "../Separator/Separator";
 import classNames from "classnames";
+import { Typography } from "../Typography/Typography";
 
 export type BaseDialogVariant =
   | "bottom"
@@ -79,7 +80,13 @@ export const BaseDialog: React.FC<BaseDialogProps> = (props) => {
         {...rest}
       >
         <div className={styles.dialogHeader}>
-          <div className={styles.dialogTitle}>{title}</div>
+          <Typography
+            className={styles.dialogTitle}
+            type="h1"
+            variant="primary"
+          >
+            {title}
+          </Typography>
           <IconButton
             className={styles.dialogIcon}
             content={<TbX />}
@@ -89,7 +96,13 @@ export const BaseDialog: React.FC<BaseDialogProps> = (props) => {
         {(variant === "left" || variant === "right") && (
           <Separator direction="horizontal" stroke={1} />
         )}
-        <div className={styles.dialogContent}>{content}</div>
+        <Typography
+          className={styles.dialogContent}
+          type="h2"
+          variant="primary"
+        >
+          {content}
+        </Typography>
         {buttons && (
           <div
             className={classNames(
