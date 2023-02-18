@@ -29,9 +29,6 @@ var rollup_config = {
     if (warning.code === "THIS_IS_UNDEFINED") {
       return;
     }
-
-    // console.warn everything else
-    console.warn(warning.message);
   },
   output: [
     {

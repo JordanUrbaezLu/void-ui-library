@@ -55,9 +55,9 @@ export const Typography: React.FC<TypographyProps> = (props) => {
       className={classNames(
         className,
         styles.typography,
-        type === "h1" && styles.typographyH1,
-        type === "h2" && styles.typographyH2,
-        type === "h3" && styles.typographyH3,
+        type === "h1" && styles.typographyh1,
+        type === "h2" && styles.typographyh2,
+        type === "h3" && styles.typographyh3,
         variant === "primary" && styles.primary,
         variant === "secondary" && styles.secondary,
         weight === "light" && styles.light,

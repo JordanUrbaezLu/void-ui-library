@@ -7,11 +7,11 @@
   width: fit-content;
 }
 
-.checkboxIcon {
+.radioIcon {
   background-color: transparent !important;
   color: globals.$secondary-text-color !important;
 
-  &.isChecked {
+  &.isSelected {
     color: globals.$primary-background-color !important;
   }
 
@@ -25,6 +25,6 @@
   }
 }
 
-.checked {
+.selected {
   color: globals.$primary-background-color !important;
 }

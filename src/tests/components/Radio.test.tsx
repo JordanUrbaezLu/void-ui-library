@@ -1,15 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { Checkbox } from "../../components/Checkbox/Checkbox";
+import { Radio } from "../../components/Radio/Radio";
 import { axe } from "jest-axe";
 
 describe("Switch", () => {
   test("Should render component correctly.", () => {
     const { container } = render(
-      <Checkbox
-        isChecked
-        onChange={jest.fn()}
-        label="Checkbox Label"
-      />
+      <Radio isSelected onChange={jest.fn()} label="Radio Label" />
     );
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -18,11 +14,7 @@ describe("Switch", () => {
 describe("Accessibility", () => {
   test("Should have no accessibility violations.", async () => {
     const { container } = render(
-      <Checkbox
-        isChecked
-        onChange={jest.fn()}
-        label="Checkbox Label"
-      />
+      <Radio isSelected onChange={jest.fn()} label="Radio Label" />
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
@@ -31,16 +23,16 @@ describe("Accessibility", () => {
 
 describe("Props", () => {
   test("Should render label correctly.", () => {
-    const label = "Checkbox Label";
+    const label = "Radio Label";
 
-    render(<Checkbox isChecked onChange={jest.fn()} label={label} />);
+    render(<Radio isSelected onChange={jest.fn()} label={label} />);
     expect(screen.getByText(label)).toBeInTheDocument();
   });
 
   test("Should render unchecked correctly.", () => {
-    const label = "Checkbox Label";
+    const label = "Radio Label";
 
-    render(<Checkbox onChange={jest.fn()} label={label} />);
-    expect(screen.getByText(label)).not.toHaveClass("checked");
+    render(<Radio onChange={jest.fn()} label={label} />);
+    expect(screen.getByText(label)).not.toHaveClass("selected");
   });
 });

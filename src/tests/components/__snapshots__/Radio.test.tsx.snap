@@ -6,8 +6,8 @@ exports[`Switch Should render component correctly. 1`] = `
 >
   <button
     aria-label="Icon Button"
-    class="isChecked checkboxIcon iconButton medium"
-    role="checkbox"
+    class="isSelected radioIcon iconButton medium"
+    role="radio"
   >
     <svg
       fill="currentColor"
@@ -23,14 +23,14 @@ exports[`Switch Should render component correctly. 1`] = `
         fill="none"
       />
       <path
-        d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+        d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
       />
     </svg>
   </button>
   <div
-    class="checked typography typographyh2 secondary normal"
+    class="selected typography typographyh2 secondary normal"
   >
-    Checkbox Label
+    Radio Label
   </div>
 </div>
 `;
