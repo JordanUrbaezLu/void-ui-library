@@ -2,6 +2,7 @@ import * as React from "react";
 import styles from "./Button.module.scss";
 import classNames from "classnames";
 import Ripples from "react-ripples";
+import { Typography } from "../Typography/Typography";
 
 export type ButtonVariant = "primary" | "secondary";
 export type ButtonSize = "small" | "medium" | "large";
@@ -12,11 +13,11 @@ export interface ButtonProps
   /**
    * The content for the Button
    */
-  children: React.ReactNode;
-  // /**
-  //  * If the Button is disabled
-  //  */
-  // disabled?: boolean;
+  children: string;
+  /**
+   * If the Button is disabled
+   */
+  disabled?: boolean;
   /**
    * The leading icon for the Button
    */
@@ -61,7 +62,7 @@ export const Button = React.forwardRef<
   const {
     className,
     children,
-    // disabled = "false",
+    disabled = false,
     leadingIcon,
     onClick,
     size = "medium",
@@ -71,45 +72,32 @@ export const Button = React.forwardRef<
     ...rest
   } = props;
 
-  const classes = classNames(
-    className,
-    styles.button,
-    size === "small"
-      ? styles.small
-      : size === "large"
-      ? styles.large
-      : styles.medium,
-    variant === "secondary" ? styles.secondary : styles.primary
-  );
-
-  const content = (
-    <>
-      {leadingIcon && (
-        <span className={styles.leadingIcon}>{leadingIcon}</span>
-      )}
-      {children}
-      {trailingIcon && (
-        <span className={styles.trailingIcon}>{trailingIcon}</span>
-      )}
-    </>
-  );
-
-  const rippleSize = classNames(
-    size === "small"
-      ? styles.smallRipple
-      : size === "large"
-      ? styles.largeRipple
-      : styles.mediumRipple
-  );
-
   return (
     <Ripples
-      className={rippleSize}
+      className={classNames(
+        disabled && styles.disableRipple,
+        size === "small"
+          ? styles.smallRipple
+          : size === "large"
+          ? styles.largeRipple
+          : styles.mediumRipple
+      )}
       color="rgba(38, 25, 49, 0.85)"
       during={500}
     >
       <button
-        className={classes}
+        className={classNames(
+          className,
+          styles.button,
+          disabled && styles.disabled,
+          size === "small"
+            ? styles.small
+            : size === "large"
+            ? styles.large
+            : styles.medium,
+          variant === "secondary" ? styles.secondary : styles.primary
+        )}
+        disabled={disabled}
         onClick={onClick}
         ref={ref}
         type={
@@ -121,7 +109,23 @@ export const Button = React.forwardRef<
         }
         {...rest}
       >
-        {content}
+        <Typography
+          className={styles.typography}
+          type={
+            size === "large" ? "h1" : size === "medium" ? "h2" : "h3"
+          }
+          variant={variant}
+        >
+          {leadingIcon && (
+            <span className={styles.leadingIcon}>{leadingIcon}</span>
+          )}
+          {children}
+          {trailingIcon && (
+            <span className={styles.trailingIcon}>
+              {trailingIcon}
+            </span>
+          )}
+        </Typography>
       </button>
     </Ripples>
   );

@@ -13,7 +13,6 @@
   border-radius: 5px;
   column-gap: 6px;
   display: flex;
-  flex-direction: row;
   font-size: 16px;
   outline: none !important;
   padding: 10px 6px;
@@ -44,11 +43,23 @@
   user-select: none;
 }
 
-.icon {
+.selectIcon {
+  background-color: transparent !important;
+  color: globals.$primary-background-color !important;
   left: 100px;
   position: absolute;
   top: 4px;
   z-index: 1;
+
+  &:hover,
+  &:focus {
+    background-color: globals.$primary-text-color !important;
+  }
+
+  &:active {
+    background-color: globals.$primary-background-color-active !important;
+    color: globals.$primary-text-color !important;
+  }
 }
 
 .enter {

@@ -1,10 +1,10 @@
 @use "../../utility/globals";
 
 .iconButton {
-  background-color: transparent;
+  background-color: globals.$primary-background-color;
   border: none;
   border-radius: 999px;
-  color: globals.$primary-background-color;
+  color: globals.$primary-text-color;
   cursor: pointer;
   outline: none;
 
@@ -28,7 +28,7 @@
 
   &:hover,
   &:focus {
-    background-color: globals.$primary-text-color;
+    background-color: globals.$primary-background-color-hover-and-focus;
   }
 
   &:active {
