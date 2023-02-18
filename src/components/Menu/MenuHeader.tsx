@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import * as React from "react";
+import { Typography } from "../Typography/Typography";
 import styles from "./MenuHeader.module.scss";
 
 export interface MenuHeaderProps
@@ -16,13 +17,15 @@ export interface MenuHeaderProps
 export const MenuHeader: React.FC<MenuHeaderProps> = (props) => {
   const { children, className, ...rest } = props;
   return (
-    <div
-      className={classNames(className, styles.menuHeader)}
+    <Typography
+      className={classNames(styles.menuHeader, className)}
       role="presentation"
+      type="h3"
+      variant="primary"
       {...rest}
     >
       {children.toUpperCase()}
-    </div>
+    </Typography>
   );
 };
 

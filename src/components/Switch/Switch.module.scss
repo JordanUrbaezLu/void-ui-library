@@ -6,9 +6,8 @@
   border: 0;
   cursor: pointer;
   display: flex;
-  font-family: globals.$font-family;
-  font-size: 16px;
   margin: 0;
+  outline: none;
   padding: 0;
 }
 
@@ -44,11 +43,11 @@
 }
 
 .switchLabel {
-  color: gray;
+  color: gray !important;
   margin-left: 8px;
   transition: all 0.15s ease-in;
 
   &.on {
-    color: globals.$secondary-text-color-hover-and-focus;
+    color: globals.$secondary-text-color-hover-and-focus !important;
   }
 }

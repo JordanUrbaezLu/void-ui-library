@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import * as React from "react";
+import { Typography } from "../Typography/Typography";
 import styles from "./MenuItem.module.scss";
 
 export interface MenuItemProps
@@ -17,12 +18,15 @@ export const MenuItem: React.FC<MenuItemProps> = (props) => {
   const { className, children, ...rest } = props;
 
   return (
-    <div
+    <Typography
       className={classNames(className, styles.menuItemContainer)}
+      role="menuitem"
+      type="h2"
+      variant="primary"
       {...rest}
     >
       {children}
-    </div>
+    </Typography>
   );
 };
 

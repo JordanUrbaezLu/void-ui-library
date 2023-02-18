@@ -11,12 +11,6 @@ export interface DateRangePickerProps {
    * The initial selected date for the DateRangePicker
    */
   selected?: Date;
-  /**
-   * If the DatePicker initially renders as open
-   *
-   * @default false
-   */
-  startsOpen?: boolean;
 }
 
 /**
@@ -29,15 +23,14 @@ export interface DateRangePickerProps {
 export const DateRangePicker: React.FC<DateRangePickerProps> = (
   props
 ) => {
-  const { selected, startsOpen = false } = props;
+  const { selected } = props;
 
   const startTriggerRef = React.useRef<HTMLDivElement>(null);
   const endTriggerRef = React.useRef<HTMLDivElement>(null);
 
   const [selectedDate, setSelectedDate] =
     React.useState<Date | undefined>(selected);
-  const [showCalendar, setShowCalendar] =
-    React.useState<boolean>(startsOpen);
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
   return (
     <DateRangePickerContext.Provider
@@ -58,10 +51,10 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (
             >
               <AiFillCalendar
                 className={styles.datePickerIconContainer}
-                onClick={() => setShowCalendar(!showCalendar)}
+                onClick={() => setIsOpen(!isOpen)}
                 onKeyDown={(event) => {
                   if (event.code === "Enter") {
-                    setShowCalendar(!showCalendar);
+                    setIsOpen(!isOpen);
                   }
                 }}
                 size={21}
@@ -81,10 +74,10 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (
             >
               <AiFillCalendar
                 className={styles.datePickerIconContainer}
-                onClick={() => setShowCalendar(!showCalendar)}
+                onClick={() => setIsOpen(!isOpen)}
                 onKeyDown={(event) => {
                   if (event.code === "Enter") {
-                    setShowCalendar(!showCalendar);
+                    setIsOpen(!isOpen);
                   }
                 }}
                 size={21}
@@ -95,8 +88,8 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = (
         />
       </div>
       <DateRangePickerCalendars
-        isOpen={showCalendar}
-        onClose={() => setShowCalendar(false)}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
         triggerRefs={[startTriggerRef, endTriggerRef]}
       />
     </DateRangePickerContext.Provider>

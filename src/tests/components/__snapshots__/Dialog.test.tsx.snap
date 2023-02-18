@@ -11,11 +11,11 @@ exports[`Dialog Should render component correctly. 1`] = `
     tabindex="0"
     type="button"
   >
-    <span
+    <div
       class="typography typography typographyH2 primary normal"
     >
       Trigger
-    </span>
+    </div>
   </button>
   <s
     style="position: absolute; border-radius: 50%; opacity: 0; width: 35px; height: 35px; transform: translate(-50%, -50%); pointer-events: none;"

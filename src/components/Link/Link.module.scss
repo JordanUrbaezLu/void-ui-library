@@ -1,16 +1,11 @@
 @use "../../utility/globals";
 
 .linkContainer {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   position: relative;
   text-decoration: none;
 
-  &.primary {
-    color: globals.$primary-background-color;
-  }
-
   &.primary::after {
-    background-color: globals.$primary-background-color;
+    background-color: globals.$primary-text-color;
     bottom: 0;
     content: "";
     height: 1.5px;
@@ -22,12 +17,8 @@
     width: 100%;
   }
 
-  &.secondary {
-    color: globals.$secondary-text-color-hover-and-focus;
-  }
-
   &.secondary::after {
-    background-color: globals.$secondary-text-color-hover-and-focus;
+    background-color: globals.$secondary-text-color;
     bottom: 0;
     content: "";
     height: 1.5px;

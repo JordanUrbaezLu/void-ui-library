@@ -7,6 +7,10 @@ export default {
   title: "Components/Badge",
 };
 
+export const Default = () => (
+  <Badge content={<FaReact />} title="ReactJS" />
+);
+
 export const Size = () => {
   return (
     <FlexRowContainer>

@@ -67,7 +67,6 @@ export const BaseMenu = React.forwardRef<
                 focusNextItem();
               }
             },
-            role: "menuitem",
             tabIndex: index === focusedMenuItemIndex ? 0 : undefined,
           });
         })}

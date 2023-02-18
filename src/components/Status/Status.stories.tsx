@@ -6,6 +6,8 @@ export default {
   title: "Components/Status",
 };
 
+export const Default = () => <Status />
+
 export const Variant = () => {
   return (
     <FlexColumnContainer>

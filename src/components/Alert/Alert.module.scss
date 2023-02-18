@@ -5,8 +5,6 @@
   border-radius: 8px;
   column-gap: 10px;
   display: flex;
-  font-family: globals.$font-family;
-  font-size: 14px;
   justify-content: space-between;
   min-width: 250px;
   padding: 10px 12px;
@@ -34,28 +32,25 @@
 }
 
 .alertTitle {
-  align-items: center;
-  display: flex;
-  font-weight: 700;
-
   &.error {
-    color: red;
+    color: red !important;
   }
 
   &.info {
-    color: blue;
+    color: blue !important;
   }
 
   &.success {
-    color: green;
+    color: green !important;
   }
 
   &.warning {
-    color: orange;
+    color: orange !important;
   }
 }
 
 .alertTitleContainer {
+  align-items: center;
   display: flex;
   padding-bottom: 3px;
 }
@@ -79,7 +74,7 @@
 
 .closeButton {
   background-color: transparent !important;
-  color: black !important;
+  color: globals.$secondary-text-color !important;
 }
 
 .errorButton {

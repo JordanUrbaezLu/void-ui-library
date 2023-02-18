@@ -31,12 +31,6 @@ const Template: Story<SelectProps> = (args) => {
 };
 
 export const Default = Template.bind({});
-Default.play = ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  allowLayoutCalculations(() =>
-    userEvent.click(canvas.getByRole("button"))
-  );
-};
 
 export const Placeholder = Template.bind({});
 Placeholder.args = {

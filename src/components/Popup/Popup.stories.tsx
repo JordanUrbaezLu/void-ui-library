@@ -34,12 +34,6 @@ const Template: Story<
 };
 
 export const Default = Template.bind({});
-Default.play = ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  allowLayoutCalculations(() =>
-    userEvent.hover(canvas.getByRole("button"))
-  );
-};
 
 export const PositionBottom = Template.bind({});
 PositionBottom.args = {

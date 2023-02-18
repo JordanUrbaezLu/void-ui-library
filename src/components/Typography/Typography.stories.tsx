@@ -9,28 +9,62 @@ export default {
 const Template: Story<
   Omit<TypographyProps, "children"> &
     Pick<Partial<TypographyProps>, "children">
-> = (args) => <Typography children="" {...args} variant="secondary" />;
+> = (args) => (
+  <Typography children="" {...args} variant="secondary" />
+);
 
-export const VariantH1 = Template.bind({});
-VariantH1.args = {
+export const Default = () => (
+  <div
+    style={{
+      background: "rgb(60 60 60)",
+      padding: "6px",
+      width: "fit-content",
+    }}
+  >
+    <Typography>Default Typography</Typography>
+  </div>
+);
+
+export const VariantPrimary: Story<TypographyProps> = () => (
+  <div
+    style={{
+      background: "rgb(60 60 60)",
+      padding: "6px",
+      width: "fit-content",
+    }}
+  >
+    <Typography>Primary Variant Typography</Typography>
+  </div>
+);
+VariantPrimary.storyName = "Variant: Primary";
+
+export const VariantSecondary: Story<TypographyProps> = () => (
+  <Typography variant="secondary">
+    Secondary Variant Typography
+  </Typography>
+);
+VariantSecondary.storyName = "Variant: Secondary";
+
+export const TypeH1 = Template.bind({});
+TypeH1.args = {
   children: "h1. Typography",
   type: "h1",
 };
-VariantH1.storyName = "Variant: H1";
+TypeH1.storyName = "Type: H1";
 
-export const VariantH2 = Template.bind({});
-VariantH2.args = {
+export const TypeH2 = Template.bind({});
+TypeH2.args = {
   children: "h2. Typography",
   type: "h2",
 };
-VariantH2.storyName = "Variant: H2";
+TypeH2.storyName = "Type: H2";
 
-export const VariantH3 = Template.bind({});
-VariantH3.args = {
+export const TypeH3 = Template.bind({});
+TypeH3.args = {
   children: "h3. Typography",
   type: "h3",
 };
-VariantH3.storyName = "Variant: H3";
+TypeH3.storyName = "Type: H3";
 
 export const WeightLight = Template.bind({});
 WeightLight.args = {

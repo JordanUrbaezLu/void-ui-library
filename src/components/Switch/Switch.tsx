@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import * as React from "react";
+import { Typography } from "../Typography/Typography";
 import styles from "./Switch.module.scss";
 
 export interface SwitchProps
@@ -14,10 +15,6 @@ export interface SwitchProps
    * The label for the Switch
    */
   label?: string;
-  /**
-   * The callback fired when the Switch is clicked
-   */
-  onClick: () => void;
 }
 
 /**
@@ -28,35 +25,36 @@ export interface SwitchProps
  * The Switch component is used to toggle states.
  */
 export const Switch: React.FC<SwitchProps> = (props) => {
-  const { className, isOn = false, label, onClick, ...rest } = props;
-
-  const switchPill = classNames(
-    className,
-    styles.switchPill,
-    isOn && styles.on
-  );
-
-  const switchIndicator = classNames(
-    styles.switchIndicator,
-    isOn && styles.on
-  );
-
-  const switchLabel = classNames(
-    styles.switchLabel,
-    isOn && styles.on
-  );
+  const { className, isOn = false, label, ...rest } = props;
 
   return (
     <button
       aria-checked={isOn}
-      className={switchPill}
-      onClick={onClick}
+      className={classNames(
+        className,
+        styles.switchPill,
+        isOn && styles.on
+      )}
       role="switch"
       type="button"
       {...rest}
     >
-      <span className={switchIndicator} />
-      {label && <span className={switchLabel}>{label}</span>}
+      <span
+        className={classNames(
+          styles.switchIndicator,
+          isOn && styles.on
+        )}
+      />
+      {label && (
+        <Typography
+          className={classNames(
+            styles.switchLabel,
+            isOn && styles.on
+          )}
+        >
+          {label}
+        </Typography>
+      )}
     </button>
   );
 };

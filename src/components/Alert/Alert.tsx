@@ -7,6 +7,7 @@ import { BiAlarmExclamation } from "react-icons/bi";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FiAlertTriangle, FiX } from "react-icons/fi";
 import { IconButton } from "../IconButton";
+import { Typography } from "../Typography/Typography";
 
 export type AlertVariant = "error" | "info" | "success" | "warning";
 
@@ -47,23 +48,6 @@ export const Alert: React.FC<AlertProps> = (props) => {
     ...rest
   } = props;
 
-  const alertContainer = classNames(
-    className,
-    styles.alertContainer,
-    variant === "error" && styles.error,
-    variant === "info" && styles.info,
-    variant === "success" && styles.success,
-    variant === "warning" && styles.warning
-  );
-
-  const alertTitle = classNames(
-    styles.alertTitle,
-    variant === "error" && styles.error,
-    variant === "info" && styles.info,
-    variant === "success" && styles.success,
-    variant === "warning" && styles.warning
-  );
-
   const alertIcon = (
     <>
       {variant === "error" && <BiAlarmExclamation color="red" />}
@@ -71,14 +55,6 @@ export const Alert: React.FC<AlertProps> = (props) => {
       {variant === "success" && <FaRegCheckCircle color="green" />}
       {variant === "warning" && <FiAlertTriangle color="orange" />}
     </>
-  );
-
-  const alertCloseButton = classNames(
-    styles.closeButton,
-    variant === "error" && styles.errorButton,
-    variant === "info" && styles.infoButton,
-    variant === "success" && styles.successButton,
-    variant === "warning" && styles.warningButton
   );
 
   const [isOpen, setIsOpen] = React.useState<boolean>(true);
@@ -91,17 +67,47 @@ export const Alert: React.FC<AlertProps> = (props) => {
       mountOnEnter
       unmountOnExit
     >
-      <div className={alertContainer} {...rest}>
+      <div
+        className={classNames(
+          className,
+          styles.alertContainer,
+          variant === "error" && styles.error,
+          variant === "info" && styles.info,
+          variant === "success" && styles.success,
+          variant === "warning" && styles.warning
+        )}
+        {...rest}
+      >
         <div>
           <div className={styles.alertTitleContainer}>
             <div className={styles.alertIcon}>{alertIcon}</div>
-            <div className={alertTitle}>{variant?.toUpperCase()}</div>
+            <Typography
+              className={classNames(
+                styles.alertTitle,
+                variant === "error" && styles.error,
+                variant === "info" && styles.info,
+                variant === "success" && styles.success,
+                variant === "warning" && styles.warning
+              )}
+              type="h2"
+              weight="bold"
+            >
+              {variant?.toUpperCase()}
+            </Typography>
           </div>
-          <span>{children}</span>
+          <Typography type="h3" variant="secondary">
+            {children}
+          </Typography>
         </div>
         {closeable && (
           <IconButton
-            className={alertCloseButton}
+            className={classNames(
+              styles.closeButton,
+              variant === "error" && styles.errorButton,
+              variant === "info" && styles.infoButton,
+              variant === "success" && styles.successButton,
+              variant === "warning" && styles.warningButton
+            )}
             content={<FiX />}
             onClick={() => {
               setIsOpen(false);
