@@ -11,15 +11,15 @@ import { Typography } from "../Typography/Typography";
 export interface RadioProps
   extends React.ComponentPropsWithoutRef<"button"> {
   /**
+   * The label for the Radio
+   */
+  children: React.ReactNode;
+  /**
    * If the Radio is selected
    *
    * @default false
    */
   isSelected?: boolean;
-  /**
-   * The label for the Radio
-   */
-  label?: string;
   /**
    * The callback fired when requesting to change the Radio state
    */
@@ -35,9 +35,9 @@ export interface RadioProps
  */
 export const Radio: React.FC<RadioProps> = (props) => {
   const {
+    children,
     className,
     isSelected = false,
-    label,
     onChange,
     ...rest
   } = props;
@@ -65,7 +65,7 @@ export const Radio: React.FC<RadioProps> = (props) => {
         className={classNames(isSelected && styles.selected)}
         variant="secondary"
       >
-        {label}
+        {children}
       </Typography>
     </div>
   );

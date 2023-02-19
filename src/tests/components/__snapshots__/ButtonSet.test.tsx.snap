@@ -3,9 +3,11 @@
 exports[`ButtonSet Should render component correctly. 1`] = `
 <ul
   class="buttonSet"
+  role="list"
 >
   <li
     class="buttonSetItem"
+    role="listitem"
   >
     <div
       class="react-ripples mediumRipple"
@@ -28,6 +30,7 @@ exports[`ButtonSet Should render component correctly. 1`] = `
   </li>
   <li
     class="buttonSetItem"
+    role="listitem"
   >
     <div
       class="react-ripples mediumRipple"
@@ -50,6 +53,7 @@ exports[`ButtonSet Should render component correctly. 1`] = `
   </li>
   <li
     class="buttonSetItem"
+    role="listitem"
   >
     <div
       class="react-ripples mediumRipple"
