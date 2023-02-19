@@ -1,11 +1,12 @@
 import * as React from "react";
 import classNames from "classnames";
 import styles from "./ButtonSet.module.scss";
+import { Button } from "../Button/Button";
 
 export interface ButtonSetProps
   extends React.ComponentPropsWithoutRef<"ul"> {
   /**
-   * The buttons in the Button Set
+   * The Buttons in the Button Set
    */
   children: React.ReactNode;
   /**
@@ -21,12 +22,12 @@ export interface ButtonSetProps
  *
  * @description
  *
- * The Button Set is a group of similar Buttons.
+ * The Button Set is a group Buttons with related actions.
  */
 export const ButtonSet: React.FC<ButtonSetProps> = (props) => {
   const {
-    className,
     children,
+    className,
     flexDirection = "row",
     ...rest
   } = props;
@@ -38,14 +39,23 @@ export const ButtonSet: React.FC<ButtonSetProps> = (props) => {
         flexDirection === "column" && styles.buttonSetColumn,
         className
       )}
+      role="list"
       {...rest}
     >
-      {React.Children.map(children, (child, index) => {
-        return (
-          <li className={styles.buttonSetItem} key={index}>
-            {child}
-          </li>
-        );
+      {React.Children.map(children, (button, index) => {
+        if ((button as React.ReactElement).type === Button) {
+          return (
+            <li
+              className={styles.buttonSetItem}
+              key={index}
+              role="listitem"
+            >
+              {button}
+            </li>
+          );
+        } else {
+          return null;
+        }
       })}
     </ul>
   );

@@ -70,3 +70,5 @@ export const Typography: React.FC<TypographyProps> = (props) => {
     </div>
   );
 };
+
+Typography.displayName = "Typography";

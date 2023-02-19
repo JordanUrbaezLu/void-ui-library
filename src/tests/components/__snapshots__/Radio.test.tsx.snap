@@ -30,7 +30,7 @@ exports[`Switch Should render component correctly. 1`] = `
   <div
     class="selected typography typographyh2 secondary normal"
   >
-    Radio Label
+    Radio
   </div>
 </div>
 `;

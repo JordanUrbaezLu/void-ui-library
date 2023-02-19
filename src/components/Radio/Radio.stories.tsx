@@ -13,29 +13,21 @@ export const Default = () => {
     <Radio
       isSelected={isSelected}
       onChange={() => setIsSelected(!isSelected)}
-    />
+    >
+      Default
+    </Radio>
   );
 };
 
-export const Checked = () => {
+export const Selected = () => {
   const [isSelected, setIsSelected] = React.useState<boolean>(true);
 
   return (
     <Radio
       isSelected={isSelected}
       onChange={() => setIsSelected(!isSelected)}
-    />
-  );
-};
-
-export const Label = () => {
-  const [isSelected, setIsSelected] = React.useState<boolean>(false);
-
-  return (
-    <Radio
-      isSelected={isSelected}
-      label="Radio"
-      onChange={() => setIsSelected(!isSelected)}
-    />
+    >
+      Selected
+    </Radio>
   );
 };

@@ -1,13 +1,14 @@
 import { render, screen } from "@testing-library/react";
-import { Radio } from "../../components/Radio/Radio";
+import { Radio } from "../../components/Radio";
+import { RadioSet } from "../../components/RadioSet";
 import { axe } from "jest-axe";
 
-describe("Switch", () => {
+describe("RadioSet", () => {
   test("Should render component correctly.", () => {
     const { container } = render(
-      <Radio isSelected onChange={jest.fn()}>
-        Radio
-      </Radio>
+      <RadioSet>
+        <Radio onChange={() => undefined}>Radio</Radio>
+      </RadioSet>
     );
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -16,9 +17,9 @@ describe("Switch", () => {
 describe("Accessibility", () => {
   test("Should have no accessibility violations.", async () => {
     const { container } = render(
-      <Radio isSelected onChange={jest.fn()}>
-        Radio
-      </Radio>
+      <RadioSet>
+        <Radio onChange={() => undefined}>Radio</Radio>
+      </RadioSet>
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
@@ -26,17 +27,12 @@ describe("Accessibility", () => {
 });
 
 describe("Props", () => {
-  test("Should render label correctly.", () => {
+  test("Should render children correctly.", () => {
     render(
-      <Radio isSelected onChange={jest.fn()}>
-        Radio
-      </Radio>
+      <RadioSet>
+        <Radio onChange={() => undefined}>Radio</Radio>
+      </RadioSet>
     );
     expect(screen.getByText("Radio")).toBeInTheDocument();
-  });
-
-  test("Should render unchecked correctly.", () => {
-    render(<Radio onChange={jest.fn()}>Radio</Radio>);
-    expect(screen.getByText("Radio")).not.toHaveClass("selected");
   });
 });
