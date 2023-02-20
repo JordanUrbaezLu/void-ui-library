@@ -35,9 +35,11 @@ describe("Props", () => {
     render(
       <ButtonSet>
         <Button>Button</Button>
+        <div>Div</div>
       </ButtonSet>
     );
-    expect(screen.getByText("Button")).toBeInTheDocument();
+    expect(screen.getByRole("list")).not.toHaveTextContent("Div");
+    expect(screen.getByRole("list")).toHaveTextContent("Button");
   });
 
   test("Should render flex direction correctly.", () => {

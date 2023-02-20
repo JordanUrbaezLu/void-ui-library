@@ -1,0 +1,44 @@
+@use "../../utility/globals";
+
+.paginationContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.pagesButtonsContainer {
+  display: flex;
+  min-width: 190px;
+}
+
+.paginationIconButton {
+  background-color: transparent;
+  color: globals.$primary-background-color !important;
+  font-family: globals.$font-family;
+  font-size: 16px;
+
+  &:hover,
+  &:focus {
+    background-color: globals.$secondary-background-color-hover-and-active !important;
+  }
+
+  &:active {
+    background-color: globals.$secondary-background-color-active !important;
+  }
+}
+
+.currentPageIcon {
+  background-color: rgb(160, 160, 160) !important;
+
+  &.firstPage {
+    margin-left: auto;
+  }
+  
+  &.lastPage {
+    margin-right: auto;
+  }
+}
+
+.ellipse {
+  pointer-events: none;
+}

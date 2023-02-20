@@ -13,6 +13,7 @@ export * from "./FocusTrap";
 export * from "./IconButton";
 export * from "./Link";
 export * from "./Menu";
+export * from "./Pagination";
 export * from "./Popup";
 export * from "./Radio";
 export * from "./RadioSet";

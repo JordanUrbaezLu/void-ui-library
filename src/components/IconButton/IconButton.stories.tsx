@@ -9,6 +9,8 @@ export default {
 
 export const Default = () => <IconButton content={<FaReact />} />;
 
+export const Children = () => <IconButton>1</IconButton>;
+
 export const Size = () => {
   return (
     <FlexRowContainer>
