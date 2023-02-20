@@ -15,9 +15,15 @@ export interface IconButtonProps
   /**
    * The content for the Icon Button
    *
+   * @note Children must be short strings
+   */
+  children?: React.ReactNode;
+  /**
+   * The content for the Icon Button
+   *
    * @note Content must be icons from "react-icons"
    */
-  content: React.ReactElement;
+  content?: React.ReactElement;
   /**
    * The size for the IconButton
    *
@@ -40,19 +46,12 @@ export const IconButton = React.forwardRef<
 >((props, ref) => {
   const {
     ariaLabel = "Icon Button",
+    children,
     className,
     content,
     size = "medium",
     ...rest
   } = props;
-
-  const iconButtonContentClasses = classNames(
-    className,
-    styles.iconButton,
-    size === "small" && styles.small,
-    size === "medium" && styles.medium,
-    size === "large" && styles.large
-  );
 
   const iconSizeNumber =
     size === "medium" ? 22 : size === "small" ? 18 : 26;
@@ -60,13 +59,22 @@ export const IconButton = React.forwardRef<
   return (
     <button
       aria-label={ariaLabel}
-      className={iconButtonContentClasses}
+      className={classNames(
+        className,
+        children && styles.children,
+        styles.iconButton,
+        size === "small" && styles.small,
+        size === "medium" && styles.medium,
+        size === "large" && styles.large
+      )}
       ref={ref}
       {...rest}
     >
-      {React.cloneElement(content, {
-        size: iconSizeNumber,
-      })}
+      {content
+        ? React.cloneElement(content, {
+            size: iconSizeNumber,
+          })
+        : children}
     </button>
   );
 });

@@ -31,8 +31,10 @@ describe("Props", () => {
     render(
       <RadioSet>
         <Radio onChange={() => undefined}>Radio</Radio>
+        <div>Div</div>
       </RadioSet>
     );
-    expect(screen.getByText("Radio")).toBeInTheDocument();
+    expect(screen.getByRole("list")).not.toHaveTextContent("Div");
+    expect(screen.getByRole("list")).toHaveTextContent("Radio");
   });
 });
