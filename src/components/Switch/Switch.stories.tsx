@@ -9,7 +9,7 @@ export default {
   parameters: {
     chromatic: { delay: 2000 },
   },
-  title: "Components/Switch",
+  title: "Components/Inputs/Switch",
 };
 
 const Template: Story<Omit<SwitchProps, "isOn" | "onClick">> = (

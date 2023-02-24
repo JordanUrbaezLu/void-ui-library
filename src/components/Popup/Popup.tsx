@@ -14,7 +14,8 @@ import {
 } from "./BasePopup";
 import { PopupLayoutContainer } from "./PopupLayoutContainer";
 
-export interface PopupProps {
+export interface PopupProps
+  extends React.ComponentPropsWithoutRef<"div"> {
   /**
    * The trigger for the Popup
    */
@@ -61,6 +62,7 @@ export interface PopupProps {
  */
 export const Popup: React.FC<PopupProps> = (props) => {
   const {
+    className,
     children,
     hasIndicator = false,
     isOpen = false,
@@ -84,7 +86,7 @@ export const Popup: React.FC<PopupProps> = (props) => {
   useOnHoverOut(triggerRef, onClose);
 
   return (
-    <span
+    <div
       className={classNames(
         position === "bottom" && styles.bottom,
         position === "top" && styles.top,
@@ -92,7 +94,6 @@ export const Popup: React.FC<PopupProps> = (props) => {
         position === "right" && styles.right,
         styles.container
       )}
-      {...rest}
     >
       {React.cloneElement(React.Children.only(children), {
         ref: triggerRef,
@@ -119,14 +120,16 @@ export const Popup: React.FC<PopupProps> = (props) => {
           triggerRef={triggerRef}
         >
           <BasePopup
+            className={className}
             hasIndicator={hasIndicator}
             position={position}
             ref={popupRef}
             text={text}
+            {...rest}
           />
         </PopupLayoutContainer>
       </CSSTransition>
-    </span>
+    </div>
   );
 };
 

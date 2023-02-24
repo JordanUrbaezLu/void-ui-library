@@ -7,7 +7,7 @@ export default {
   parameters: {
     layout: "centered",
   },
-  title: "Components/Pagination",
+  title: "Components/Navigation/Pagination",
 };
 
 export const Default = () => {
@@ -80,3 +80,39 @@ export const WithPageValue = () => {
     </>
   );
 };
+
+export const VariantPrimary = () => {
+  const [currentPage, setCurrentPage] = React.useState<number>(5);
+
+  const handleChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  return (
+    <Pagination
+      currentPage={currentPage}
+      pages={10}
+      onChangePage={(page: number) => handleChange(page)}
+      variant="primary"
+    />
+  );
+};
+VariantPrimary.storyName = "Variant: Primary";
+
+export const VariantSecondary = () => {
+  const [currentPage, setCurrentPage] = React.useState<number>(5);
+
+  const handleChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  return (
+    <Pagination
+      currentPage={currentPage}
+      pages={10}
+      onChangePage={(page: number) => handleChange(page)}
+      variant="secondary"
+    />
+  );
+};
+VariantSecondary.storyName = "Variant: Secondary";

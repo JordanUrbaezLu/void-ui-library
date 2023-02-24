@@ -62,6 +62,20 @@ describe("Interaction", () => {
     );
   });
 
+  test("Should not trigger onChangePage on page button click.", () => {
+    render(
+      <Pagination
+        currentPage={1}
+        pages={1}
+        onChangePage={jest.fn()}
+      />
+    );
+
+    screen.getAllByRole("button")[0].click();
+
+    screen.getAllByRole("button")[2].click();
+  });
+
   test("Should trigger onChangePage on page button click.", () => {
     const onChangePage = jest.fn();
     render(

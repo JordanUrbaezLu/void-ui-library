@@ -1,8 +1,10 @@
 import * as React from "react";
 import styles from "./IconButton.module.scss";
 import classNames from "classnames";
+import { Ripple } from "../Ripple";
 
 export type IconButtonSize = "small" | "medium" | "large";
+export type IconButtonVariant = "primary" | "secondary";
 
 export interface IconButtonProps
   extends React.ComponentPropsWithRef<"button"> {
@@ -25,11 +27,23 @@ export interface IconButtonProps
    */
   content?: React.ReactElement;
   /**
-   * The size for the IconButton
+   * If the Icon Button is disabled
+   *
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * The size for the Icon Button
    *
    * @default "medium"
    */
   size?: IconButtonSize;
+  /**
+   * The variant for the Icon Button
+   *
+   * @default "primary"
+   */
+  variant?: IconButtonVariant;
 }
 
 /**
@@ -49,7 +63,9 @@ export const IconButton = React.forwardRef<
     children,
     className,
     content,
+    disabled = false,
     size = "medium",
+    variant = "primary",
     ...rest
   } = props;
 
@@ -62,14 +78,19 @@ export const IconButton = React.forwardRef<
       className={classNames(
         className,
         children && styles.children,
+        disabled && styles.disabled,
         styles.iconButton,
         size === "small" && styles.small,
         size === "medium" && styles.medium,
-        size === "large" && styles.large
+        size === "large" && styles.large,
+        variant === "primary" && styles.primary,
+        variant === "secondary" && styles.secondary
       )}
+      disabled={disabled}
       ref={ref}
       {...rest}
     >
+      {!disabled && <Ripple duration={1000} position="center" />}
       {content
         ? React.cloneElement(content, {
             size: iconSizeNumber,

@@ -39,4 +39,13 @@ describe("Props", () => {
     render(<Radio onChange={jest.fn()}>Radio</Radio>);
     expect(screen.getByText("Radio")).not.toHaveClass("selected");
   });
+
+  test("Should render disabled correctly.", () => {
+    render(
+      <Radio disabled onChange={jest.fn()}>
+        Radio
+      </Radio>
+    );
+    expect(screen.getByText("Radio")).toHaveClass("disabled");
+  });
 });

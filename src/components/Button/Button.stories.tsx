@@ -1,14 +1,14 @@
 import { Story } from "@storybook/react";
 import { Button, ButtonProps } from "./Button";
 import {
-  AiOutlineArrowLeft,
-  AiOutlineArrowRight,
-} from "react-icons/ai";
+  MdOutlineArrowBack,
+  MdOutlineArrowForward,
+} from "react-icons/md";
 import { FlexRowContainer } from "../../../.storybook/components/FlexRowContainer";
 
 export default {
   component: Button,
-  title: "Components/Button",
+  title: "Components/Inputs/Button",
 };
 
 const Template: Story<ButtonProps> = (args) => {
@@ -43,24 +43,24 @@ Disabled.args = {
 
 export const LeadingIcon = Template.bind({});
 LeadingIcon.args = {
-  leadingIcon: <AiOutlineArrowLeft />,
+  leadingIcon: <MdOutlineArrowBack />,
 };
 
 export const TrailingIcon = Template.bind({});
 TrailingIcon.args = {
-  trailingIcon: <AiOutlineArrowRight />,
+  trailingIcon: <MdOutlineArrowForward />,
 };
 
 export const LeadingIconAndTrailingIcon = Template.bind({});
 LeadingIconAndTrailingIcon.args = {
-  leadingIcon: <AiOutlineArrowLeft />,
-  trailingIcon: <AiOutlineArrowRight />,
+  leadingIcon: <MdOutlineArrowBack />,
+  trailingIcon: <MdOutlineArrowForward />,
 };
 
 export const AllProps = Template.bind({});
 AllProps.args = {
   size: "large",
   variant: "secondary",
-  leadingIcon: <AiOutlineArrowLeft />,
-  trailingIcon: <AiOutlineArrowRight />,
+  leadingIcon: <MdOutlineArrowBack />,
+  trailingIcon: <MdOutlineArrowForward />,
 };

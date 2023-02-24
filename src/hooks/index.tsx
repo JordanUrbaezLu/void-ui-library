@@ -1,6 +1,6 @@
 /* istanbul ignore file */
-export * from "./useMenuFocus";
 export * from "./useLockBodyScroll";
+export * from "./useMenuFocus";
 export * from "./useOnClickInside";
 export * from "./useOnClickOutside";
 export * from "./useOnFocus";

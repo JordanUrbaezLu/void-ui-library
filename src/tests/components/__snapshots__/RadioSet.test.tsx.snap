@@ -14,9 +14,13 @@ exports[`RadioSet Should render component correctly. 1`] = `
     >
       <button
         aria-label="Icon Button"
-        class="radioIcon iconButton medium"
+        class="iconButton medium secondary"
         role="radio"
       >
+        <div
+          class="container"
+          role="presentation"
+        />
         <svg
           fill="currentColor"
           height="22"

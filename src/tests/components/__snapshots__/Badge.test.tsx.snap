@@ -3,10 +3,14 @@
 exports[`Badge Should render component correctly. 1`] = `
 <button
   aria-label="Badge"
-  class="icon iconButton medium"
+  class="icon iconButton medium primary"
   tabindex="-1"
   title="ReactJS"
 >
+  <div
+    class="container"
+    role="presentation"
+  />
   <svg
     fill="currentColor"
     height="22"

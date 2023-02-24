@@ -7,24 +7,6 @@
   width: fit-content;
 }
 
-.checkboxIcon {
-  background-color: transparent !important;
-  color: globals.$secondary-text-color !important;
-
-  &.isChecked {
-    color: globals.$primary-background-color !important;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: globals.$secondary-background-color-hover-and-active !important;
-  }
-
-  &:active {
-    background-color: globals.$secondary-background-color-active !important;
-  }
-}
-
-.checked {
-  color: globals.$primary-background-color !important;
+.disabled {
+  color: lightgray !important;
 }

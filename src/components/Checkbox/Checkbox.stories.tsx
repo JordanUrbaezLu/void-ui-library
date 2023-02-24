@@ -3,7 +3,7 @@ import { Checkbox } from "./Checkbox";
 
 export default {
   component: Checkbox,
-  title: "Components/Checkbox",
+  title: "Components/Inputs/Checkbox",
 };
 
 export const Default = () => {
@@ -13,7 +13,37 @@ export const Default = () => {
     <Checkbox
       isChecked={isChecked}
       onChange={() => setIsChecked(!isChecked)}
-    />
+    >
+      Default
+    </Checkbox>
+  );
+};
+
+export const Disabled = () => {
+  const [isChecked, setIsChecked] = React.useState<boolean>(false);
+
+  return (
+    <Checkbox
+      disabled
+      isChecked={isChecked}
+      onChange={() => setIsChecked(!isChecked)}
+    >
+      Disabled
+    </Checkbox>
+  );
+};
+
+export const DisabledAndChecked = () => {
+  const [isChecked, setIsChecked] = React.useState<boolean>(true);
+
+  return (
+    <Checkbox
+      disabled
+      isChecked={isChecked}
+      onChange={() => setIsChecked(!isChecked)}
+    >
+      Disabled
+    </Checkbox>
   );
 };
 
@@ -24,18 +54,8 @@ export const Checked = () => {
     <Checkbox
       isChecked={isChecked}
       onChange={() => setIsChecked(!isChecked)}
-    />
-  );
-};
-
-export const Label = () => {
-  const [isChecked, setIsChecked] = React.useState<boolean>(false);
-
-  return (
-    <Checkbox
-      isChecked={isChecked}
-      label="Checkbox"
-      onChange={() => setIsChecked(!isChecked)}
-    />
+    >
+      Checked
+    </Checkbox>
   );
 };

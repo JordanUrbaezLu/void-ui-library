@@ -9,7 +9,7 @@ export default {
   parameters: {
     chromatic: { delay: 2000 },
   },
-  title: "Components/DatePicker",
+  title: "Components/Inputs/DatePicker",
 };
 
 const Template: Story<DatePickerProps> = (args) => {

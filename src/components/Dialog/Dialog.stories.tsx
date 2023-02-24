@@ -5,7 +5,7 @@ import { ButtonSet } from "../ButtonSet";
 
 export default {
   component: Dialog,
-  title: "Components/Dialog",
+  title: "Components/Feedback/Dialog",
 };
 
 export const Default = () => {

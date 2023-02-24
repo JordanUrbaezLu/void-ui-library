@@ -3,7 +3,7 @@ import { Separator } from "./Separator";
 
 export default {
   component: Separator,
-  title: "Components/Separator",
+  title: "Components/Presentation/Separator",
 };
 
 export const Default = () => <Separator />;

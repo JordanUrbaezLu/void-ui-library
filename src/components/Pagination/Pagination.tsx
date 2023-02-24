@@ -4,6 +4,8 @@ import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { IconButton } from "../IconButton";
 import styles from "./Pagination.module.scss";
 
+export type PaginationVariant = "primary" | "secondary";
+
 export interface PaginationProps
   extends React.ComponentPropsWithoutRef<"div"> {
   /**
@@ -18,11 +20,23 @@ export interface PaginationProps
    * The amount of pages for the Pagination
    */
   pages: number;
+  /**
+   * The variant for the Pagination
+   *
+   * @default "secondary"
+   */
+  variant?: PaginationVariant;
 }
 
 export const Pagination: React.FC<PaginationProps> = (props) => {
-  const { className, currentPage, onChangePage, pages, ...rest } =
-    props;
+  const {
+    className,
+    currentPage,
+    onChangePage,
+    pages,
+    variant = "secondary",
+    ...rest
+  } = props;
 
   const decreasePage = () => {
     if (currentPage - 1 > 0) {
@@ -46,6 +60,8 @@ export const Pagination: React.FC<PaginationProps> = (props) => {
         className={classNames(styles.paginationIconButton)}
         content={<MdChevronLeft />}
         onClick={decreasePage}
+        disabled={currentPage === 1}
+        variant={variant}
       />
       <div className={styles.pagesButtonsContainer}>
         {currentPage - 2 > 0 ? (
@@ -55,6 +71,7 @@ export const Pagination: React.FC<PaginationProps> = (props) => {
               styles.ellipse
             )}
             tabIndex={-1}
+            variant={variant}
           >
             ...
           </IconButton>
@@ -73,6 +90,7 @@ export const Pagination: React.FC<PaginationProps> = (props) => {
                   className={classNames(styles.paginationIconButton)}
                   key={index}
                   onClick={() => onChangePage(page)}
+                  variant={variant}
                 >
                   {page}
                 </IconButton>
@@ -87,6 +105,8 @@ export const Pagination: React.FC<PaginationProps> = (props) => {
                     styles.currentPageIcon
                   )}
                   key={index}
+                  tabIndex={-1}
+                  variant={variant}
                 >
                   {page}
                 </IconButton>
@@ -103,6 +123,7 @@ export const Pagination: React.FC<PaginationProps> = (props) => {
               styles.ellipse
             )}
             tabIndex={-1}
+            variant={variant}
           >
             ...
           </IconButton>
@@ -114,6 +135,8 @@ export const Pagination: React.FC<PaginationProps> = (props) => {
         className={classNames(styles.paginationIconButton)}
         content={<MdChevronRight />}
         onClick={increasePage}
+        disabled={currentPage === pages}
+        variant={variant}
       />
     </nav>
   );

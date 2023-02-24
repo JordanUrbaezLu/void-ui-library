@@ -1,8 +1,8 @@
 import * as React from "react";
 import styles from "./Button.module.scss";
 import classNames from "classnames";
-import Ripples from "react-ripples";
 import { Typography } from "../Typography/Typography";
+import { Ripple } from "../Ripple";
 
 export type ButtonVariant = "primary" | "secondary";
 export type ButtonSize = "small" | "medium" | "large";
@@ -16,6 +16,8 @@ export interface ButtonProps
   children: string;
   /**
    * If the Button is disabled
+   *
+   * @default false
    */
   disabled?: boolean;
   /**
@@ -73,61 +75,47 @@ export const Button = React.forwardRef<
   } = props;
 
   return (
-    <Ripples
+    <button
       className={classNames(
-        disabled && styles.disableRipple,
+        className,
+        styles.button,
+        disabled && styles.disabled,
         size === "small"
-          ? styles.smallRipple
+          ? styles.small
           : size === "large"
-          ? styles.largeRipple
-          : styles.mediumRipple
+          ? styles.large
+          : styles.medium,
+        variant === "secondary" ? styles.secondary : styles.primary
       )}
-      color="rgba(38, 25, 49, 0.85)"
-      during={500}
+      disabled={disabled}
+      onClick={onClick}
+      ref={ref}
+      type={
+        type === "reset"
+          ? "reset"
+          : type === "submit"
+          ? "submit"
+          : "button"
+      }
+      {...rest}
     >
-      <button
-        className={classNames(
-          className,
-          styles.button,
-          disabled && styles.disabled,
-          size === "small"
-            ? styles.small
-            : size === "large"
-            ? styles.large
-            : styles.medium,
-          variant === "secondary" ? styles.secondary : styles.primary
-        )}
-        disabled={disabled}
-        onClick={onClick}
-        ref={ref}
+      {!disabled && <Ripple position="cursor" />}
+      <Typography
+        className={styles.typography}
         type={
-          type === "reset"
-            ? "reset"
-            : type === "submit"
-            ? "submit"
-            : "button"
+          size === "large" ? "h1" : size === "medium" ? "h2" : "h3"
         }
-        {...rest}
+        variant={variant}
       >
-        <Typography
-          className={styles.typography}
-          type={
-            size === "large" ? "h1" : size === "medium" ? "h2" : "h3"
-          }
-          variant={variant}
-        >
-          {leadingIcon && (
-            <span className={styles.leadingIcon}>{leadingIcon}</span>
-          )}
-          {children}
-          {trailingIcon && (
-            <span className={styles.trailingIcon}>
-              {trailingIcon}
-            </span>
-          )}
-        </Typography>
-      </button>
-    </Ripples>
+        {leadingIcon && (
+          <span className={styles.leadingIcon}>{leadingIcon}</span>
+        )}
+        {children}
+        {trailingIcon && (
+          <span className={styles.trailingIcon}>{trailingIcon}</span>
+        )}
+      </Typography>
+    </button>
   );
 });
 

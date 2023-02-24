@@ -3,7 +3,7 @@ import { Status } from "./Status";
 
 export default {
   component: Status,
-  title: "Components/Status",
+  title: "Components/Presentation/Status",
 };
 
 export const Default = () => <Status />;

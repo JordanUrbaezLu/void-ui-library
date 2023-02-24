@@ -9,7 +9,7 @@ import {
 
 export default {
   component: TextField,
-  title: "Components/TextField",
+  title: "Components/Inputs/TextField",
 };
 
 const Template: Story<Omit<TextFieldProps, "value" | "onChange">> = (

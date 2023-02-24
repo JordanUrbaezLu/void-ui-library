@@ -28,8 +28,12 @@ exports[`DatePicker Should render component correctly. 1`] = `
     </div>
     <button
       aria-label="Icon Button"
-      class="iconButton medium"
+      class="iconButton medium primary"
     >
+      <div
+        class="container"
+        role="presentation"
+      />
       <svg
         fill="currentColor"
         height="22"
