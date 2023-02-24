@@ -4,7 +4,7 @@ export default {
   component: Chart,
   // Delay Chromatic capture to allow animation for Chart
   parameters: { chromatic: { delay: 2000 } },
-  title: "Components/Chart",
+  title: "Components/Presentation/Chart",
 };
 
 const data = [

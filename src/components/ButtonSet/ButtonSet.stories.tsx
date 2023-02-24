@@ -3,7 +3,7 @@ import { ButtonSet } from "./ButtonSet";
 
 export default {
   component: ButtonSet,
-  title: "Components/ButtonSet",
+  title: "Components/Inputs/ButtonSet",
 };
 
 export const Default = () => (

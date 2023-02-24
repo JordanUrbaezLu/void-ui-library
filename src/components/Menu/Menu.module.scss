@@ -45,7 +45,7 @@
 }
 
 .trigger {
-  transition: all 300ms ease-in;
+  transition: all 150ms ease-in;
 
   &.isOpen {
     transform: scale(0.95);

@@ -9,70 +9,58 @@ exports[`ButtonSet Should render component correctly. 1`] = `
     class="buttonSetItem"
     role="listitem"
   >
-    <div
-      class="react-ripples mediumRipple"
-      style="position: relative; display: inline-flex; overflow: hidden;"
+    <button
+      class="button medium primary"
+      type="button"
     >
-      <button
-        class="button medium primary"
-        type="button"
-      >
-        <div
-          class="typography typography typographyh2 primary normal"
-        >
-          Button
-        </div>
-      </button>
-      <s
-        style="position: absolute; border-radius: 50%; opacity: 0; width: 35px; height: 35px; transform: translate(-50%, -50%); pointer-events: none;"
+      <div
+        class="container"
+        role="presentation"
       />
-    </div>
+      <div
+        class="typography typography typographyh2 primary normal"
+      >
+        Button
+      </div>
+    </button>
   </li>
   <li
     class="buttonSetItem"
     role="listitem"
   >
-    <div
-      class="react-ripples mediumRipple"
-      style="position: relative; display: inline-flex; overflow: hidden;"
+    <button
+      class="button medium primary"
+      type="button"
     >
-      <button
-        class="button medium primary"
-        type="button"
-      >
-        <div
-          class="typography typography typographyh2 primary normal"
-        >
-          Button
-        </div>
-      </button>
-      <s
-        style="position: absolute; border-radius: 50%; opacity: 0; width: 35px; height: 35px; transform: translate(-50%, -50%); pointer-events: none;"
+      <div
+        class="container"
+        role="presentation"
       />
-    </div>
+      <div
+        class="typography typography typographyh2 primary normal"
+      >
+        Button
+      </div>
+    </button>
   </li>
   <li
     class="buttonSetItem"
     role="listitem"
   >
-    <div
-      class="react-ripples mediumRipple"
-      style="position: relative; display: inline-flex; overflow: hidden;"
+    <button
+      class="button medium primary"
+      type="button"
     >
-      <button
-        class="button medium primary"
-        type="button"
-      >
-        <div
-          class="typography typography typographyh2 primary normal"
-        >
-          Button
-        </div>
-      </button>
-      <s
-        style="position: absolute; border-radius: 50%; opacity: 0; width: 35px; height: 35px; transform: translate(-50%, -50%); pointer-events: none;"
+      <div
+        class="container"
+        role="presentation"
       />
-    </div>
+      <div
+        class="typography typography typographyh2 primary normal"
+      >
+        Button
+      </div>
+    </button>
   </li>
 </ul>
 `;

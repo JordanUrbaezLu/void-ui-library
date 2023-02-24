@@ -4,7 +4,7 @@ import { RadioSet } from "./RadioSet";
 
 export default {
   component: RadioSet,
-  title: "Components/RadioSet",
+  title: "Components/Inputs/RadioSet",
 };
 
 export const Default = () => {

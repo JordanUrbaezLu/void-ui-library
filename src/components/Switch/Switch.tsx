@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import * as React from "react";
+import { Ripple } from "../Ripple";
 import { Typography } from "../Typography/Typography";
 import styles from "./Switch.module.scss";
 
@@ -32,7 +33,7 @@ export const Switch: React.FC<SwitchProps> = (props) => {
       aria-checked={isOn}
       className={classNames(
         className,
-        styles.switchPill,
+        styles.switchContainer,
         isOn && styles.on
       )}
       role="switch"
@@ -40,11 +41,23 @@ export const Switch: React.FC<SwitchProps> = (props) => {
       {...rest}
     >
       <span
-        className={classNames(
-          styles.switchIndicator,
-          isOn && styles.on
-        )}
-      />
+        className={classNames(styles.switchPill, isOn && styles.on)}
+      >
+        <span
+          className={classNames(
+            styles.switchIndicator,
+            isOn && styles.on
+          )}
+        />
+        <span
+          className={classNames(
+            styles.switchRipple,
+            isOn && styles.on
+          )}
+        >
+          <Ripple duration={800} position="center" />
+        </span>
+      </span>
       {label && (
         <Typography
           className={classNames(

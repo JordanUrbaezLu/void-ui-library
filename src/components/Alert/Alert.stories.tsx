@@ -3,7 +3,7 @@ import { FlexColumnContainer } from "../../../.storybook/components/FlexColumnCo
 
 export default {
   component: Alert,
-  title: "Components/Alert",
+  title: "Components/Feedback/Alert",
 };
 
 export const Default = () => <Alert>Default Alert!</Alert>;

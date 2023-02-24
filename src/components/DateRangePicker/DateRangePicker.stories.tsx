@@ -11,7 +11,7 @@ export default {
   parameters: {
     chromatic: { delay: 2000 },
   },
-  title: "Components/DateRangePicker",
+  title: "Components/Inputs/DateRangePicker",
 };
 
 const Template: Story<DateRangePickerProps> = () => {

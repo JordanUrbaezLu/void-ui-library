@@ -12,7 +12,7 @@ export default {
     chromatic: { delay: 2000 },
     layout: "centered",
   },
-  title: "Components/Popup",
+  title: "Components/Feedback/Popup",
 };
 
 const Template: Story<

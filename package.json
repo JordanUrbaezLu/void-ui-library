@@ -93,6 +93,7 @@
     "react-focus-lock": "2.5.0",
     "react-icons": "4.7.1",
     "react-ripples": "2.2.1",
+    "react-spinners": "^0.13.8",
     "react-transition-group": "4.4.1",
     "recharts": "2.3.2"
   },

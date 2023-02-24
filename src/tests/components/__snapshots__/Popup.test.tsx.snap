@@ -1,28 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Popup Should render component correctly. 1`] = `
-<span
+<div
   class="bottom container"
 >
-  <div
-    class="react-ripples mediumRipple"
-    style="position: relative; display: inline-flex; overflow: hidden;"
+  <button
+    class="button medium primary"
+    role="button"
+    tabindex="0"
+    type="button"
   >
-    <button
-      class="button medium primary"
-      role="button"
-      tabindex="0"
-      type="button"
-    >
-      <div
-        class="typography typography typographyh2 primary normal"
-      >
-        Trigger
-      </div>
-    </button>
-    <s
-      style="position: absolute; border-radius: 50%; opacity: 0; width: 35px; height: 35px; transform: translate(-50%, -50%); pointer-events: none;"
+    <div
+      class="container"
+      role="presentation"
     />
-  </div>
-</span>
+    <div
+      class="typography typography typographyh2 primary normal"
+    >
+      Trigger
+    </div>
+  </button>
+</div>
 `;

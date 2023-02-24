@@ -5,11 +5,9 @@ import { axe } from "jest-axe";
 describe("Switch", () => {
   test("Should render component correctly.", () => {
     const { container } = render(
-      <Checkbox
-        isChecked
-        onChange={jest.fn()}
-        label="Checkbox Label"
-      />
+      <Checkbox isChecked onChange={jest.fn()}>
+        Checkbox
+      </Checkbox>
     );
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -18,11 +16,9 @@ describe("Switch", () => {
 describe("Accessibility", () => {
   test("Should have no accessibility violations.", async () => {
     const { container } = render(
-      <Checkbox
-        isChecked
-        onChange={jest.fn()}
-        label="Checkbox Label"
-      />
+      <Checkbox isChecked onChange={jest.fn()}>
+        Checkbox
+      </Checkbox>
     );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
@@ -31,16 +27,25 @@ describe("Accessibility", () => {
 
 describe("Props", () => {
   test("Should render label correctly.", () => {
-    const label = "Checkbox Label";
-
-    render(<Checkbox isChecked onChange={jest.fn()} label={label} />);
-    expect(screen.getByText(label)).toBeInTheDocument();
+    render(
+      <Checkbox isChecked onChange={jest.fn()}>
+        Checkbox
+      </Checkbox>
+    );
+    expect(screen.getByText("Checkbox")).toBeInTheDocument();
   });
 
   test("Should render unchecked correctly.", () => {
-    const label = "Checkbox Label";
+    render(<Checkbox onChange={jest.fn()}>Checkbox</Checkbox>);
+    expect(screen.getByText("Checkbox")).not.toHaveClass("checked");
+  });
 
-    render(<Checkbox onChange={jest.fn()} label={label} />);
-    expect(screen.getByText(label)).not.toHaveClass("checked");
+  test("Should render disabled correctly.", () => {
+    render(
+      <Checkbox disabled onChange={jest.fn()}>
+        Checkbox
+      </Checkbox>
+    );
+    expect(screen.getByText("Checkbox")).toHaveClass("disabled");
   });
 });

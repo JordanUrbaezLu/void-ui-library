@@ -3,7 +3,7 @@ import { Story } from "@storybook/react";
 
 export default {
   component: Typography,
-  title: "Components/Typography",
+  title: "Components/Presentation/Typography",
 };
 
 const Template: Story<

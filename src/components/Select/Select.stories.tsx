@@ -10,7 +10,7 @@ export default {
   parameters: {
     chromatic: { delay: 2000 },
   },
-  title: "Components/Select",
+  title: "Components/Inputs/Select",
 };
 
 const Template: Story<SelectProps> = (args) => {

@@ -13,8 +13,12 @@ exports[`Select Should render component correctly. 1`] = `
   </div>
   <button
     aria-label="Chevron Down"
-    class="selectIcon iconButton medium"
+    class="selectIcon iconButton medium primary"
   >
+    <div
+      class="container"
+      role="presentation"
+    />
     <svg
       fill="currentColor"
       height="22"

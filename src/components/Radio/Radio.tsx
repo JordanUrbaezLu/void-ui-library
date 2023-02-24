@@ -15,6 +15,12 @@ export interface RadioProps
    */
   children: React.ReactNode;
   /**
+   * If the Radio is disabled
+   *
+   * @default false
+   */
+  disabled?: boolean;
+  /**
    * If the Radio is selected
    *
    * @default false
@@ -37,6 +43,7 @@ export const Radio: React.FC<RadioProps> = (props) => {
   const {
     children,
     className,
+    disabled = false,
     isSelected = false,
     onChange,
     ...rest
@@ -47,8 +54,7 @@ export const Radio: React.FC<RadioProps> = (props) => {
       <IconButton
         className={classNames(
           className,
-          isSelected && styles.isSelected,
-          styles.radioIcon
+          isSelected && styles.isSelected
         )}
         content={
           isSelected ? (
@@ -57,12 +63,17 @@ export const Radio: React.FC<RadioProps> = (props) => {
             <MdRadioButtonUnchecked />
           )
         }
+        disabled={disabled}
         onClick={onChange}
         role="radio"
+        variant="secondary"
         {...rest}
       />
       <Typography
-        className={classNames(isSelected && styles.selected)}
+        className={classNames(
+          disabled && styles.disabled,
+          isSelected && styles.selected
+        )}
         variant="secondary"
       >
         {children}

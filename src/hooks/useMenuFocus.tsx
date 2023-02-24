@@ -70,7 +70,7 @@ export const useMenuFocus = (
     const menuItem = menuContainerRef.current?.children[
       focusedMenuItemIndex
     ] as HTMLElement;
-    setTimeout(() => menuItem?.focus(), 150);
+    setTimeout(() => menuItem?.focus(), 120);
   }, []);
 
   React.useEffect(() => {

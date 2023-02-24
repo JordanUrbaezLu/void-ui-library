@@ -26,7 +26,7 @@ export const BasePopup = React.forwardRef<
   HTMLDivElement,
   BasePopupProps
 >((props, ref) => {
-  const { hasIndicator, position, text } = props;
+  const { className, hasIndicator, position, text, ...rest } = props;
 
   return (
     <div
@@ -36,10 +36,12 @@ export const BasePopup = React.forwardRef<
         position === "top" && styles.top,
         position === "left" && styles.left,
         position === "right" && styles.right,
-        styles.basePopup
+        styles.basePopup,
+        className
       )}
       ref={ref}
       role="tooltip"
+      {...rest}
     >
       <Typography type="h2" variant="primary">
         {text}

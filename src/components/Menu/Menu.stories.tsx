@@ -14,7 +14,7 @@ export default {
     chromatic: { delay: 2000 },
     layout: "centered",
   },
-  title: "Components/Menu",
+  title: "Components/Navigation/Menu",
 };
 
 const Template: Story<MenuProps> = (args) => {

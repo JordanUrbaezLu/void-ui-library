@@ -4,7 +4,7 @@ import { FlexRowContainer } from "../../../.storybook/components/FlexRowContaine
 
 export default {
   component: Badge,
-  title: "Components/Badge",
+  title: "Components/Presentation/Badge",
 };
 
 export const Default = () => (

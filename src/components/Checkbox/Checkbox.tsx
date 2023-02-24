@@ -8,15 +8,21 @@ import { Typography } from "../Typography/Typography";
 export interface CheckboxProps
   extends React.ComponentPropsWithoutRef<"button"> {
   /**
+   * The label for the Checkbox
+   */
+  children: React.ReactNode;
+  /**
+   * If the Checkbox is disabled
+   *
+   * @default false
+   */
+  disabled?: boolean;
+  /**
    * If the Checkbox is checked
    *
    * @default false
    */
   isChecked?: boolean;
-  /**
-   * The label for the Checkbox
-   */
-  label?: string;
   /**
    * The callback fired when requesting to change the Checkbox state
    */
@@ -32,9 +38,10 @@ export interface CheckboxProps
  */
 export const Checkbox: React.FC<CheckboxProps> = (props) => {
   const {
+    children,
     className,
+    disabled = false,
     isChecked = false,
-    label,
     onChange,
     ...rest
   } = props;
@@ -44,21 +51,25 @@ export const Checkbox: React.FC<CheckboxProps> = (props) => {
       <IconButton
         className={classNames(
           className,
-          isChecked && styles.isChecked,
-          styles.checkboxIcon
+          isChecked && styles.isChecked
         )}
         content={
           isChecked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />
         }
         onClick={onChange}
+        disabled={disabled}
         role="checkbox"
+        variant="secondary"
         {...rest}
       />
       <Typography
-        className={classNames(isChecked && styles.checked)}
+        className={classNames(
+          disabled && styles.disabled,
+          isChecked && styles.checked
+        )}
         variant="secondary"
       >
-        {label}
+        {children}
       </Typography>
     </div>
   );

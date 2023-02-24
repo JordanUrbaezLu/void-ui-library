@@ -1,12 +1,40 @@
 @use "../../utility/globals";
 
 .iconButton {
-  background-color: globals.$primary-background-color;
+  &.primary {
+    background-color: globals.$primary-background-color;
+    color: globals.$primary-text-color;
+
+    &:hover,
+    &:focus {
+      background-color: globals.$primary-background-color-hover-and-focus;
+    }
+
+    &:active {
+      background-color: globals.$primary-background-color-active;
+    }
+  }
+
+  &.secondary {
+    background-color: globals.$secondary-background-color;
+    color: globals.$secondary-text-color;
+
+    &:hover,
+    &:focus {
+      background-color: globals.$secondary-background-color-hover-and-focus;
+    }
+
+    &:active {
+      background-color: globals.$secondary-background-color-active;
+    }
+  }
+
   border: none;
   border-radius: 999px;
-  color: globals.$primary-text-color;
   cursor: pointer;
   outline: none;
+  overflow: hidden;
+  position: relative;
 
   &.small {
     max-height: 32px;
@@ -25,19 +53,25 @@
     max-width: 44px;
     padding: 9px;
   }
-
-  &:hover,
-  &:focus {
-    background-color: globals.$primary-background-color-hover-and-focus;
-  }
-
-  &:active {
-    background-color: globals.$primary-background-color-active;
-    color: globals.$primary-text-color;
-  }
 }
 
 .children {
+  font-family: globals.$font-family;
+  font-size: 16px;
   height: 38px;
   width: 38px;
+}
+
+.disabled {
+  &.primary {
+    background-color: lightgray !important;
+  }
+
+  &.secondary {
+    background-color: transparent !important;
+    color: lightgray !important;
+  }
+
+  cursor: default !important;
+  user-select: none !important;
 }

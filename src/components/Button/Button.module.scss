@@ -2,25 +2,24 @@
 
 .button {
   align-items: center;
-  border: 2px solid globals.$primary-background-color;
   cursor: pointer;
   display: flex;
   outline: none;
+  overflow: hidden;
+  position: relative;
 }
 
 .primary {
   background-color: globals.$primary-background-color;
+  border: none;
 
   &:hover,
   &:focus {
     background-color: globals.$primary-background-color-hover-and-focus;
-    border: 2px solid
-      globals.$primary-background-color-hover-and-focus;
   }
 
   &:active {
     background-color: globals.$primary-background-color-active;
-    border: 2px solid globals.$primary-background-color-active;
   }
 }
 
@@ -30,7 +29,7 @@
 
   &:hover,
   &:focus {
-    background-color: globals.$secondary-background-color-hover-and-active;
+    background-color: globals.$secondary-background-color-hover-and-focus;
     border: 2px solid globals.$secondary-border-color-hover-and-focus;
     color: globals.$secondary-text-color-hover-and-focus;
   }
@@ -44,33 +43,24 @@
   border-radius: 6px;
   height: 25.8px;
   padding: 4px 6px;
-
-  .leadingIcon,
-  .trailingIcon {
-    height: 12px;
-  }
 }
 
 .medium {
   border-radius: 8px;
   height: 34.5px;
   padding: 6px 9px;
-
-  .leadingIcon,
-  .trailingIcon {
-    height: 16px;
-  }
 }
 
 .large {
   border-radius: 10px;
   height: 43px;
   padding: 8px 12px;
+}
 
-  .leadingIcon,
-  .trailingIcon {
-    height: 20px;
-  }
+.leadingIcon,
+.trailingIcon {
+  align-items: center;
+  display: flex;
 }
 
 .smallRipple {
@@ -97,7 +87,7 @@
 
 .disabled {
   background-color: lightgray !important;
-  border: 2px solid lightgray;
+  border: 2px solid lightgray !important;
   cursor: default !important;
   user-select: none !important;
 }
