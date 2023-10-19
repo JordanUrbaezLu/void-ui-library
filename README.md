@@ -23,3 +23,5 @@ root.render(<Button>Button</Button>);
 ```
 
 Note: The Void UI library is heavily maintained and gets new components added regularly. Engineers are welcome to contribute to this open source library. Visit [CONTRIBUTING.md](https://github.com/JordanUrbaezLu/void-ui-library/blob/main/CONTRIBUTING.md) to see how!
+
+Have a great day!
